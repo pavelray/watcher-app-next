@@ -28,31 +28,11 @@ export const getSimilarDataAPIUrl = (type, id) => {
 }
 
 export const getMovieDetailsDataAPIUrl = (type, id) => {
-    switch(type){
-        case MEDIA_TYPE.MOVIE: {
-            return `${API_BASE_URL}/movie/${id}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`
-        }
-        case MEDIA_TYPE.TV_SERIES: {
-            return `${API_BASE_URL}/tv/${id}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`
-        }
-        default: {
-            return ''
-        }
-    }
+    return `${API_BASE_URL}/${type}/${id}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`
 }
 
 export const getMovieCastDetailsDataAPIUrl = (type, id) => {
-    switch(type){
-        case MEDIA_TYPE.MOVIE: {
-            return `${API_BASE_URL}/movie/${id}/credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`
-        }
-        case MEDIA_TYPE.TV_SERIES: {
-            return `${API_BASE_URL}/tv/${id}/credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`
-        }
-        default: {
-            return ''
-        }
-    }
+    return `${API_BASE_URL}/${type}/${id}/credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`
 }
 
 export const getProvidersAPIUrl = (type, id) => {
@@ -118,15 +98,5 @@ export const getViewAllUrl = (dataType, type=MEDIA_TYPE.MOVIE, pageNo=1) => {
 }
 
 export const getMovieVideosUrl = (id, type) => {
-    switch(type){
-        case MEDIA_TYPE.MOVIE: {
-            return `${API_BASE_URL}/movie/${id}/videos?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`
-        }
-        case MEDIA_TYPE.TV_SERIES: {
-            return `${API_BASE_URL}/tv/${id}/videos?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`
-        }
-        default: {
-            return ''
-        }
-    }
+    return `${API_BASE_URL}/${type}/${id}/videos?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`
 }

@@ -1,4 +1,4 @@
-
+import Head from "next/head";
 import { Fragment } from "react";
 import CardSlider from "../components/UI/CardCarousel/CardSlider";
 import { getTrendingDataAPIUrl } from "../utils/apiUtills";
@@ -8,6 +8,10 @@ import httpService from "../utils/httpService";
 export default function Home({ trendingMovie, trendingTvSeries }) {
   return (
     <Fragment>
+      <Head>
+        <title>Moviezine - Home</title>
+        <meta name="description" content="Home page containing Trending movies and tv series of the week" />
+      </Head>
       <CardSlider
         data={trendingMovie.results}
         type={MEDIA_TYPE.MOVIE}

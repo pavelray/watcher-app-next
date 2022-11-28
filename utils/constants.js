@@ -179,5 +179,5 @@ export const API_VERSION = 3;
 export const API_BASE_URL = `https://api.themoviedb.org/${API_VERSION}`;
 export const API_IMAGE_URL = 'https://image.tmdb.org/t/p';
 export const API_LOCATION_URL = `https://geolocation-db.com/json/`;
-export const NO_IMG_PLACEHOLDER_USER = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-4-user-grey-d8fe957375e70239d6abdd549fd7568c89281b2179b5f4470e2e12895792dfa5.svg`;
+export const NO_IMG_PLACEHOLDER_USER = `/images/profile-placeholder.jpeg`;
 export const NO_IMG_PLACEHOLDER_MEDIA = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`

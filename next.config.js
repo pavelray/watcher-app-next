@@ -8,7 +8,7 @@ const nextConfig = {
         hostname: 'image.tmdb.org',
         port: '',
         pathname: '/**',
-      },
+      }
     ],
   },
 }
