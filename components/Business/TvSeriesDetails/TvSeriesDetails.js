@@ -1,15 +1,14 @@
-import Link from "next/link";
 import React, { Fragment } from "react";
 import {
   API_IMAGE_URL,
   NO_IMG_PLACEHOLDER_USER,
 } from "../../../utils/constants";
-import { slugify } from "../../../utils/helperMethods";
 import Avatar from "../../UI/Avater/Avatar";
+import SeasonDetails from "../SeasonDetails";
 import ViewTrailer from "../ViewTrailer/ViewTrailer";
 import WatchProvider from "../WatchProvider/WatchProvider";
 
-import { style } from "./MovieDetails.style";
+import { style } from "./TvSeriesDetails.style";
 
 const movieDetailsStyle = {
   backgroundAttachment: "fixed",
@@ -18,8 +17,16 @@ const movieDetailsStyle = {
   backgroundSize: "cover",
 };
 
-const MovieDetails = ({ movie }) => {
-  const { details, cast, crew, runtime, trailerVideo, providers } = movie;
+const TvSeriesDetails = ({ tvSeries }) => {
+  const {
+    details,
+    cast,
+    crew,
+    seasons,
+    seasonDetails,
+    trailerVideo,
+    providers,
+  } = tvSeries;
   return (
     <Fragment>
       <div
@@ -32,7 +39,7 @@ const MovieDetails = ({ movie }) => {
         <div className="movie-details-container__main">
           <div className="movie-details-container__main-content">
             <div className="column">
-              <div className="title">{details.title}</div>
+              <div className="title">{details.name}</div>
               <div className="tagline">{details.tagline}</div>
               <div className="stats">
                 <div>{details.vote_average?.toFixed(2)}</div>
@@ -44,9 +51,12 @@ const MovieDetails = ({ movie }) => {
               <div className="stats">
                 <div className="stats__other">{details.status}</div>
                 <div className="stats__other">
-                  &bull; {new Date(details.release_date).getFullYear()}
+                  &bull; {new Date(details.first_air_date).getFullYear()}
                 </div>
-                <div className="stats__other">&bull; {runtime}</div>
+                <div className="stats__other">
+                  &bull;{" "}
+                  {`Seasons : ${seasons?.length}, Episodes: ${details.number_of_episodes}`}
+                </div>
               </div>
               <div className="description">{details.overview}</div>
               {!!trailerVideo.length && (
@@ -67,15 +77,11 @@ const MovieDetails = ({ movie }) => {
                   <div className="cast-title">Cast</div>
                   <div className="cast">
                     {cast?.slice(0, 6).map((cast) => (
-                      <Link
+                      <Avatar
+                        imageSrc={`${API_IMAGE_URL}/w154/${cast.profile_path}`}
+                        text={cast.name}
                         key={cast.id}
-                        href={`/person/${cast.id}/${slugify(cast.name)}`}
-                      >
-                        <Avatar
-                          imageSrc={`${API_IMAGE_URL}/w154/${cast.profile_path}`}
-                          text={cast.name}
-                        />
-                      </Link>
+                      />
                     ))}
                   </div>
                 </div>
@@ -92,16 +98,11 @@ const MovieDetails = ({ movie }) => {
                           ? `${API_IMAGE_URL}/w154/${crew.profile_path}`
                           : NO_IMG_PLACEHOLDER_USER;
                       return (
-                        <Link
+                        <Avatar
+                          imageSrc={avatarImg}
+                          text={`${crew.job} ${crew.name}`}
                           key={crew.id}
-                          href={`/person/${crew.id}/${slugify(crew.name)}`}
-                        >
-                          <Avatar
-                            imageSrc={avatarImg}
-                            text={`${crew.job} ${crew.name}`}
-                            key={crew.id}
-                          />
-                        </Link>
+                        />
                       );
                     })}
                   </div>
@@ -111,9 +112,10 @@ const MovieDetails = ({ movie }) => {
           </div>
         </div>
       </div>
+      <SeasonDetails seasonDetails={seasonDetails} />
       <style jsx> {style} </style>
     </Fragment>
   );
 };
 
-export default MovieDetails;
+export default TvSeriesDetails;

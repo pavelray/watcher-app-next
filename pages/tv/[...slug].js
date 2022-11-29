@@ -1,48 +1,63 @@
 import Head from "next/head";
 import { Fragment } from "react";
-import MovieDetails from "../../components/Business/MovieDetails";
+import TvSeriesDetails from "../../components/Business/TvSeriesDetails";
 import {
   getMovieCastDetailsDataAPIUrl,
   getMovieDetailsDataAPIUrl,
   getMovieVideosUrl,
   getProvidersAPIUrl,
+  getSeasonDetailsAPIUrl,
 } from "../../utils/apiUtills";
-import { DEFAULT_COUNTRY_CODE, MEDIA_TYPE, VIDEO_TYPE } from "../../utils/constants";
+import {
+  DEFAULT_COUNTRY_CODE,
+  MEDIA_TYPE,
+  VIDEO_TYPE,
+} from "../../utils/constants";
 import { getLocationCookie } from "../../utils/helperMethods";
 import httpService from "../../utils/httpService";
 
-const MovieDetailsPage = ({ slugTitle, movie }) => {
+const TvSeriesDetailsPage = ({ slugTitle, tvSeries }) => {
   return (
     <Fragment>
       <Head>
         <title>Moviezine - {slugTitle}</title>
-        <meta name="description" content="Details information of the Movie" />
+        <meta
+          name="description"
+          content="Details information of the Tv Series"
+        />
       </Head>
-      <MovieDetails movie={movie} />
+      <TvSeriesDetails tvSeries={tvSeries} />
     </Fragment>
   );
 };
 
 export async function getServerSideProps(context) {
-  const { query , req} = context;
+  const { query, req } = context;
   const { slug } = query;
   const { countryCode = DEFAULT_COUNTRY_CODE } = getLocationCookie(req);
-  const type = MEDIA_TYPE.MOVIE;
-  
+  const type = MEDIA_TYPE.TV_SERIES;
+
   const id = slug[0];
   const slugTitle = slug[1];
 
   let url = getMovieDetailsDataAPIUrl(type, id);
-  const movieDetails = await httpService.get(url);
-  const { runtime } = movieDetails;
-  const hours = Math.floor(runtime / 60);
-  const minutes = runtime % 60;
-  const totalRuntime = `${hours}h ${minutes}m`;
+  const tvSeriesDetails = await httpService.get(url);
+  const seasons = tvSeriesDetails.seasons.filter(
+    (s) => s.air_date !== null && s.season_number > 0
+  );
+
+  let seasonsData = [];
+
+  seasons?.forEach(async (s) => {
+    url = getSeasonDetailsAPIUrl(id, s.season_number);
+    const seasionDetailsResp = await httpService.get(url);
+    seasonsData.push(seasionDetailsResp);
+  });
 
   url = getMovieCastDetailsDataAPIUrl(type, id);
   const data = await httpService.get(url);
-  const movieCast = data.cast.filter((cast) => cast.profile_path !== null);
-  const movieCrew = data.crew.filter(
+  const tvSeriesCast = data.cast.filter((cast) => cast.profile_path !== null);
+  const tvSeriesCrew = data.crew.filter(
     (crew) => crew.job === "Director" || crew.job === "Producer"
   );
 
@@ -59,18 +74,19 @@ export async function getServerSideProps(context) {
   return {
     props: {
       id,
-      type: MEDIA_TYPE.MOVIE,
+      type,
       slugTitle,
-      movie: {
-        details: movieDetails,
-        cast: movieCast,
-        crew: movieCrew,
-        runtime: totalRuntime,
+      tvSeries: {
+        details: tvSeriesDetails,
+        cast: tvSeriesCast,
+        crew: tvSeriesCrew,
+        seasons,
+        seasonDetails: seasonsData,
         trailerVideo,
-        providers: watchProvider
+        providers: watchProvider,
       },
     },
   };
 }
 
-export default MovieDetailsPage;
+export default TvSeriesDetailsPage;

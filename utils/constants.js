@@ -175,9 +175,12 @@ export const ERROR_MESSAGE = {
 
 export const APP_NAME = 'Moviezine';
 
+export const DEFAULT_COUNTRY_CODE = 'US';
+export const DEFAULT_COUNTRY_NAME = 'United States';
+
 export const API_VERSION = 3;
 export const API_BASE_URL = `https://api.themoviedb.org/${API_VERSION}`;
 export const API_IMAGE_URL = 'https://image.tmdb.org/t/p';
 export const API_LOCATION_URL = `https://geolocation-db.com/json/`;
 export const NO_IMG_PLACEHOLDER_USER = `/images/profile-placeholder.jpeg`;
-export const NO_IMG_PLACEHOLDER_MEDIA = `https://www.themoviedb.org/assets/2/v4/glyphicons/basic/glyphicons-basic-38-picture-grey-c2ebdbb057f2a7614185931650f8cee23fa137b93812ccb132b9df511df1cfac.svg`
+export const NO_IMG_PLACEHOLDER_MEDIA = `/images/media-placeholder.png`
