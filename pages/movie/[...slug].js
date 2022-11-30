@@ -43,7 +43,7 @@ export async function getServerSideProps(context) {
   const data = await httpService.get(url);
   const movieCast = data.cast.filter((cast) => cast.profile_path !== null);
   const movieCrew = data.crew.filter(
-    (crew) => crew.job === "Director" || crew.job === "Producer"
+    (crew) => crew.job === "Director" || crew.job === "Writer"
   );
 
   url = getMovieVideosUrl(id, type);

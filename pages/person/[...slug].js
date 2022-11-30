@@ -1,12 +1,12 @@
 import React from "react";
 import PersonDetails from "../../components/Business/PersonDetails";
-import { getMovieCredit, getMovieDetailsDataAPIUrl } from "../../utils/apiUtills";
-import { MEDIA_TYPE } from "../../utils/constants";
+import { getAllCredits, getMovieCredit, getMovieDetailsDataAPIUrl } from "../../utils/apiUtills";
+import { MEDIA_TYPE, pageLayoutStyle } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
 const PersonDetailsPage = ({ id, slugTitle, person }) => {
   return (
-    <div>
+    <div style={pageLayoutStyle}>
       <PersonDetails person={person} />
     </div>
   );
@@ -24,17 +24,20 @@ export async function getServerSideProps(context) {
   let url = getMovieDetailsDataAPIUrl(type, id);
   const personDetails = await httpService.get(url);
 
-  url = getMovieCredit(id);
-  const movies = await httpService.get(url);
+  url = getAllCredits(id);
+  const allCredits = await httpService.get(url);
+  const movies = allCredits.cast.filter(c=> c.media_type === MEDIA_TYPE.MOVIE);
+  const tvSeries = allCredits.cast.filter(c=> c.media_type === MEDIA_TYPE.TV_SERIES);
 
   return {
     props: {
       id,
-      type: MEDIA_TYPE.MOVIE,
+      type: MEDIA_TYPE.PERSON,
       slugTitle,
       person: {
         details: personDetails,
-        movies
+        movies,
+        tvSeries
       },
     },
   };

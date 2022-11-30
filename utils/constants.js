@@ -150,6 +150,11 @@ export const MEDIA_TYPE = {
     PERSON: 'person'
 }
 
+export const CREDIT_TYPE = {
+  CAST: 'cast',
+  CREW: 'crew'
+}
+
 export const TIME_TYPE = {
   WEEK:'week',
   DAY: 'day'
@@ -183,4 +188,10 @@ export const API_BASE_URL = `https://api.themoviedb.org/${API_VERSION}`;
 export const API_IMAGE_URL = 'https://image.tmdb.org/t/p';
 export const API_LOCATION_URL = `https://geolocation-db.com/json/`;
 export const NO_IMG_PLACEHOLDER_USER = `/images/profile-placeholder.jpeg`;
-export const NO_IMG_PLACEHOLDER_MEDIA = `/images/media-placeholder.png`
+export const NO_IMG_PLACEHOLDER_MEDIA = `/images/media-placeholder.png`;
+export const IMDB_IMAGE_PATH = `/images/imdb-icon.png`;
+export const IMDB_LOCATION_URL = 'https://www.imdb.com/title';
+
+export const pageLayoutStyle = {
+  margin: "0px 180px"
+}

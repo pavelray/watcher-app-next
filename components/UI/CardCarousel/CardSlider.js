@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { COLLECTION_TYPE } from "../../../utils/constants";
 import { getGenre } from "../../../utils/helperMethods";
 import MediaCard from "../../Business/MediaCard";
+import { v4 as uuidv4 } from 'uuid';
 import { style } from "./CardSlider.style.js";
 
 const CardSlider = ({ title, data, type, dataType }) => {
@@ -33,7 +34,7 @@ const CardSlider = ({ title, data, type, dataType }) => {
             const voteAvg = tr.vote_average.toFixed(2);
             return (
               <MediaCard
-                key={tr.id}
+                key={`${tr.id}_${uuidv4()}`}
                 id={tr.id}
                 title={tr.title || tr.name}
                 poster={tr.poster_path}

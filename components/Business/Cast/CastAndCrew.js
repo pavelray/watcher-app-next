@@ -1,0 +1,50 @@
+import Link from "next/link";
+import React, { Fragment } from "react";
+import {
+  API_IMAGE_URL,
+  CREDIT_TYPE,
+  NO_IMG_PLACEHOLDER_USER,
+} from "../../../utils/constants";
+import { slugify } from "../../../utils/helperMethods";
+import Avatar from "../../UI/Avater/Avatar";
+
+import { style } from "./CastAndCrew.style";
+
+const CastAndCrew = ({ credits, type, title }) => {
+  return (
+    <Fragment>
+      {!!credits.length && (
+        <div className="cast-wrapper">
+          <div className="cast-title">{title}</div>
+          <div className="cast">
+            {credits?.map((credit) => {
+              const { profile_path, job = "", name } = credit;
+              const displayText =
+                type === CREDIT_TYPE.CREW ? `${job} ${name}` : name;
+
+              const avatarImg =
+                profile_path && profile_path !== null
+                  ? `${API_IMAGE_URL}/w154/${credit.profile_path}`
+                  : NO_IMG_PLACEHOLDER_USER;
+              return (
+                <Link
+                  key={credit.id}
+                  href={`/person/${credit.id}/${slugify(credit.name)}`}
+                >
+                  <Avatar
+                    imageSrc={avatarImg}
+                    text={displayText}
+                    key={credit.id}
+                  />
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
+      <style jsx> {style} </style>
+    </Fragment>
+  );
+};
+
+export default CastAndCrew;

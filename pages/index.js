@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Fragment } from "react";
 import CardSlider from "../components/UI/CardCarousel/CardSlider";
 import { getTrendingDataAPIUrl } from "../utils/apiUtills";
-import { COLLECTION_TYPE, MEDIA_TYPE, TIME_TYPE } from "../utils/constants";
+import { COLLECTION_TYPE, MEDIA_TYPE, pageLayoutStyle, TIME_TYPE } from "../utils/constants";
 import httpService from "../utils/httpService";
 
 export default function Home({ trendingMovie, trendingTvSeries }) {
@@ -10,20 +10,25 @@ export default function Home({ trendingMovie, trendingTvSeries }) {
     <Fragment>
       <Head>
         <title>Moviezine - Home</title>
-        <meta name="description" content="Home page containing Trending movies and tv series of the week" />
+        <meta
+          name="description"
+          content="Home page containing Trending movies and tv series of the week"
+        />
       </Head>
-      <CardSlider
-        data={trendingMovie.results}
-        type={MEDIA_TYPE.MOVIE}
-        title="Trending Movies"
-        dataType={COLLECTION_TYPE.TRENDING}
-      />
-      <CardSlider
-        data={trendingTvSeries.results}
-        type={MEDIA_TYPE.TV_SERIES}
-        title="Trending Tv Series"
-        dataType={COLLECTION_TYPE.TRENDING}
-      />
+      <div style={pageLayoutStyle}>
+        <CardSlider
+          data={trendingMovie.results}
+          type={MEDIA_TYPE.MOVIE}
+          title="Trending Movies"
+          dataType={COLLECTION_TYPE.TRENDING}
+        />
+        <CardSlider
+          data={trendingTvSeries.results}
+          type={MEDIA_TYPE.TV_SERIES}
+          title="Trending Tv Series"
+          dataType={COLLECTION_TYPE.TRENDING}
+        />
+      </div>
     </Fragment>
   );
 }

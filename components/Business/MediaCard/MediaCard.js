@@ -19,6 +19,7 @@ export const MediaCard = (props) => {
   return (
     <Card
       poster={posterImg}
+      title={title}
       {...otherProps}
       redirectToDetails={redirectToDetails}
     />

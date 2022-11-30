@@ -31,6 +31,10 @@ export const getMovieDetailsDataAPIUrl = (type, id) => {
   return `${API_BASE_URL}/${type}/${id}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`;
 };
 
+export const getAllCredits = (id) => {
+  return `${API_BASE_URL}/person/${id}/combined_credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
+}
+
 export const getMovieCredit = (id) => {
     return `${API_BASE_URL}/person/${id}/movie_credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
 }
