@@ -69,14 +69,14 @@ export const getSeasonDetailsAPIUrl = (id, seasonNo) => {
  *  narrow the search to only look for theatrical
  *  release dates within the specified country
  * */
-export const getNowPlayingMoviesUrl = () => {
-  return `${API_BASE_URL}/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&page=1&region=IN`;
+export const getNowPlayingMoviesUrl = (region) => {
+  return `${API_BASE_URL}/movie/now_playing?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&page=1&region=${region}`;
 };
 
 // Get upcoming movies to release in theatres
 // Region optional params for specific country
-export const getUpcomingMoviesUrl = () => {
-  return `${API_BASE_URL}/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&page=1`;
+export const getUpcomingMoviesUrl = (region) => {
+  return `${API_BASE_URL}/movie/upcoming?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&page=1&region=${region}`;
 };
 
 // Get top rated movies in TMDB
@@ -105,3 +105,20 @@ export const getViewAllUrl = (
 export const getMovieVideosUrl = (id, type) => {
   return `${API_BASE_URL}/${type}/${id}/videos?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
 };
+
+export const getReviewUrl = (id, type) => {
+  return `${API_BASE_URL}/${type}/${id}/reviews?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
+};
+
+export const getRecommendationsUrl = (id, type) => {
+  return `${API_BASE_URL}/${type}/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
+};
+
+export const getShowsArrivingTodayUrl = (type) => {
+  return `${API_BASE_URL}/${type}/airing_today?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
+};
+
+export const getShowsOnAirUrl = (type) => {
+  return `${API_BASE_URL}/${type}/on_the_air?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
+};
+

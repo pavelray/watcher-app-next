@@ -18,10 +18,7 @@ const CastAndCrew = ({ credits, type, title }) => {
           <div className="cast-title">{title}</div>
           <div className="cast">
             {credits?.map((credit) => {
-              const { profile_path, job = "", name } = credit;
-              const displayText =
-                type === CREDIT_TYPE.CREW ? `${job} ${name}` : name;
-
+              const { profile_path, job = "", name, character="" } = credit;
               const avatarImg =
                 profile_path && profile_path !== null
                   ? `${API_IMAGE_URL}/w154/${credit.profile_path}`
@@ -33,7 +30,8 @@ const CastAndCrew = ({ credits, type, title }) => {
                 >
                   <Avatar
                     imageSrc={avatarImg}
-                    text={displayText}
+                    role={job||character}
+                    text={name}
                     key={credit.id}
                   />
                 </Link>

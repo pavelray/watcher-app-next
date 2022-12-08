@@ -41,16 +41,19 @@ export const removeCookie = (name, value, domain, ctx) => {
   res.setHeader("Set-Cookie", [...previousCookies, cookieString]);
 };
 
-export const getGenre = (media, type) => {
-  if (type === MEDIA_TYPE.MOVIE) {
-    return MOVIE_GENRE.filter((element) => media.genre_ids.includes(element.id))
+export const getGenre = (genreIds, type) => {
+  if(genreIds && type !== MEDIA_TYPE.PERSON){
+    if (type === MEDIA_TYPE.MOVIE) {
+      return MOVIE_GENRE.filter((element) => genreIds.includes(element.id))
+        .map((g) => g.name)
+        .toString();
+    }
+  
+    return TV_GENRE.filter((element) => genreIds.includes(element.id))
       .map((g) => g.name)
       .toString();
   }
-
-  return TV_GENRE.filter((element) => media.genre_ids.includes(element.id))
-    .map((g) => g.name)
-    .toString();
+  
 };
 
 export const slugify = (str) =>

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React, { Fragment } from "react";
-import { API_IMAGE_URL } from "../../../utils/constants";
+import { API_IMAGE_URL, NO_IMG_PLACEHOLDER_MEDIA } from "../../../utils/constants";
 import { v4 as uuidv4 } from 'uuid';
 import { style } from "./SeasonDetails.style";
 
@@ -18,6 +18,13 @@ const SeasonDetails = ({ seasonDetails }) => {
     e.target.classList.add("tabs-active");
     document.querySelector(`.tab${selectedTabId}`).classList.add("active");
   };
+
+  const getImageSrc = (path) => {
+    if(path && path !== null){
+      return `${API_IMAGE_URL}/w400/${path}`
+    }
+    return `${NO_IMG_PLACEHOLDER_MEDIA}`
+  }
 
   return (
     <Fragment>
@@ -44,7 +51,7 @@ const SeasonDetails = ({ seasonDetails }) => {
               {season.episodes.map((episode) => (
                 <div className="media-card" key={`episode-${uuidv4()}`}>
                   <Image
-                    src={`${API_IMAGE_URL}/w400/${episode.still_path}`}
+                    src={getImageSrc(episode.still_path)}
                     alt=""
                     width="300"
                     height="200"

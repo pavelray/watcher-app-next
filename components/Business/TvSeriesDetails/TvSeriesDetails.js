@@ -98,6 +98,19 @@ const TvSeriesDetails = ({ tvSeries }) => {
                     {`Seasons : ${seasons?.length}, Episodes: ${details.number_of_episodes}`}
                   </div>
                 </div>
+                <div className="info">
+                  <span className="info-label">Country Origin: </span>
+                  {details.production_countries[0]?.name}
+                </div>
+                {!!details.spoken_languages.length && (
+                  <div className="info">
+                    <span className="info-label">Languages: </span>
+                    {details.spoken_languages
+                      .filter((x) => x.name)
+                      .map((x) => x.name)
+                      .join(", ")}
+                  </div>
+                )}
                 <div className="description">{details.overview}</div>
                 {!!trailerVideo.length && (
                   <ViewTrailer trailerVideo={trailerVideo} />

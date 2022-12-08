@@ -160,6 +160,11 @@ export const TIME_TYPE = {
   DAY: 'day'
 }
 
+export const GENDER = {
+  1: 'Female',
+  2: 'Male'
+}
+
 export const COLLECTION_TYPE = {
   TOP_RATED: 'top_rated',
   POPULAR: 'popular',

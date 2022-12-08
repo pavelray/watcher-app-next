@@ -3,25 +3,21 @@ import css from "styled-jsx/css";
 const style = css`
   @import "../../../styles/colors";
   .avatar {
+    align-items: center;
+    color: $color;
     display: flex;
-    margin: 5px;
-    border: 4px solid $primary-dark;
-    border-radius: 50%; /* relative value */
-    transition: linear 0.25s;
-    height: 80px;
-    width: 80px;
-    text-align: center;
-    flex-direction: column;
-    justify-content: space-between;
+    line-height: 1.4;
+    margin: auto;
 
     &__name {
       margin-top: 10px;
+      font-weight: 200;
+      letter-spacing: 1px;
     }
 
-    &:hover {
-      transition: ease-out 0.2s;
-      border: 4px solid $dark;
-      cursor: pointer;
+    &__role {
+      font-weight: 400;
+      color: $primary;
     }
   }
 `;

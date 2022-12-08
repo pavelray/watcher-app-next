@@ -30,18 +30,16 @@ const CardSlider = ({ title, data, type, dataType }) => {
       <div className="slide-container__scroll-wrapper">
         <div className="slide-container__content">
           {data?.map((tr) => {
-            const genre = getGenre(tr, type);
-            const voteAvg = tr.vote_average.toFixed(2);
+           
             return (
               <MediaCard
                 key={`${tr.id}_${uuidv4()}`}
                 id={tr.id}
                 title={tr.title || tr.name}
-                poster={tr.poster_path}
+                poster={tr.poster_path || tr.profile_path}
                 releaseDate={tr.release_date || tr.first_air_date}
-                ratings={voteAvg}
-                genre={genre}
                 type={type}
+                {...tr}
               />
             );
           })}

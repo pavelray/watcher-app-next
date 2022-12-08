@@ -8,12 +8,12 @@ const style = css`
     flex-direction: column;
     margin: 1rem 0;
     .cast {
-      display: flex;
-      flex-direction: row;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 20px;
       @include for-phone-only {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        row-gap: 70px;
+        grid-template-columns: repeat(2, 1fr);
       }
     }
     .cast-title {
@@ -24,7 +24,7 @@ const style = css`
     }
 
     &:not(:first-child) {
-      margin: 6rem 0;
+      margin: 2rem 0;
     }
   }
 `;
