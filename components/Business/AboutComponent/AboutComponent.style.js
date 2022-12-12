@@ -1,8 +1,8 @@
 import css from "styled-jsx/css";
 
 const style = css`
-  @import "../../styles/colors";
-  @import "../../styles/mixins";
+  @import "../../../styles/colors";
+  @import "../../../styles/mixins";
 
   .about {
     display: flex;
