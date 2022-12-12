@@ -7,7 +7,13 @@ import {
   getTopRatedMoviesUrl,
   getUpcomingMoviesUrl,
 } from "../../utils/apiUtills";
-import { COLLECTION_TYPE, DEFAULT_COUNTRY_CODE, MEDIA_TYPE, pageLayoutStyle } from "../../utils/constants";
+import {
+  COLLECTION_TYPE,
+  DEFAULT_COUNTRY_CODE,
+  MEDIA_TYPE,
+  pageLayoutStyle,
+  pageMobileLayoutStyle,
+} from "../../utils/constants";
 import { getLocationCookie } from "../../utils/helperMethods";
 import httpService from "../../utils/httpService";
 import MediaGenre from "../../components/Business/MediaGenre/MediaGenre";
@@ -18,20 +24,16 @@ const Movie = (props) => {
     upComingMovie,
     topRatedMovie,
     popularMovie,
+    isMobile,
   } = props;
-
-  console.log(props)
 
   return (
     <Fragment>
       <Head>
         <title>Moviezine - Movies</title>
-        <meta
-          name="description"
-          content="Movies Home Page"
-        />
+        <meta name="description" content="Movies Home Page" />
       </Head>
-      <div style={pageLayoutStyle}>
+      <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
         <MediaGenre type={MEDIA_TYPE.MOVIE} />
         <CardSlider
           data={nowPlayingMovie.results}
@@ -78,8 +80,8 @@ export async function getServerSideProps(context) {
   url = getPopularMoviesUrl(MEDIA_TYPE.MOVIE, 1);
   const popularMovieReq = httpService.get(url);
 
-  const [nowPlayingMovie, upComingMovie, topRatedMovie, popularMovie] = await
-    Promise.allSettled([
+  const [nowPlayingMovie, upComingMovie, topRatedMovie, popularMovie] =
+    await Promise.allSettled([
       nowPlayingMovieReq,
       upComingMovieReq,
       topRatedMovieReq,

@@ -1,5 +1,6 @@
 import Head from "next/head";
 import React, { Fragment } from "react";
+import MediaGenre from "../../components/Business/MediaGenre/MediaGenre";
 import CardSlider from "../../components/UI/CardCarousel/CardSlider";
 import {
   getPopularMoviesUrl,
@@ -9,15 +10,14 @@ import {
 } from "../../utils/apiUtills";
 import {
   COLLECTION_TYPE,
-  DEFAULT_COUNTRY_CODE,
   MEDIA_TYPE,
   pageLayoutStyle,
+  pageMobileLayoutStyle,
 } from "../../utils/constants";
-import { getLocationCookie } from "../../utils/helperMethods";
 import httpService from "../../utils/httpService";
 
 const TvSeries = (props) => {
-  const { nowPlayingMovie, upComingMovie, topRatedMovie, popularMovie } = props;
+  const { nowPlayingMovie, upComingMovie, topRatedMovie, popularMovie, isMobile } = props;
 
   return (
     <Fragment>
@@ -25,7 +25,8 @@ const TvSeries = (props) => {
         <title>Moviezine - Tv Series</title>
         <meta name="description" content="Tv Series Home Page" />
       </Head>
-      <div style={pageLayoutStyle}>
+      <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
+        <MediaGenre type={MEDIA_TYPE.TV_SERIES} />
         <CardSlider
           data={topRatedMovie.results}
           type={MEDIA_TYPE.TV_SERIES}
@@ -56,6 +57,7 @@ const TvSeries = (props) => {
 };
 
 export async function getServerSideProps(context) {
+
   let url = getShowsOnAirUrl(MEDIA_TYPE.TV_SERIES);
   const nowPlayingTvReq = httpService.get(url);
 

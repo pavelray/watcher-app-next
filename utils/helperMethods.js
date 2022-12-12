@@ -42,18 +42,17 @@ export const removeCookie = (name, value, domain, ctx) => {
 };
 
 export const getGenre = (genreIds, type) => {
-  if(genreIds && type !== MEDIA_TYPE.PERSON){
+  if (genreIds && type !== MEDIA_TYPE.PERSON) {
     if (type === MEDIA_TYPE.MOVIE) {
       return MOVIE_GENRE.filter((element) => genreIds.includes(element.id))
         .map((g) => g.name)
         .toString();
     }
-  
+
     return TV_GENRE.filter((element) => genreIds.includes(element.id))
       .map((g) => g.name)
       .toString();
   }
-  
 };
 
 export const slugify = (str) =>
@@ -101,4 +100,12 @@ export const getLocationCookie = (request) => {
     countryCode,
     countryName,
   };
+};
+
+export const isMobileView = (ctx) => {
+  const isMobileView = (
+    ctx.req ? ctx.req.headers["user-agent"] : navigator.userAgent
+  ).match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i);
+
+  return Boolean(isMobileView);
 };

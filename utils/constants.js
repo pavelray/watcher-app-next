@@ -200,3 +200,7 @@ export const IMDB_LOCATION_URL = 'https://www.imdb.com/title';
 export const pageLayoutStyle = {
   margin: "0px 180px"
 }
+
+export const pageMobileLayoutStyle = {
+  margin: "0px 20px"
+}

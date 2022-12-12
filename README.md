@@ -10,25 +10,35 @@ npm run dev
 yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features 
+### Completed
+    1. Home Page 
+       1. Shows current weeks trending movies/tv series/persons
+    2. Movie Page
+       1. Shows all movie genre - On click of a genre - it will show all the movies of that genre
+       2. Shows top rated movies
+       3. Shows popular movies
+       4. Shows currenty playing movies on theater - based on the user location
+       5. Shows upcomimg movies
+    3. Tv Page
+       1. Shows all tv genre - On click of a genre - it will show all the tv of that genre
+       2. Shows top rated tv series
+       3. Shows popular tv series
+       4. Shows currently on aired Tv series
+       5. Showing upcoming tv series
+    4. Move Details Page
+       1. Shows all information of the movie
+       2. Shows cast and crew informations
+       3. On click of Cast/Crew - shows movies/tv series done by the cast/crew along with the details information
+    5. Tv Series Details Page
+       1. Shows all information of the Tv Series
+       2. Shows cast and crew informations
+       3. On click of Cast/Crew - shows movies/tv series done by the cast/crew along with the details information
+       4. Shows seasons informations
+    6. Mobile Support Added
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Pending
+ 1. About Page
+ 2. Some UI Changes
+ 3. Error Handling
+ 4. Need to add loader

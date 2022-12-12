@@ -1,12 +1,12 @@
 import React from "react";
 import PersonDetails from "../../components/Business/PersonDetails";
 import { getAllCredits, getMovieCredit, getMovieDetailsDataAPIUrl } from "../../utils/apiUtills";
-import { MEDIA_TYPE, pageLayoutStyle } from "../../utils/constants";
+import { MEDIA_TYPE, pageLayoutStyle, pageMobileLayoutStyle } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
-const PersonDetailsPage = ({ id, slugTitle, person }) => {
+const PersonDetailsPage = ({ id, slugTitle, person, isMobile }) => {
   return (
-    <div style={pageLayoutStyle}>
+    <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
       <PersonDetails person={person} />
     </div>
   );

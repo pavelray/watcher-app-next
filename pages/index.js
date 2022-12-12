@@ -6,12 +6,17 @@ import {
   COLLECTION_TYPE,
   MEDIA_TYPE,
   pageLayoutStyle,
+  pageMobileLayoutStyle,
   TIME_TYPE,
 } from "../utils/constants";
 import httpService from "../utils/httpService";
 
-export default function Home({ trendingMovie, trendingTvSeries, trendingPersons }) {
-  console.log(trendingPersons);
+const Home = ({
+  trendingMovie,
+  trendingTvSeries,
+  trendingPersons,
+  isMobile,
+}) => {
   return (
     <Fragment>
       <Head>
@@ -21,7 +26,7 @@ export default function Home({ trendingMovie, trendingTvSeries, trendingPersons 
           content="Home page containing Trending movies and tv series of the week"
         />
       </Head>
-      <div style={pageLayoutStyle}>
+      <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
         <CardSlider
           data={trendingMovie.results}
           type={MEDIA_TYPE.MOVIE}
@@ -44,9 +49,9 @@ export default function Home({ trendingMovie, trendingTvSeries, trendingPersons 
       </div>
     </Fragment>
   );
-}
+};
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(ctx) {
   let url = getTrendingDataAPIUrl(MEDIA_TYPE.MOVIE, TIME_TYPE.WEEK);
   const trendingMovieReq = httpService.get(url);
 
@@ -71,3 +76,5 @@ export async function getServerSideProps(context) {
     },
   };
 }
+
+export default Home;

@@ -4,18 +4,18 @@ import Router from 'next/router';
 
 import { style } from "./MediaGenre.style";
 
-const MediaGenre = (type) => {
+const MediaGenre = ({type}) => {
   const mediaGenre = type === MEDIA_TYPE.MOVIE ? MOVIE_GENRE : TV_GENRE;
 
   const discoverMedia = (e) => {
-    const name = e.target.name;
-    Router.push(`/discover?genre=${name}&page=1`)
+    const id = e.target.id;
+    Router.push(`/discover/${type}/${id}/1`);
   }
 
   return (
     <div className="media-genre-container">
       {mediaGenre.map((genre) => {
-        return <div key={uuid4()} className="media-genre" onClick={discoverMedia} name={genre.id}>{genre.name}</div>;
+        return <div key={uuid4()} className="media-genre" onClick={discoverMedia} id={genre.id}>{genre.name}</div>;
       })}
       <style jsx>{style}</style>
     </div>

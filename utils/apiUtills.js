@@ -33,15 +33,15 @@ export const getMovieDetailsDataAPIUrl = (type, id) => {
 
 export const getAllCredits = (id) => {
   return `${API_BASE_URL}/person/${id}/combined_credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
-}
+};
 
 export const getMovieCredit = (id) => {
-    return `${API_BASE_URL}/person/${id}/movie_credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
-}
+  return `${API_BASE_URL}/person/${id}/movie_credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
+};
 
 export const getTvCredit = (id) => {
-    return `${API_BASE_URL}/person/${id}/tv_credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
-}
+  return `${API_BASE_URL}/person/${id}/tv_credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
+};
 
 export const getMovieCastDetailsDataAPIUrl = (type, id) => {
   return `${API_BASE_URL}/${type}/${id}/credits?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`;
@@ -122,3 +122,13 @@ export const getShowsOnAirUrl = (type) => {
   return `${API_BASE_URL}/${type}/on_the_air?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
 };
 
+export const getDiscoverMovieUrl = (type, page, genre) => {
+  console.log(page);
+  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genre}&with_watch_monetization_types=flatrate`;
+};
+
+
+
+export const getDiscoverTvSeriesUrl = (type, page, genre) => {
+  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=popularity.desc&page=${page}&timezone=America%2FNew_York&with_genres=${genre}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`;
+};

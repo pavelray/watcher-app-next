@@ -13,7 +13,7 @@ const NavBar = () => {
   };
 
   const navigateToSearch = useCallback(() => {
-    if (searchTerm) Router.push(`/search?query=${searchTerm}&page=1`);
+    if (searchTerm) Router.push(`/search?term=${searchTerm}&page=1`);
   }, [searchTerm]);
 
   const navigateToHome = () => {
