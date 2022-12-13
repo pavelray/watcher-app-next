@@ -4,6 +4,7 @@ import Router from 'next/router';
 import { APP_NAME } from "../../../utils/constants";
 
 import { style } from "./Navbar.style.js";
+import navStyle from './Navbar.module.scss';
 
 const NavBar = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -94,16 +95,16 @@ const NavBar = () => {
         <div className="mobile-menu">
           <ul className="menu">
             <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/">Home</Link>
+              <Link href="/" className={navStyle.menuLink}>Home</Link>
             </li>
             <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/movie">Movie</Link>
+              <Link href="/movie" className={navStyle.menuLink}>Movie</Link>
             </li>
             <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/tv">TV Series</Link>
+              <Link href="/tv" className={navStyle.menuLink}>TV Series</Link>
             </li>
             <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/about">About</Link>
+              <Link href="/about" className={navStyle.menuLink}>About</Link>
             </li>
           </ul>
         </div>

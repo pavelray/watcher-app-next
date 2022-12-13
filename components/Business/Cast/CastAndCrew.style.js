@@ -15,6 +15,10 @@ const style = css`
         display: grid;
         grid-template-columns: repeat(2, 1fr);
       }
+      @include for-tablet-portrait-up {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
     .cast-title {
       font-size: 1.6rem;
@@ -25,6 +29,17 @@ const style = css`
 
     &:not(:first-child) {
       margin: 2rem 0;
+    }
+
+    .view-all{
+      margin-top: 10px;
+      font-size: 16px;
+      letter-spacing: 0.2rem;
+
+      &:hover{
+        cursor: pointer;
+        color: $primary;
+      }
     }
   }
 `;

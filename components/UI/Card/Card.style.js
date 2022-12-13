@@ -2,7 +2,7 @@ import css from "styled-jsx/css";
 
 const style = css`
   @import "../../../styles/colors";
-
+  @import "../../../styles/mixins";
   .card {
     display: flex;
     flex-direction: column;
@@ -13,10 +13,10 @@ const style = css`
     box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
       rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
     background-color: #343434;
-  }
 
-  .card-image img {
-    border-radius: 5px;
+    @include for-phone-only {
+      width: 160px;
+    }
   }
 
   .card-body {

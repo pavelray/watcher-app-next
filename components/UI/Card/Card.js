@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Image from 'next/image';
 import {style} from "./Card.style.js";
+import cardModuleStyle from './Card.module.scss';
 
 const Card = ({
   title,
@@ -13,7 +14,7 @@ const Card = ({
   return (
     <Fragment>
       <div className="card">
-        <div className="card-image">
+        <div className={cardModuleStyle.cardImage}>
           <Image src={poster} alt="Poster" width="200" height={300}/>
         </div>
         <div className="card-body">

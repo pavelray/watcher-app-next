@@ -16,14 +16,14 @@ import {
 import { getLocationCookie } from "../../utils/helperMethods";
 import httpService from "../../utils/httpService";
 
-const MovieDetailsPage = ({ slugTitle, movie }) => {
+const MovieDetailsPage = ({ slugTitle, movie, id, type }) => {
   return (
     <Fragment>
       <Head>
         <title>Moviezine - {slugTitle}</title>
         <meta name="description" content="Details information of the Movie" />
       </Head>
-      <MovieDetails movie={movie} />
+      <MovieDetails movie={movie} id={id} type={type} />
     </Fragment>
   );
 };

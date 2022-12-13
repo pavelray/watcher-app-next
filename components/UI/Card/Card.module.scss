@@ -1,0 +1,8 @@
+@import "../../../styles/mixins";
+
+.cardImage img {
+  border-radius: 5px;
+  @include for-phone-only {
+    width: 160px;
+  }
+}

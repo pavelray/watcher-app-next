@@ -10,15 +10,23 @@ import Avatar from "../../UI/Avater/Avatar";
 
 import { style } from "./CastAndCrew.style";
 
-const CastAndCrew = ({ credits, type, title }) => {
+const CastAndCrew = ({
+  credits,
+  type,
+  title,
+  id,
+  showViewAll = true,
+  mediaType,
+}) => {
   return (
     <Fragment>
       {!!credits.length && (
         <div className="cast-wrapper">
           <div className="cast-title">{title}</div>
+
           <div className="cast">
             {credits?.map((credit) => {
-              const { profile_path, job = "", name, character="" } = credit;
+              const { profile_path, job = "", name, character = "" } = credit;
               const avatarImg =
                 profile_path && profile_path !== null
                   ? `${API_IMAGE_URL}/w154/${credit.profile_path}`
@@ -30,7 +38,7 @@ const CastAndCrew = ({ credits, type, title }) => {
                 >
                   <Avatar
                     imageSrc={avatarImg}
-                    role={job||character}
+                    role={job || character}
                     text={name}
                     key={credit.id}
                   />
@@ -38,6 +46,13 @@ const CastAndCrew = ({ credits, type, title }) => {
               );
             })}
           </div>
+          {showViewAll && (
+            <div className="view-all">
+              <Link href={`/cast/all?id=${id}&type=${mediaType}`}>
+                View All
+              </Link>{" "}
+            </div>
+          )}
         </div>
       )}
       <style jsx> {style} </style>

@@ -8,15 +8,17 @@ const style = css`
     display: flex;
     gap: 30px;
 
+    @include for-phone-only {
+      flex-direction: column;
+    }
     .person {
       &-image-wrapper {
-
       }
 
       .image {
       }
 
-      .span{
+      .span {
         font-weight: bold;
       }
 
@@ -26,7 +28,7 @@ const style = css`
       &-title {
       }
 
-      &-info{
+      &-info {
         font-size: 18px;
         letter-spacing: 2px;
         margin: 10px 0;

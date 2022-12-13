@@ -20,7 +20,7 @@ const movieDetailsStyle = {
   backgroundSize: "cover",
 };
 
-const MovieDetails = ({ movie }) => {
+const MovieDetails = ({ movie, id, type }) => {
   const { details, cast, crew, runtime, trailerVideo, providers } = movie;
   return (
     <Fragment>
@@ -112,8 +112,10 @@ const MovieDetails = ({ movie }) => {
                   credits={cast.slice(0, 6)}
                   type={CREDIT_TYPE.CAST}
                   title="Cast"
+                  id={id}
+                  mediaType={type}
                 />
-                <CastAndCrew credits={crew} type={CREDIT_TYPE.CREW} title="Crew" />
+                <CastAndCrew credits={crew} type={CREDIT_TYPE.CREW} title="Crew" id={id} mediaType={type} />
               </div>
             </div>
           </div>
