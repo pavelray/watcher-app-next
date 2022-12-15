@@ -10,6 +10,7 @@ import {
 } from "../../../utils/constants";
 import Avatar from "../../UI/Avater/Avatar";
 import CastAndCrew from "../Cast";
+import MediaTitle from "../MediaTitle/MediaTitle";
 import SeasonDetails from "../SeasonDetails";
 import ViewTrailer from "../ViewTrailer/ViewTrailer";
 import WatchProvider from "../WatchProvider/WatchProvider";
@@ -79,23 +80,15 @@ const TvSeriesDetails = ({ tvSeries }) => {
             </div>
             <div className="movie-details-content">
               <div className="movie-details-content__row">
-                <div className="title">{details.name}</div>
-                <div className="tagline">{details.tagline}</div>
+                <MediaTitle details={details} runtime={`${details.number_of_episodes} episodes`}/>
                 <div className="stats">
                   <div>{details.vote_average?.toFixed(2)}</div>
                   <div>/{details.vote_count}</div>
-                  <div className="stats__genre">
-                    {details?.genres?.map((x) => x.name).join(", ")}
-                  </div>
                 </div>
                 <div className="stats">
                   <div className="stats__other">{details.status}</div>
                   <div className="stats__other">
                     &bull; {new Date(details.first_air_date).getFullYear()}
-                  </div>
-                  <div className="stats__other">
-                    &bull;{" "}
-                    {`Seasons : ${seasons?.length}, Episodes: ${details.number_of_episodes}`}
                   </div>
                 </div>
                 <div className="info">

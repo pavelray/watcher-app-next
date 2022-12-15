@@ -6,6 +6,8 @@ import {
   getMovieDetailsDataAPIUrl,
   getMovieVideosUrl,
   getProvidersAPIUrl,
+  getRecommendationsUrl,
+  getReleaseDetailsUrl,
   getReviewUrl,
 } from "../../utils/apiUtills";
 import {
@@ -47,13 +49,19 @@ export async function getServerSideProps(context) {
   const watchProviderReq = httpService.get(url);
   url = getReviewUrl(id,type);
   const movieReviewReq = httpService.get(url);
+  url = getRecommendationsUrl(id, type);
+  const recomendedMovieReq = httpService.get(url);
+  url = getReleaseDetailsUrl(type, id);
+  const releaseInfoReq = httpService.get(url);
 
-  const [movieDetails, castCrewResp, videoResponse, watchProviderResp, movieReviewResp] = await Promise.allSettled([
+  const [movieDetails, castCrewResp, videoResponse, watchProviderResp, movieReviewResp, recomendedMovieRes, releaseInfoRes] = await Promise.allSettled([
     movieDetailsReq,
     movieCastCrewReq,
     videoReq,
     watchProviderReq,
-    movieReviewReq
+    movieReviewReq,
+    recomendedMovieReq,
+    releaseInfoReq
   ]);
  
   const { runtime } = movieDetails.value;
@@ -71,6 +79,7 @@ export async function getServerSideProps(context) {
   );
 
   const watchProvider = watchProviderResp.value.results[countryCode] || {};
+  const recomended = recomendedMovieRes.value;
 
   return {
     props: {
@@ -84,7 +93,9 @@ export async function getServerSideProps(context) {
         runtime: totalRuntime,
         trailerVideo,
         providers: watchProvider,
-        reviews: movieReviewResp.value
+        reviews: movieReviewResp.value,
+        recomended,
+        releaseInfo: releaseInfoRes.value
       },
     },
   };

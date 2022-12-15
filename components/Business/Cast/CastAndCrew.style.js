@@ -13,7 +13,7 @@ const style = css`
       row-gap: 20px;
       @include for-phone-only {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
       }
       @include for-tablet-portrait-up {
         display: grid;

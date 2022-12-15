@@ -132,3 +132,7 @@ export const getDiscoverMovieUrl = (type, page, genre) => {
 export const getDiscoverTvSeriesUrl = (type, page, genre) => {
   return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=popularity.desc&page=${page}&timezone=America%2FNew_York&with_genres=${genre}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`;
 };
+
+export const getReleaseDetailsUrl = (type, id) => {
+  return `${API_BASE_URL}/${type}/${id}/release_dates?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`;
+};

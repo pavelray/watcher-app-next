@@ -39,18 +39,22 @@ const style = css`
       &-content {
         display: flex;
         gap: 5rem;
+        flex-wrap: wrap;
 
         @include for-phone-only {
           display: flex;
           flex-direction: column;
+          flex-wrap: nowrap;
         }
 
         .movie-details-image {
           margin: 1rem 0;
+          flex: 1;
 
           .image {
             padding: 5px;
             border: 5px solid $primary-dark;
+            text-align: center;
           }
 
           .icons {
@@ -59,27 +63,11 @@ const style = css`
         }
 
         .movie-details-content {
+          flex: 3;
           &__row {
             @include for-phone-only {
               display: flex;
               flex-direction: column;
-            }
-            .title {
-              font-size: 2.5rem;
-              font-weight: 700;
-              text-transform: uppercase;
-              letter-spacing: 0.5rem;
-              margin: 1rem 0;
-              color: $primary;
-              @include for-phone-only {
-                font-size: 1.5rem;
-                margin: 0.5rem 0;
-              }
-            }
-            .tagline {
-              color: $primary;
-              font-weight: 700;
-              margin: 0.4rem 0;
             }
             .stats {
               font-size: 1.5rem;
@@ -138,6 +126,14 @@ const style = css`
           }
         }
       }
+    }
+  }
+
+  .recomended-container{
+    margin: 0px 50px;
+
+    @include for-phone-only {
+      margin: 0px 10px;
     }
   }
 

@@ -51,6 +51,7 @@ const style = css`
           .image {
             padding: 5px;
             border: 5px solid $primary-dark;
+            text-align: center;
           }
         }
 

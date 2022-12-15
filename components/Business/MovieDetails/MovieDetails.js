@@ -3,11 +3,17 @@ import Link from "next/link";
 import React, { Fragment } from "react";
 import {
   API_IMAGE_URL,
+  COLLECTION_TYPE,
   CREDIT_TYPE,
   IMDB_IMAGE_PATH,
   IMDB_LOCATION_URL,
+  MEDIA_TYPE,
 } from "../../../utils/constants";
+import CardSlider from "../../UI/CardCarousel/CardSlider";
 import CastAndCrew from "../Cast";
+import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
+import MediaTitle from "../MediaTitle/MediaTitle";
+import ReviewsComponent from "../ReviewsComponent/ReviewsComponent";
 import ViewTrailer from "../ViewTrailer/ViewTrailer";
 import WatchProvider from "../WatchProvider/WatchProvider";
 
@@ -21,7 +27,17 @@ const movieDetailsStyle = {
 };
 
 const MovieDetails = ({ movie, id, type }) => {
-  const { details, cast, crew, runtime, trailerVideo, providers } = movie;
+  const {
+    details,
+    cast,
+    crew,
+    runtime,
+    trailerVideo,
+    providers,
+    recomended,
+    reviews,
+    releaseInfo
+  } = movie;
   return (
     <Fragment>
       <div
@@ -68,35 +84,7 @@ const MovieDetails = ({ movie, id, type }) => {
             </div>
             <div className="movie-details-content">
               <div className="movie-details-content__row">
-                <div className="title">{details.title}</div>
-                <div className="tagline">{details.tagline}</div>
-                <div className="stats">
-                  <div>{details.vote_average?.toFixed(2)}</div>
-                  <div>/{details.vote_count}</div>
-                  <div className="stats__genre">
-                    {details?.genres?.map((x) => x.name).join(", ")}
-                  </div>
-                </div>
-                <div className="stats">
-                  <div className="stats__other">{details.status}</div>
-                  <div className="stats__other">
-                    &bull; {new Date(details.release_date).getFullYear()}
-                  </div>
-                  <div className="stats__other">&bull; {runtime}</div>
-                </div>
-                <div className="info">
-                  <span className="info-label">Country Origin: </span>
-                  {details.production_countries[0]?.name}
-                </div>
-                {!!details.spoken_languages.length && (
-                  <div className="info">
-                    <span className="info-label">Languages: </span>
-                    {details.spoken_languages
-                      .filter((x) => x.name)
-                      .map((x) => x.name)
-                      .join(", ")}
-                  </div>
-                )}
+                <MediaTitle details={details} runtime={runtime} releaseInfo={releaseInfo}/>
                 <div className="description">{details.overview}</div>
                 {!!trailerVideo.length && (
                   <ViewTrailer trailerVideo={trailerVideo} />
@@ -106,6 +94,8 @@ const MovieDetails = ({ movie, id, type }) => {
                     Sorry!! No Trailer available currently.{" "}
                   </div>
                 )}
+                <MediaDetailsInfo details={details} />
+                
               </div>
               <div className="movie-details-content__row">
                 <CastAndCrew
@@ -115,11 +105,26 @@ const MovieDetails = ({ movie, id, type }) => {
                   id={id}
                   mediaType={type}
                 />
-                <CastAndCrew credits={crew} type={CREDIT_TYPE.CREW} title="Crew" id={id} mediaType={type} />
+                <CastAndCrew
+                  credits={crew}
+                  type={CREDIT_TYPE.CREW}
+                  title="Crew"
+                  id={id}
+                  mediaType={type}
+                />
               </div>
             </div>
+            <ReviewsComponent reviews={reviews} />
           </div>
         </div>
+      </div>
+      <div className="recomended-container">
+        <CardSlider
+          data={recomended.results}
+          type={MEDIA_TYPE.MOVIE}
+          title="Recomended"
+          dataType={COLLECTION_TYPE.RECOMENDED}
+        />
       </div>
       <style jsx> {style} </style>
     </Fragment>
