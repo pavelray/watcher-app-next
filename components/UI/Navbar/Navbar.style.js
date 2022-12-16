@@ -26,14 +26,6 @@ const style = css`
           font-size: 35px;
         }
       }
-      @include for-tablet-portrait-up {
-        display: flex;
-        margin-left: 5px;
-
-        span {
-          font-size: 35px;
-        }
-      }
     }
 
     ul {
@@ -66,9 +58,6 @@ const style = css`
       }
 
       @include for-phone-only {
-        display: none;
-      }
-      @include for-tablet-portrait-up {
         display: none;
       }
     }

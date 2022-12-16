@@ -26,12 +26,10 @@ const style = css`
       .list-item:hover {
         cursor: pointer;
         background-color: $primary-dark;
-        color: $dark;
       }
 
       .active {
         background: $primary;
-        color: $dark;
       }
     }
   }
