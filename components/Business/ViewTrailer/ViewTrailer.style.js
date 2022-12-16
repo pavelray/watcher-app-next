@@ -16,8 +16,7 @@ const style = css`
     &-cta-btn {
       border: none;
       padding: 10px;
-      color: $color;
-      background: $primary-dark;
+      background: $primary;
       border-radius: 5px;
       font-size: 16px;
       font-weight: 800;
@@ -26,7 +25,7 @@ const style = css`
 
       &:hover {
         cursor: pointer;
-        background: $primary;
+        background: $primary-dark;
       }
     }
   }

@@ -1,7 +1,18 @@
-$primary: #D23369;
-$primary-dark: #F06292;
-$primary-darker: #9C254D;
-$color: #EEE;
-$color-secondary: #FEDB39;
-$dark: #343434;
-$dark-background: rgba(24, 27, 50, 0.847);
+$primary: #f1554c;
+$primary-dark: #f06292;
+$primary-darker: #9c254d;
+
+$color-secondary: #fedb39;
+
+$text-color-primary: #0b2361;
+$background-color-primary: #e9ecf4;
+$background-color-light: rgba(65, 240, 209, 0.75);
+
+$background-gradient: linear-gradient(
+  to right top,
+  #ecfdff,
+  #c7fbfc,
+  #9ff8f4,
+  #74f4e5,
+  #41f0d1
+);

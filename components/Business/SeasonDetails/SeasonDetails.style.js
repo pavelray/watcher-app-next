@@ -29,7 +29,6 @@ const style = css`
       font-size: 18px;
       border-bottom: 1px solid $primary-dark;
       cursor: pointer;
-      color: $color;
     }
 
     .tabs-active {
@@ -75,7 +74,6 @@ const style = css`
         margin: 10px 0;
         font-size: 16px;
         font-weight: 600;
-        color: $color;
         display: flex;
         justify-content: space-between;
       }
@@ -83,7 +81,6 @@ const style = css`
       &__body {
         font-size: 14px;
         font-weight: 400;
-        color: $color;
 
         p {
           text-overflow: ellipsis;

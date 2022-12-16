@@ -19,7 +19,6 @@ const style = css`
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 2px;
-      color: $primary;
       word-spacing: 5px;
 
       @include for-phone-only {
@@ -29,7 +28,6 @@ const style = css`
       }
     }
     &__sub {
-      color: $primary;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 1px;
@@ -38,7 +36,6 @@ const style = css`
 
       &:hover {
         cursor: pointer;
-        color: $color;
       }
     }
     &__scroll-wrapper {
@@ -51,12 +48,12 @@ const style = css`
         background: transparent;
       }
       &::-webkit-scrollbar-thumb {
-        background: #343434 !important;
+        background: #41F0D1 !important;
       }
     }
     &__content {
       display: flex;
-      gap: 10px;
+      gap: 15px;
       margin-bottom: 10px;
     }
   }

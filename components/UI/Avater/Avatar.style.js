@@ -4,7 +4,6 @@ const style = css`
   @import "../../../styles/colors";
   .avatar {
     align-items: center;
-    color: $color;
     display: flex;
     line-height: 1.4;
     margin: auto;
@@ -17,7 +16,6 @@ const style = css`
 
     &__role {
       font-weight: 400;
-      color: $primary;
     }
   }
 `;

@@ -13,7 +13,6 @@ const style = css`
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5rem;
-      color: $primary;
 
       @include for-phone-only {
         font-size: 1.5rem;
@@ -21,7 +20,6 @@ const style = css`
       }
     }
     &-tagline {
-      color: $primary;
       font-weight: 400;
       margin: 5px 0;
       font-style: italic;
@@ -32,7 +30,6 @@ const style = css`
       padding: 0px;
       li {
         font-size: 16px;
-        color: darken($color, 20%);
         width: auto;
         display: block;
         float: left;
@@ -43,7 +40,7 @@ const style = css`
       }
 
       .rating {
-        border: solid 2px $primary-dark;
+        border: solid 2px $primary;
         padding: 0.15em 0.4em;
         font-size: 0.85em;
         margin-right: 0.45em;

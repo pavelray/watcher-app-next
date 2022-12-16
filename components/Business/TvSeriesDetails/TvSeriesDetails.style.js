@@ -21,12 +21,11 @@ const style = css`
       right: 0px;
       bottom: 0px;
       left: 0px;
-      background-color: $dark-background;
+      background-color: $background-color-light;
     }
 
     &__main {
       position: relative;
-      color: $color;
       margin-top: 10rem;
       padding: 0 6rem;
 
@@ -39,6 +38,7 @@ const style = css`
       &-content {
         display: flex;
         gap: 5rem;
+        flex-wrap: wrap;
 
         @include for-phone-only {
           display: flex;
@@ -47,15 +47,15 @@ const style = css`
 
         .movie-details-image {
           margin: 1rem 0;
-
+          flex: 1;
           .image {
             padding: 5px;
-            border: 5px solid $primary-dark;
             text-align: center;
           }
         }
 
         .movie-details-content {
+          flex: 3;
           &__row {
             @include for-phone-only {
               display: flex;
@@ -67,57 +67,14 @@ const style = css`
               text-transform: uppercase;
               letter-spacing: 0.5rem;
               margin: 1rem 0;
-              color: $primary;
               @include for-phone-only {
                 font-size: 1.5rem;
                 margin: 0.5rem 0;
               }
             }
             .tagline {
-              color: $primary;
               font-weight: 700;
               margin: 0.4rem 0;
-            }
-            .stats {
-              font-size: 1.5rem;
-              display: flex;
-              flex-direction: row;
-              align-items: center;
-              margin: 1rem 0;
-              color: $primary-dark;
-              &__genre {
-                font-weight: 700;
-                font-size: 0.8rem;
-                letter-spacing: 0.2rem;
-                word-spacing: 0.3rem;
-                text-transform: uppercase;
-                margin-left: 1rem;
-              }
-              &__other {
-                font-size: 1rem;
-                font-weight: 700;
-                letter-spacing: 0.2rem;
-                &:not(:first-child) {
-                  margin-left: 1rem;
-                }
-              }
-              @include for-phone-only {
-                font-size: 1rem;
-                margin: 0.5rem 0;
-              }
-            }
-
-            .info {
-              margin: 10px 0;
-              font-size: 1.2rem;
-              font-weight: 400;
-              letter-spacing: 2px;
-              word-spacing: 2px;
-              color: $primary-dark;
-              &-label {
-                color: $primary;
-                font-weight: 800;
-              }
             }
             
             .description {

@@ -17,8 +17,7 @@ const style = css`
       word-spacing: 1px;
       margin: 2px 0px;
       font-style: italic;
-      color: gray;
-
+     
       .quote {
         font-size: 20px;
         line-height: 10px;

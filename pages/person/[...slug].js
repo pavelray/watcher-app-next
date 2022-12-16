@@ -1,6 +1,6 @@
 import React from "react";
 import PersonDetails from "../../components/Business/PersonDetails";
-import { getAllCredits, getMovieCredit, getMovieDetailsDataAPIUrl } from "../../utils/apiUtills";
+import { getAllCredits, getExternalIdUrl, getMovieCredit, getMovieDetailsDataAPIUrl } from "../../utils/apiUtills";
 import { MEDIA_TYPE, pageLayoutStyle, pageMobileLayoutStyle } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
@@ -29,6 +29,9 @@ export async function getServerSideProps(context) {
   const movies = allCredits.cast.filter(c=> c.media_type === MEDIA_TYPE.MOVIE);
   const tvSeries = allCredits.cast.filter(c=> c.media_type === MEDIA_TYPE.TV_SERIES);
 
+  url = getExternalIdUrl(type, id);
+  const externalIds = await httpService.get(url);
+
   return {
     props: {
       id,
@@ -37,7 +40,8 @@ export async function getServerSideProps(context) {
       person: {
         details: personDetails,
         movies,
-        tvSeries
+        tvSeries,
+        externalIds
       },
     },
   };

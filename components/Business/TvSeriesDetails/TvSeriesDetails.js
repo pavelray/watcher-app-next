@@ -6,12 +6,14 @@ import {
   CREDIT_TYPE,
   IMDB_IMAGE_PATH,
   IMDB_LOCATION_URL,
-  NO_IMG_PLACEHOLDER_USER,
+  MEDIA_TYPE,
 } from "../../../utils/constants";
-import Avatar from "../../UI/Avater/Avatar";
+import CompanyIcon from "../../UI/CompanyIcon/CompanyIcon";
 import CastAndCrew from "../Cast";
+import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
 import MediaTitle from "../MediaTitle/MediaTitle";
-import SeasonDetails from "../SeasonDetails";
+import ReviewsComponent from "../ReviewsComponent/ReviewsComponent";
+import TvSeasons from "../TvSeasons/TvSeasons";
 import ViewTrailer from "../ViewTrailer/ViewTrailer";
 import WatchProvider from "../WatchProvider/WatchProvider";
 
@@ -29,10 +31,11 @@ const TvSeriesDetails = ({ tvSeries }) => {
     details,
     cast,
     crew,
-    seasons,
-    seasonDetails,
     trailerVideo,
     providers,
+    reviews,
+    contentRating,
+    externalIds
   } = tvSeries;
   return (
     <Fragment>
@@ -54,65 +57,45 @@ const TvSeriesDetails = ({ tvSeries }) => {
                   width={300}
                 />
               </div>
-              <div className="provider">
-                <WatchProvider
-                  providers={providers}
-                  homepage={details.homepage}
-                />
-              </div>
+              <WatchProvider
+                providers={providers}
+                homepage={details.homepage}
+              />
               <div className="icons">
                 <h2>More Info</h2>
-                <Link
-                  href={`${IMDB_LOCATION_URL}/${details.imdb_id}`}
-                  passHref
-                  legacyBehavior
-                >
-                  <a target="_blank">
-                    <Image
-                      src={IMDB_IMAGE_PATH}
-                      alt="IMDB_icon"
-                      height={40}
-                      width={40}
-                    />
-                  </a>
-                </Link>
+                <CompanyIcon
+                  url={`${IMDB_LOCATION_URL}/${externalIds.imdb_id}`}
+                  imageSrc={IMDB_IMAGE_PATH}
+                  imageAltText="IMDB_icon"
+                />
               </div>
+              {!!details.networks.length && (
+                <div className="icons">
+                  <h2>Networks</h2>
+                  {details.networks.map((network) => (
+                    <CompanyIcon
+                      key={network.id}
+                      imageSrc={`${API_IMAGE_URL}/original/${network.logo_path}`}
+                      imageAltText="IMDB_icon"
+                      width={60}
+                      height={25}
+                      title={network.name}
+                    />
+                  ))}
+                </div>
+              )}
             </div>
             <div className="movie-details-content">
               <div className="movie-details-content__row">
-                <MediaTitle details={details} runtime={`${details.number_of_episodes} episodes`}/>
-                <div className="stats">
-                  <div>{details.vote_average?.toFixed(2)}</div>
-                  <div>/{details.vote_count}</div>
-                </div>
-                <div className="stats">
-                  <div className="stats__other">{details.status}</div>
-                  <div className="stats__other">
-                    &bull; {new Date(details.first_air_date).getFullYear()}
-                  </div>
-                </div>
-                <div className="info">
-                  <span className="info-label">Country Origin: </span>
-                  {details.production_countries[0]?.name}
-                </div>
-                {!!details.spoken_languages.length && (
-                  <div className="info">
-                    <span className="info-label">Languages: </span>
-                    {details.spoken_languages
-                      .filter((x) => x.name)
-                      .map((x) => x.name)
-                      .join(", ")}
-                  </div>
-                )}
+                <MediaTitle
+                  details={details}
+                  runtime={`${details.number_of_episodes} episodes`}
+                  type={MEDIA_TYPE.TV_SERIES}
+                  releaseInfo={contentRating}
+                />
                 <div className="description">{details.overview}</div>
-                {!!trailerVideo.length && (
-                  <ViewTrailer trailerVideo={trailerVideo} />
-                )}
-                {!!!trailerVideo.length && (
-                  <div className="no-trailer">
-                    Sorry!! No Trailer available currently.{" "}
-                  </div>
-                )}
+                <ViewTrailer trailerVideo={trailerVideo} />
+                <MediaDetailsInfo details={details} />
               </div>
               <div className="movie-details-content__row">
                 <CastAndCrew
@@ -127,10 +110,12 @@ const TvSeriesDetails = ({ tvSeries }) => {
                 />
               </div>
             </div>
+            <TvSeasons seasons={details.seasons} />
+            <ReviewsComponent reviews={reviews} />
           </div>
         </div>
       </div>
-      <SeasonDetails seasonDetails={seasonDetails} />
+      {/* <SeasonDetails seasonDetails={seasonDetails} /> */}
       <style jsx> {style} </style>
     </Fragment>
   );

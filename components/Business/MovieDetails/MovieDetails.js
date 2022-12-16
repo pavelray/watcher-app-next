@@ -58,12 +58,10 @@ const MovieDetails = ({ movie, id, type }) => {
                   width={300}
                 />
               </div>
-              <div className="provider">
-                <WatchProvider
+              <WatchProvider
                   providers={providers}
                   homepage={details.homepage}
                 />
-              </div>
               <div className="icons">
                 <h2>More Info</h2>
                 <Link
@@ -86,16 +84,8 @@ const MovieDetails = ({ movie, id, type }) => {
               <div className="movie-details-content__row">
                 <MediaTitle details={details} runtime={runtime} releaseInfo={releaseInfo}/>
                 <div className="description">{details.overview}</div>
-                {!!trailerVideo.length && (
-                  <ViewTrailer trailerVideo={trailerVideo} />
-                )}
-                {!!!trailerVideo.length && (
-                  <div className="no-trailer">
-                    Sorry!! No Trailer available currently.{" "}
-                  </div>
-                )}
+                <ViewTrailer trailerVideo={trailerVideo} />
                 <MediaDetailsInfo details={details} />
-                
               </div>
               <div className="movie-details-content__row">
                 <CastAndCrew

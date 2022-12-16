@@ -1,7 +1,8 @@
+@import '../../../styles/colors';
 .menuLink {
   display: block;
   position: relative;
-  color: #fff;
+  color: $text-color-primary;
   text-decoration: none;
   font-size: 18px;
   line-height: 2.8;

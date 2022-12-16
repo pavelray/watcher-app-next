@@ -136,3 +136,11 @@ export const getDiscoverTvSeriesUrl = (type, page, genre) => {
 export const getReleaseDetailsUrl = (type, id) => {
   return `${API_BASE_URL}/${type}/${id}/release_dates?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`;
 };
+
+export const getContentRatingUrl = (type, id) => {
+  return `${API_BASE_URL}/${type}/${id}/content_ratings?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`;
+}
+
+export const getExternalIdUrl = (type, id) => {
+  return `${API_BASE_URL}/${type}/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`;
+}

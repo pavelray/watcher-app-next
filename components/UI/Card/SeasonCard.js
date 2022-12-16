@@ -1,32 +1,31 @@
 import React, { Fragment } from "react";
 import Image from "next/image";
 import { style } from "./Card.style.js";
-import { GENDER } from "../../../utils/constants.js";
 import cardModuleStyle from './Card.module.scss';
 
-const ProfileCard = ({
+const SeasonCard = ({
   id,
   title,
   poster,
-  gender,
-  ratings,
-  department,
+  episodes,
+  releaseDate,
+  overview,
   redirectToDetails,
 }) => {
   return (
     <Fragment>
-      <div className="card">
+      <div className="card" id={id}>
         <div className={cardModuleStyle.cardImage}>
           <Image src={poster} alt="Poster" width="200" height={300} />
         </div>
         <div className="card-body">
           <div className="card-body__title">{title}</div>
           <div className="card-body__info">
-            <div>{GENDER[gender]}</div>
-            <div>{ratings}</div>
+            <div>Aired On: {new Date(releaseDate).toLocaleDateString()}</div>
+            <div>Episodes: {episodes}</div>
           </div>
           <div className="card-body__genre">
-            <div>Known For: {department}</div>
+            {overview && <div>{overview}</div>}
           </div>
         </div>
         <div className="card-footer">
@@ -40,5 +39,5 @@ const ProfileCard = ({
   );
 };
 
-export { ProfileCard };
-export default ProfileCard;
+export { SeasonCard };
+export default SeasonCard;

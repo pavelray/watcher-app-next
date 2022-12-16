@@ -15,8 +15,8 @@ const style = css`
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: $dark; /* Fallback color */
-  background-color: $dark-background; /* Black w/ opacity */
+  background-color: $background-color-primary; /* Fallback color */
+  background-color: $background-color-light; /* Black w/ opacity */
 
   &-content {
     background-color: black;

@@ -82,7 +82,6 @@ const style = css`
         font-size: 45px;
         margin-right: 5px;
         margin-left: 5px;
-        color: $primary;
 
         @include for-phone-only {
           font-size: 23px;
@@ -108,7 +107,6 @@ const style = css`
       span {
         font-size: 35px;
         font-family: "Pacifico", cursive;
-        color: $primary;
         &:hover {
           color: $primary-dark;
         }
@@ -160,7 +158,6 @@ const style = css`
       &__button {
         background: none;
         border: none;
-        color: $color;
         cursor: pointer;
         margin-left: -50px;
 
@@ -173,7 +170,6 @@ const style = css`
         span {
           font-size: 40px;
           font-weight: 800;
-          color: $primary;
           &:hover {
             color: $primary-dark;
           }
@@ -190,7 +186,6 @@ const style = css`
     .hamburger-icon {
       background: none;
       border: none;
-      color: $color;
       cursor: pointer;
     }
   }
@@ -204,21 +199,7 @@ const style = css`
     z-index: 1;
     position: fixed;
     transition: all 0.4s ease-out, background 1s ease-out;
-    background-image: linear-gradient(
-      to right top,
-      #2b2e4a,
-      #342f4b,
-      #3c304b,
-      #44324b,
-      #4b334b,
-      #53344d,
-      #5a354e,
-      #62364e,
-      #6e364f,
-      #7a364f,
-      #85364d,
-      #903749
-    );
+    background-image: $background-gradient;
 
     &-menu {
       clear: both;

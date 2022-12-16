@@ -4,12 +4,14 @@ const style = css`
   @import "../../../styles/colors";
   @import "../../../styles/mixins";
 
-  .reviews {
-    gap: 10px;
-    display: flex;
-    flex-direction: column;
+  .seasons-container {
+    .seasons-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
 
-    .heading {
+    .seasons-title {
+      margin-bottom: 20px;
       font-size: 25px;
       text-align: left;
       font-weight: 700;
@@ -21,6 +23,17 @@ const style = css`
         font-size: 18px;
         letter-spacing: 1px;
         word-spacing: 2px;
+      }
+    }
+
+    .seasons-card-wrapper {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+      row-gap: 20px;
+      @include for-phone-only {
+        display: flex;
+        flex-direction: column;
       }
     }
   }

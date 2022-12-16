@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { style } from "./MediaDetails.style";
 
 const MediaDetailsInfo = ({ details }) => {
@@ -13,7 +13,8 @@ const MediaDetailsInfo = ({ details }) => {
     if (!!production_countries.length) {
       return (
         <div className="movie-details-stats">
-          Country Origin: {production_countries.map((x) => x.name).join(", ")}
+          <label>Country Origin: </label>
+          {production_countries.map((x) => x.name).join(", ")}
           <style jsx>{style}</style>
         </div>
       );
@@ -25,7 +26,8 @@ const MediaDetailsInfo = ({ details }) => {
     if (!!spoken_languages.length) {
       return (
         <div className="movie-details-stats">
-          Languages: {spoken_languages.map((x) => x.english_name).join(", ")}
+          <label>Languages: </label>
+          {spoken_languages.map((x) => x.english_name).join(", ")}
           <style jsx>{style}</style>
         </div>
       );
@@ -36,7 +38,7 @@ const MediaDetailsInfo = ({ details }) => {
     if (!!production_companies.length) {
       return (
         <div className="movie-details-stats">
-          Production Companies:{" "}
+          <label>Production Companies: </label>
           {production_companies.map((x) => x.name).join(", ")}
           <style jsx>{style}</style>
         </div>
@@ -51,10 +53,18 @@ const MediaDetailsInfo = ({ details }) => {
       {getLanguage()}
       {getProductionCompanies()}
       <div className="movie-details-stats">
-        {!!budget && `Budget: ${new Intl.NumberFormat().format(budget)}`}
+        {!!budget && (
+          <Fragment>
+            <label>Budget: </label>`${new Intl.NumberFormat().format(budget)}`
+          </Fragment>
+        )}
       </div>
       <div className="movie-details-stats">
-        {!!revenue && `Revenue: ${new Intl.NumberFormat().format(revenue)}`}
+        {!!revenue && (
+          <Fragment>
+            <label>Revenue: </label>`${new Intl.NumberFormat().format(revenue)}`
+          </Fragment>
+        )}
       </div>
 
       <style jsx>{style}</style>

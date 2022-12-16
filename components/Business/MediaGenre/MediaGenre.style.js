@@ -17,7 +17,7 @@ const style = css`
     }
 
     .media-genre {
-      color: $color-secondary;
+      color: $primary;
       letter-spacing: 1px;
       padding-bottom: 5px;
       &:hover {

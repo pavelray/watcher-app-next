@@ -3,13 +3,16 @@ import React, { Fragment } from "react";
 import {
   API_IMAGE_URL,
   COLLECTION_TYPE,
+  IMDB_IMAGE_PATH,
+  IMDB_LOCATION_URL,
   MEDIA_TYPE,
 } from "../../../utils/constants";
 import CardSlider from "../../UI/CardCarousel/CardSlider";
+import CompanyIcon from "../../UI/CompanyIcon/CompanyIcon";
 import { style } from "./PersonDetails.style";
 
 const PersonDetails = ({ person }) => {
-  const { details, movies, tvSeries } = person;
+  const { details, movies, tvSeries, externalIds } = person;
 
   return (
     <Fragment>
@@ -34,6 +37,14 @@ const PersonDetails = ({ person }) => {
           </div>
           <div className="person-info">
             <span className="label">Popularity:</span> {details.popularity}
+          </div>
+          <div className="person-info">
+            <h2>More Info</h2>
+            <CompanyIcon
+              url={`${IMDB_LOCATION_URL}/${externalIds.imdb_id}`}
+              imageSrc={IMDB_IMAGE_PATH}
+              imageAltText="IMDB_icon"
+            />
           </div>
         </div>
         <div className="person-info-wrapper">

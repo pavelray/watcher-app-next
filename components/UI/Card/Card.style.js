@@ -10,9 +10,8 @@ const style = css`
     width: 200px;
     border-radius: 8px;
     text-align: left;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
-      rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-    background-color: #343434;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    background-color: $background-color-primary;
 
     @include for-phone-only {
       width: 160px;
@@ -49,7 +48,7 @@ const style = css`
   .card-btn-cta {
     border: none;
     padding: 10px;
-    color: white;
+    color: $text-color-primary;
     background: $primary;
     width: 100%;
     border-radius: 3px;

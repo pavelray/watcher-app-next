@@ -2,11 +2,13 @@ import Head from "next/head";
 import { Fragment } from "react";
 import TvSeriesDetails from "../../components/Business/TvSeriesDetails";
 import {
+  getContentRatingUrl,
+  getExternalIdUrl,
   getMovieCastDetailsDataAPIUrl,
   getMovieDetailsDataAPIUrl,
   getMovieVideosUrl,
   getProvidersAPIUrl,
-  getSeasonDetailsAPIUrl,
+  getReviewUrl,
 } from "../../utils/apiUtills";
 import {
   DEFAULT_COUNTRY_CODE,
@@ -41,35 +43,62 @@ export async function getServerSideProps(context) {
   const slugTitle = slug[1];
 
   let url = getMovieDetailsDataAPIUrl(type, id);
-  const tvSeriesDetails = await httpService.get(url);
-  const seasons = tvSeriesDetails.seasons.filter(
-    (s) => s.air_date !== null && s.season_number > 0
-  );
-
-  let seasonsData = [];
-
-  seasons?.forEach(async (s) => {
-    url = getSeasonDetailsAPIUrl(id, s.season_number);
-    const seasionDetailsResp = await httpService.get(url);
-    seasonsData.push(seasionDetailsResp);
-  });
-
+  const tvSeriesDetailsReq = httpService.get(url);
   url = getMovieCastDetailsDataAPIUrl(type, id);
-  const data = await httpService.get(url);
-  const tvSeriesCast = data.cast.filter((cast) => cast.profile_path !== null);
-  const tvSeriesCrew = data.crew.filter(
+  const tvCastCrewReq = httpService.get(url);
+  url = getMovieVideosUrl(id, type);
+  const videoReq = httpService.get(url);
+  url = getProvidersAPIUrl(type, id);
+  const watchProviderReq = httpService.get(url);
+  url = getContentRatingUrl(type, id);
+  const contentRatingReq = httpService.get(url);
+  url = getReviewUrl(id, type);
+  const tvReviewReq = httpService.get(url);
+  url = getExternalIdUrl(type, id);
+  const externalIdReq = httpService.get(url);
+
+  const [
+    tvSeriesDetails,
+    castCrewResp,
+    videoResponse,
+    watchProviderResp,
+    contentRatingResp,
+    tvReviewResp,
+    externalIdResp,
+  ] = await Promise.allSettled([
+    tvSeriesDetailsReq,
+    tvCastCrewReq,
+    videoReq,
+    watchProviderReq,
+    contentRatingReq,
+    tvReviewReq,
+    externalIdReq,
+  ]);
+
+  // const seasons = tvSeriesDetails.seasons.filter(
+  //   (s) => s.air_date !== null && s.season_number > 0
+  // );
+
+  // let seasonsData = [];
+
+  // seasons?.forEach(async (s) => {
+  //   url = getSeasonDetailsAPIUrl(id, s.season_number);
+  //   const seasionDetailsResp = await httpService.get(url);
+  //   seasonsData.push(seasionDetailsResp);
+  // });
+
+  const tvSeriesCast = castCrewResp.value.cast.filter(
+    (cast) => cast.profile_path !== null
+  );
+  const tvSeriesCrew = castCrewResp.value.crew.filter(
     (crew) => crew.job === "Director" || crew.job === "Producer"
   );
 
-  url = getMovieVideosUrl(id, type);
-  const videoResponse = await httpService.get(url);
-  const trailerVideo = videoResponse.results.filter(
+  const trailerVideo = videoResponse.value.results.filter(
     (video) => video.type === VIDEO_TYPE.TRAILER
   );
 
-  url = getProvidersAPIUrl(type, id);
-  const watchProviderResp = await httpService.get(url);
-  const watchProvider = watchProviderResp.results[countryCode] || {};
+  const watchProvider = watchProviderResp.value.results[countryCode] || {};
 
   return {
     props: {
@@ -77,13 +106,14 @@ export async function getServerSideProps(context) {
       type,
       slugTitle,
       tvSeries: {
-        details: tvSeriesDetails,
+        details: tvSeriesDetails.value,
         cast: tvSeriesCast,
         crew: tvSeriesCrew,
-        seasons,
-        seasonDetails: seasonsData,
         trailerVideo,
         providers: watchProvider,
+        reviews: tvReviewResp.value,
+        contentRating: contentRatingResp.value,
+        externalIds: externalIdResp.value,
       },
     },
   };
