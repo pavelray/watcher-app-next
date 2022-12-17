@@ -8,7 +8,7 @@ import Loader from "../../UI/Loader/Loader";
 import NavBar from "../../UI/Navbar/NavBar";
 
 import styles from "./Layout.module.scss";
-import { LayoutContext } from "./LayoutContext";
+import { LayoutContext, LayoutProvider } from "./LayoutContext";
 
 const Layout = ({ children }) => {
   const { isPageLoading } = usePageLoading();
@@ -31,13 +31,13 @@ const Layout = ({ children }) => {
           crossorigin="anonymous"
         ></script>
       </Head>
-      <LayoutContext.Provider location={location}>
+      <LayoutProvider location={location}>
         <NavBar />
         {isPageLoading && <Loader />}
         {!isPageLoading && !isLoading && (
           <div className={styles.container}>{children}</div>
         )}
-      </LayoutContext.Provider>
+      </LayoutProvider>
     </Fragment>
   );
 };

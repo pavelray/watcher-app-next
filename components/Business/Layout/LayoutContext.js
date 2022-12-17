@@ -1,10 +1,13 @@
-import createContainer from "constate";
-import { setLocationCookie, setLocationInfo } from "../../../utils/helperMethods";
+import constate from "constate";
+import {
+  setLocationCookie,
+  setLocationInfo,
+} from "../../../utils/helperMethods";
 
-export const LayoutContext = createContainer(({ location, isMobileView }) => {
+function useLayout({ location, isMobileView }) {
   const layoutContext = {
     location,
-    isMobileView
+    isMobileView,
   };
 
   if (location) {
@@ -13,4 +16,8 @@ export const LayoutContext = createContainer(({ location, isMobileView }) => {
   }
 
   return { layoutContext };
-});
+}
+
+const [LayoutProvider, useLayoutContext] = constate(useLayout);
+
+export { LayoutProvider, useLayoutContext };
