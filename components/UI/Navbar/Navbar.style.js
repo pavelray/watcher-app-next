@@ -11,9 +11,6 @@ const style = css`
     @include for-phone-only {
       padding: 10px 5px;
     }
-    @include for-tablet-portrait-up {
-      padding: 10px 5px;
-    }
 
     .hamburger-icon {
       display: none;
@@ -75,9 +72,6 @@ const style = css`
         @include for-phone-only {
           font-size: 23px;
         }
-        @include for-tablet-portrait-up {
-          font-size: 23px;
-        }
       }
     }
 
@@ -87,9 +81,6 @@ const style = css`
       align-items: center;
       cursor: pointer;
       @include for-phone-only {
-        width: 25%;
-      }
-      @include for-tablet-portrait-up {
         width: 25%;
       }
 
@@ -103,9 +94,6 @@ const style = css`
         @include for-phone-only {
           font-size: 14px;
         }
-        @include for-tablet-portrait-up {
-          font-size: 14px;
-        }
       }
     }
 
@@ -116,9 +104,7 @@ const style = css`
       @include for-phone-only {
         width: 60%;
       }
-      @include for-tablet-portrait-up {
-        width: 60%;
-      }
+
       &__input {
         width: 60%;
         font-size: 20px;
@@ -138,11 +124,6 @@ const style = css`
           width: 75%;
           padding-right: 42px;
         }
-        @include for-tablet-portrait-up {
-          font-size: 10px;
-          width: 75%;
-          padding-right: 42px;
-        }
       }
       &__button {
         background: none;
@@ -153,9 +134,7 @@ const style = css`
         @include for-phone-only {
           margin-left: -38px;
         }
-        @include for-tablet-portrait-up {
-          margin-left: -38px;
-        }
+
         span {
           font-size: 40px;
           font-weight: 800;
@@ -164,9 +143,6 @@ const style = css`
           }
 
           @include for-phone-only {
-            font-size: 25px;
-          }
-          @include for-tablet-portrait-up {
             font-size: 25px;
           }
         }
@@ -206,8 +182,7 @@ const style = css`
     padding: 0px 40px 0;
     list-style: none;
   }
-  
-  
+
   .mobile ul.menu li.menu-item {
     border-bottom: 1px solid #333;
     margin-top: 5px;

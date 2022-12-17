@@ -10,19 +10,27 @@ import { getGenre, slugify } from "../../../utils/helperMethods";
 import ProfileCard from "../../UI/Card/ProfileCard";
 
 export const MediaCard = (props) => {
-  const { poster, id, title, type, genre_ids, vote_average, ...otherProps } = props;
-  const { name , popularity , known_for_department, profile_path, gender} = props;
-  
+  const { poster, id, title, type, genre_ids, vote_average, ...otherProps } =
+    props;
+  const { name, popularity, known_for_department, profile_path, gender } =
+    props;
+
   const genre = getGenre(genre_ids, type);
   const getImage = () => {
-    const imageName = poster ? `${API_IMAGE_URL}/w200${poster}` : `${API_IMAGE_URL}/w200${profile_path}`
-    return imageName
-  }
+    const imageName = poster
+      ? `${API_IMAGE_URL}/w200${poster}`
+      : profile_path
+      ? `${API_IMAGE_URL}/w200${profile_path}`
+      : NO_IMG_PLACEHOLDER_MEDIA;
+    return imageName;
+  };
 
   const posterImg = getImage() || NO_IMG_PLACEHOLDER_MEDIA;
 
   const redirectToDetails = () => {
-    Router.push(`/${type}/${id}/${slugify(title)}`);
+    if (type !== MEDIA_TYPE.PERSON)
+      Router.push(`/${type}/${id}/${slugify(title)}`);
+    else Router.push(`/${type}/${id}/`);
   };
   return (
     <Fragment>

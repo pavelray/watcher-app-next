@@ -1,4 +1,9 @@
-import { MEDIA_TYPE, MOVIE_GENRE, TV_GENRE } from "./constants";
+import {
+  MEDIA_TYPE,
+  MOVIE_GENRE,
+  NO_IMG_PLACEHOLDER_MEDIA,
+  TV_GENRE,
+} from "./constants";
 
 export const isBrowser = () => process.browser;
 const getCookiesFromDoc = () => (isBrowser() ? document.cookie : "");
@@ -108,4 +113,8 @@ export const isMobileView = (ctx) => {
   ).match(/Android|BlackBerry|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i);
 
   return Boolean(isMobileView);
+};
+
+export const getImageUrl = (imageUrl, fullPath) => {
+  return imageUrl ? `${fullPath}${imageUrl}` : NO_IMG_PLACEHOLDER_MEDIA;
 };

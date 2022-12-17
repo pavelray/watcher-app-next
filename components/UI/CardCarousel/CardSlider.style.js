@@ -6,7 +6,7 @@ const style = css`
 
   .slide-container {
     margin: 0px 0px;
-    padding: 50px 0px;
+
     &__title--wrapper {
       display: flex;
       justify-content: space-between;
@@ -48,7 +48,7 @@ const style = css`
         background: transparent;
       }
       &::-webkit-scrollbar-thumb {
-        background: #41F0D1 !important;
+        background: #41f0d1 !important;
       }
     }
     &__content {

@@ -7,7 +7,9 @@ import {
   IMDB_IMAGE_PATH,
   IMDB_LOCATION_URL,
   MEDIA_TYPE,
+  movieDetailsStyle,
 } from "../../../utils/constants";
+import { getImageUrl } from "../../../utils/helperMethods";
 import CompanyIcon from "../../UI/CompanyIcon/CompanyIcon";
 import CastAndCrew from "../Cast";
 import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
@@ -19,13 +21,6 @@ import WatchProvider from "../WatchProvider/WatchProvider";
 
 import { style } from "./TvSeriesDetails.style";
 
-const movieDetailsStyle = {
-  backgroundAttachment: "fixed",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
-};
-
 const TvSeriesDetails = ({ tvSeries }) => {
   const {
     details,
@@ -35,15 +30,21 @@ const TvSeriesDetails = ({ tvSeries }) => {
     providers,
     reviews,
     contentRating,
-    externalIds
+    externalIds,
   } = tvSeries;
+
+  const populateImageUrl = (path) => {
+    const fullPath = `${API_IMAGE_URL}/original/`;
+    return getImageUrl(path, fullPath);
+  };
+
   return (
     <Fragment>
       <div
         className="movie-details-container"
         style={{
           ...movieDetailsStyle,
-          backgroundImage: `url(${API_IMAGE_URL}/original/${details?.backdrop_path})`,
+          backgroundImage: `url(${populateImageUrl(details.backdrop_path)})`,
         }}
       >
         <div className="movie-details-container__main">

@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/google-font-display */
 import Head from "next/head";
 import { Fragment } from "react";
+import { usePageLoading } from "../../../hooks/usePageLoading";
 import { useUserLocation } from "../../../utils/apiHelper";
 import Loader from "../../UI/Loader/Loader";
 import NavBar from "../../UI/Navbar/NavBar";
@@ -10,6 +11,7 @@ import styles from "./Layout.module.scss";
 import { LayoutContext } from "./LayoutContext";
 
 const Layout = ({ children }) => {
+  const { isPageLoading } = usePageLoading();
   const { isLoading, location, error } = useUserLocation();
 
   return (
@@ -31,8 +33,10 @@ const Layout = ({ children }) => {
       </Head>
       <LayoutContext.Provider location={location}>
         <NavBar />
-        {isLoading && <Loader />}
-        {!isLoading && <div className={styles.container}>{children}</div>}
+        {isPageLoading && <Loader />}
+        {!isPageLoading && !isLoading && (
+          <div className={styles.container}>{children}</div>
+        )}
       </LayoutContext.Provider>
     </Fragment>
   );

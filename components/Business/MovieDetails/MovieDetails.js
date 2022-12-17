@@ -8,7 +8,9 @@ import {
   IMDB_IMAGE_PATH,
   IMDB_LOCATION_URL,
   MEDIA_TYPE,
+  movieDetailsStyle,
 } from "../../../utils/constants";
+import { getImageUrl } from "../../../utils/helperMethods";
 import CardSlider from "../../UI/CardCarousel/CardSlider";
 import CastAndCrew from "../Cast";
 import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
@@ -18,13 +20,6 @@ import ViewTrailer from "../ViewTrailer/ViewTrailer";
 import WatchProvider from "../WatchProvider/WatchProvider";
 
 import { style } from "./MovieDetails.style";
-
-const movieDetailsStyle = {
-  backgroundAttachment: "fixed",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
-};
 
 const MovieDetails = ({ movie, id, type }) => {
   const {
@@ -36,15 +31,21 @@ const MovieDetails = ({ movie, id, type }) => {
     providers,
     recomended,
     reviews,
-    releaseInfo
+    releaseInfo,
   } = movie;
+
+  const populateImageUrl = (path) => {
+    const fullPath = `${API_IMAGE_URL}/original/`;
+    return getImageUrl(path, fullPath);
+  };
+
   return (
     <Fragment>
       <div
         className="movie-details-container"
         style={{
           ...movieDetailsStyle,
-          backgroundImage: `url(${API_IMAGE_URL}/original/${details?.backdrop_path})`,
+          backgroundImage: `url(${populateImageUrl(details.backdrop_path)})`,
         }}
       >
         <div className="movie-details-container__main">
@@ -59,9 +60,9 @@ const MovieDetails = ({ movie, id, type }) => {
                 />
               </div>
               <WatchProvider
-                  providers={providers}
-                  homepage={details.homepage}
-                />
+                providers={providers}
+                homepage={details.homepage}
+              />
               <div className="icons">
                 <h2>More Info</h2>
                 <Link
@@ -82,7 +83,11 @@ const MovieDetails = ({ movie, id, type }) => {
             </div>
             <div className="movie-details-content">
               <div className="movie-details-content__row">
-                <MediaTitle details={details} runtime={runtime} releaseInfo={releaseInfo}/>
+                <MediaTitle
+                  details={details}
+                  runtime={runtime}
+                  releaseInfo={releaseInfo}
+                />
                 <div className="description">{details.overview}</div>
                 <ViewTrailer trailerVideo={trailerVideo} />
                 <MediaDetailsInfo details={details} />

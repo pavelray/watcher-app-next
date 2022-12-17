@@ -968,6 +968,7 @@ export const MOVIE_CERTIFICATES = {
 };
 
 export const MEDIA_TYPE = {
+  ALL: "all",
   MOVIE: "movie",
   TV_SERIES: "tv",
   PERSON: "person",
@@ -1027,4 +1028,11 @@ export const pageLayoutStyle = {
 
 export const pageMobileLayoutStyle = {
   margin: "0px 20px",
+};
+
+export const movieDetailsStyle = {
+  backgroundAttachment: "fixed",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
 };
