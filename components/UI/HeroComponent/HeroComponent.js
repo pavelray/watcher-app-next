@@ -1,9 +1,9 @@
-import React from "react";
+import Link from "next/link";
 import { API_IMAGE_URL } from "../../../utils/constants";
-import { getImageUrl } from "../../../utils/helperMethods";
+import { getImageUrl, slugify } from "../../../utils/helperMethods";
 import { style } from "./HeroComponent.style";
 
-const HeroComponent = ({ title, description, imageUrl }) => {
+const HeroComponent = ({ title, description, imageUrl, type, id }) => {
   const populateImageUrl = (path) => {
     const fullPath = `${API_IMAGE_URL}/original/`;
     return getImageUrl(path, fullPath);
@@ -18,7 +18,9 @@ const HeroComponent = ({ title, description, imageUrl }) => {
     >
       <div className="hero-container-image__container">
         <div className="content">
-          <div className="content-title">{title}</div>
+          <Link href={`/${type}/${id}/${slugify(title)}`}>
+            <div className="content-title">{title}</div>
+          </Link>
           <p className="content-details">{description}</p>
         </div>
       </div>

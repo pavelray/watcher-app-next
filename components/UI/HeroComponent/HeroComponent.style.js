@@ -36,6 +36,10 @@ const style = css`
         font-weight: 600;
         font-size: 45px;
         text-shadow: 5px 5px 10px black;
+        &:hover {
+          cursor: pointer;
+          color: $primary;
+        }
       }
 
       &-details {

@@ -15,6 +15,8 @@ const HomeBanner = ({ trendingToday, title }) => {
             title={trending.title || trending.name}
             description={trending.overview}
             imageUrl={trending.backdrop_path}
+            type={trending.media_type}
+            id={trending.id}
           />
         ))}
       </Carousel>
