@@ -113,14 +113,17 @@ const MovieDetails = ({ movie, id, type }) => {
           </div>
         </div>
       </div>
-      <div className="recomended-container">
-        <CardSlider
-          data={recomended.results}
-          type={MEDIA_TYPE.MOVIE}
-          title="Recomended"
-          dataType={COLLECTION_TYPE.RECOMENDED}
-        />
-      </div>
+      {!!recomended.results.length && (
+        <div className="recomended-container">
+          <CardSlider
+            data={recomended.results}
+            type={MEDIA_TYPE.MOVIE}
+            title="Recomended"
+            dataType={COLLECTION_TYPE.RECOMENDED}
+          />
+        </div>
+      )}
+
       <style jsx> {style} </style>
     </Fragment>
   );

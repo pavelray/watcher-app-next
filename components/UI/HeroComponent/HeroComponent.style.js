@@ -39,6 +39,7 @@ const style = css`
         &:hover {
           cursor: pointer;
           color: $primary;
+          text-shadow: 1px 1px 0px $background-color-primary;
         }
       }
 

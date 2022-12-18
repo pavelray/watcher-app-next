@@ -3,20 +3,27 @@ import React, { Fragment } from "react";
 import {
   API_IMAGE_URL,
   COLLECTION_TYPE,
+  FACEBOOK_IMAGE_PATH,
+  FACEBOOK_PERSON_LOCATION_URL,
   IMDB_IMAGE_PATH,
-  IMDB_LOCATION_URL,
+  IMDB_PERSON_LOCATION_URL,
+  INSTAGRAM_IMAGE_PATH,
+  INSTAGRAM_PERSON_LOCATION_URL,
   MEDIA_TYPE,
+  TWITTER_IMAGE_PATH,
+  TWITTER_PERSON_LOCATION_URL,
 } from "../../../utils/constants";
 import CardSlider from "../../UI/CardCarousel/CardSlider";
 import CompanyIcon from "../../UI/CompanyIcon/CompanyIcon";
+import { Heading } from "../../UI/Typography/Typography";
 import { style } from "./PersonDetails.style";
 
 const PersonDetails = ({ person }) => {
   const { details, movies, tvSeries, externalIds } = person;
 
   return (
-    <Fragment>
-      <h1>{details.name}</h1>
+    <div className="page-container">
+      <Heading text={details.name} />
       <div className="details-container">
         <div className="person-image-wrapper">
           <div className="image">
@@ -39,19 +46,42 @@ const PersonDetails = ({ person }) => {
             <span className="label">Popularity:</span> {details.popularity}
           </div>
           <div className="person-info">
-            <h2>More Info</h2>
-            <CompanyIcon
-              url={`${IMDB_LOCATION_URL}/${externalIds.imdb_id}`}
-              imageSrc={IMDB_IMAGE_PATH}
-              imageAltText="IMDB_icon"
-            />
+            <h2>Social</h2>
+            <div className="social-icons">
+              <CompanyIcon
+                url={`${IMDB_PERSON_LOCATION_URL}/${externalIds.imdb_id}`}
+                imageSrc={IMDB_IMAGE_PATH}
+                imageAltText="IMDB_icon"
+              />
+              {externalIds.instagram_id && (
+                <CompanyIcon
+                  url={`${INSTAGRAM_PERSON_LOCATION_URL}/${externalIds.instagram_id}`}
+                  imageSrc={INSTAGRAM_IMAGE_PATH}
+                  imageAltText="Instagram_icon"
+                />
+              )}
+              {externalIds.facebook_id && (
+                <CompanyIcon
+                  url={`${FACEBOOK_PERSON_LOCATION_URL}/${externalIds.facebook_id}`}
+                  imageSrc={FACEBOOK_IMAGE_PATH}
+                  imageAltText="Facebook_icon"
+                />
+              )}
+              {externalIds.twitter_id && (
+                <CompanyIcon
+                  url={`${TWITTER_PERSON_LOCATION_URL}/${externalIds.twitter_id}`}
+                  imageSrc={TWITTER_IMAGE_PATH}
+                  imageAltText="Twitter_icon"
+                />
+              )}
+            </div>
           </div>
         </div>
         <div className="person-info-wrapper">
           <div className="person-details">{details.biography}</div>
         </div>
       </div>
-      <div>
+      <div className="person-work">
         <CardSlider
           data={movies}
           title="Movies"
@@ -67,7 +97,7 @@ const PersonDetails = ({ person }) => {
       </div>
 
       <style jsx>{style}</style>
-    </Fragment>
+    </div>
   );
 };
 

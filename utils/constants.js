@@ -1021,6 +1021,13 @@ export const NO_IMG_PLACEHOLDER_USER = `/images/profile-placeholder.jpeg`;
 export const NO_IMG_PLACEHOLDER_MEDIA = `/images/media-placeholder.png`;
 export const IMDB_IMAGE_PATH = `/images/imdb-icon.png`;
 export const IMDB_LOCATION_URL = "https://www.imdb.com/title";
+export const IMDB_PERSON_LOCATION_URL = "https://www.imdb.com/name";
+export const FACEBOOK_IMAGE_PATH = `/images/facebook_logo_icon.png`;
+export const FACEBOOK_PERSON_LOCATION_URL = "https://www.facebook.com";
+export const INSTAGRAM_IMAGE_PATH = `/images/instagram_logo_icon.png`;
+export const INSTAGRAM_PERSON_LOCATION_URL = "https://www.instagram.com";
+export const TWITTER_IMAGE_PATH = `/images/twitter_logo_icon.png`;
+export const TWITTER_PERSON_LOCATION_URL = "https://twitter.com";
 
 export const pageLayoutStyle = {
   margin: "0px 180px",

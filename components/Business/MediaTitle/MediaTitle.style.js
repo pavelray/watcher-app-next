@@ -13,6 +13,7 @@ const style = css`
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5rem;
+      text-shadow: 2px 2px 1px $background-color-primary;
 
       @include for-phone-only {
         font-size: 1.5rem;

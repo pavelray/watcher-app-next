@@ -6,6 +6,7 @@ import { usePageLoading } from "../../../hooks/usePageLoading";
 import { useUserLocation } from "../../../utils/apiHelper";
 import Loader from "../../UI/Loader/Loader";
 import NavBar from "../../UI/Navbar/NavBar";
+import Footer from "../Footer/Footer";
 
 import styles from "./Layout.module.scss";
 import { LayoutContext, LayoutProvider } from "./LayoutContext";
@@ -37,6 +38,7 @@ const Layout = ({ children }) => {
         {!isPageLoading && !isLoading && (
           <div className={styles.container}>{children}</div>
         )}
+        <Footer />
       </LayoutProvider>
     </Fragment>
   );

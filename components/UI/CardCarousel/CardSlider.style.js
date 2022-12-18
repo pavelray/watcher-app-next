@@ -11,22 +11,8 @@ const style = css`
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px;
     }
-    &__title {
-      font-size: 25px;
-      text-align: left;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      word-spacing: 5px;
 
-      @include for-phone-only {
-        font-size: 18px;
-        letter-spacing: 1px;
-        word-spacing: 2px;
-      }
-    }
     &__sub {
       font-weight: 700;
       text-transform: uppercase;
