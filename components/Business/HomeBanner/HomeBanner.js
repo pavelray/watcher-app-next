@@ -5,21 +5,17 @@ import { style } from "./HomeBanner.style";
 import carouselStyles from "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const HomeBanner = ({ trendingToday, title }) => {
+  const trending = trendingToday;
   return (
     <div className="home-banner">
-      <div className="heading">{title}</div>
-      <Carousel>
-        {trendingToday.map((trending) => (
-          <HeroComponent
-            key={trending.id}
-            title={trending.title || trending.name}
-            description={trending.overview}
-            imageUrl={trending.backdrop_path}
-            type={trending.media_type}
-            id={trending.id}
-          />
-        ))}
-      </Carousel>
+      <HeroComponent
+        key={trending.id}
+        title={trending.title || trending.name}
+        description={trending.overview}
+        imageUrl={trending.backdrop_path}
+        type={trending.media_type}
+        id={trending.id}
+      />
       <style jsx>{style}</style>
     </div>
   );

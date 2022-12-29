@@ -4,52 +4,81 @@ const style = css`
   @import "../../../styles/colors";
   @import "../../../styles/mixins";
 
-  .hero-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
+  .hero {
+    height: 70vh;
+    position: relative;
     background-repeat: no-repeat;
+    background-position: cover;
     background-size: cover;
-    height: 60vh;
-    color: $background-color-primary;
-    &-image__container {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      background: rgb(20, 20, 20);
-      background: linear-gradient(
-        to left top,
-        rgba(20, 20, 20, 1) 0%,
-        rgba(255, 255, 255, 0) 56%
-      );
-    }
 
-    .content {
+    .hero-content {
+      height: 100%;
+      width: 70vmin;
       display: flex;
       flex-direction: column;
-      padding: 0px 30px;
-      text-align: left;
+      justify-content: center;
+      user-select: none;
+      padding: 0px 20px;
+      animation: slideUp 1s ease-out forwards;
+      animation-delay: 0.1s;
 
-      &-title {
-        margin: 0px;
-        font-weight: 600;
-        font-size: 45px;
-        text-shadow: 5px 5px 10px black;
-        &:hover {
-          cursor: pointer;
-          color: $primary;
-          text-shadow: 1px 1px 0px $background-color-primary;
+      .title {
+        font-size: 2.5rem;
+        word-spacing: 2px;
+        filter: drop-shadow(0 0 3rem black);
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+        animation-delay: 0.1s;
+      }
+
+      p {
+        font-size: 1rem;
+        word-spacing: 2px;
+        filter: drop-shadow(0 0 3rem black);
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+        animation-delay: 0.2s;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+      }
+
+      @keyframes slideUp {
+        0% {
+          transform: translateY(05%);
+        }
+        100% {
+          transform: translateY(0%);
+        }
+      }
+      @keyframes fadeIn {
+        100% {
+          opacity: 1;
         }
       }
 
-      &-details {
-        margin: 0px;
-        font-weight: 400;
-        font-size: 18px;
-        text-shadow: 2px 2px 1px black;
-        padding: 25px 0px;
-        width: 50%;
+      .btn-primary {
+        width: 25%;
+        font-size: 0.8rem;
+        padding: 8px 8px;
+        border: none;
+        box-shadow: none;
+        background-color: #ffd369;
+        color: #393e46;
+        border-radius: 2px;
+        transition: all 0.2s ease-in-out;
+        &:hover:active {
+          transform: scale(0.98);
+          cursor: pointer;
+        }
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.1);
+          filter: drop-shadow(0.05rem 0.1rem 0.2rem black);
+        }
       }
     }
   }

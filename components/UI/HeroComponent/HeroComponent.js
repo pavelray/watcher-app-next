@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import { API_IMAGE_URL } from "../../../utils/constants";
 import { getImageUrl, slugify } from "../../../utils/helperMethods";
 import { style } from "./HeroComponent.style";
@@ -10,23 +11,31 @@ const HeroComponent = ({ title, description, imageUrl, type, id }) => {
   };
 
   return (
-    <div
-      className="hero-container"
-      style={{
-        backgroundImage: `url(${populateImageUrl(imageUrl)})`,
-      }}
-    >
-      <div className="hero-container-image__container">
-        <div className="content">
+    <Fragment>
+      <div
+        className="hero"
+        style={{
+          backgroundImage: `linear-gradient(
+        to right,
+        rgba(34, 40, 49, 1) 10%,
+        rgba(34, 40, 49, .9) 20%,
+        rgba(34, 40, 49, 0.7) 45%,
+        rgba(34, 40, 49, 0.5) 55%,
+        rgba(34, 40, 49, 0) 95%
+      ), url(${populateImageUrl(imageUrl)})`,
+        }}
+      >
+        <div className="hero-content">
           <Link href={`/${type}/${id}/${slugify(title)}`}>
-            <div className="content-title">{title}</div>
+            <div className="title">{title}</div>
           </Link>
-          <p className="content-details">{description}</p>
+          <p>{description}</p>
+          <button className="btn-primary">Watch Trailer</button>
         </div>
-      </div>
 
-      <style jsx>{style}</style>
-    </div>
+        <style jsx>{style}</style>
+      </div>
+    </Fragment>
   );
 };
 

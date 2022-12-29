@@ -12,6 +12,7 @@ import {
 } from "../../../utils/constants";
 import { getImageUrl } from "../../../utils/helperMethods";
 import CardSlider from "../../UI/CardCarousel/CardSlider";
+import HeroComponent from "../../UI/HeroComponent/HeroComponent";
 import CastAndCrew from "../Cast";
 import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
 import MediaTitle from "../MediaTitle/MediaTitle";
@@ -41,12 +42,19 @@ const MovieDetails = ({ movie, id, type }) => {
 
   return (
     <Fragment>
+      <HeroComponent
+        title={details.title || details.name}
+        description={details.overview}
+        imageUrl={details.backdrop_path}
+        type={details.media_type}
+        id={details.id}
+      />
       <div
         className="movie-details-container"
-        style={{
-          ...movieDetailsStyle,
-          backgroundImage: `url(${populateImageUrl(details.backdrop_path)})`,
-        }}
+        // style={{
+        //   ...movieDetailsStyle,
+        //   backgroundImage: `url(${populateImageUrl(details.backdrop_path)})`,
+        // }}
       >
         <div className="movie-details-container__main">
           <div className="movie-details-container__main-content">

@@ -32,21 +32,20 @@ const Home = ({
       <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
         <div className={styles.homeContainer}>
           <HomeBanner
-            trendingToday={trendingToday.results}
+            trendingToday={trendingToday}
             title="Trending Today"
           />
-          <div className={styles.heading}>Trending This Week</div>
           <div className={styles.trending}>
             <CardSlider
               data={trendingMovie.results}
               type={MEDIA_TYPE.MOVIE}
-              title="Movies"
+              title="Trending Movies"
               dataType={COLLECTION_TYPE.TRENDING}
             />
             <CardSlider
               data={trendingTvSeries.results}
               type={MEDIA_TYPE.TV_SERIES}
-              title="Tv Series"
+              title="Trending Tv Series"
               dataType={COLLECTION_TYPE.TRENDING}
             />
             <CardSlider
@@ -82,13 +81,14 @@ export async function getServerSideProps(ctx) {
       trendingPersonReq,
       trendingTodayReq,
     ]);
+  const randomMedia = trendingTodayResp.value.results[Math.floor(Math.random() * trendingTodayResp.value.results.length)]
 
   return {
     props: {
       trendingMovie: trendingMovie.value,
       trendingTvSeries: trendingTvSeries.value,
       trendingPersons: trendingPersons.value,
-      trendingToday: trendingTodayResp.value,
+      trendingToday: randomMedia,
     },
   };
 }

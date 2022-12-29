@@ -31,6 +31,7 @@ const Layout = ({ children }) => {
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4497828949688741"
           crossorigin="anonymous"
         ></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js" async></script>
       </Head>
       <LayoutProvider location={location}>
         <NavBar />
@@ -38,7 +39,7 @@ const Layout = ({ children }) => {
         {!isPageLoading && !isLoading && (
           <div className={styles.container}>{children}</div>
         )}
-        <Footer />
+        {/* <Footer /> */}
       </LayoutProvider>
     </Fragment>
   );

@@ -7,15 +7,9 @@ const style = css`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 200px;
+    width: 25vmin;
     border-radius: 8px;
     text-align: left;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    background-color: $background-color-primary;
-
-    @include for-phone-only {
-      width: 160px;
-    }
   }
 
   .card-body {
@@ -25,11 +19,15 @@ const style = css`
       font-weight: 700;
       margin-bottom: 5px;
       letter-spacing: 1px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     &__info {
       font-weight: 600;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     &__genre {

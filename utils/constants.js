@@ -1030,7 +1030,7 @@ export const TWITTER_IMAGE_PATH = `/images/twitter_logo_icon.png`;
 export const TWITTER_PERSON_LOCATION_URL = "https://twitter.com";
 
 export const pageLayoutStyle = {
-  margin: "0px 180px",
+ 
 };
 
 export const pageMobileLayoutStyle = {
@@ -1043,3 +1043,5 @@ export const movieDetailsStyle = {
   backgroundRepeat: "no-repeat",
   backgroundSize: "cover",
 };
+
+export const appendToReq = '&append_to_response=videos,credits,images,external_ids,content_ratings&include_image_language=en'
