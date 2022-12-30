@@ -2,8 +2,12 @@ import Head from "next/head";
 import { Fragment } from "react";
 import HomeBanner from "../components/Business/HomeBanner/HomeBanner";
 import CardSlider from "../components/UI/CardCarousel/CardSlider";
-import { getTrendingDataAPIUrl } from "../utils/apiUtills";
 import {
+  getMovieDetailsDataAPIUrl,
+  getTrendingDataAPIUrl,
+} from "../utils/apiUtills";
+import {
+  appendToReq,
   COLLECTION_TYPE,
   MEDIA_TYPE,
   pageLayoutStyle,
@@ -31,10 +35,7 @@ const Home = ({
       </Head>
       <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
         <div className={styles.homeContainer}>
-          <HomeBanner
-            trendingToday={trendingToday}
-            title="Trending Today"
-          />
+          <HomeBanner trendingToday={trendingToday} title="Trending Today" />
           <div className={styles.trending}>
             <CardSlider
               data={trendingMovie.results}
@@ -81,14 +82,25 @@ export async function getServerSideProps(ctx) {
       trendingPersonReq,
       trendingTodayReq,
     ]);
-  const randomMedia = trendingTodayResp.value.results[Math.floor(Math.random() * trendingTodayResp.value.results.length)]
+  const randomMedia =
+    trendingTodayResp.value.results[
+      Math.floor(Math.random() * trendingTodayResp.value.results.length)
+    ];
+  url = `${getMovieDetailsDataAPIUrl(
+    randomMedia.media_type,
+    randomMedia.id
+  )}${appendToReq}`;
+  const randomMediaDetails = await httpService.get(url);
 
   return {
     props: {
       trendingMovie: trendingMovie.value,
       trendingTvSeries: trendingTvSeries.value,
       trendingPersons: trendingPersons.value,
-      trendingToday: randomMedia,
+      trendingToday: {
+        ...randomMediaDetails,
+        media_type: randomMedia.media_type,
+      },
     },
   };
 }

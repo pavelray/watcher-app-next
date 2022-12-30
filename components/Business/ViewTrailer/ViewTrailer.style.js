@@ -12,31 +12,6 @@ const style = css`
       text-transform: uppercase;
       letter-spacing: 5px;
     }
-
-    &-cta-btn {
-      border: none;
-      padding: 10px;
-      background: $primary;
-      border-radius: 5px;
-      font-size: 16px;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-
-      &:hover {
-        cursor: pointer;
-        background: $primary-dark;
-      }
-    }
-  }
-
-  .video-frame {
-    width: 100%;
-    height: 640px;
-
-    @include for-phone-only {
-      height: 250px;
-    }
   }
 `;
 

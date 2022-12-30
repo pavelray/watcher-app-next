@@ -31,7 +31,31 @@ const style = css`
         animation-delay: 0.1s;
       }
 
-      p {
+      .meta {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &-values {
+          margin: 5px 0px 2px 20px;
+          font-size: 0.9rem;
+          word-break: unset;
+          word-spacing: 0.2rem;
+          color: #ffd369;
+          letter-spacing: 0.1rem;
+          font-weight: 600;
+        }
+      }
+
+      .cert {
+        border: 2px solid #ffd369;
+        padding: 2px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .story {
         font-size: 1rem;
         word-spacing: 2px;
         filter: drop-shadow(0 0 3rem black);
@@ -60,24 +84,49 @@ const style = css`
         }
       }
 
-      .btn-primary {
-        width: 25%;
-        font-size: 0.8rem;
-        padding: 8px 8px;
-        border: none;
-        box-shadow: none;
-        background-color: #ffd369;
-        color: #393e46;
-        border-radius: 2px;
-        transition: all 0.2s ease-in-out;
-        &:hover:active {
-          transform: scale(0.98);
-          cursor: pointer;
+      /* styling for tooltip element before show up */
+      .tooltip {
+        position: absolute;
+        z-index: 1;
+        top: 50px;
+        text-transform: capitalize;
+        background-color: rgb(110, 72, 170);
+        border-radius: 5px;
+        padding: 0.5em;
+        visibility: hidden;
+        font-size: .9rem;
+      }
+
+      /* styling pseudo element "::before" to create bottom arrow */
+      .tooltip::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 27px;
+        left: 50px;
+        border: 10px solid rgb(110, 72, 170);
+        transform: rotate(45deg);
+      }
+
+      /* styling when text on hover position to show up tooltip element */
+      .cert:hover + .tooltip {
+        visibility: visible;
+        animation: animate 0.5s forwards;
+      }
+
+      /* styling for showing animation tooltip effect in hover position or when cursor at above "text element" */
+      @keyframes animate {
+        0% {
+          transform: translateY(-15px);
         }
-        &:hover {
-          cursor: pointer;
-          transform: scale(1.1);
-          filter: drop-shadow(0.05rem 0.1rem 0.2rem black);
+
+        50% {
+          transform: translateY(6px);
+        }
+
+        100% {
+          transform: translateY(0);
         }
       }
     }

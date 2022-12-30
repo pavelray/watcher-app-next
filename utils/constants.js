@@ -1044,4 +1044,7 @@ export const movieDetailsStyle = {
   backgroundSize: "cover",
 };
 
-export const appendToReq = '&append_to_response=videos,credits,images,external_ids,content_ratings&include_image_language=en'
+export const appendToReq = '&append_to_response=videos,credits,images,external_ids,content_ratings,release_dates,media_type&include_image_language=en'
+
+//'append_to_response=videos,credits,images,external_ids,release_dates&include_image_language=en'
+// '&append_to_response=videos,credits,images,external_ids,content_ratings&include_image_language=en'

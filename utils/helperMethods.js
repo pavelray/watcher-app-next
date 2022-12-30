@@ -1,5 +1,6 @@
 import {
   MEDIA_TYPE,
+  MOVIE_CERTIFICATES,
   MOVIE_GENRE,
   NO_IMG_PLACEHOLDER_MEDIA,
   TV_GENRE,
@@ -117,4 +118,46 @@ export const isMobileView = (ctx) => {
 
 export const getImageUrl = (imageUrl, fullPath) => {
   return imageUrl ? `${fullPath}${imageUrl}` : NO_IMG_PLACEHOLDER_MEDIA;
+};
+
+export const getContentRating = (result, type) => {
+  switch (type) {
+    case MEDIA_TYPE.MOVIE:
+      const cert = result?.map((r) => {
+        const values = r.release_dates.find((x) => x.certification !== "");
+        const meaning = MOVIE_CERTIFICATES[r.iso_3166_1].find(
+          (cert) => cert.certification === values.certification
+        ).meaning;
+        return {
+          ...values,
+          iso_3166_1: r.iso_3166_1,
+          meaning,
+        };
+      });
+
+      return cert;
+    default: {
+      return result?.map((r) => r.rating).join(", ");
+    }
+  }
+};
+
+export const getCertificates = (releaseInfo, productionCountries, type) => {
+  const result = releaseInfo?.results?.filter((o1) =>
+    productionCountries?.some((o2) => o1.iso_3166_1 === o2.iso_3166_1)
+  );
+
+  const certificates = getContentRating(result, type);
+  return certificates;
+};
+
+export const formatNumber = (number) => {
+  return new Intl.NumberFormat().format(number);
+};
+
+export const getRuntime = (runtime) => {
+  const hours = Math.floor(runtime / 60);
+  const minutes = runtime % 60;
+  const totalRuntime = `${hours}h ${minutes}m`;
+  return totalRuntime;
 };

@@ -25,9 +25,6 @@ const style = css`
 
     &__main {
       position: relative;
-      margin-top: 10rem;
-      padding: 0 6rem;
-
       @include for-phone-only {
         margin-top: 1rem;
         padding: 0 0.2rem;
@@ -66,7 +63,7 @@ const style = css`
               display: flex;
               flex-direction: column;
             }
-            
+
             .description {
               font-size: 1.2rem;
               letter-spacing: 0.1rem;
@@ -86,7 +83,7 @@ const style = css`
     }
   }
 
-  .recomended-container{
+  .recomended-container {
     margin: 0px 50px;
 
     @include for-phone-only {
@@ -94,6 +91,14 @@ const style = css`
     }
   }
 
+  .video-frame {
+    width: 100%;
+    height: 640px;
+    border: none;
+    @include for-phone-only {
+      height: 250px;
+    }
+  }
   .similar-movies {
     margin: 0px 50px;
 

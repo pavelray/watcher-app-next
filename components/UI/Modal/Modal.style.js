@@ -15,11 +15,10 @@ const style = css`
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: $background-color-primary; /* Fallback color */
-  background-color: $background-color-light; /* Black w/ opacity */
+  background-color: #222831; /* Fallback color */
 
   &-content {
-    background-color: black;
+    background-color: #222831;;
     margin: auto;
     width: 70%;
     padding: 0px 10px;

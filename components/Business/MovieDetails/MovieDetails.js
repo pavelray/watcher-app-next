@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import {
   API_IMAGE_URL,
   COLLECTION_TYPE,
@@ -10,9 +10,10 @@ import {
   MEDIA_TYPE,
   movieDetailsStyle,
 } from "../../../utils/constants";
-import { getImageUrl } from "../../../utils/helperMethods";
+import { formatNumber, getCertificates, getImageUrl } from "../../../utils/helperMethods";
 import CardSlider from "../../UI/CardCarousel/CardSlider";
 import HeroComponent from "../../UI/HeroComponent/HeroComponent";
+import Modal from "../../UI/Modal/Modal";
 import CastAndCrew from "../Cast";
 import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
 import MediaTitle from "../MediaTitle/MediaTitle";
@@ -23,6 +24,7 @@ import WatchProvider from "../WatchProvider/WatchProvider";
 import { style } from "./MovieDetails.style";
 
 const MovieDetails = ({ movie, id, type }) => {
+  const [viewModal, setViewModal] = useState(false);
   const {
     details,
     cast,
@@ -34,11 +36,16 @@ const MovieDetails = ({ movie, id, type }) => {
     reviews,
     releaseInfo,
   } = movie;
+  const video = {...trailerVideo.slice(0, 1)[0]};
 
-  const populateImageUrl = (path) => {
-    const fullPath = `${API_IMAGE_URL}/original/`;
-    return getImageUrl(path, fullPath);
+  const onModalClose = () => {
+    setViewModal(false);
   };
+
+  const certificates = getCertificates(releaseInfo, details.production_countries, type);
+  const certificate = certificates.map(x=> x.certification).join(', ');
+  const meaning = certificates.map(x=> `${x.certification}: ${x.meaning}`);
+  const votes = formatNumber(details.vote_count);
 
   return (
     <Fragment>
@@ -48,14 +55,13 @@ const MovieDetails = ({ movie, id, type }) => {
         imageUrl={details.backdrop_path}
         type={details.media_type}
         id={details.id}
+        trailerVideo={trailerVideo}
+        setViewModal={setViewModal}
+        certificate={{certificate,meaning}}
+        runtime={runtime}
+        votes={votes}
       />
-      <div
-        className="movie-details-container"
-        // style={{
-        //   ...movieDetailsStyle,
-        //   backgroundImage: `url(${populateImageUrl(details.backdrop_path)})`,
-        // }}
-      >
+      <div className="movie-details-container">
         <div className="movie-details-container__main">
           <div className="movie-details-container__main-content">
             <div className="movie-details-image">
@@ -97,7 +103,6 @@ const MovieDetails = ({ movie, id, type }) => {
                   releaseInfo={releaseInfo}
                 />
                 <div className="description">{details.overview}</div>
-                <ViewTrailer trailerVideo={trailerVideo} />
                 <MediaDetailsInfo details={details} />
               </div>
               <div className="movie-details-content__row">
@@ -131,7 +136,14 @@ const MovieDetails = ({ movie, id, type }) => {
           />
         </div>
       )}
-
+      <Modal open={viewModal} onModalClose={onModalClose}>
+        <iframe
+          className="video-frame"
+          key={video.key}
+          title={video.type}
+          src={`https://www.youtube.com/embed/${video.key}`}
+        ></iframe>
+      </Modal>
       <style jsx> {style} </style>
     </Fragment>
   );

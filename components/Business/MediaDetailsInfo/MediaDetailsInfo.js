@@ -55,14 +55,26 @@ const MediaDetailsInfo = ({ details }) => {
       <div className="movie-details-stats">
         {!!budget && (
           <Fragment>
-            <label>Budget: </label>${new Intl.NumberFormat().format(budget)}
+            <label>Budget: </label>
+            {new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "USD",
+              notation: "compact",
+              compactDisplay: "long",
+            }).format(budget)}
           </Fragment>
         )}
       </div>
       <div className="movie-details-stats">
         {!!revenue && (
           <Fragment>
-            <label>Revenue: </label>${new Intl.NumberFormat().format(revenue)}
+            <label>Revenue: </label>
+            {new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "USD",
+              notation: "compact",
+              compactDisplay: "long",
+            }).format(revenue)}
           </Fragment>
         )}
       </div>
