@@ -23,6 +23,9 @@ const HeroComponent = ({
     return getImageUrl(path, fullPath);
   };
 
+
+  console.log(certificate)
+
   return (
     <Fragment>
       <div
@@ -42,20 +45,20 @@ const HeroComponent = ({
           <Link href={`/${type}/${id}/${slugify(title)}`}>
             <div className="title">{title}</div>
           </Link>
-          <p className="meta">
+          <div className="meta">
             <Rating ratingValue={40} />
             <span className="meta-values">Votes {votes}</span>
             <span className="meta-values">{runtime}</span>
-            <span className="meta-values cert">{certificate.certificate}</span>
+            <span className="meta-values cert">{certificate?.certificate}</span>
             <span className="tooltip">
-              {certificate.meaning.map((x, index) => (
+              {certificate?.meaning?.map((x, index) => (
                 <Fragment key={index}>
                   <div >{x}</div>
                   <br />
                 </Fragment>
               ))}
             </span>
-          </p>
+          </div>
           <p className="story">{description}</p>
           <ViewTrailer
             trailerVideo={trailerVideo}

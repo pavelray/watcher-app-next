@@ -22,7 +22,16 @@ const CastAndCrew = ({
     <Fragment>
       {!!credits.length && (
         <div className="cast-wrapper">
-          <div className="cast-title">{title}</div>
+          <div className="cast-title">
+            {title}
+            {showViewAll && (
+              <span className="view-all">
+                <Link href={`/cast/all?id=${id}&type=${mediaType}`}>
+                  View All
+                </Link>{" "}
+              </span>
+            )}
+          </div>
 
           <div className="cast">
             {credits?.map((credit) => {
@@ -46,13 +55,6 @@ const CastAndCrew = ({
               );
             })}
           </div>
-          {showViewAll && (
-            <div className="view-all">
-              <Link href={`/cast/all?id=${id}&type=${mediaType}`}>
-                View All
-              </Link>{" "}
-            </div>
-          )}
         </div>
       )}
       <style jsx> {style} </style>

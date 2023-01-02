@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
         <script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4497828949688741"
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
         ></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js" async></script>
       </Head>

@@ -1,14 +1,51 @@
+import Link from "next/link";
 import React, { Fragment } from "react";
+import { MEDIA_TYPE } from "../../../utils/constants";
+import {
+  formatCurrency,
+  getReleaseDate,
+  slugify,
+} from "../../../utils/helperMethods";
 import { style } from "./MediaDetails.style";
 
-const MediaDetailsInfo = ({ details }) => {
+const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
   const {
     production_countries = [],
     spoken_languages = [],
     production_companies = [],
     budget,
     revenue,
+    tagline,
+    genres = [],
   } = details;
+  const { director = [], writer = [] } = crew || {};
+
+  const releaseDate = getReleaseDate(details, type);
+
+  const getGenres = () => {
+    if (!!genres.length) {
+      return genres.map((x) => (
+        <li key={x.id}>
+          <Link href={`/discover/${type}/${x.id}/1`}>{x.name}</Link>
+          <style jsx>{style}</style>
+        </li>
+      ));
+    }
+    return null;
+  };
+
+  const getDirector = () => {
+    if (!!director.length) {
+      return director.map((x) => (
+        <li key={x.id}>
+          <Link href={`/person/${x.id}/${slugify(x.name)}`}>{x.name}</Link>
+          <style jsx>{style}</style>
+        </li>
+      ));
+    }
+    return null;
+  };
+
   const getCountryOrigin = () => {
     if (!!production_countries.length) {
       return (
@@ -47,21 +84,59 @@ const MediaDetailsInfo = ({ details }) => {
     return null;
   };
 
+  const getCreators = (data, labelText) => {
+    if (!!data.length) {
+      return (
+        <div className="movie-details-stats">
+          <label>{labelText}: </label>
+          {data.map((x) => x.name).join(", ")}
+          <style jsx>{style}</style>
+        </div>
+      );
+    }
+    return null;
+  };
+
   return (
     <div className="movie-details">
+      {tagline && (
+        <div className="movie-details-stats">
+          <label>Tagline: </label>
+          {tagline}
+        </div>
+      )}
+      {!!genres.length && (
+        <div className="movie-details-stats">
+          <div className="genre-container">
+            <label>Genre: </label>
+            <ul className="genre">{getGenres()}</ul>
+          </div>
+        </div>
+      )}
+      <div className="movie-details-stats">
+        <label>Status: {details.status}</label>
+      </div>
+      <div className="movie-details-stats">
+        <label>Release Date: {releaseDate}</label>
+      </div>
+
       {getCountryOrigin()}
       {getLanguage()}
+      {!!genres.length && (
+        <div className="movie-details-stats">
+          <div className="genre-container">
+            <label>Director: </label>
+            <ul className="genre">{getDirector()}</ul>
+          </div>
+        </div>
+      )}
+      {getCreators(writer, "Writer")}
       {getProductionCompanies()}
       <div className="movie-details-stats">
         {!!budget && (
           <Fragment>
             <label>Budget: </label>
-            {new Intl.NumberFormat("en-US", {
-              style: "currency",
-              currency: "USD",
-              notation: "compact",
-              compactDisplay: "long",
-            }).format(budget)}
+            {formatCurrency(budget)}
           </Fragment>
         )}
       </div>
@@ -69,12 +144,7 @@ const MediaDetailsInfo = ({ details }) => {
         {!!revenue && (
           <Fragment>
             <label>Revenue: </label>
-            {new Intl.NumberFormat("en-US", {
-              style: "currency",
-              currency: "USD",
-              notation: "compact",
-              compactDisplay: "long",
-            }).format(revenue)}
+            {formatCurrency(revenue)}
           </Fragment>
         )}
       </div>

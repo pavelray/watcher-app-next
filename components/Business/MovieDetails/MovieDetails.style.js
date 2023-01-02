@@ -65,6 +65,11 @@ const style = css`
             }
 
             .description {
+              .title {
+                font-size: 1.25rem;
+                color: #ffd369;
+                margin: 8px 0px;
+              }
               font-size: 1.2rem;
               letter-spacing: 0.1rem;
               word-spacing: 0.3rem;
@@ -82,9 +87,89 @@ const style = css`
       }
     }
   }
+  .nav {
+    margin: 20px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &-buttons {
+      height: 8vmin;
+      width: 20vmin;
+      font-size: 18px;
+      border: none;
+      box-shadow: none;
+      background: #393e46;
+      color: #eeeeee;
+      cursor: pointer;
+      text-transform: uppercase;
+
+      &:hover {
+        color: #ffd369;
+      }
+    }
+    .active {
+      color: #ffd369;
+    }
+  }
+
+  .image-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5vmin;
+    user-select: none;
+    padding: 20px;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.1s;
+    opacity: 0;
+
+    .image {
+      position: relative;
+      width: 25vmin;
+      height: 35vmin;
+      object-fit: cover;
+      object-position: 100% center;
+
+      &:hover {
+        animation: zoomIn 1s ease-out forwards;
+        animation-delay: 0.1s;
+      }
+
+      @keyframes zoomIn {
+        100% {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+  .media-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5vmin;
+    user-select: none;
+    padding: 20px;
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.1s;
+
+    .media {
+      position: relative;
+      width: 45vmin;
+      height: 25vmin;
+      object-fit: cover;
+      object-position: 100% center;
+    }
+  }
+
+  .review-container {
+    opacity: 0;
+    padding: 20px;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.1s;
+  }
 
   .recomended-container {
-    margin: 0px 50px;
+    padding: 20px;
 
     @include for-phone-only {
       margin: 0px 10px;
@@ -104,6 +189,12 @@ const style = css`
 
     @include for-phone-only {
       margin: 0px 10px;
+    }
+  }
+
+  @keyframes fadeIn {
+    100% {
+      opacity: 1;
     }
   }
 `;

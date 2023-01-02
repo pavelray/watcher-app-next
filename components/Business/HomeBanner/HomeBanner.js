@@ -4,16 +4,23 @@ import { Carousel } from "react-responsive-carousel";
 import { style } from "./HomeBanner.style";
 import carouselStyles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import ViewTrailer from "../ViewTrailer/ViewTrailer";
-import { formatNumber, getCertificates, getRuntime } from "../../../utils/helperMethods";
+import {
+  formatNumber,
+  getCertificates,
+  getRuntime,
+} from "../../../utils/helperMethods";
 
 const HomeBanner = ({ trendingToday }) => {
   const trending = trendingToday;
-  console.log(trending);
-  const certificate = getCertificates(
+
+  const certificates = getCertificates(
     trending.release_dates,
     trending.production_countries,
     trending.media_type
   );
+  const certificate = certificates?.map((x) => x.certification).join(", ");
+  const meaning = certificates?.map((x) => `${x.certification}: ${x.meaning}`);
+
   const votes = formatNumber(trending.vote_count);
   const totalRuntime = getRuntime(trending.runtime);
   return (
@@ -26,7 +33,7 @@ const HomeBanner = ({ trendingToday }) => {
         type={trending.media_type}
         id={trending.id}
         trailerVideo={trending.videos.results}
-        certificate={certificate}
+        certificate={{ certificate, meaning }}
         runtime={totalRuntime}
         votes={votes}
       />

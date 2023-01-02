@@ -2,12 +2,10 @@
 
 .cardImage img {
   border-radius: 3px;
-  filter: blur(1px);
   &:hover {
     cursor: pointer;
     animation: zoomIn 1s ease-out forwards;
     animation-delay: 0.1s;
-    filter: blur(0px);
   }
 
   @keyframes zoomIn {

@@ -59,9 +59,8 @@ export async function getServerSideProps(context) {
   const totalRuntime = getRuntime(runtime);
 
   const movieCast = credits.cast.filter((cast) => cast.profile_path !== null);
-  const movieCrew = credits.crew.filter(
-    (crew) => crew.job === "Director" || crew.job === "Writer"
-  );
+  const director = credits.crew.filter((crew) => crew.job === "Director");
+  const writer = credits.crew.filter((crew) => crew.job === "Writer");
 
   const trailerVideo = videos.results.filter(
     (video) => video.type === VIDEO_TYPE.TRAILER
@@ -78,7 +77,7 @@ export async function getServerSideProps(context) {
       movie: {
         details: movieDetails.value,
         cast: movieCast,
-        crew: movieCrew,
+        crew: { director, writer },
         runtime: totalRuntime,
         trailerVideo,
         providers: watchProvider,

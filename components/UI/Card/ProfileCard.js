@@ -7,7 +7,7 @@ const ProfileCard = ({
   id,
   title,
   poster,
-  department,
+  description,
   redirectToDetails,
 }) => {
   return (
@@ -19,7 +19,7 @@ const ProfileCard = ({
         <div className="card-body">
           <div className="card-body__title">{title}</div>
           <div className="card-body__genre">
-            <div>Known For: {department}</div>
+            <div>{description}</div>
           </div>
         </div>
       </div>

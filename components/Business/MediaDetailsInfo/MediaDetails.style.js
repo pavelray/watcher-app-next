@@ -24,6 +24,28 @@ const style = css`
         font-weight: 600;
         font-size: 18px;
       }
+      .genre-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .genre {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        margin-left: 5px;
+        li {
+          border-bottom: 1px solid #ffd369;
+          cursor: pointer;
+          padding: 3px 4px;
+          list-style: none;
+          font-size: 16px;
+          margin-right: 6px;
+          font-weight: 600;
+          word-spacing: 4px;
+          letter-spacing: 2px;
+        }
+      }
     }
   }
 `;
