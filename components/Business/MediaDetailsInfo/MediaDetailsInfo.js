@@ -18,7 +18,7 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
     tagline,
     genres = [],
   } = details;
-  const { director = [], writer = [] } = crew || {};
+  const { director = [], writer = [], creator = [] } = crew || {};
 
   const releaseDate = getReleaseDate(details, type);
 
@@ -37,6 +37,18 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
   const getDirector = () => {
     if (!!director.length) {
       return director.map((x) => (
+        <li key={x.id}>
+          <Link href={`/person/${x.id}/${slugify(x.name)}`}>{x.name}</Link>
+          <style jsx>{style}</style>
+        </li>
+      ));
+    }
+    return null;
+  };
+
+  const getCreators = () => {
+    if (!!creator.length) {
+      return creator.map((x) => (
         <li key={x.id}>
           <Link href={`/person/${x.id}/${slugify(x.name)}`}>{x.name}</Link>
           <style jsx>{style}</style>
@@ -84,7 +96,7 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
     return null;
   };
 
-  const getCreators = (data, labelText) => {
+  const getWriters = (data, labelText) => {
     if (!!data.length) {
       return (
         <div className="movie-details-stats">
@@ -122,15 +134,22 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
 
       {getCountryOrigin()}
       {getLanguage()}
-      {!!genres.length && (
+      {!!director.length && (
         <div className="movie-details-stats">
           <div className="genre-container">
             <label>Director: </label>
             <ul className="genre">{getDirector()}</ul>
           </div>
         </div>
+      )}{!!creator.length && (
+        <div className="movie-details-stats">
+          <div className="genre-container">
+            <label>Creators: </label>
+            <ul className="genre">{getCreators()}</ul>
+          </div>
+        </div>
       )}
-      {getCreators(writer, "Writer")}
+      {getWriters(writer, "Writer")}
       {getProductionCompanies()}
       <div className="movie-details-stats">
         {!!budget && (

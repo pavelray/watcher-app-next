@@ -1,20 +1,24 @@
 import React from "react";
 import HeroComponent from "../../UI/HeroComponent/HeroComponent";
-import { Carousel } from "react-responsive-carousel";
 import { style } from "./HomeBanner.style";
-import carouselStyles from "react-responsive-carousel/lib/styles/carousel.min.css";
-import ViewTrailer from "../ViewTrailer/ViewTrailer";
 import {
   formatNumber,
   getCertificates,
   getRuntime,
 } from "../../../utils/helperMethods";
+import { MEDIA_TYPE } from "../../../utils/constants";
 
 const HomeBanner = ({ trendingToday }) => {
   const trending = trendingToday;
+  console.log(trending);
+
+  const certificatesValue =
+    trending.media_type === MEDIA_TYPE.MOVIE
+      ? trending.release_dates
+      : trending.content_ratings;
 
   const certificates = getCertificates(
-    trending.release_dates,
+    certificatesValue,
     trending.production_countries,
     trending.media_type
   );
@@ -22,7 +26,7 @@ const HomeBanner = ({ trendingToday }) => {
   const meaning = certificates?.map((x) => `${x.certification}: ${x.meaning}`);
 
   const votes = formatNumber(trending.vote_count);
-  const totalRuntime = getRuntime(trending.runtime);
+  const totalRuntime = trending.media_type === MEDIA_TYPE.MOVIE ? getRuntime(trending.runtime): `Season ${trending.number_of_seasons}`;
   return (
     <div className="home-banner">
       <HeroComponent

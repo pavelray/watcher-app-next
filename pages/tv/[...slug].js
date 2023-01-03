@@ -2,15 +2,13 @@ import Head from "next/head";
 import { Fragment } from "react";
 import TvSeriesDetails from "../../components/Business/TvSeriesDetails";
 import {
-  getContentRatingUrl,
-  getExternalIdUrl,
-  getMovieCastDetailsDataAPIUrl,
   getMovieDetailsDataAPIUrl,
-  getMovieVideosUrl,
   getProvidersAPIUrl,
+  getRecommendationsUrl,
   getReviewUrl,
 } from "../../utils/apiUtills";
 import {
+  appendToReq,
   DEFAULT_COUNTRY_CODE,
   MEDIA_TYPE,
   VIDEO_TYPE,
@@ -18,7 +16,7 @@ import {
 import { getLocationCookie } from "../../utils/helperMethods";
 import httpService from "../../utils/httpService";
 
-const TvSeriesDetailsPage = ({ slugTitle, tvSeries }) => {
+const TvSeriesDetailsPage = ({ slugTitle, tvSeries, type, id }) => {
   return (
     <Fragment>
       <Head>
@@ -28,7 +26,7 @@ const TvSeriesDetailsPage = ({ slugTitle, tvSeries }) => {
           content="Details information of the Tv Series"
         />
       </Head>
-      <TvSeriesDetails tvSeries={tvSeries} />
+      <TvSeriesDetails tvSeries={tvSeries} type={type} id={id} />
     </Fragment>
   );
 };
@@ -42,63 +40,38 @@ export async function getServerSideProps(context) {
   const id = slug[0];
   const slugTitle = slug[1];
 
-  let url = getMovieDetailsDataAPIUrl(type, id);
+  let url = `${getMovieDetailsDataAPIUrl(type, id)}${appendToReq}`;
   const tvSeriesDetailsReq = httpService.get(url);
-  url = getMovieCastDetailsDataAPIUrl(type, id);
-  const tvCastCrewReq = httpService.get(url);
-  url = getMovieVideosUrl(id, type);
-  const videoReq = httpService.get(url);
   url = getProvidersAPIUrl(type, id);
   const watchProviderReq = httpService.get(url);
-  url = getContentRatingUrl(type, id);
-  const contentRatingReq = httpService.get(url);
   url = getReviewUrl(id, type);
   const tvReviewReq = httpService.get(url);
-  url = getExternalIdUrl(type, id);
-  const externalIdReq = httpService.get(url);
+  url = getRecommendationsUrl(id, type);
+  const recomendedReq = httpService.get(url);
 
-  const [
-    tvSeriesDetails,
-    castCrewResp,
-    videoResponse,
-    watchProviderResp,
-    contentRatingResp,
-    tvReviewResp,
-    externalIdResp,
-  ] = await Promise.allSettled([
-    tvSeriesDetailsReq,
-    tvCastCrewReq,
-    videoReq,
-    watchProviderReq,
-    contentRatingReq,
-    tvReviewReq,
-    externalIdReq,
-  ]);
+  const [tvSeriesDetails, watchProviderResp, tvReviewResp, recomendedRes] =
+    await Promise.allSettled([
+      tvSeriesDetailsReq,
+      watchProviderReq,
+      tvReviewReq,
+      recomendedReq,
+    ]);
 
-  // const seasons = tvSeriesDetails.seasons.filter(
-  //   (s) => s.air_date !== null && s.season_number > 0
-  // );
+  const { credits, videos, content_ratings, images, external_ids, created_by } =
+  tvSeriesDetails.value;
 
-  // let seasonsData = [];
 
-  // seasons?.forEach(async (s) => {
-  //   url = getSeasonDetailsAPIUrl(id, s.season_number);
-  //   const seasionDetailsResp = await httpService.get(url);
-  //   seasonsData.push(seasionDetailsResp);
-  // });
-
-  const tvSeriesCast = castCrewResp.value.cast.filter(
+  const tvSeriesCast = credits.cast.filter(
     (cast) => cast.profile_path !== null
   );
-  const tvSeriesCrew = castCrewResp.value.crew.filter(
-    (crew) => crew.job === "Director" || crew.job === "Producer"
-  );
+  const creator = created_by;
 
-  const trailerVideo = videoResponse.value.results.filter(
+  const trailerVideo = videos.results.filter(
     (video) => video.type === VIDEO_TYPE.TRAILER
   );
 
   const watchProvider = watchProviderResp.value.results[countryCode] || {};
+  const recomended = recomendedRes.value;
 
   return {
     props: {
@@ -108,12 +81,14 @@ export async function getServerSideProps(context) {
       tvSeries: {
         details: tvSeriesDetails.value,
         cast: tvSeriesCast,
-        crew: tvSeriesCrew,
+        crew: { creator },
         trailerVideo,
         providers: watchProvider,
         reviews: tvReviewResp.value,
-        contentRating: contentRatingResp.value,
-        externalIds: externalIdResp.value,
+        contentRating: content_ratings,
+        external_ids,
+        images,
+        recomended
       },
     },
   };

@@ -43,9 +43,15 @@ const MovieDetails = ({ movie, id, type }) => {
   } = movie;
   console.log(movie);
   const video = { ...trailerVideo.slice(0, 1)[0] };
+  const [selectedVideo, setSelectedVideo] = useState(video);
 
   const onModalClose = () => {
     setViewModal(false);
+  };
+
+  const playVideo = (video) => {
+    setSelectedVideo(video);
+    setViewModal(true);
   };
 
   const certificates = getCertificates(
@@ -135,49 +141,72 @@ const MovieDetails = ({ movie, id, type }) => {
         </div>
       </div>
       <div className="nav">
-        <button className={`nav-buttons ${showReview? 'active': ''}`} onClick={showReviewTab}>
+        <button
+          className={`nav-buttons ${showReview ? "active" : ""}`}
+          onClick={showReviewTab}
+        >
           Reviews
         </button>
-        <button className={`nav-buttons ${showVideo? 'active': ''}`} onClick={showVideoTab}>
+        <button
+          className={`nav-buttons ${showVideo ? "active" : ""}`}
+          onClick={showVideoTab}
+        >
           Videos
         </button>
-        <button className={`nav-buttons ${showPhoto? 'active': ''}`} onClick={showPhotoTab}>
+        <button
+          className={`nav-buttons ${showPhoto ? "active" : ""}`}
+          onClick={showPhotoTab}
+        >
           Photos
         </button>
       </div>
       {showPhoto && (
-        <div className="image-container">
-          {images.posters.map((image) => (
-            <div key={getUid()} className="image">
-              <Image
-                src={`${API_IMAGE_URL}/w200/${image.file_path}`}
-                fill
-                sizes="100vw"
-                style={{
-                  objectFit: "cover",
-                }}
-                alt="Poster"
-              />
-            </div>
-          ))}
+        <div className="wrapper">
+          <div className="title">Posters</div>
+          <div className="image-container">
+            {images.posters.map((image) => (
+              <div key={getUid()} className="image">
+                <Image
+                  src={`${API_IMAGE_URL}/w200/${image.file_path}`}
+                  fill
+                  sizes="100vw"
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  alt="Poster"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       )}
       {showVideo && (
-        <div className="media-container">
-          {trailerVideo.map((video) => (
-            <div key={getUid()} className="media">
-              <Image
-                src={`${getYoutubeThumbnailSrc(video.key)}`}
-                fill
-                sizes="100vw"
-                style={{
-                  objectFit: "cover",
-                }}
-                alt="Video"
-              />
-              <h3>{video.name}</h3>
-            </div>
-          ))}
+        <div className="wrapper">
+          <div className="title">Videos</div>
+          <div className="media-container">
+            {trailerVideo.map((video) => (
+              <div key={getUid()} className="media">
+                <div className="media-image">
+                  <Image
+                    src={`${getYoutubeThumbnailSrc(video.key)}`}
+                    fill
+                    sizes="100vw"
+                    style={{
+                      objectFit: "cover",
+                    }}
+                    alt="Video"
+                  />
+                  <span
+                    className="material-symbols-outlined icon-play"
+                    onClick={() => playVideo(video)}
+                  >
+                    play_circle
+                  </span>
+                </div>
+                <div className="media-title">{video.name}</div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
       {showReview && (
@@ -199,9 +228,10 @@ const MovieDetails = ({ movie, id, type }) => {
       <Modal open={viewModal} onModalClose={onModalClose}>
         <iframe
           className="video-frame"
-          key={video.key}
-          title={video.type}
-          src={`https://www.youtube.com/embed/${video.key}`}
+          key={selectedVideo.key}
+          title={selectedVideo.type}
+          allow="autoplay"
+          src={`https://www.youtube.com/embed/${selectedVideo.key}?autoplay=1`}
         ></iframe>
       </Modal>
       <style jsx> {style} </style>

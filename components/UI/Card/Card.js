@@ -7,9 +7,7 @@ import Rating from "../Rating/Rating.js";
 const Card = ({
   title,
   poster,
-  releaseDate,
   ratings,
-  genre,
   redirectToDetails,
 }) => {
   return (

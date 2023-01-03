@@ -42,7 +42,6 @@ export const MediaCard = (props) => {
           poster={posterImg}
           title={title}
           ratings={vote_average?.toFixed(2)}
-          genre={genre?.split(",").join(", ")}
           {...otherProps}
           redirectToDetails={redirectToDetails}
         />

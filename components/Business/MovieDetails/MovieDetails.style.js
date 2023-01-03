@@ -99,7 +99,7 @@ const style = css`
       font-size: 18px;
       border: none;
       box-shadow: none;
-      background: #393e46;
+      background: none;
       color: #eeeeee;
       cursor: pointer;
       text-transform: uppercase;
@@ -110,7 +110,17 @@ const style = css`
     }
     .active {
       color: #ffd369;
+      border-bottom: 2px solid #ffd369;
     }
+  }
+
+  .wrapper {
+    padding: 20px;
+  }
+
+  .title{
+    margin: 10px 0px;
+    font-size: 2rem;
   }
 
   .image-container {
@@ -118,7 +128,6 @@ const style = css`
     flex-wrap: wrap;
     gap: 1.5vmin;
     user-select: none;
-    padding: 20px;
     animation: fadeIn 1s ease-out forwards;
     animation-delay: 0.1s;
     opacity: 0;
@@ -147,17 +156,37 @@ const style = css`
     flex-wrap: wrap;
     gap: 1.5vmin;
     user-select: none;
-    padding: 20px;
+
     opacity: 0;
     animation: fadeIn 1s ease-out forwards;
     animation-delay: 0.1s;
 
     .media {
-      position: relative;
-      width: 45vmin;
-      height: 25vmin;
-      object-fit: cover;
-      object-position: 100% center;
+      &-image {
+        position: relative;
+        width: 45vmin;
+        height: 25vmin;
+        object-fit: cover;
+        object-position: 100% center;
+
+        .icon-play {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          z-index: 2;
+          transform: translate(-50%, -50%);
+          font-size: 4rem;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      &-title {
+        margin: 5px 0px;
+        font-size: 1rem;
+      }
     }
   }
 

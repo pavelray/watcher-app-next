@@ -83,8 +83,8 @@ export async function getServerSideProps(ctx) {
       trendingTodayReq,
     ]);
   const randomMedia =
-    trendingTodayResp.value.results[
-      Math.floor(Math.random() * trendingTodayResp.value.results.length)
+    trendingTvSeries.value.results[
+      Math.floor(Math.random() * trendingTvSeries.value.results.length)
     ];
   url = `${getMovieDetailsDataAPIUrl(
     randomMedia.media_type,

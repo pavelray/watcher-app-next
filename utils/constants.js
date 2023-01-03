@@ -222,9 +222,7 @@ export const movieDetailsStyle = {
 
 export const appendToReq =
   "&append_to_response=videos,credits,images,external_ids,content_ratings,release_dates,media_type&include_image_language=en";
-
-//'append_to_response=videos,credits,images,external_ids,release_dates&include_image_language=en'
-// '&append_to_response=videos,credits,images,external_ids,content_ratings&include_image_language=en'
+export const appendToReqPerson = "&append_to_response=images,combined_credits,external_ids&include_image_language=en";
 
 // Youtube - https://www.googleapis.com/youtube/v3/videos?key=YOUR_API_KEY&part=snippet&id=VIDEO_ID - to get image thumbnail
 //

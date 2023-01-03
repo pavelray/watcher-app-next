@@ -128,8 +128,7 @@ export const getContentRating = (result, type) => {
     case MEDIA_TYPE.MOVIE:
       const cert = result?.map((r) => {
         const values = r.release_dates.find((x) => x.certification !== "");
-        const certificateValue =
-          type === MEDIA_TYPE.MOVIE ? MOVIE_CERTIFICATES : TV_CERTIFICATES;
+        const certificateValue = MOVIE_CERTIFICATES;
         const meaning = certificateValue[r.iso_3166_1]?.find(
           (cert) => cert.certification === values?.certification
         )?.meaning;
@@ -139,10 +138,20 @@ export const getContentRating = (result, type) => {
           meaning,
         };
       });
-
       return cert;
     default: {
-      return result?.map((r) => r.rating).join(", ");
+      const cert = result?.map((r) => {
+        const certificateValue = TV_CERTIFICATES.certifications;
+        const meaning = certificateValue[r.iso_3166_1]?.filter(
+          (x) => x.certification === r.rating
+        )[0].meaning;
+        return {
+          certification: r.rating,
+          iso_3166_1: r.iso_3166_1,
+          meaning,
+        };
+      });
+      return cert;
     }
   }
 };
@@ -151,8 +160,12 @@ export const getCertificates = (releaseInfo, productionCountries, type) => {
   const result = releaseInfo?.results?.filter((o1) =>
     productionCountries?.some((o2) => o1.iso_3166_1 === o2.iso_3166_1)
   );
-
-  const certificates = getContentRating(result, type);
+  const selectCertCountry = !!result.length
+    ? result
+    : releaseInfo.results.filter((x) => x.iso_3166_1 === "US") || [
+        ...releaseInfo.results[0],
+      ];
+  const certificates = getContentRating(selectCertCountry, type);
   return certificates;
 };
 
@@ -183,18 +196,34 @@ export const formatCurrency = (number) => {
   }).format(number);
 };
 
-
 export const getImage = (imagePath) => {
   const imageName = imagePath
     ? `${API_IMAGE_URL}/w200${imagePath}`
     : NO_IMG_PLACEHOLDER_MEDIA;
   return imageName;
-}; 
+};
 
 export const getUid = () => {
-  return uuid4()
-}
+  return uuid4();
+};
 
 export const getYoutubeThumbnailSrc = (videoKey) => {
-  return `https://img.youtube.com/vi/${videoKey}/maxresdefault.jpg`
-}
+  return `https://img.youtube.com/vi/${videoKey}/maxresdefault.jpg`;
+};
+
+export const getAge = (birthDate) => {
+  const today = new Date();
+  birthDate = new Date(birthDate);
+
+  var years = today.getFullYear() - birthDate.getFullYear();
+
+  if (
+    today.getMonth() < birthDate.getMonth() ||
+    (today.getMonth() == birthDate.getMonth() &&
+      today.getDate() < birthDate.getDate())
+  ) {
+    years--;
+  }
+
+  return years;
+};

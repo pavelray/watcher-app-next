@@ -1,52 +1,106 @@
 import Image from "next/image";
-import Link from "next/link";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import {
   API_IMAGE_URL,
+  COLLECTION_TYPE,
   CREDIT_TYPE,
-  IMDB_IMAGE_PATH,
-  IMDB_LOCATION_URL,
   MEDIA_TYPE,
-  movieDetailsStyle,
 } from "../../../utils/constants";
-import { getImageUrl } from "../../../utils/helperMethods";
-import CompanyIcon from "../../UI/CompanyIcon/CompanyIcon";
+import {
+  formatNumber,
+  getCertificates,
+  getImageUrl,
+  getUid,
+  getYoutubeThumbnailSrc,
+} from "../../../utils/helperMethods";
+import CardSlider from "../../UI/CardCarousel/CardSlider";
+import HeroComponent from "../../UI/HeroComponent/HeroComponent";
+import Modal from "../../UI/Modal/Modal";
 import CastAndCrew from "../Cast";
 import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
-import MediaTitle from "../MediaTitle/MediaTitle";
 import ReviewsComponent from "../ReviewsComponent/ReviewsComponent";
-import TvSeasons from "../TvSeasons/TvSeasons";
-import ViewTrailer from "../ViewTrailer/ViewTrailer";
-import WatchProvider from "../WatchProvider/WatchProvider";
+import SocialIcons from "../SocialIcons/SocialIcons";
 
 import { style } from "./TvSeriesDetails.style";
 
-const TvSeriesDetails = ({ tvSeries }) => {
+const TvSeriesDetails = ({ tvSeries, type, id }) => {
+  const [viewModal, setViewModal] = useState(false);
   const {
     details,
     cast,
     crew,
+    runtime,
     trailerVideo,
     providers,
+    recomended,
     reviews,
     contentRating,
-    externalIds,
+    external_ids,
+    images,
   } = tvSeries;
 
-  const populateImageUrl = (path) => {
-    const fullPath = `${API_IMAGE_URL}/original/`;
-    return getImageUrl(path, fullPath);
+  const { number_of_seasons } = details;
+  const totalSeasons = `Season ${number_of_seasons}`;
+
+  console.log(tvSeries);
+
+  const video = { ...trailerVideo.slice(0, 1)[0] };
+  const [selectedVideo, setSelectedVideo] = useState(video);
+
+  const onModalClose = () => {
+    setViewModal(false);
+  };
+
+  const playVideo = (video) => {
+    setSelectedVideo(video);
+    setViewModal(true);
+  };
+
+  const certificates = getCertificates(
+    contentRating,
+    details.production_countries,
+    type
+  );
+  const certificate = certificates.map((x) => x.certification).join(", ");
+  const meaning = certificates.map((x) => `${x.certification}: ${x.meaning}`);
+  const votes = formatNumber(details.vote_count);
+  const [showPhoto, setShowPhoto] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const [showReview, setShowReview] = useState(true);
+
+  const showPhotoTab = () => {
+    setShowVideo(false);
+    setShowReview(false);
+    setShowPhoto(!showPhoto);
+  };
+
+  const showVideoTab = () => {
+    setShowPhoto(false);
+    setShowReview(false);
+    setShowVideo(!showVideo);
+  };
+
+  const showReviewTab = () => {
+    setShowPhoto(false);
+    setShowVideo(false);
+    setShowReview(!showReview);
   };
 
   return (
     <Fragment>
-      <div
-        className="movie-details-container"
-        style={{
-          ...movieDetailsStyle,
-          backgroundImage: `url(${populateImageUrl(details.backdrop_path)})`,
-        }}
-      >
+      <HeroComponent
+        title={details.title || details.name}
+        description={details.overview}
+        imageUrl={details.backdrop_path}
+        type={details.media_type}
+        id={details.id}
+        trailerVideo={trailerVideo}
+        setViewModal={setViewModal}
+        certificate={{ certificate, meaning }}
+        runtime={totalSeasons}
+        votes={votes}
+      />
+      <div className="movie-details-container">
         <div className="movie-details-container__main">
           <div className="movie-details-container__main-content">
             <div className="movie-details-image">
@@ -58,64 +112,130 @@ const TvSeriesDetails = ({ tvSeries }) => {
                   width={300}
                 />
               </div>
-              <WatchProvider
-                providers={providers}
-                homepage={details.homepage}
-              />
-              <div className="icons">
-                <h2>More Info</h2>
-                <CompanyIcon
-                  url={`${IMDB_LOCATION_URL}/${externalIds.imdb_id}`}
-                  imageSrc={IMDB_IMAGE_PATH}
-                  imageAltText="IMDB_icon"
-                />
-              </div>
-              {!!details.networks.length && (
-                <div className="icons">
-                  <h2>Networks</h2>
-                  {details.networks.map((network) => (
-                    <CompanyIcon
-                      key={network.id}
-                      imageSrc={`${API_IMAGE_URL}/original/${network.logo_path}`}
-                      imageAltText="IMDB_icon"
-                      width={60}
-                      height={25}
-                      title={network.name}
-                    />
-                  ))}
-                </div>
-              )}
             </div>
             <div className="movie-details-content">
               <div className="movie-details-content__row">
-                <MediaTitle
-                  details={details}
-                  runtime={`${details.number_of_episodes} episodes`}
+                <div className="description">
+                  <p className="title">Storyline</p>
+                  {details.overview}
+                </div>
+                <MediaDetailsInfo details={details} type={type} crew={crew} />
+                {/* <WatchProvider
+                  providers={providers}
+                  homepage={details.homepage}
+                /> */}
+                <SocialIcons
+                  externalIds={external_ids}
                   type={MEDIA_TYPE.TV_SERIES}
-                  releaseInfo={contentRating}
                 />
-                <div className="description">{details.overview}</div>
-                <ViewTrailer trailerVideo={trailerVideo} />
-                <MediaDetailsInfo details={details} />
               </div>
               <div className="movie-details-content__row">
                 <CastAndCrew
                   credits={cast.slice(0, 6)}
                   type={CREDIT_TYPE.CAST}
                   title="Cast"
-                />
-                <CastAndCrew
-                  credits={crew}
-                  type={CREDIT_TYPE.CREW}
-                  title="Crew"
+                  id={id}
+                  mediaType={type}
                 />
               </div>
             </div>
-            <TvSeasons seasons={details.seasons} />
-            <ReviewsComponent reviews={reviews} />
           </div>
         </div>
       </div>
+      <div className="nav">
+        <button
+          className={`nav-buttons ${showReview ? "active" : ""}`}
+          onClick={showReviewTab}
+        >
+          Reviews
+        </button>
+        <button
+          className={`nav-buttons ${showVideo ? "active" : ""}`}
+          onClick={showVideoTab}
+        >
+          Videos
+        </button>
+        <button
+          className={`nav-buttons ${showPhoto ? "active" : ""}`}
+          onClick={showPhotoTab}
+        >
+          Photos
+        </button>
+      </div>
+      {showPhoto && (
+        <div className="wrapper">
+          <div className="title">Posters</div>
+          <div className="image-container">
+            {images.posters.map((image) => (
+              <div key={getUid()} className="image">
+                <Image
+                  src={`${API_IMAGE_URL}/w200/${image.file_path}`}
+                  fill
+                  sizes="100vw"
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  alt="Poster"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {showVideo && (
+        <div className="wrapper">
+          <div className="title">Videos</div>
+          <div className="media-container">
+            {trailerVideo.map((video) => (
+              <div key={getUid()} className="media">
+                <div className="media-image">
+                  <Image
+                    src={`${getYoutubeThumbnailSrc(video.key)}`}
+                    fill
+                    sizes="100vw"
+                    style={{
+                      objectFit: "cover",
+                    }}
+                    alt="Video"
+                  />
+                  <span
+                    className="material-symbols-outlined icon-play"
+                    onClick={() => playVideo(video)}
+                  >
+                    play_circle
+                  </span>
+                </div>
+                <div className="media-title">{video.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {showReview && reviews && (
+        <div className="review-container">
+          <ReviewsComponent reviews={reviews} />
+        </div>
+      )}
+
+      {!!recomended.results.length && (
+        <div className="recomended-container">
+          <CardSlider
+            data={recomended.results}
+            type={MEDIA_TYPE.TV_SERIES}
+            title="Recomended"
+            dataType={COLLECTION_TYPE.RECOMENDED}
+          />
+        </div>
+      )}
+      <Modal open={viewModal} onModalClose={onModalClose}>
+        <iframe
+          className="video-frame"
+          key={selectedVideo.key}
+          title={selectedVideo.type}
+          allow="autoplay"
+          src={`https://www.youtube.com/embed/${selectedVideo.key}?autoplay=1`}
+        ></iframe>
+      </Modal>
       {/* <SeasonDetails seasonDetails={seasonDetails} /> */}
       <style jsx> {style} </style>
     </Fragment>
