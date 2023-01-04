@@ -29,7 +29,6 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
     details,
     cast,
     crew,
-    runtime,
     trailerVideo,
     providers,
     recomended,
@@ -37,9 +36,10 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
     contentRating,
     external_ids,
     images,
+    latestSeasonDetails,
   } = tvSeries;
 
-  const { number_of_seasons } = details;
+  const { number_of_seasons, seasons } = details;
   const totalSeasons = `Season ${number_of_seasons}`;
 
   console.log(tvSeries);
@@ -66,24 +66,35 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
   const votes = formatNumber(details.vote_count);
   const [showPhoto, setShowPhoto] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
-  const [showReview, setShowReview] = useState(true);
+  const [showEpisodes, setShowEpisodes] = useState(true);
+  const [showReview, setShowReview] = useState(false);
 
   const showPhotoTab = () => {
     setShowVideo(false);
     setShowReview(false);
+    setShowEpisodes(false);
     setShowPhoto(!showPhoto);
   };
 
   const showVideoTab = () => {
     setShowPhoto(false);
     setShowReview(false);
+    setShowEpisodes(false);
     setShowVideo(!showVideo);
   };
 
   const showReviewTab = () => {
     setShowPhoto(false);
     setShowVideo(false);
+    setShowEpisodes(false);
     setShowReview(!showReview);
+  };
+
+  const showEpisodesTab = () => {
+    setShowPhoto(false);
+    setShowVideo(false);
+    setShowReview(false);
+    setShowEpisodes(!showEpisodes);
   };
 
   return (
@@ -144,11 +155,12 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
       </div>
       <div className="nav">
         <button
-          className={`nav-buttons ${showReview ? "active" : ""}`}
-          onClick={showReviewTab}
+          className={`nav-buttons ${showEpisodes ? "active" : ""}`}
+          onClick={showEpisodesTab}
         >
-          Reviews
+          Episodes
         </button>
+
         <button
           className={`nav-buttons ${showVideo ? "active" : ""}`}
           onClick={showVideoTab}
@@ -161,6 +173,14 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
         >
           Photos
         </button>
+        {!!reviews.total_results && (
+          <button
+            className={`nav-buttons ${showReview ? "active" : ""}`}
+            onClick={showReviewTab}
+          >
+            Reviews
+          </button>
+        )}
       </div>
       {showPhoto && (
         <div className="wrapper">
@@ -211,12 +231,56 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
           </div>
         </div>
       )}
-      {showReview && reviews && (
+      {showReview && !!reviews.total_results && (
         <div className="review-container">
           <ReviewsComponent reviews={reviews} />
         </div>
       )}
-
+      {showEpisodes && (
+        <div className="wrapper">
+          <div className="title">
+            <select className="season-select" >
+              {seasons
+                .filter((s) => s.season_number > 0)
+                .map((s, index) => (
+                  <option
+                    key={getUid()}
+                    selected={index === seasons.length - 1}
+                    value={s.season_number}
+                  >
+                    Season {s.season_number}
+                  </option>
+                ))}
+            </select>
+            <span className="episode-number">
+              {latestSeasonDetails.episodes.length > 0
+                ? `${latestSeasonDetails.episodes.length - 1} Episodes`
+                : `0 Episode`}
+            </span>
+          </div>
+          <div className="media-container">
+            {latestSeasonDetails.episodes.map((episode) => (
+              <div key={getUid()} className="media">
+                <div className="media-image">
+                  <Image
+                    src={`${API_IMAGE_URL}/w400${episode.still_path}`}
+                    fill
+                    sizes="100vw"
+                    style={{
+                      objectFit: "cover",
+                    }}
+                    alt="Episode Image"
+                  />
+                </div>
+                <div className="media-title">
+                  Episode: {episode.episode_number}
+                </div>
+                <p className="media-description">{episode.overview}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
       {!!recomended.results.length && (
         <div className="recomended-container">
           <CardSlider

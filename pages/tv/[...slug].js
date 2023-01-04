@@ -6,6 +6,7 @@ import {
   getProvidersAPIUrl,
   getRecommendationsUrl,
   getReviewUrl,
+  getSeasonDetailsAPIUrl,
 } from "../../utils/apiUtills";
 import {
   appendToReq,
@@ -57,7 +58,7 @@ export async function getServerSideProps(context) {
       recomendedReq,
     ]);
 
-  const { credits, videos, content_ratings, images, external_ids, created_by } =
+  const { credits, videos, content_ratings, images, external_ids, created_by, number_of_seasons, seasons } =
   tvSeriesDetails.value;
 
 
@@ -72,6 +73,11 @@ export async function getServerSideProps(context) {
 
   const watchProvider = watchProviderResp.value.results[countryCode] || {};
   const recomended = recomendedRes.value;
+
+  const lastSeason = number_of_seasons || seasons[seasons.length-1].season_number;
+
+  url = getSeasonDetailsAPIUrl(id, lastSeason);
+  const latestSeasonDetails = await httpService.get(url);
 
   return {
     props: {
@@ -88,7 +94,8 @@ export async function getServerSideProps(context) {
         contentRating: content_ratings,
         external_ids,
         images,
-        recomended
+        recomended,
+        latestSeasonDetails
       },
     },
   };
