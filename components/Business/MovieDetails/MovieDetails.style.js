@@ -54,6 +54,10 @@ const style = css`
           .icons {
             margin-top: 10px;
           }
+
+          @include for-phone-only {
+            display: none;
+          }
         }
 
         .movie-details-content {
@@ -92,6 +96,10 @@ const style = css`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
+    @include for-phone-only {
+      justify-content: space-between;
+    }
 
     &-buttons {
       height: 8vmin;
@@ -195,6 +203,10 @@ const style = css`
     padding: 20px;
     animation: fadeIn 1s ease-out forwards;
     animation-delay: 0.1s;
+
+    @include for-phone-only {
+      padding: 0px;
+    }
   }
 
   .recomended-container {

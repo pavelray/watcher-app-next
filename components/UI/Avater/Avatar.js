@@ -15,8 +15,8 @@ const Avatar = ({ imageSrc, text, role }) => {
           height={160}
         />
         <div className="avatar__name">
-          {role && <div className="avatar__role">{role}</div>}
-          <div>{text}</div>
+          <div className="avatar__role">{text}</div>
+          {role && <div>{role}</div> }
         </div>
       </div>
       <style jsx>{style}</style>

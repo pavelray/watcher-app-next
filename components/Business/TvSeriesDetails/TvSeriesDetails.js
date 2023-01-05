@@ -1,3 +1,4 @@
+import axios from "axios";
 import Image from "next/image";
 import React, { Fragment, useState } from "react";
 import {
@@ -46,6 +47,8 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
 
   const video = { ...trailerVideo.slice(0, 1)[0] };
   const [selectedVideo, setSelectedVideo] = useState(video);
+  const [selectSeasonNumber, setSelectedSeasonNumber] = useState(number_of_seasons);
+  const [selectedSeasion, setSelectedSeason] = useState(latestSeasonDetails);
 
   const onModalClose = () => {
     setViewModal(false);
@@ -95,6 +98,17 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
     setShowVideo(false);
     setShowReview(false);
     setShowEpisodes(!showEpisodes);
+  };
+
+  const getSeasionDetails = async (event) => {
+    const { value } = event.target;
+    const body = {
+      id,
+      seasonNumber: value,
+    };
+    setSelectedSeasonNumber(value);
+    const responseData = await axios.post("/api/getSeasonDetails", body);
+    setSelectedSeason(responseData.data);
   };
 
   return (
@@ -239,13 +253,12 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
       {showEpisodes && (
         <div className="wrapper">
           <div className="title">
-            <select className="season-select" >
+            <select className="season-select" onChange={getSeasionDetails} value={selectSeasonNumber}>
               {seasons
                 .filter((s) => s.season_number > 0)
-                .map((s, index) => (
+                .map((s) => (
                   <option
                     key={getUid()}
-                    selected={index === seasons.length - 1}
                     value={s.season_number}
                   >
                     Season {s.season_number}
@@ -253,13 +266,13 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
                 ))}
             </select>
             <span className="episode-number">
-              {latestSeasonDetails.episodes.length > 0
-                ? `${latestSeasonDetails.episodes.length - 1} Episodes`
+              {selectedSeasion.episodes.length > 0
+                ? `${selectedSeasion.episodes.length - 1} Episodes`
                 : `0 Episode`}
             </span>
           </div>
           <div className="media-container">
-            {latestSeasonDetails.episodes.map((episode) => (
+            {selectedSeasion.episodes.map((episode) => (
               <div key={getUid()} className="media">
                 <div className="media-image">
                   <Image
@@ -300,7 +313,6 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
           src={`https://www.youtube.com/embed/${selectedVideo.key}?autoplay=1`}
         ></iframe>
       </Modal>
-      {/* <SeasonDetails seasonDetails={seasonDetails} /> */}
       <style jsx> {style} </style>
     </Fragment>
   );

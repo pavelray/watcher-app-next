@@ -46,7 +46,7 @@ const Layout = ({ children }) => {
         {!isPageLoading && !isLoading && (
           <div className={styles.container}>{children}</div>
         )}
-        {/* <Footer /> */}
+        <Footer />
       </LayoutProvider>
     </Fragment>
   );

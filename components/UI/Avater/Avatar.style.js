@@ -10,12 +10,15 @@ const style = css`
 
     &__name {
       margin-top: 10px;
-      font-weight: 200;
       letter-spacing: 1px;
+      color: #1CD6CE;
+      font-size: .8rem;
     }
 
     &__role {
       font-weight: 400;
+      color: #EEEEEE;
+      font-size: 1rem;
     }
   }
 `;

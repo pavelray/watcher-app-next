@@ -17,7 +17,8 @@ const style = css`
       word-spacing: 1px;
       margin: 2px 0px;
       font-style: italic;
-      white-space: pre-line;
+      white-space: pre-line;    
+      word-break: break-all;
     }
     &-author {
       font-size: 18px;
