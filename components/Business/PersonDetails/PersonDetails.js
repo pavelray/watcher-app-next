@@ -1,26 +1,17 @@
 import Image from "next/image";
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import {
   API_IMAGE_URL,
-  COLLECTION_TYPE,
-  FACEBOOK_IMAGE_PATH,
-  FACEBOOK_PERSON_LOCATION_URL,
-  IMDB_IMAGE_PATH,
-  IMDB_PERSON_LOCATION_URL,
-  INSTAGRAM_IMAGE_PATH,
-  INSTAGRAM_PERSON_LOCATION_URL,
   MEDIA_TYPE,
-  TWITTER_IMAGE_PATH,
-  TWITTER_PERSON_LOCATION_URL,
+  NO_IMG_PLACEHOLDER_MEDIA,
+  NO_IMG_PLACEHOLDER_USER,
 } from "../../../utils/constants";
 import {
   getAge,
   getUid,
-  getYoutubeThumbnailSrc,
 } from "../../../utils/helperMethods";
-import CardSlider from "../../UI/CardCarousel/CardSlider";
-import CompanyIcon from "../../UI/CompanyIcon/CompanyIcon";
 import { Heading } from "../../UI/Typography/Typography";
+import ImageFallback from "../ImageFallback";
 import MediaCard from "../MediaCard";
 import SocialIcons from "../SocialIcons/SocialIcons";
 import { style } from "./PersonDetails.style";
@@ -49,11 +40,12 @@ const PersonDetails = ({ person, id }) => {
       <div className="details-container">
         <div className="person-image-wrapper">
           <div className="image">
-            <Image
+            <ImageFallback
               src={`${API_IMAGE_URL}/w400${details.profile_path}`}
               alt={details.name}
               height={400}
               width={300}
+              fallbackSrc={NO_IMG_PLACEHOLDER_USER}
             />
           </div>
           <div className="person-info">
@@ -101,7 +93,7 @@ const PersonDetails = ({ person, id }) => {
           <div className="image-container">
             {images.profiles.map((image) => (
               <div key={getUid()} className="image">
-                <Image
+                <ImageFallback
                   src={`${API_IMAGE_URL}/w200${image.file_path}`}
                   fill
                   sizes="100vw"
@@ -109,6 +101,7 @@ const PersonDetails = ({ person, id }) => {
                     objectFit: "cover",
                   }}
                   alt="Poster"
+                  fallbackSrc={NO_IMG_PLACEHOLDER_USER}
                 />
               </div>
             ))}

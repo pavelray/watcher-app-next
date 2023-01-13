@@ -1,8 +1,8 @@
-import Image from "next/image";
 import React, { Fragment } from "react";
 import { API_IMAGE_URL, NO_IMG_PLACEHOLDER_MEDIA } from "../../../utils/constants";
 import { v4 as uuidv4 } from 'uuid';
 import { style } from "./SeasonDetails.style";
+import ImageFallback from "../ImageFallback";
 
 const SeasonDetails = ({ seasonDetails }) => {
   const handleTabClick = (e) => {
@@ -50,11 +50,12 @@ const SeasonDetails = ({ seasonDetails }) => {
             <div className="season-wrapper">
               {season.episodes.map((episode) => (
                 <div className="media-card" key={`episode-${uuidv4()}`}>
-                  <Image
+                  <ImageFallback
                     src={getImageSrc(episode.still_path)}
                     alt=""
                     width="300"
                     height="200"
+                    fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
                   />
                   <div className="media-card__title">
                     <span>

@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
-import Image from "next/image";
 import { style } from "./Card.style.js";
-import cardModuleStyle from './Card.module.scss';
+import cardModuleStyle from "./Card.module.scss";
+import ImageFallback from "../../Business/ImageFallback/index.js";
+import { NO_IMG_PLACEHOLDER_MEDIA } from "../../../utils/constants.js";
 
 const SeasonCard = ({
   id,
@@ -16,7 +17,13 @@ const SeasonCard = ({
     <Fragment>
       <div className="card" id={id}>
         <div className={cardModuleStyle.cardImage}>
-          <Image src={poster} alt="Poster" width="200" height={300} />
+          <ImageFallback
+            src={poster}
+            alt="Poster"
+            width="200"
+            height={300}
+            fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
+          />
         </div>
         <div className="card-body">
           <div className="card-body__title">{title}</div>

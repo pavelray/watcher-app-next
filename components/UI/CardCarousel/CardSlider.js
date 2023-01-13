@@ -13,13 +13,10 @@ const CardSlider = ({ title, data, type, dataType }) => {
   const renderViewAllLink = () => {
     if (
       dataType !== COLLECTION_TYPE.SIMILAR &&
-      dataType !== COLLECTION_TYPE.TRENDING
+      dataType !== COLLECTION_TYPE.TRENDING &&
+      dataType !== COLLECTION_TYPE.RECOMENDED
     ) {
-      return (
-        <Link href={`/viewAll?dataType=${dataType}&type=${type}&page=1`}>
-          view all
-        </Link>
-      );
+      return <Link href={`/all/${dataType}/${type}/1`}>view all</Link>;
     }
     return null;
   };

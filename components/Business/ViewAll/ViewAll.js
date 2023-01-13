@@ -7,11 +7,12 @@ import { style } from "./ViewAll.style";
 import Router from "next/router";
 
 const ViewAll = (props) => {
-  const { type, page, genre, results, total_pages, total_results, term } =
+  const { type, page, genre, results, total_pages, total_results, term, pageType, dataType } =
     props;
 
   const handlePageClick = (page) => {
     if (type && genre) Router.push(`/discover/${type}/${genre}/${page}`);
+    else if (pageType && dataType) Router.push(`/all/${dataType}/${type}/${page}`);
     else Router.push(`/search?term=${term}&page=${page}`);
   };
 

@@ -1,13 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
 import React, { Fragment, useState } from "react";
 import {
   API_IMAGE_URL,
   COLLECTION_TYPE,
   CREDIT_TYPE,
-  IMDB_IMAGE_PATH,
-  IMDB_LOCATION_URL,
   MEDIA_TYPE,
+  NO_IMG_PLACEHOLDER_MEDIA,
 } from "../../../utils/constants";
 import {
   formatNumber,
@@ -19,10 +16,10 @@ import CardSlider from "../../UI/CardCarousel/CardSlider";
 import HeroComponent from "../../UI/HeroComponent/HeroComponent";
 import Modal from "../../UI/Modal/Modal";
 import CastAndCrew from "../Cast";
+import ImageFallback from "../ImageFallback";
 import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
 import ReviewsComponent from "../ReviewsComponent/ReviewsComponent";
 import SocialIcons from "../SocialIcons/SocialIcons";
-import WatchProvider from "../WatchProvider/WatchProvider";
 
 import { style } from "./MovieDetails.style";
 
@@ -103,11 +100,12 @@ const MovieDetails = ({ movie, id, type }) => {
           <div className="movie-details-container__main-content">
             <div className="movie-details-image">
               <div className="image">
-                <Image
+                <ImageFallback
                   src={`${API_IMAGE_URL}/w400/${details.poster_path}`}
                   alt={details.id}
                   height={400}
                   width={300}
+                  fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
                 />
               </div>
             </div>
@@ -166,7 +164,7 @@ const MovieDetails = ({ movie, id, type }) => {
           <div className="image-container">
             {images.posters.map((image) => (
               <div key={getUid()} className="image">
-                <Image
+                <ImageFallback
                   src={`${API_IMAGE_URL}/w200/${image.file_path}`}
                   fill
                   sizes="100vw"
@@ -174,6 +172,7 @@ const MovieDetails = ({ movie, id, type }) => {
                     objectFit: "cover",
                   }}
                   alt="Poster"
+                  fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
                 />
               </div>
             ))}
@@ -187,7 +186,7 @@ const MovieDetails = ({ movie, id, type }) => {
             {trailerVideo.map((video) => (
               <div key={getUid()} className="media">
                 <div className="media-image">
-                  <Image
+                  <ImageFallback
                     src={`${getYoutubeThumbnailSrc(video.key)}`}
                     fill
                     sizes="100vw"
@@ -195,6 +194,7 @@ const MovieDetails = ({ movie, id, type }) => {
                       objectFit: "cover",
                     }}
                     alt="Video"
+                    fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
                   />
                   <span
                     className="material-symbols-outlined icon-play"

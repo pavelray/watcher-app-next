@@ -110,8 +110,8 @@ export const getReviewUrl = (id, type) => {
   return `${API_BASE_URL}/${type}/${id}/reviews?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
 };
 
-export const getRecommendationsUrl = (id, type) => {
-  return `${API_BASE_URL}/${type}/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
+export const getRecommendationsUrl = (id, type, pageNo=1) => {
+  return `${API_BASE_URL}/${type}/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&page=${pageNo}`;
 };
 
 export const getShowsArrivingTodayUrl = (type) => {

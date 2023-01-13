@@ -4,11 +4,10 @@ const style = css`
   @import "../../../styles/colors";
   @import "../../../styles/mixins";
 
-.pagination-wrapper {
-  .pagination {
+  .pagination-wrapper {
     display: flex;
-    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
   }
-}
-`
+`;
 export { style };
