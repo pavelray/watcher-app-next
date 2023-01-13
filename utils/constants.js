@@ -186,7 +186,7 @@ export const ERROR_MESSAGE = {
   SERVER_ERROR: "Opps! some error occoured. Please try again later.",
 };
 
-export const APP_NAME = "Moviezine";
+export const APP_NAME = "MovieArchive";
 
 export const DEFAULT_COUNTRY_CODE = "US";
 export const DEFAULT_COUNTRY_NAME = "United States";
