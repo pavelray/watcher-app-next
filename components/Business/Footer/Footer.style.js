@@ -6,14 +6,11 @@ const style = css`
 
   .footer {
     min-height: 20vh;
-
-    background-color: #0b2361;
+    background: #393e46;
+    padding: 20px;
     .footer-content {
-      margin: 0px 180px;
       display: flex;
       flex-direction: column-reverse;
-      color: white;
-
       .link-wrapper {
         display: flex;
         flex-direction: row;
@@ -24,9 +21,8 @@ const style = css`
           .title {
             font-size: 22px;
           }
-
           p {
-            width: 400px;
+            width: 60vmin;
           }
           ul {
             list-style: none;
@@ -41,6 +37,11 @@ const style = css`
         }
         .app {
           flex: 2;
+        }
+
+        @include for-phone-only {
+          display: flex;
+          flex-direction: column;
         }
       }
     }

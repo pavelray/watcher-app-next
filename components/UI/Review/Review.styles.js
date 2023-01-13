@@ -17,13 +17,8 @@ const style = css`
       word-spacing: 1px;
       margin: 2px 0px;
       font-style: italic;
-     
-      .quote {
-        font-size: 20px;
-        line-height: 10px;
-        font-weight: bold;
-        font-style: italic;
-      }
+      white-space: pre-line;    
+      word-break: break-all;
     }
     &-author {
       font-size: 18px;

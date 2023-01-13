@@ -4,52 +4,130 @@ const style = css`
   @import "../../../styles/colors";
   @import "../../../styles/mixins";
 
-  .hero-container {
-    width: 100%;
-    display: flex;
-    align-items: center;
+  .hero {
+    height: 70vh;
+    position: relative;
     background-repeat: no-repeat;
+    background-position: cover;
     background-size: cover;
-    height: 60vh;
-    color: $background-color-primary;
-    &-image__container {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      background: rgb(20, 20, 20);
-      background: linear-gradient(
-        to left top,
-        rgba(20, 20, 20, 1) 0%,
-        rgba(255, 255, 255, 0) 56%
-      );
-    }
 
-    .content {
+    .hero-content {
+      height: 100%;
+      width: 70vmin;
       display: flex;
       flex-direction: column;
-      padding: 0px 30px;
-      text-align: left;
+      justify-content: center;
+      user-select: none;
+      padding: 0px 20px;
+      animation: slideUp 1s ease-out forwards;
+      animation-delay: 0.1s;
 
-      &-title {
-        margin: 0px;
-        font-weight: 600;
-        font-size: 45px;
-        text-shadow: 5px 5px 10px black;
-        &:hover {
-          cursor: pointer;
-          color: $primary;
-          text-shadow: 1px 1px 0px $background-color-primary;
+      .title {
+        font-size: 2.5rem;
+        word-spacing: 2px;
+        filter: drop-shadow(0 0 3rem black);
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+        animation-delay: 0.1s;
+      }
+
+      .meta {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        &-values {
+          margin: 5px 0px 2px 20px;
+          font-size: 0.9rem;
+          word-break: unset;
+          word-spacing: 0.2rem;
+          color: #ffd369;
+          letter-spacing: 0.1rem;
+          font-weight: 600;
         }
       }
 
-      &-details {
-        margin: 0px;
-        font-weight: 400;
-        font-size: 18px;
-        text-shadow: 2px 2px 1px black;
-        padding: 25px 0px;
-        width: 50%;
+      .cert {
+        border: 2px solid #ffd369;
+        padding: 2px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .story {
+        font-size: 1rem;
+        word-spacing: 2px;
+        filter: drop-shadow(0 0 3rem black);
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+        animation-delay: 0.2s;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box !important;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        white-space: normal;
+      }
+
+      @keyframes slideUp {
+        0% {
+          transform: translateY(05%);
+        }
+        100% {
+          transform: translateY(0%);
+        }
+      }
+      @keyframes fadeIn {
+        100% {
+          opacity: 1;
+        }
+      }
+
+      /* styling for tooltip element before show up */
+      .tooltip {
+        position: absolute;
+        z-index: 1;
+        top: 50px;
+        text-transform: capitalize;
+        background-color: rgb(110, 72, 170);
+        border-radius: 5px;
+        padding: 0.5em;
+        visibility: hidden;
+        font-size: .9rem;
+      }
+
+      /* styling pseudo element "::before" to create bottom arrow */
+      .tooltip::before {
+        content: "";
+        display: block;
+        position: absolute;
+        z-index: -1;
+        top: 27px;
+        left: 50px;
+        border: 10px solid rgb(110, 72, 170);
+        transform: rotate(45deg);
+      }
+
+      /* styling when text on hover position to show up tooltip element */
+      .cert:hover + .tooltip {
+        visibility: visible;
+        animation: animate 0.5s forwards;
+      }
+
+      /* styling for showing animation tooltip effect in hover position or when cursor at above "text element" */
+      @keyframes animate {
+        0% {
+          transform: translateY(-15px);
+        }
+
+        50% {
+          transform: translateY(6px);
+        }
+
+        100% {
+          transform: translateY(0);
+        }
       }
     }
   }

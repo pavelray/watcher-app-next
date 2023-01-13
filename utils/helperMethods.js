@@ -1,9 +1,13 @@
+import { MOVIE_CERTIFICATES } from "./certificates/movie";
+import { TV_CERTIFICATES } from "./certificates/tv";
 import {
+  API_IMAGE_URL,
   MEDIA_TYPE,
   MOVIE_GENRE,
   NO_IMG_PLACEHOLDER_MEDIA,
   TV_GENRE,
 } from "./constants";
+import { v4 as uuid4 } from "uuid";
 
 export const isBrowser = () => process.browser;
 const getCookiesFromDoc = () => (isBrowser() ? document.cookie : "");
@@ -117,4 +121,109 @@ export const isMobileView = (ctx) => {
 
 export const getImageUrl = (imageUrl, fullPath) => {
   return imageUrl ? `${fullPath}${imageUrl}` : NO_IMG_PLACEHOLDER_MEDIA;
+};
+
+export const getContentRating = (result, type) => {
+  switch (type) {
+    case MEDIA_TYPE.MOVIE:
+      const cert = result?.map((r) => {
+        const values = r.release_dates.find((x) => x.certification !== "");
+        const certificateValue = MOVIE_CERTIFICATES;
+        const meaning = certificateValue[r.iso_3166_1]?.find(
+          (cert) => cert.certification === values?.certification
+        )?.meaning;
+        return {
+          ...values,
+          iso_3166_1: r.iso_3166_1,
+          meaning,
+        };
+      });
+      return cert;
+    default: {
+      const cert = result?.map((r) => {
+        const certificateValue = TV_CERTIFICATES.certifications;
+        const meaning = certificateValue[r.iso_3166_1]?.filter(
+          (x) => x.certification === r.rating
+        )[0].meaning;
+        return {
+          certification: r.rating,
+          iso_3166_1: r.iso_3166_1,
+          meaning,
+        };
+      });
+      return cert;
+    }
+  }
+};
+
+export const getCertificates = (releaseInfo, productionCountries, type) => {
+  const result = releaseInfo?.results?.filter((o1) =>
+    productionCountries?.some((o2) => o1.iso_3166_1 === o2.iso_3166_1)
+  );
+  const selectCertCountry = !!result.length
+    ? result
+    : releaseInfo.results.filter((x) => x.iso_3166_1 === "US") || [
+        ...releaseInfo.results[0],
+      ];
+  const certificates = getContentRating(selectCertCountry, type);
+  return certificates;
+};
+
+export const formatNumber = (number) => {
+  return new Intl.NumberFormat().format(number);
+};
+
+export const getRuntime = (runtime) => {
+  const hours = Math.floor(runtime / 60);
+  const minutes = runtime % 60;
+  const totalRuntime = `${hours}h ${minutes}m`;
+  return totalRuntime;
+};
+
+export const getReleaseDate = (details, type) => {
+  const releaseDate =
+    type === MEDIA_TYPE.MOVIE ? details.release_date : details.first_air_date;
+
+  return new Date(releaseDate).toLocaleDateString();
+};
+
+export const formatCurrency = (number) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    notation: "compact",
+    compactDisplay: "long",
+  }).format(number);
+};
+
+export const getImage = (imagePath) => {
+  const imageName = imagePath
+    ? `${API_IMAGE_URL}/w200${imagePath}`
+    : NO_IMG_PLACEHOLDER_MEDIA;
+  return imageName;
+};
+
+export const getUid = () => {
+  return uuid4();
+};
+
+export const getYoutubeThumbnailSrc = (videoKey) => {
+  return `https://img.youtube.com/vi/${videoKey}/maxresdefault.jpg`;
+};
+
+export const getAge = (birthDate) => {
+  const today = new Date();
+  birthDate = new Date(birthDate);
+
+  var years = today.getFullYear() - birthDate.getFullYear();
+
+  if (
+    today.getMonth() < birthDate.getMonth() ||
+    (today.getMonth() == birthDate.getMonth() &&
+      today.getDate() < birthDate.getDate())
+  ) {
+    years--;
+  }
+
+  return years;
 };

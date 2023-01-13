@@ -1,9 +1,7 @@
 @import "./colors";
 @import "./mixins";
 
-.homeContainer {
-  margin: 40px 0px;
-}
+
 .heading {
   font-size: 35px;
   text-align: left;
@@ -21,10 +19,3 @@
   }
 }
 
-.trending {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-  background-color: $background-color-primary;
-  padding: 50px;
-}

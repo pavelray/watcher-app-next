@@ -3,14 +3,14 @@ import {
   getDiscoverMovieUrl,
   getDiscoverTvSeriesUrl,
 } from "../../utils/apiUtills";
-import { MEDIA_TYPE, pageLayoutStyle, pageMobileLayoutStyle } from "../../utils/constants";
+import { MEDIA_TYPE } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
 import ViewAll from "../../components/Business/ViewAll/ViewAll";
 
 const Discover = (props) => {
   return (
-    <div style={!props.isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
+    <div>
       <ViewAll {...props} />
     </div>
   );

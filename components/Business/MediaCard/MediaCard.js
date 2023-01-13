@@ -6,7 +6,7 @@ import {
   NO_IMG_PLACEHOLDER_MEDIA,
 } from "../../../utils/constants";
 import Card from "../../UI/Card/Card";
-import { getGenre, slugify } from "../../../utils/helperMethods";
+import { getGenre, getImage, slugify } from "../../../utils/helperMethods";
 import ProfileCard from "../../UI/Card/ProfileCard";
 
 export const MediaCard = (props) => {
@@ -16,16 +16,9 @@ export const MediaCard = (props) => {
     props;
 
   const genre = getGenre(genre_ids, type);
-  const getImage = () => {
-    const imageName = poster
-      ? `${API_IMAGE_URL}/w200${poster}`
-      : profile_path
-      ? `${API_IMAGE_URL}/w200${profile_path}`
-      : NO_IMG_PLACEHOLDER_MEDIA;
-    return imageName;
-  };
-
-  const posterImg = getImage() || NO_IMG_PLACEHOLDER_MEDIA;
+  const imagePath = poster || profile_path;
+  
+  const posterImg = getImage(imagePath);
 
   const redirectToDetails = () => {
     if (type !== MEDIA_TYPE.PERSON)
@@ -40,7 +33,7 @@ export const MediaCard = (props) => {
           poster={posterImg}
           title={name}
           ratings={popularity}
-          department={known_for_department}
+          description={`Known For: ${known_for_department}`}
           gender={gender}
           redirectToDetails={redirectToDetails}
         />
@@ -48,8 +41,7 @@ export const MediaCard = (props) => {
         <Card
           poster={posterImg}
           title={title}
-          ratings={vote_average.toFixed(2)}
-          genre={genre.split(",").join(", ")}
+          ratings={vote_average?.toFixed(2)}
           {...otherProps}
           redirectToDetails={redirectToDetails}
         />

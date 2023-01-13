@@ -17,12 +17,10 @@ const Review = ({ review }) => {
           <label className="rating"> {rating}/10</label>
         </p>
       </div>
-
-      <p className="review-description">
-        <span className="quote">&ldquo;</span>
-        {content}
-        <span className="quote">&rdquo;</span>
-      </p>
+      <p
+        className="review-description"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
       <p className="review-stats">
         <label className="date">{createdDate}</label>
       </p>

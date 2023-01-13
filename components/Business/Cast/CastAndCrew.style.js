@@ -24,22 +24,22 @@ const style = css`
       font-size: 1.6rem;
       text-transform: uppercase;
       margin-bottom: 0.5rem;
-      letter-spacing: 0.2rem;
+      letter-spacing: 0.1rem;
+
+      .view-all {
+        margin-left: 15px;
+        font-size: 12px;
+        letter-spacing: 0rem;
+        color: #FFD369;
+        &:hover {
+          cursor: pointer;
+          color: #FFC600;
+        }
+      }
     }
 
     &:not(:first-child) {
       margin: 2rem 0;
-    }
-
-    .view-all{
-      margin-top: 10px;
-      font-size: 16px;
-      letter-spacing: 0.2rem;
-
-      &:hover{
-        cursor: pointer;
-        color: $primary;
-      }
     }
   }
 `;

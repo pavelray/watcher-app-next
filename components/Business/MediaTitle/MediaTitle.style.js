@@ -8,43 +8,40 @@ const style = css`
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
-    &-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5rem;
-      text-shadow: 2px 2px 1px $background-color-primary;
 
-      @include for-phone-only {
-        font-size: 1.5rem;
-        margin: 0.5rem 0;
-      }
-    }
     &-tagline {
       font-weight: 400;
       margin: 5px 0;
       font-style: italic;
     }
+    .genre-text {
+      font-style: normal;
+      font-size: 18px;
+      font-weight: 600;
+      word-spacing: 4px;
+      letter-spacing: 2px;
+    }
 
     &-gen {
-      margin: 15px 0px;
+      display: flex;
+      margin: 10px 0px;
       padding: 0px;
+
+      .genre {
+        border-bottom: 1px solid #fedb39;
+        cursor: pointer;
+        padding: 3px 4px;
+      }
+
       li {
+        list-style: none;
         font-size: 16px;
         width: auto;
-        display: block;
         float: left;
         margin-right: 6px;
         font-weight: 600;
         word-spacing: 4px;
         letter-spacing: 2px;
-      }
-
-      .rating {
-        border: solid 2px $primary;
-        padding: 0.15em 0.4em;
-        font-size: 0.85em;
-        margin-right: 0.45em;
       }
     }
   }

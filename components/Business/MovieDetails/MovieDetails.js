@@ -1,27 +1,30 @@
-import Image from "next/image";
-import Link from "next/link";
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 import {
   API_IMAGE_URL,
   COLLECTION_TYPE,
   CREDIT_TYPE,
-  IMDB_IMAGE_PATH,
-  IMDB_LOCATION_URL,
   MEDIA_TYPE,
-  movieDetailsStyle,
+  NO_IMG_PLACEHOLDER_MEDIA,
 } from "../../../utils/constants";
-import { getImageUrl } from "../../../utils/helperMethods";
+import {
+  formatNumber,
+  getCertificates,
+  getUid,
+  getYoutubeThumbnailSrc,
+} from "../../../utils/helperMethods";
 import CardSlider from "../../UI/CardCarousel/CardSlider";
+import HeroComponent from "../../UI/HeroComponent/HeroComponent";
+import Modal from "../../UI/Modal/Modal";
 import CastAndCrew from "../Cast";
+import ImageFallback from "../ImageFallback";
 import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
-import MediaTitle from "../MediaTitle/MediaTitle";
 import ReviewsComponent from "../ReviewsComponent/ReviewsComponent";
-import ViewTrailer from "../ViewTrailer/ViewTrailer";
-import WatchProvider from "../WatchProvider/WatchProvider";
+import SocialIcons from "../SocialIcons/SocialIcons";
 
 import { style } from "./MovieDetails.style";
 
 const MovieDetails = ({ movie, id, type }) => {
+  const [viewModal, setViewModal] = useState(false);
   const {
     details,
     cast,
@@ -32,65 +35,95 @@ const MovieDetails = ({ movie, id, type }) => {
     recomended,
     reviews,
     releaseInfo,
+    external_ids,
+    images,
   } = movie;
+  console.log(movie);
+  const video = { ...trailerVideo.slice(0, 1)[0] };
+  const [selectedVideo, setSelectedVideo] = useState(video);
 
-  const populateImageUrl = (path) => {
-    const fullPath = `${API_IMAGE_URL}/original/`;
-    return getImageUrl(path, fullPath);
+  const onModalClose = () => {
+    setViewModal(false);
+  };
+
+  const playVideo = (video) => {
+    setSelectedVideo(video);
+    setViewModal(true);
+  };
+
+  const certificates = getCertificates(
+    releaseInfo,
+    details.production_countries,
+    type
+  );
+  const certificate = certificates.map((x) => x.certification).join(", ");
+  const meaning = certificates.map((x) => `${x.certification}: ${x.meaning}`);
+  const votes = formatNumber(details.vote_count);
+  const [showPhoto, setShowPhoto] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const [showReview, setShowReview] = useState(true);
+
+  const showPhotoTab = () => {
+    setShowVideo(false);
+    setShowReview(false);
+    setShowPhoto(!showPhoto);
+  };
+
+  const showVideoTab = () => {
+    setShowPhoto(false);
+    setShowReview(false);
+    setShowVideo(!showVideo);
+  };
+
+  const showReviewTab = () => {
+    setShowPhoto(false);
+    setShowVideo(false);
+    setShowReview(!showReview);
   };
 
   return (
     <Fragment>
-      <div
-        className="movie-details-container"
-        style={{
-          ...movieDetailsStyle,
-          backgroundImage: `url(${populateImageUrl(details.backdrop_path)})`,
-        }}
-      >
+      <HeroComponent
+        title={details.title || details.name}
+        description={details.overview}
+        imageUrl={details.backdrop_path}
+        type={details.media_type}
+        id={details.id}
+        trailerVideo={trailerVideo}
+        setViewModal={setViewModal}
+        certificate={{ certificate, meaning }}
+        runtime={runtime}
+        votes={votes}
+      />
+      <div className="movie-details-container">
         <div className="movie-details-container__main">
           <div className="movie-details-container__main-content">
             <div className="movie-details-image">
               <div className="image">
-                <Image
+                <ImageFallback
                   src={`${API_IMAGE_URL}/w400/${details.poster_path}`}
                   alt={details.id}
                   height={400}
                   width={300}
+                  fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
                 />
-              </div>
-              <WatchProvider
-                providers={providers}
-                homepage={details.homepage}
-              />
-              <div className="icons">
-                <h2>More Info</h2>
-                <Link
-                  href={`${IMDB_LOCATION_URL}/${details.imdb_id}`}
-                  passHref
-                  legacyBehavior
-                >
-                  <a target="_blank">
-                    <Image
-                      src={IMDB_IMAGE_PATH}
-                      alt="IMDB_icon"
-                      height={40}
-                      width={40}
-                    />
-                  </a>
-                </Link>
               </div>
             </div>
             <div className="movie-details-content">
               <div className="movie-details-content__row">
-                <MediaTitle
-                  details={details}
-                  runtime={runtime}
-                  releaseInfo={releaseInfo}
+                <div className="description">
+                  <p className="title">Storyline</p>
+                  {details.overview}
+                </div>
+                <MediaDetailsInfo details={details} type={type} crew={crew} />
+                {/* <WatchProvider
+                  providers={providers}
+                  homepage={details.homepage}
+                /> */}
+                <SocialIcons
+                  externalIds={external_ids}
+                  type={MEDIA_TYPE.MOVIE}
                 />
-                <div className="description">{details.overview}</div>
-                <ViewTrailer trailerVideo={trailerVideo} />
-                <MediaDetailsInfo details={details} />
               </div>
               <div className="movie-details-content__row">
                 <CastAndCrew
@@ -100,19 +133,88 @@ const MovieDetails = ({ movie, id, type }) => {
                   id={id}
                   mediaType={type}
                 />
-                <CastAndCrew
-                  credits={crew}
-                  type={CREDIT_TYPE.CREW}
-                  title="Crew"
-                  id={id}
-                  mediaType={type}
-                />
               </div>
             </div>
-            <ReviewsComponent reviews={reviews} />
           </div>
         </div>
       </div>
+      <div className="nav">
+        <button
+          className={`nav-buttons ${showReview ? "active" : ""}`}
+          onClick={showReviewTab}
+        >
+          Reviews
+        </button>
+        <button
+          className={`nav-buttons ${showVideo ? "active" : ""}`}
+          onClick={showVideoTab}
+        >
+          Videos
+        </button>
+        <button
+          className={`nav-buttons ${showPhoto ? "active" : ""}`}
+          onClick={showPhotoTab}
+        >
+          Photos
+        </button>
+      </div>
+      {showPhoto && (
+        <div className="wrapper">
+          <div className="title">Posters</div>
+          <div className="image-container">
+            {images.posters.map((image) => (
+              <div key={getUid()} className="image">
+                <ImageFallback
+                  src={`${API_IMAGE_URL}/w200/${image.file_path}`}
+                  fill
+                  sizes="100vw"
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  alt="Poster"
+                  fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {showVideo && (
+        <div className="wrapper">
+          <div className="title">Videos</div>
+          <div className="media-container">
+            {trailerVideo.map((video) => (
+              <div key={getUid()} className="media">
+                <div className="media-image">
+                  <ImageFallback
+                    src={`${getYoutubeThumbnailSrc(video.key)}`}
+                    fill
+                    sizes="100vw"
+                    style={{
+                      objectFit: "cover",
+                    }}
+                    alt="Video"
+                    fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
+                  />
+                  <span
+                    className="material-symbols-outlined icon-play"
+                    onClick={() => playVideo(video)}
+                  >
+                    play_circle
+                  </span>
+                </div>
+                <div className="media-title">{video.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+      {showReview && (
+        <div className="review-container">
+          <ReviewsComponent reviews={reviews} />
+        </div>
+      )}
+
       {!!recomended.results.length && (
         <div className="recomended-container">
           <CardSlider
@@ -123,7 +225,15 @@ const MovieDetails = ({ movie, id, type }) => {
           />
         </div>
       )}
-
+      <Modal open={viewModal} onModalClose={onModalClose}>
+        <iframe
+          className="video-frame"
+          key={selectedVideo.key}
+          title={selectedVideo.type}
+          allow="autoplay"
+          src={`https://www.youtube.com/embed/${selectedVideo.key}?autoplay=1`}
+        ></iframe>
+      </Modal>
       <style jsx> {style} </style>
     </Fragment>
   );
