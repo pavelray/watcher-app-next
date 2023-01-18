@@ -71,8 +71,9 @@ const style = css`
             .description {
               .title {
                 font-size: 1.25rem;
-                color: #ffd369;
+                color: $secondary;
                 margin: 8px 0px;
+                font-family: 'Crete Round', serif;
               }
               font-size: 1.2rem;
               letter-spacing: 0.1rem;
@@ -108,17 +109,19 @@ const style = css`
       border: none;
       box-shadow: none;
       background: none;
-      color: #eeeeee;
+      color: $primary;
       cursor: pointer;
       text-transform: uppercase;
+      font-family: 'Crete Round', serif;
+      letter-spacing:2px;
 
       &:hover {
-        color: #ffd369;
+        color: $tertiary;
       }
     }
     .active {
-      color: #ffd369;
-      border-bottom: 2px solid #ffd369;
+      color: $tertiary;
+      border-bottom: 2px solid $tertiary;
     }
   }
 

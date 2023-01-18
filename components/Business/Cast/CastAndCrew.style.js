@@ -30,10 +30,10 @@ const style = css`
         margin-left: 15px;
         font-size: 12px;
         letter-spacing: 0rem;
-        color: #FFD369;
+        color: $tertiary;
         &:hover {
           cursor: pointer;
-          color: #FFC600;
+          border-bottom: 1px solid $tertiary;
         }
       }
     }

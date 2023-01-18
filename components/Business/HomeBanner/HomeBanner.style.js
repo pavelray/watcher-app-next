@@ -13,7 +13,7 @@ const style = css`
       letter-spacing: 2px;
       word-spacing: 5px;
       margin: 20px 0px;
-      text-shadow: 2px 2px 1px $primary-dark;
+      text-shadow: 2px 2px 1px $secondary;
 
       @include for-phone-only {
         font-size: 18px;

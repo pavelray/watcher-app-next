@@ -15,10 +15,10 @@ const style = css`
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: #222831; /* Fallback color */
+  background-color: $background; /* Fallback color */
 
   &-content {
-    background-color: #222831;;
+    background-color: $background;
     margin: auto;
     width: 70%;
     padding: 0px 10px;
@@ -29,7 +29,7 @@ const style = css`
   }
   /* The Close Button */
   .close {
-    color: $primary-dark;
+    color: $secondary;
     float: right;
     font-size: 28px;
     font-weight: bold;

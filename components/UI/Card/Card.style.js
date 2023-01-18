@@ -58,7 +58,7 @@ const style = css`
 
   .card-btn-cta:hover {
     cursor: pointer;
-    background: $primary-dark;
+    background: $secondary;
   }
 `;
 

@@ -49,7 +49,7 @@ const style = css`
       }
 
       &:hover {
-        background-color: $primary;
+        background-color: $secondary;
       }
     }
   }

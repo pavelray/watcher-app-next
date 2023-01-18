@@ -10,8 +10,8 @@ const style = css`
     padding: 8px 8px;
     border: none;
     box-shadow: none;
-    background-color: #ffd369;
-    color: #393e46;
+    background-color: $tertiary;
+    color: $primary;
     border-radius: 2px;
     transition: all 0.2s ease-in-out;
     &:hover:active {

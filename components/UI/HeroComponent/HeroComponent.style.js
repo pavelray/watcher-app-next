@@ -29,6 +29,7 @@ const style = css`
         opacity: 0;
         animation: fadeIn 1s ease-out forwards;
         animation-delay: 0.1s;
+        font-family: 'Crete Round', serif;
       }
 
       .meta {
@@ -41,14 +42,14 @@ const style = css`
           font-size: 0.9rem;
           word-break: unset;
           word-spacing: 0.2rem;
-          color: #ffd369;
+          color: $secondary;
           letter-spacing: 0.1rem;
           font-weight: 600;
         }
       }
 
       .cert {
-        border: 2px solid #ffd369;
+        border: 2px solid $secondary;
         padding: 2px;
         &:hover {
           cursor: pointer;
@@ -90,7 +91,7 @@ const style = css`
         z-index: 1;
         top: 50px;
         text-transform: capitalize;
-        background-color: rgb(110, 72, 170);
+        background-color: $tertiary;
         border-radius: 5px;
         padding: 0.5em;
         visibility: hidden;
@@ -105,7 +106,7 @@ const style = css`
         z-index: -1;
         top: 27px;
         left: 50px;
-        border: 10px solid rgb(110, 72, 170);
+        border: 10px solid $tertiary;
         transform: rotate(45deg);
       }
 
