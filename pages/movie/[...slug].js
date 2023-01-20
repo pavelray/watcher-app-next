@@ -9,19 +9,50 @@ import {
 } from "../../utils/apiUtills";
 import {
   appendToReq,
+  APP_NAME,
   DEFAULT_COUNTRY_CODE,
   MEDIA_TYPE,
   VIDEO_TYPE,
 } from "../../utils/constants";
-import { getLocationCookie, getRuntime } from "../../utils/helperMethods";
+import {
+  getGenreText,
+  getLocationCookie,
+  getRuntime,
+} from "../../utils/helperMethods";
 import httpService from "../../utils/httpService";
 
 const MovieDetailsPage = ({ slugTitle, movie, id, type }) => {
+  const { details, crew } = movie;
+  const { title, release_date, genres } = details;
+  const { director } = crew;
+  const directorName = director[0].name;
+  const releaseYear = new Date(release_date).getFullYear();
+  const genreText = getGenreText(genres);
   return (
     <Fragment>
       <Head>
-        <title>Moviezine - {slugTitle}</title>
-        <meta name="description" content="Details information of the Movie" />
+        <title>
+          {title} | ${releaseYear}{" "}
+        </title>
+        <meta
+          name="description"
+          content={`${title} Release date ${release_date}. Read reviews, watch trailers and get details at ${APP_NAME}.`}
+        />
+        <meta
+          name="keywords"
+          content={`${title}, ${releaseYear}, ${genreText}, ${directorName}, movie theater, details, trailers, reviews`}
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content={APP_NAME} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content={`${title} - ${releaseYear}`} />
+        <meta property="og:type" content="video.movie" />
+        <meta
+          property="og:description"
+          content={`${title} is a ${genreText} film directed by ${directorName}. Release date ${release_date}. Read reviews, watch trailers and get showtimes at ${APP_NAME}.`}
+        />
+        <meta property="og:site_name" content={window.location.host} />
+        <meta property="og:locale" content="en_US" />
       </Head>
       <MovieDetails movie={movie} id={id} type={type} />
     </Fragment>

@@ -6,7 +6,6 @@ import { style } from "./MediaTitle.style";
 
 const MediaTitle = ({ details, type = MEDIA_TYPE.MOVIE }) => {
   const { tagline, genres = [] } = details;
-  console.log(genres);
   const releaseDate = getReleaseDate(details, type);
 
   const getGenres = () => {

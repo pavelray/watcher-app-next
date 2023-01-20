@@ -10,8 +10,6 @@ import { MEDIA_TYPE } from "../../../utils/constants";
 
 const HomeBanner = ({ trendingToday }) => {
   const trending = trendingToday;
-  console.log(trending);
-
   const certificatesValue =
     trending.media_type === MEDIA_TYPE.MOVIE
       ? trending.release_dates

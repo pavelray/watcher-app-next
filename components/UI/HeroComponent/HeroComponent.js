@@ -23,9 +23,6 @@ const HeroComponent = ({
     return getImageUrl(path, fullPath);
   };
 
-
-  console.log(certificate)
-
   return (
     <Fragment>
       <div
