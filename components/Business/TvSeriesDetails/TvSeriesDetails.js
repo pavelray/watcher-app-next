@@ -43,8 +43,6 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
   const { number_of_seasons, seasons } = details;
   const totalSeasons = `Season ${number_of_seasons}`;
 
-  console.log(tvSeries);
-
   const video = { ...trailerVideo.slice(0, 1)[0] };
   const [selectedVideo, setSelectedVideo] = useState(video);
   const [selectSeasonNumber, setSelectedSeasonNumber] = useState(number_of_seasons);

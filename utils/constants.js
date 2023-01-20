@@ -186,7 +186,8 @@ export const ERROR_MESSAGE = {
   SERVER_ERROR: "Opps! some error occoured. Please try again later.",
 };
 
-export const APP_NAME = "MovieArchive";
+export const APP_NAME = "The Film Mastery";
+export const SITE_NAME = "https://thefilmmastery.com";
 
 export const DEFAULT_COUNTRY_CODE = "US";
 export const DEFAULT_COUNTRY_NAME = "United States";

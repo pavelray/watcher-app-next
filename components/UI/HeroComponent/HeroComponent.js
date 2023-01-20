@@ -23,9 +23,6 @@ const HeroComponent = ({
     return getImageUrl(path, fullPath);
   };
 
-
-  console.log(certificate)
-
   return (
     <Fragment>
       <div
@@ -33,11 +30,11 @@ const HeroComponent = ({
         style={{
           backgroundImage: `linear-gradient(
         to right,
-        rgba(34, 40, 49, 1) 10%,
-        rgba(34, 40, 49, .9) 20%,
-        rgba(34, 40, 49, 0.7) 45%,
-        rgba(34, 40, 49, 0.5) 55%,
-        rgba(34, 40, 49, 0) 95%
+        rgba(17, 37, 46, 1) 10%,
+        rgba(17, 37, 46, .9) 20%,
+        rgba(17, 37, 46, 0.7) 45%,
+        rgba(17, 37, 46, 0.5) 55%,
+        rgba(17, 37, 46, 0) 95%
       ), url(${populateImageUrl(imageUrl)})`,
         }}
       >

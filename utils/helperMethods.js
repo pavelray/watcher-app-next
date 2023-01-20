@@ -50,6 +50,10 @@ export const removeCookie = (name, value, domain, ctx) => {
   res.setHeader("Set-Cookie", [...previousCookies, cookieString]);
 };
 
+export const getGenreText = (genres) => {
+  return genres.map(n=> n.name).join(' ,');
+};
+
 export const getGenre = (genreIds, type) => {
   if (genreIds && type !== MEDIA_TYPE.PERSON) {
     if (type === MEDIA_TYPE.MOVIE) {

@@ -73,17 +73,17 @@ const style = css`
       border: none;
       box-shadow: none;
       background: none;
-      color: #eeeeee;
+      color: $primary;
       cursor: pointer;
       text-transform: uppercase;
 
       &:hover {
-        color: #ffd369;
+        color: $tertiary;
       }
     }
     .active {
-      color: #ffd369;
-      border-bottom: 2px solid #ffd369;
+      color: $tertiary;
+      border-bottom: 2px solid $tertiary;
     }
   }
 

@@ -123,7 +123,6 @@ export const getShowsOnAirUrl = (type) => {
 };
 
 export const getDiscoverMovieUrl = (type, page, genre) => {
-  console.log(page);
   return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genre}&with_watch_monetization_types=flatrate`;
 };
 

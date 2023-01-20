@@ -10,22 +10,46 @@ import {
 } from "../../utils/apiUtills";
 import {
   appendToReq,
+  APP_NAME,
   DEFAULT_COUNTRY_CODE,
   MEDIA_TYPE,
   VIDEO_TYPE,
 } from "../../utils/constants";
-import { getLocationCookie } from "../../utils/helperMethods";
+import { getGenreText, getLocationCookie } from "../../utils/helperMethods";
 import httpService from "../../utils/httpService";
 
 const TvSeriesDetailsPage = ({ slugTitle, tvSeries, type, id }) => {
+  const { details } = tvSeries;
+  const { name, first_air_date, genres, created_by } = details;
+  const directorName = created_by.map(n=> n.name).join(' ,');
+  const releaseYear = new Date(first_air_date).getFullYear();
+  const genreText = getGenreText(genres);
+
   return (
     <Fragment>
       <Head>
-        <title>Moviezine - {slugTitle}</title>
+        <title>
+          {name} | ${releaseYear}{" "}
+        </title>
         <meta
           name="description"
-          content="Details information of the Tv Series"
+          content={`${name} Release date ${first_air_date}. Read reviews, watch trailers and get details at ${APP_NAME}.`}
         />
+        <meta
+          name="keywords"
+          content={`${name}, ${releaseYear}, ${genreText}, ${directorName}, movie theater, details, trailers, reviews`}
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content={APP_NAME} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta property="og:title" content={`${name} - ${releaseYear}`} />
+        <meta property="og:type" content="video.tvseries" />
+        <meta
+          property="og:description"
+          content={`${name} is a ${genreText} tv series created by ${directorName}. Release date ${first_air_date}. Read reviews, watch trailers and get showtimes at ${APP_NAME}.`}
+        />
+        <meta property="og:site_name" content={window.location.host} />
+        <meta property="og:locale" content="en_US" />
       </Head>
       <TvSeriesDetails tvSeries={tvSeries} type={type} id={id} />
     </Fragment>

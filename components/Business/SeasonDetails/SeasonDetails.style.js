@@ -20,20 +20,20 @@ const style = css`
         background: transparent;
       }
       &::-webkit-scrollbar-thumb {
-        background: #343434 !important;
+        background: $background !important;
       }
     }
 
     .tabs {
       padding: 10px;
       font-size: 18px;
-      border-bottom: 1px solid $primary-dark;
+      border-bottom: 1px solid $secondary;
       cursor: pointer;
     }
 
     .tabs-active {
       font-weight: 600;
-      background-color: $primary-darker;
+      background-color: $secondary;
       border-bottom: 2px solid $primary;
     }
   }
@@ -65,7 +65,7 @@ const style = css`
       background: transparent;
     }
     &::-webkit-scrollbar-thumb {
-      background: #343434 !important;
+      background: $background !important;
     }
 
     .media-card {

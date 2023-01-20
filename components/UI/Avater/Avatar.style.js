@@ -11,13 +11,13 @@ const style = css`
     &__name {
       margin-top: 10px;
       letter-spacing: 1px;
-      color: #1CD6CE;
+      color: $secondary;
       font-size: .8rem;
     }
 
     &__role {
       font-weight: 400;
-      color: #EEEEEE;
+      color: $primary;
       font-size: 1rem;
     }
   }

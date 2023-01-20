@@ -8,6 +8,7 @@ import {
 } from "../utils/apiUtills";
 import {
   appendToReq,
+  APP_NAME,
   COLLECTION_TYPE,
   MEDIA_TYPE,
   pageLayoutStyle,
@@ -27,11 +28,18 @@ const Home = ({
   return (
     <Fragment>
       <Head>
-        <title>Moviezine - Home</title>
+        <title>Trending Movies | Tv Series | Person</title>
         <meta
           name="description"
-          content="Home page containing Trending movies and tv series of the week"
+          content="Stay updated with the trending movies, tv series in our website. Find details, trailers, and reviews for new and popular movies and tv series."
         />
+        <meta
+          name="keywords"
+          content="movie releases, upcoming films, movie theater, showtimes, trailers, reviews, popular movies, popular tv showes, on air tv showes, upcoming tv series"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content={APP_NAME} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
         <div className={styles.homeContainer}>
@@ -83,7 +91,7 @@ export async function getServerSideProps(ctx) {
       trendingTodayReq,
     ]);
   const randomMedia =
-  trendingTodayResp.value.results[
+    trendingTodayResp.value.results[
       Math.floor(Math.random() * trendingTodayResp.value.results.length)
     ];
   url = `${getMovieDetailsDataAPIUrl(

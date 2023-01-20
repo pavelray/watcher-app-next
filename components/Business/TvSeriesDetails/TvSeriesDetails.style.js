@@ -71,8 +71,9 @@ const style = css`
             .description {
               .title {
                 font-size: 1.25rem;
-                color: #ffd369;
+                color: $secondary;
                 margin: 8px 0px;
+                font-family: 'Crete Round', serif;
               }
               font-size: 1.2rem;
               letter-spacing: 0.1rem;
@@ -108,17 +109,19 @@ const style = css`
       border: none;
       box-shadow: none;
       background: none;
-      color: #eeeeee;
+      color: $primary;
       cursor: pointer;
       text-transform: uppercase;
+      font-family: 'Crete Round', serif;
+      letter-spacing:2px;
 
       &:hover {
-        color: #ffd369;
+        color: $tertiary;
       }
     }
     .active {
-      color: #ffd369;
-      border-bottom: 2px solid #ffd369;
+      color: $tertiary;
+      border-bottom: 2px solid $tertiary;
     }
   }
 
@@ -140,16 +143,23 @@ const style = css`
   .season-select {
     padding: 0.8rem 2rem 0.8rem 1.5rem;
     font-size: 1rem;
-    color: #ffd369;
-    background: #393e46
+    color: $primary;
+    background: $background2
       url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDMwIDYwIj48cGF0aCBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCIgZmlsbD0iI2ZmZiIgZD0iTTE1LjY3NiAzMy4wMzdsNS4xMDItNS4xMDMtLjcwNy0xLjA4Ni00LjQ5IDQuNDkyLTQuNDktNC40OTItLjcwMiAxLjA4NiA1LjEwMiA1LjEwMy4wNzUuMTE1LjAyLS4wMi4wMi4wMnoiLz48L3N2Zz4K)
       no-repeat 100% 45%;
     background-size: 30px 60px;
-    border-color: #393e46;
+    border-color: $background2;
     border-radius: 0;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+  }
+
+  .media-title {
+    color: $secondary;
+  }
+  .episode-number {
+    color: $secondary;
   }
 
   .image-container {

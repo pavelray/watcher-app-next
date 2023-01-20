@@ -38,7 +38,6 @@ const MovieDetails = ({ movie, id, type }) => {
     external_ids,
     images,
   } = movie;
-  console.log(movie);
   const video = { ...trailerVideo.slice(0, 1)[0] };
   const [selectedVideo, setSelectedVideo] = useState(video);
 
