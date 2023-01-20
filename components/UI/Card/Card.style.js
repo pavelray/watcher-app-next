@@ -22,6 +22,7 @@ const style = css`
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      font-family: 'Crete Round', serif;
     }
     &__info {
       font-weight: 600;

@@ -41,7 +41,7 @@ const AboutComponent = () => {
           website and find the information and community here as enjoyable as we
           do.
         </p>
-        <p>
+        <p className="comming-soon">
           <b>Mobile App - Comming Soon !!</b>
         </p>
       </div>

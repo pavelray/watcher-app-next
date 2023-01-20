@@ -14,23 +14,29 @@ const style = css`
     left: 50%;
     transform: translate(-50%, -50%);
     &-title {
+      margin-top: 40px;
       font-size: 65px;
-      font-family: "Pacifico", cursive;
+      font-family: "Cardo", serif;
     }
     &-sub-heading {
       text-transform: capitalize;
       letter-spacing: 0.2rem;
+      font-family: "Crete Round", serif;
     }
     &-body {
       text-align: center;
       letter-spacing: 0.1rem;
       word-spacing: 0.2rem;
 
-      p{
+      p {
         white-space: pre-line;
+        font-family: 'Maitree', serif;
       }
     }
 
+    .comming-soon {
+      font-family: "Crete Round", serif;
+    }
     .coffee {
       margin-top: 20px;
       display: flex;

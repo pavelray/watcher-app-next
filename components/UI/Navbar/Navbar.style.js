@@ -40,18 +40,19 @@ const style = css`
         align-items: center;
         align-content: center;
         text-align: center;
+        font-family: 'Crete Round', serif;
       }
       li:hover {
         cursor: pointer;
-        color: $secondary;
+        color: $tertiary;
       }
       a {
         text-decoration: inherit;
         color: inherit;
       }
       .active {
-        color: $secondary;
-        border-bottom: 2px solid $secondary;
+        color: $tertiary;
+        border-bottom: 2px solid $tertiary;
       }
 
       @include for-phone-only {
@@ -86,7 +87,7 @@ const style = css`
 
       span {
         font-size: 35px;
-        font-family: "Pacifico", cursive;
+        font-family: 'Cardo', serif;
         &:hover {
           color: $tertiary;
         }
