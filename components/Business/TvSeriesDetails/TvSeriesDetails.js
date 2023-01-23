@@ -175,19 +175,22 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
         >
           Episodes
         </button>
-
-        <button
-          className={`nav-buttons ${showVideo ? "active" : ""}`}
-          onClick={showVideoTab}
-        >
-          Videos
-        </button>
-        <button
-          className={`nav-buttons ${showPhoto ? "active" : ""}`}
-          onClick={showPhotoTab}
-        >
-          Photos
-        </button>
+        {!!trailerVideo.length && (
+          <button
+            className={`nav-buttons ${showVideo ? "active" : ""}`}
+            onClick={showVideoTab}
+          >
+            Videos
+          </button>
+        )}
+        {!!images.posters.length && (
+          <button
+            className={`nav-buttons ${showPhoto ? "active" : ""}`}
+            onClick={showPhotoTab}
+          >
+            Photos
+          </button>
+        )}
         {!!reviews.total_results && (
           <button
             className={`nav-buttons ${showReview ? "active" : ""}`}

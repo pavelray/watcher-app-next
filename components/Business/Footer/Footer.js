@@ -11,14 +11,17 @@ const Footer = () => {
           <div className="footer-links app">
             <div className="title">{APP_NAME}</div>
             <p>
-              This app is developed using TMDB API. All data provided by the
-              TMDB. This is an educational app which shows in which OTT platform
-              the Movie/Tv series is available.
+             The ultimate destination for movie enthusiasts.
+             This app is using data from TMDB api.
+             Copywright @ thefilmmastery 2023.
             </p>
           </div>
           <div className="footer-links">
             <div className="title">Usefull Links</div>
             <ul>
+              <li>
+                <Link href="/">Home</Link>
+              </li>
               <li>
                 <Link href="/movie">Movies</Link>
               </li>
@@ -34,13 +37,15 @@ const Footer = () => {
             <div className="title">Social</div>
             <ul>
               <li>
-                <Link href="/movie">Movies</Link>
+                <a href="https://www.instagram.com/film.mastery/" target="_blank" rel="noreferrer">
+                  Instagram
+                </a>
               </li>
               <li>
-                <Link href="/tv">Tv Series</Link>
+                <Link href="/facebook">Facebook</Link>
               </li>
               <li>
-                <Link href="/about">About</Link>
+                <Link href="/youtube">Youtube</Link>
               </li>
             </ul>
           </div>

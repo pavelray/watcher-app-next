@@ -1,12 +1,15 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
-import Link from 'next/link';
-import Router from 'next/router';
+import Link from "next/link";
+import Router, { useRouter } from "next/router";
 import { APP_NAME } from "../../../utils/constants";
 
 import { style } from "./Navbar.style.js";
-import navStyle from './Navbar.module.scss';
+import navStyle from "./Navbar.module.scss";
 
 const NavBar = () => {
+  const router = useRouter();
+  const currentRoute = router.pathname;
+
   const [searchTerm, setSearchTerm] = useState("");
   const handleChange = (event) => {
     const { value } = event.target;
@@ -43,14 +46,7 @@ const NavBar = () => {
   const mobileMenuClick = () => {
     const mobileMenu = document.querySelectorAll(".mobile");
     mobileMenu[0].classList.toggle("menu-open");
-  }
-
-  const handleMenuClick = (e) => {
-    // document.querySelectorAll(".menu-item").forEach((el) => {
-    //   el.classList.remove("active");
-    // });
-    // e.target.classList.add("active");
-  }
+  };
 
   return (
     <Fragment>
@@ -74,16 +70,30 @@ const NavBar = () => {
           </button>
         </div>
         <ul>
-          <li className="menu-item" onClick={handleMenuClick}>
+          <li
+            className={currentRoute === "/" ? "menu-item active" : "menu-item"}
+          >
             <Link href="/">Home</Link>
           </li>
-          <li className="menu-item" onClick={handleMenuClick}>
+          <li
+            className={
+              currentRoute === "/movie" ? "menu-item active" : "menu-item"
+            }
+          >
             <Link href="/movie">Movie</Link>
           </li>
-          <li className="menu-item" onClick={handleMenuClick}>
+          <li
+            className={
+              currentRoute === "/tv" ? "menu-item active" : "menu-item"
+            }
+          >
             <Link href="/tv">Tv Series</Link>
           </li>
-          <li className="menu-item" onClick={handleMenuClick}>
+          <li
+            className={
+              currentRoute === "/about" ? "menu-item active" : "menu-item"
+            }
+          >
             <Link href="/about">About</Link>
           </li>
         </ul>
@@ -95,16 +105,24 @@ const NavBar = () => {
         <div className="mobile-menu">
           <ul className="menu">
             <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/" className={navStyle.menuLink}>Home</Link>
+              <Link href="/" className={navStyle.menuLink}>
+                Home
+              </Link>
             </li>
             <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/movie" className={navStyle.menuLink}>Movie</Link>
+              <Link href="/movie" className={navStyle.menuLink}>
+                Movie
+              </Link>
             </li>
             <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/tv" className={navStyle.menuLink}>TV Series</Link>
+              <Link href="/tv" className={navStyle.menuLink}>
+                TV Series
+              </Link>
             </li>
             <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/about" className={navStyle.menuLink}>About</Link>
+              <Link href="/about" className={navStyle.menuLink}>
+                About
+              </Link>
             </li>
           </ul>
         </div>

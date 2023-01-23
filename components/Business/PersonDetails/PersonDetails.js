@@ -86,7 +86,7 @@ const PersonDetails = ({ person, id }) => {
       </div>
       {showPhoto && (
         <div className="wrapper">
-          <SubHeading text="Images" />
+          <SubHeading text="Photos" />
           <div className="image-container">
             {images.profiles.map((image) => (
               <div key={getUid()} className="image">
@@ -107,6 +107,7 @@ const PersonDetails = ({ person, id }) => {
       )}
       {showCredits && (
         <div className="wrapper">
+        <SubHeading text="Known for" />
           <div className="image-container">
             {combined_credits.cast?.map((tr) => {
               return (

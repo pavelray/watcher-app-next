@@ -9,6 +9,10 @@ const style = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @include mobile{
+      margin-bottom: 20px;
+    }
     &-title {
       margin-top: 40px;
       font-size: 65px;
