@@ -10,8 +10,11 @@ const style = css`
     display: flex;
     padding: 20px;
 
-    @include for-phone-only {
+    @include mobile {
       padding: 10px;
+    }
+    @include tablet {
+      min-height: auto;
     }
 
     &::before {
@@ -25,7 +28,7 @@ const style = css`
 
     &__main {
       position: relative;
-      @include for-phone-only {
+      @include mobile {
         margin-top: 1rem;
         padding: 0 0.2rem;
         width: 100%;
@@ -36,10 +39,14 @@ const style = css`
         gap: 5rem;
         flex-wrap: wrap;
 
-        @include for-phone-only {
+        @include mobile {
           display: flex;
           flex-direction: column;
           flex-wrap: nowrap;
+        }
+
+        @include tablet {
+          gap: 1rem;
         }
 
         .movie-details-image {
@@ -55,7 +62,7 @@ const style = css`
             margin-top: 10px;
           }
 
-          @include for-phone-only {
+          @include mobile {
             display: none;
           }
         }
@@ -63,7 +70,7 @@ const style = css`
         .movie-details-content {
           flex: 3;
           &__row {
-            @include for-phone-only {
+            @include mobile {
               display: flex;
               flex-direction: column;
             }
@@ -73,7 +80,7 @@ const style = css`
                 font-size: 1.25rem;
                 color: $secondary;
                 margin: 8px 0px;
-                font-family: 'Crete Round', serif;
+                font-family: "Crete Round", serif;
               }
               font-size: 1.2rem;
               letter-spacing: 0.1rem;
@@ -98,8 +105,8 @@ const style = css`
     flex-wrap: wrap;
     justify-content: center;
 
-    @include for-phone-only {
-      justify-content: space-between;
+    @include mobile {
+      justify-content: space-evenly;
     }
 
     &-buttons {
@@ -112,8 +119,12 @@ const style = css`
       color: $primary;
       cursor: pointer;
       text-transform: uppercase;
-      font-family: 'Crete Round', serif;
-      letter-spacing:2px;
+      font-family: "Crete Round", serif;
+      letter-spacing: 2px;
+
+      @include mobile {
+        width: auto;
+      }
 
       &:hover {
         color: $tertiary;
@@ -127,9 +138,13 @@ const style = css`
 
   .wrapper {
     padding: 20px;
+
+    @include mobile {
+      padding: 5px;
+    }
   }
 
-  .title{
+  .title {
     margin: 10px 0px;
     font-size: 2rem;
   }
@@ -207,7 +222,7 @@ const style = css`
     animation: fadeIn 1s ease-out forwards;
     animation-delay: 0.1s;
 
-    @include for-phone-only {
+    @include mobile {
       padding: 0px;
     }
   }
@@ -215,8 +230,9 @@ const style = css`
   .recomended-container {
     padding: 20px;
 
-    @include for-phone-only {
-      margin: 0px 10px;
+    @include mobile {
+      margin: 0;
+      padding: 5px;
     }
   }
 
@@ -224,14 +240,14 @@ const style = css`
     width: 100%;
     height: 640px;
     border: none;
-    @include for-phone-only {
+    @include mobile {
       height: 250px;
     }
   }
   .similar-movies {
     margin: 0px 50px;
 
-    @include for-phone-only {
+    @include mobile {
       margin: 0px 10px;
     }
   }

@@ -11,11 +11,11 @@ const style = css`
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       row-gap: 20px;
-      @include for-phone-only {
+      @include mobile {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
       }
-      @include for-tablet-portrait-up {
+      @include tablet {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
       }

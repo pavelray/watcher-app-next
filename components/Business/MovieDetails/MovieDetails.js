@@ -15,6 +15,7 @@ import {
 import CardSlider from "../../UI/CardCarousel/CardSlider";
 import HeroComponent from "../../UI/HeroComponent/HeroComponent";
 import Modal from "../../UI/Modal/Modal";
+import { SubHeading } from "../../UI/Typography/Typography";
 import CastAndCrew from "../Cast";
 import ImageFallback from "../ImageFallback";
 import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
@@ -138,12 +139,15 @@ const MovieDetails = ({ movie, id, type }) => {
         </div>
       </div>
       <div className="nav">
-        <button
-          className={`nav-buttons ${showReview ? "active" : ""}`}
-          onClick={showReviewTab}
-        >
-          Reviews
-        </button>
+        {!!reviews.length && (
+          <button
+            className={`nav-buttons ${showReview ? "active" : ""}`}
+            onClick={showReviewTab}
+          >
+            Reviews
+          </button>
+        )}
+
         <button
           className={`nav-buttons ${showVideo ? "active" : ""}`}
           onClick={showVideoTab}
@@ -159,7 +163,7 @@ const MovieDetails = ({ movie, id, type }) => {
       </div>
       {showPhoto && (
         <div className="wrapper">
-          <div className="title">Posters</div>
+          <SubHeading text="Posters" />
           <div className="image-container">
             {images.posters.map((image) => (
               <div key={getUid()} className="image">
@@ -180,7 +184,8 @@ const MovieDetails = ({ movie, id, type }) => {
       )}
       {showVideo && (
         <div className="wrapper">
-          <div className="title">Videos</div>
+          <SubHeading text="Videos" />
+
           <div className="media-container">
             {trailerVideo.map((video) => (
               <div key={getUid()} className="media">

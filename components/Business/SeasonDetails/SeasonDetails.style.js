@@ -10,7 +10,7 @@ const style = css`
     gap: 10px;
     margin-bottom: 10px;
 
-    @include for-phone-only {
+    @include mobile {
       overflow: hidden;
       overflow-x: scroll;
       &::-webkit-scrollbar {

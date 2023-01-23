@@ -8,17 +8,28 @@ const style = css`
     padding: 10px;
     display: flex;
 
-    @include for-phone-only {
+    @include mobile {
+      padding: 10px 5px;
+    }
+    @include tablet {
       padding: 10px 5px;
     }
 
     .hamburger-icon {
       display: none;
 
-      @include for-phone-only {
+      @include mobile {
         display: flex;
         margin-left: 5px;
-
+        color: $primary;
+        span {
+          font-size: 35px;
+        }
+      }
+      @include tablet {
+        display: flex;
+        margin-left: 5px;
+        color: $primary;
         span {
           font-size: 35px;
         }
@@ -40,7 +51,7 @@ const style = css`
         align-items: center;
         align-content: center;
         text-align: center;
-        font-family: 'Crete Round', serif;
+        font-family: "Crete Round", serif;
       }
       li:hover {
         cursor: pointer;
@@ -55,7 +66,10 @@ const style = css`
         border-bottom: 2px solid $tertiary;
       }
 
-      @include for-phone-only {
+      @include mobile {
+        display: none;
+      }
+      @include tablet {
         display: none;
       }
     }
@@ -70,8 +84,11 @@ const style = css`
         margin-right: 5px;
         margin-left: 5px;
 
-        @include for-phone-only {
-          font-size: 23px;
+        @include mobile {
+          font-size: 40px;
+        }
+        @include tablet {
+          font-size: 40px;
         }
       }
     }
@@ -81,18 +98,24 @@ const style = css`
       width: 30%;
       align-items: center;
       cursor: pointer;
-      @include for-phone-only {
+      @include mobile {
+        width: 25%;
+      }
+      @include tablet {
         width: 25%;
       }
 
       span {
         font-size: 35px;
-        font-family: 'Cardo', serif;
+        font-family: "Cardo", serif;
         &:hover {
           color: $tertiary;
         }
 
-        @include for-phone-only {
+        @include mobile {
+          font-size: 14px;
+        }
+        @include tablet {
           font-size: 14px;
         }
       }
@@ -102,8 +125,11 @@ const style = css`
       display: flex;
       width: 40%;
       justify-content: center;
-      @include for-phone-only {
-        width: 60%;
+      @include mobile {
+        width: 85%;
+      }
+      @include tablet {
+        width: 85%;
       }
 
       &__input {
@@ -120,7 +146,12 @@ const style = css`
           outline: none;
         }
 
-        @include for-phone-only {
+        @include mobile {
+          font-size: 10px;
+          width: 75%;
+          padding-right: 42px;
+        }
+        @include tablet {
           font-size: 10px;
           width: 75%;
           padding-right: 42px;
@@ -132,7 +163,10 @@ const style = css`
         cursor: pointer;
         margin-left: -50px;
 
-        @include for-phone-only {
+        @include mobile {
+          margin-left: -38px;
+        }
+        @include tablet {
           margin-left: -38px;
         }
 
@@ -143,7 +177,10 @@ const style = css`
             color: $tertiary;
           }
 
-          @include for-phone-only {
+          @include mobile {
+            font-size: 25px;
+          }
+          @include tablet {
             font-size: 25px;
           }
         }
@@ -165,7 +202,8 @@ const style = css`
     z-index: 1;
     position: fixed;
     transition: all 0.4s ease-out, background 1s ease-out;
-    background-image: $background-gradient;
+    background-color: $background;
+    color: $primary;
 
     &-menu {
       clear: both;
@@ -185,7 +223,7 @@ const style = css`
   }
 
   .mobile ul.menu li.menu-item {
-    border-bottom: 1px solid #333;
+    border-bottom: 2px solid $tertiary;
     margin-top: 5px;
     opacity: 0;
     transition: opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99),

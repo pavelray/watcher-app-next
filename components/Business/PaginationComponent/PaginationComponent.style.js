@@ -5,9 +5,7 @@ const style = css`
   @import "../../../styles/mixins";
 
   .pagination-wrapper {
-    display: flex;
-    align-items: flex-end;
-    flex-direction: column;
+    
   }
 `;
 export { style };

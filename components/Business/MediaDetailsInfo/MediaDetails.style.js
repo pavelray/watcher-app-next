@@ -15,7 +15,7 @@ const style = css`
       font-weight: 400;
       line-height: 25px;
 
-      @include for-phone-only {
+      @include mobile {
         font-size: 1rem;
         margin: 0.5rem 0;
       }

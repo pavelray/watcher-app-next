@@ -17,7 +17,7 @@ import Router from "next/router";
 import styles from "../../styles/Cast.module.scss";
 import { Heading } from "../../components/UI/Typography/Typography";
 
-const AllCastAndCrew = ({ cast, crew, isMobile }) => {
+const AllCastAndCrew = ({ cast, crew }) => {
   const redirectToDetails = (id) => {
     Router.push(`/${MEDIA_TYPE.PERSON}/${id}/`);
   };

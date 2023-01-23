@@ -7,9 +7,15 @@ const style = css`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 25vmin;
     border-radius: 8px;
     text-align: left;
+    width: 200px;
+    flex: 1 1 200px;
+
+    @include mobile {
+      flex: 1 1 140px;
+      width: 140px;
+    }
   }
 
   .card-body {
@@ -22,7 +28,7 @@ const style = css`
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      font-family: 'Crete Round', serif;
+      font-family: "Crete Round", serif;
     }
     &__info {
       font-weight: 600;
@@ -47,7 +53,7 @@ const style = css`
   .card-btn-cta {
     border: none;
     padding: 10px;
-    color: $text-color-primary;
+    color: $primary;
     background: $primary;
     width: 100%;
     border-radius: 3px;

@@ -39,7 +39,7 @@ const style = css`
           flex: 2;
         }
 
-        @include for-phone-only {
+        @include mobile {
           display: flex;
           flex-direction: column;
         }

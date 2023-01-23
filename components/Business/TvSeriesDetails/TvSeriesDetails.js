@@ -16,6 +16,7 @@ import {
 import CardSlider from "../../UI/CardCarousel/CardSlider";
 import HeroComponent from "../../UI/HeroComponent/HeroComponent";
 import Modal from "../../UI/Modal/Modal";
+import { SubHeading } from "../../UI/Typography/Typography";
 import CastAndCrew from "../Cast";
 import ImageFallback from "../ImageFallback";
 import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
@@ -45,7 +46,8 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
 
   const video = { ...trailerVideo.slice(0, 1)[0] };
   const [selectedVideo, setSelectedVideo] = useState(video);
-  const [selectSeasonNumber, setSelectedSeasonNumber] = useState(number_of_seasons);
+  const [selectSeasonNumber, setSelectedSeasonNumber] =
+    useState(number_of_seasons);
   const [selectedSeasion, setSelectedSeason] = useState(latestSeasonDetails);
 
   const onModalClose = () => {
@@ -197,7 +199,7 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
       </div>
       {showPhoto && (
         <div className="wrapper">
-          <div className="title">Posters</div>
+          <SubHeading text="Posters" />
           <div className="image-container">
             {images.posters.map((image) => (
               <div key={getUid()} className="image">
@@ -218,7 +220,7 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
       )}
       {showVideo && (
         <div className="wrapper">
-          <div className="title">Videos</div>
+          <SubHeading text="Videos" />
           <div className="media-container">
             {trailerVideo.map((video) => (
               <div key={getUid()} className="media">
@@ -254,14 +256,15 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
       {showEpisodes && (
         <div className="wrapper">
           <div className="title">
-            <select className="season-select" onChange={getSeasionDetails} value={selectSeasonNumber}>
+            <select
+              className="season-select"
+              onChange={getSeasionDetails}
+              value={selectSeasonNumber}
+            >
               {seasons
                 .filter((s) => s.season_number > 0)
                 .map((s) => (
-                  <option
-                    key={getUid()}
-                    value={s.season_number}
-                  >
+                  <option key={getUid()} value={s.season_number}>
                     Season {s.season_number}
                   </option>
                 ))}

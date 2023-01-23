@@ -7,4 +7,8 @@
   margin: 0 auto;
   justify-content: space-between;
   row-gap: 2vmin;
+
+  @include mobile{
+    gap: 10px;
+  }
 }

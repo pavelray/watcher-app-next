@@ -13,7 +13,8 @@
       transform: scale(1.05);
     }
   }
-  @include for-phone-only {
-    width: 20vmin;
+  @include mobile {
+    width: 140px;
+    height: 200px;
   }
 }

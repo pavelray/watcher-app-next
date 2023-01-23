@@ -5,9 +5,8 @@ import { pageLayoutStyle, pageMobileLayoutStyle } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
 const Search = (props) => {
-    const { isMobile } = props;
     return (
-        <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
+        <div>
           <ViewAll {...props} />
         </div>
       );

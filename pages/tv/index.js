@@ -18,7 +18,7 @@ import {
 import httpService from "../../utils/httpService";
 
 const TvSeries = (props) => {
-  const { nowPlayingMovie, upComingMovie, topRatedMovie, popularMovie, isMobile } = props;
+  const { nowPlayingMovie, upComingMovie, topRatedMovie, popularMovie } = props;
 
   return (
     <Fragment>
@@ -38,7 +38,7 @@ const TvSeries = (props) => {
         <meta name="author" content={APP_NAME} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
+      <div>
         <MediaGenre type={MEDIA_TYPE.TV_SERIES} />
         <CardSlider
           data={topRatedMovie.results}

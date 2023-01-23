@@ -9,14 +9,14 @@ const style = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     &-title {
       margin-top: 40px;
       font-size: 65px;
       font-family: "Cardo", serif;
+
+      @include mobile{
+        font-size: 45px;
+      }
     }
     &-sub-heading {
       text-transform: capitalize;
@@ -36,6 +36,7 @@ const style = css`
 
     .comming-soon {
       font-family: "Crete Round", serif;
+      color: $secondary;
     }
     .coffee {
       margin-top: 20px;
@@ -45,6 +46,7 @@ const style = css`
       padding: 10px;
       justify-content: center;
       font-weight: bold;
+      background-color: $tertiary;
       box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
         rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
       a {

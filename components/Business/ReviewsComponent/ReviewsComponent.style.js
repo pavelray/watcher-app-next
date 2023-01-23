@@ -17,7 +17,7 @@ const style = css`
       letter-spacing: 2px;
       word-spacing: 5px;
 
-      @include for-phone-only {
+      @include mobile {
         font-size: 18px;
         letter-spacing: 1px;
         word-spacing: 2px;

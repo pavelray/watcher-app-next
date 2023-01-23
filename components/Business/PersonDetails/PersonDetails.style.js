@@ -6,13 +6,16 @@ const style = css`
 
   .page-container {
     padding: 0px 20px;
+    @include mobile {
+      padding: 0px 5px;
+    }
   }
 
   .details-container {
     display: flex;
     gap: 30px;
 
-    @include for-phone-only {
+    @include mobile {
       flex-direction: column;
     }
     .person {
@@ -50,6 +53,10 @@ const style = css`
         word-spacing: 2px;
         font-weight: 200;
         white-space: pre-line;
+
+        @include mobile {
+          font-size: 16px;
+        }
       }
     }
   }
@@ -77,6 +84,10 @@ const style = css`
       cursor: pointer;
       text-transform: uppercase;
 
+      @include mobile {
+        width: auto;
+      }
+
       &:hover {
         color: $tertiary;
       }
@@ -89,6 +100,9 @@ const style = css`
 
   .wrapper {
     padding: 20px;
+    @include mobile {
+      padding: 0px;
+    }
   }
 
   .title {

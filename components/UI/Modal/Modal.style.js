@@ -23,7 +23,7 @@ const style = css`
     width: 70%;
     padding: 0px 10px;
 
-    @include for-phone-only{
+    @include mobile{
       width: 90%;
     }
   }

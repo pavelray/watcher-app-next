@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Review from "../../UI/Review/Review";
+import { SubHeading } from "../../UI/Typography/Typography";
 import { style } from "./ReviewsComponent.style";
 
 const ReviewsComponent = ({ reviews }) => {
@@ -8,7 +9,7 @@ const ReviewsComponent = ({ reviews }) => {
     <Fragment>
       {results && !!results.length && (
         <div className="reviews">
-          <div className="heading">Reviews</div>
+          <SubHeading text="Reviews" />
           {results.map((review) => (
             <Review key={review.id} review={review} />
           ))}

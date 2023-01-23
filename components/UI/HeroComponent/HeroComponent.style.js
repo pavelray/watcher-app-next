@@ -11,6 +11,10 @@ const style = css`
     background-position: cover;
     background-size: cover;
 
+    @include tablet {
+      height: 35vh;
+    }
+
     .hero-content {
       height: 100%;
       width: 70vmin;
@@ -22,6 +26,10 @@ const style = css`
       animation: slideUp 1s ease-out forwards;
       animation-delay: 0.1s;
 
+      @include tablet {
+        width: 55vmin;
+      }
+
       .title {
         font-size: 2.5rem;
         word-spacing: 2px;
@@ -29,7 +37,7 @@ const style = css`
         opacity: 0;
         animation: fadeIn 1s ease-out forwards;
         animation-delay: 0.1s;
-        font-family: 'Crete Round', serif;
+        font-family: "Crete Round", serif;
       }
 
       .meta {
@@ -95,7 +103,7 @@ const style = css`
         border-radius: 5px;
         padding: 0.5em;
         visibility: hidden;
-        font-size: .9rem;
+        font-size: 0.9rem;
       }
 
       /* styling pseudo element "::before" to create bottom arrow */

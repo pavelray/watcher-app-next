@@ -9,7 +9,7 @@ const style = css`
     justify-content: space-evenly;
     margin: 20px 0px;
 
-    @include for-phone-only {
+    @include mobile {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;

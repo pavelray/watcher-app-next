@@ -14,9 +14,9 @@ import {
 } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
-const PersonDetailsPage = ({ id, person, isMobile }) => {
+const PersonDetailsPage = ({ id, person }) => {
   return (
-    <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
+    <div>
       <PersonDetails person={person} id={id} />
     </div>
   );

@@ -5,4 +5,8 @@
   min-height: 100vh;
   margin: 0 auto;
   padding: 0px 20px;
+
+  @include mobile{
+    padding: 0px 10px;
+  }
 }

@@ -7,7 +7,7 @@ const style = css`
     margin-top: 35px;
     cursor: pointer;
 
-    @include for-phone-only {
+    @include mobile {
       margin-top: 15px;
     }
 

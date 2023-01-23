@@ -42,7 +42,7 @@ const Layout = ({ children }) => {
       </Head>
       <LayoutProvider location={location}>
         <NavBar />
-        {isPageLoading && <Loader />}
+        {(isPageLoading || isLoading) && <Loader />}
         {!isPageLoading && !isLoading && (
           <div className={styles.container}>{children}</div>
         )}

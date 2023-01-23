@@ -6,11 +6,8 @@ import {
   NO_IMG_PLACEHOLDER_MEDIA,
   NO_IMG_PLACEHOLDER_USER,
 } from "../../../utils/constants";
-import {
-  getAge,
-  getUid,
-} from "../../../utils/helperMethods";
-import { Heading } from "../../UI/Typography/Typography";
+import { getAge, getUid } from "../../../utils/helperMethods";
+import { Heading, SubHeading } from "../../UI/Typography/Typography";
 import ImageFallback from "../ImageFallback";
 import MediaCard from "../MediaCard";
 import SocialIcons from "../SocialIcons/SocialIcons";
@@ -89,7 +86,7 @@ const PersonDetails = ({ person, id }) => {
       </div>
       {showPhoto && (
         <div className="wrapper">
-          <div className="title">Posters</div>
+          <SubHeading text="Images" />
           <div className="image-container">
             {images.profiles.map((image) => (
               <div key={getUid()} className="image">

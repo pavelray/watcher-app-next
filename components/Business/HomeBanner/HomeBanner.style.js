@@ -15,7 +15,7 @@ const style = css`
       margin: 20px 0px;
       text-shadow: 2px 2px 1px $secondary;
 
-      @include for-phone-only {
+      @include mobile {
         font-size: 18px;
         letter-spacing: 1px;
         word-spacing: 2px;

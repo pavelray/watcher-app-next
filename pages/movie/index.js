@@ -8,6 +8,7 @@ import {
   getUpcomingMoviesUrl,
 } from "../../utils/apiUtills";
 import {
+  APP_NAME,
   COLLECTION_TYPE,
   DEFAULT_COUNTRY_CODE,
   MEDIA_TYPE,
@@ -24,7 +25,6 @@ const Movie = (props) => {
     upComingMovie,
     topRatedMovie,
     popularMovie,
-    isMobile,
   } = props;
 
   return (
@@ -42,10 +42,10 @@ const Movie = (props) => {
           content="movie releases, upcoming films, movie theater, showtimes, trailers, reviews, popular movies"
         />
         <meta name="robots" content="index, follow" />
-        <meta name="author" content={APP} />
+        <meta name="author" content={APP_NAME} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
-      <div style={!isMobile ? pageLayoutStyle : pageMobileLayoutStyle}>
+      <div>
         <MediaGenre type={MEDIA_TYPE.MOVIE} />
         <CardSlider
           data={nowPlayingMovie.results}
