@@ -60,8 +60,8 @@ const MovieDetails = ({ movie, id, type }) => {
   const meaning = certificates.map((x) => `${x.certification}: ${x.meaning}`);
   const votes = formatNumber(details.vote_count);
   const [showPhoto, setShowPhoto] = useState(false);
-  const [showVideo, setShowVideo] = useState(false);
-  const [showReview, setShowReview] = useState(true);
+  const [showVideo, setShowVideo] = useState(true);
+  const [showReview, setShowReview] = useState(false);
 
   const showPhotoTab = () => {
     setShowVideo(false);
@@ -139,14 +139,7 @@ const MovieDetails = ({ movie, id, type }) => {
         </div>
       </div>
       <div className="nav">
-        {!!reviews.length && (
-          <button
-            className={`nav-buttons ${showReview ? "active" : ""}`}
-            onClick={showReviewTab}
-          >
-            Reviews
-          </button>
-        )}
+
         {!!trailerVideo.length && (
           <button
             className={`nav-buttons ${showVideo ? "active" : ""}`}
@@ -161,6 +154,14 @@ const MovieDetails = ({ movie, id, type }) => {
             onClick={showPhotoTab}
           >
             Photos
+          </button>
+        )}
+        {!!reviews.results.length && (
+          <button
+            className={`nav-buttons ${showReview ? "active" : ""}`}
+            onClick={showReviewTab}
+          >
+            Reviews
           </button>
         )}
       </div>
