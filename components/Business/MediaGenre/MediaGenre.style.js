@@ -6,26 +6,11 @@ const style = css`
 
   .media-genre-container {
     display: flex;
-    justify-content: space-evenly;
-    margin: 20px 0px;
-
-    @include mobile {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
-      grid-auto-rows: minmax(20px, auto);
-    }
-
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: stretch;
+    margin: 2rem 0rem;
     .media-genre {
-      color: $primary;
-      letter-spacing: 1px;
-      padding-bottom: 5px;
-      &:hover {
-        cursor: pointer;
-        border-bottom: 2px solid #293462;
-        margin: -2px;
-        overflow: hidden;
-      }
     }
   }
 `;

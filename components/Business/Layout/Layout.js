@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-page-custom-font */
 /* eslint-disable @next/next/google-font-display */
 import Head from "next/head";
+import Script from "next/script";
 import { Fragment } from "react";
 import { usePageLoading } from "../../../hooks/usePageLoading";
 import { useUserLocation } from "../../../utils/apiHelper";
@@ -40,24 +41,21 @@ const Layout = ({ children }) => {
           href="/favicon-16x16.png"
         />
         <link rel="manifest" href="/site.webmanifest"></link>
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-        />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
-        />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4497828949688741"
-          crossOrigin="anonymous"
-        ></script>
-        <script
-          src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"
-          async
-        ></script>
       </Head>
+      <Script
+        id="google-ads"
+        strategy="afterInteractive"
+        onError={(e) => {
+          console.error("Adsense Script failed to load", e);
+        }}
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4497828949688741"
+        crossOrigin="anonymous"
+      />
+      <Script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        async
+      />
       <LayoutProvider location={location}>
         <NavBar />
         {(isPageLoading || isLoading) && <Loader />}

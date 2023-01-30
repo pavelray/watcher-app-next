@@ -2,78 +2,97 @@ export const MOVIE_GENRE = [
   {
     id: 28,
     name: "Action",
+    imageSrc: '/icons/genre/action.png'
   },
   {
     id: 12,
     name: "Adventure",
+    imageSrc: '/icons/genre/adventure.png'
   },
   {
     id: 16,
     name: "Animation",
+    imageSrc: '/icons/genre/animation.png'
   },
   {
     id: 35,
     name: "Comedy",
+    imageSrc: '/icons/genre/comedy.png'
   },
   {
     id: 80,
     name: "Crime",
+    imageSrc: '/icons/genre/crime.png'
   },
   {
     id: 99,
     name: "Documentary",
+    imageSrc: '/icons/genre/documentary.png'
   },
   {
     id: 18,
     name: "Drama",
+    imageSrc: '/icons/genre/drama.png'
   },
   {
     id: 10751,
     name: "Family",
+    imageSrc: '/icons/genre/family.png'
   },
   {
     id: 14,
     name: "Fantasy",
+    imageSrc: '/icons/genre/fantasy.png'
   },
   {
     id: 36,
     name: "History",
+    imageSrc: '/icons/genre/history.png'
   },
   {
     id: 27,
     name: "Horror",
+    imageSrc: '/icons/genre/horror.png'
   },
   {
     id: 10402,
     name: "Music",
+    imageSrc: '/icons/genre/musical.png'
   },
   {
     id: 9648,
     name: "Mystery",
+    imageSrc: '/icons/genre/mystery.png'
   },
   {
     id: 10749,
     name: "Romance",
+    imageSrc: '/icons/genre/romance.png'
   },
   {
     id: 878,
     name: "Science Fiction",
+    imageSrc: '/icons/genre/science-fiction.png'
   },
   {
     id: 10770,
     name: "TV Movie",
+    imageSrc: '/icons/genre/tv-movie.png'
   },
   {
     id: 53,
     name: "Thriller",
+    imageSrc: '/icons/genre/thriller.png'
   },
   {
     id: 10752,
     name: "War",
+    imageSrc: '/icons/genre/war.png'
   },
   {
     id: 37,
     name: "Western",
+    imageSrc: '/icons/genre/western.png'
   },
 ];
 
@@ -81,66 +100,82 @@ export const TV_GENRE = [
   {
     id: 10759,
     name: "Action & Adventure",
+    imageSrc: '/icons/genre/adventure.png'
   },
   {
     id: 16,
     name: "Animation",
+    imageSrc: '/icons/genre/animation.png'
   },
   {
     id: 35,
     name: "Comedy",
+    imageSrc: '/icons/genre/comedy.png'
   },
   {
     id: 80,
     name: "Crime",
+    imageSrc: '/icons/genre/crime.png'
   },
   {
     id: 99,
     name: "Documentary",
+    imageSrc: '/icons/genre/documentary.png'
   },
   {
     id: 18,
     name: "Drama",
+    imageSrc: '/icons/genre/drama.png'
   },
   {
     id: 10751,
     name: "Family",
+    imageSrc: '/icons/genre/family.png'
   },
   {
     id: 10762,
     name: "Kids",
+    imageSrc: '/icons/genre/kids.png'
   },
   {
     id: 9648,
     name: "Mystery",
+    imageSrc: '/icons/genre/mystery.png'
   },
   {
     id: 10763,
     name: "News",
+    imageSrc: '/icons/genre/news.png'
   },
   {
     id: 10764,
     name: "Reality",
+    imageSrc: '/icons/genre/reality.png'
   },
   {
     id: 10765,
     name: "Sci-Fi & Fantasy",
+    imageSrc: '/icons/genre/fantasy.png'
   },
   {
     id: 10766,
     name: "Soap",
+    imageSrc: '/icons/genre/soap.png'
   },
   {
     id: 10767,
     name: "Talk",
+    imageSrc: '/icons/genre/talk.png'
   },
   {
     id: 10768,
     name: "War & Politics",
+    imageSrc: '/icons/genre/war.png'
   },
   {
     id: 37,
     name: "Western",
+    imageSrc: '/icons/genre/western.png'
   },
 ];
 

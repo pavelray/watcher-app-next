@@ -26,7 +26,7 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
     if (!!genres.length) {
       return genres.map((x) => (
         <li key={x.id}>
-          <Link href={`/discover/${type}/${x.id}/1`}>{x.name}</Link>
+          <Link href={`/genre/${type}/${x.id}/1`}>{x.name}</Link>
           <style jsx>{style}</style>
         </li>
       ));

@@ -24,6 +24,28 @@ const style = css`
       filter: drop-shadow(0.05rem 0.1rem 0.2rem black);
     }
   }
+
+  .icon {
+    text-align: center;
+    padding: 1.5rem;
+    background: $secondary;
+    color: $primary;
+    width: 20vmin;
+    height: 18vmin;
+    cursor: pointer;
+
+    &:hover{
+      background: $tertiary;
+    }
+
+    @include mobile {
+      width: 42vmin;
+      height: 45vmin;
+      align-content: center;
+    }
+  }
+
+
 `;
 
 export { style };

@@ -20,7 +20,7 @@ const ViewAll = (props) => {
   } = props;
 
   const handlePageClick = (page) => {
-    if (type && genre) Router.push(`/discover/${type}/${genre}/${page}`);
+    if (type && genre) Router.push(`/genre/${type}/${genre}/${page}`);
     else if (pageType && dataType)
       Router.push(`/all/${dataType}/${type}/${page}`);
     else Router.push(`/search?term=${term}&page=${page}`);

@@ -12,7 +12,7 @@ const style = css`
       align-items: center;
 
       li {
-        padding: 12px 2px;
+        padding: 8px 5px;
         margin: 0.5px;
         border-radius: 50%;
         width: 40px;
@@ -25,11 +25,11 @@ const style = css`
 
       .list-item:hover {
         cursor: pointer;
-        background-color: $background;
+        background-color: $secondary;
       }
 
       .active {
-        background: $background;
+        background: $secondary;
       }
     }
   }

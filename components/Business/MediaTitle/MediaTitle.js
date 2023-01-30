@@ -12,7 +12,7 @@ const MediaTitle = ({ details, type = MEDIA_TYPE.MOVIE }) => {
     if (!!genres.length) {
       return genres.map((x) => (
         <li key={x.id} className="genre">
-          <Link href={`/discover/${type}/${x.id}/1`}>{x.name}</Link>
+          <Link href={`/genre/${type}/${x.id}/1`}>{x.name}</Link>
           <style jsx>{style}</style>
         </li>
       ));

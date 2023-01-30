@@ -77,17 +77,24 @@ const NavBar = () => {
           </li>
           <li
             className={
-              currentRoute === "/movie" ? "menu-item active" : "menu-item"
+              currentRoute.includes("/movie") ? "menu-item active" : "menu-item"
             }
           >
             <Link href="/movie">Movie</Link>
           </li>
           <li
             className={
-              currentRoute === "/tv" ? "menu-item active" : "menu-item"
+              currentRoute.includes("/tv") ? "menu-item active" : "menu-item"
             }
           >
             <Link href="/tv">Tv Series</Link>
+          </li>
+          <li
+            className={
+              currentRoute.includes("/genre") ? "menu-item active" : "menu-item"
+            }
+          >
+            <Link href="/genre">Genre</Link>
           </li>
           <li
             className={

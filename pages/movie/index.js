@@ -46,7 +46,7 @@ const Movie = (props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div>
-        <MediaGenre type={MEDIA_TYPE.MOVIE} />
+        
         <CardSlider
           data={nowPlayingMovie.results}
           type={MEDIA_TYPE.MOVIE}

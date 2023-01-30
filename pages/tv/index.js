@@ -39,7 +39,6 @@ const TvSeries = (props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div>
-        <MediaGenre type={MEDIA_TYPE.TV_SERIES} />
         <CardSlider
           data={topRatedMovie.results}
           type={MEDIA_TYPE.TV_SERIES}
