@@ -11,6 +11,7 @@ import {
   APP_NAME,
   COLLECTION_TYPE,
   MEDIA_TYPE,
+  SEO_TAGS,
   TIME_TYPE,
 } from "../utils/constants";
 import httpService from "../utils/httpService";
@@ -25,23 +26,13 @@ const Home = ({
 }) => {
   return (
     <Fragment>
-      <Head>
-        <title>Trending Movies | Tv Series | Person</title>
-        <meta
-          name="description"
-          content="Stay updated with the trending movies, tv series in our website. Find details, trailers, and reviews for new and popular movies and tv series."
-        />
-        <meta
-          name="keywords"
-          content="movie releases, upcoming films, movie theater, showtimes, trailers, reviews, popular movies, popular tv showes, on air tv showes, upcoming tv series"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content={APP_NAME} />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
       <div>
         <div className={styles.homeContainer}>
-          <HomeBanner trendingToday={trendingToday} title="Trending Today" isMobile={isMobile} />
+          <HomeBanner
+            trendingToday={trendingToday}
+            title="Trending Today"
+            isMobile={isMobile}
+          />
           <div className={styles.trending}>
             <CardSlider
               data={trendingMovie.results}
@@ -107,6 +98,9 @@ export async function getServerSideProps(ctx) {
         ...randomMediaDetails,
         media_type: randomMedia.media_type,
       },
+      title: SEO_TAGS.DEFAULT.TITLE,
+      description: SEO_TAGS.DEFAULT.DESCRIPTION,
+      keywords: SEO_TAGS.DEFAULT.KEYWORDS,
     },
   };
 }

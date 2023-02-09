@@ -1,6 +1,4 @@
-import Head from "next/head";
 import React, { Fragment } from "react";
-import MediaGenre from "../../components/Business/MediaGenre/MediaGenre";
 import CardSlider from "../../components/UI/CardCarousel/CardSlider";
 import {
   getPopularMoviesUrl,
@@ -9,11 +7,9 @@ import {
   getTopRatedMoviesUrl,
 } from "../../utils/apiUtills";
 import {
-  APP_NAME,
   COLLECTION_TYPE,
   MEDIA_TYPE,
-  pageLayoutStyle,
-  pageMobileLayoutStyle,
+  SEO_TAGS,
 } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
@@ -22,22 +18,6 @@ const TvSeries = (props) => {
 
   return (
     <Fragment>
-      <Head>
-      <title>
-          Top Rated Tv Series| Popular Tv Series | Upcoming Tv Series | On Air Shows
-        </title>
-        <meta
-          name="description"
-          content="Stay updated with the latest Tv Series releases and upcoming Tv Series at our website. Find details, trailers, and reviews for new and popular Tv Series."
-        />
-        <meta
-          name="keywords"
-          content="tv series releases, upcoming tv series, on air, showtimes, trailers, reviews, popular tv series"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content={APP_NAME} />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
       <div>
         <CardSlider
           data={topRatedMovie.results}
@@ -96,6 +76,9 @@ export async function getServerSideProps(context) {
       upComingMovie: upComingMovie.value,
       topRatedMovie: topRatedMovie.value,
       popularMovie: popularMovie.value,
+      title: SEO_TAGS.TV.TITLE,
+      description: SEO_TAGS.TV.DESCRIPTION,
+      keywords: SEO_TAGS.TV.KEYWORDS,
     },
   };
 }

@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import Script from "next/script";
 
 export default function Document() {
   return (
@@ -12,6 +13,20 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <Script
+          id="google-ads"
+          strategy="afterInteractive"
+          onError={(e) => {
+            console.error("Adsense Script failed to load", e);
+          }}
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4497828949688741"
+          crossOrigin="anonymous"
+        />
+        <Script
+          src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+          async
+        />
       </body>
     </Html>
   );

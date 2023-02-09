@@ -29,24 +29,7 @@ const Movie = (props) => {
 
   return (
     <Fragment>
-      <Head>
-        <title>
-          Top Rated Movies| Popular Movies | Upcoming Films | Movie Theater
-        </title>
-        <meta
-          name="description"
-          content="Stay updated with the latest movie releases and upcoming films at our movie theater. Find details, trailers, and reviews for new and popular movies."
-        />
-        <meta
-          name="keywords"
-          content="movie releases, upcoming films, movie theater, showtimes, trailers, reviews, popular movies"
-        />
-        <meta name="robots" content="index, follow" />
-        <meta name="author" content={APP_NAME} />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Head>
       <div>
-        
         <CardSlider
           data={nowPlayingMovie.results}
           type={MEDIA_TYPE.MOVIE}
