@@ -17,7 +17,7 @@ const style = css`
       word-spacing: 1px;
       margin: 2px 0px;
       font-style: italic;
-      white-space: pre-line;    
+      white-space: pre-line;
       word-break: break-all;
     }
     &-author {
@@ -26,7 +26,7 @@ const style = css`
       word-spacing: 5px;
       margin: 5px 0px;
       font-weight: bold;
-      font-family: 'Crete Round', serif;
+      font-family: "Crete Round", serif;
       color: $secondary;
     }
     &-stats {
@@ -34,7 +34,7 @@ const style = css`
       font-weight: bold;
       display: flex;
       flex-direction: column;
-      font-family: 'Crete Round', serif;
+      font-family: "Crete Round", serif;
       color: $secondary;
 
       .date {
@@ -42,10 +42,60 @@ const style = css`
         font-weight: normal;
         letter-spacing: 1px;
         margin: 5px 0px;
-        font-family: 'Crete Round', serif;
-        color: $secondary
+        font-family: "Crete Round", serif;
+        color: $secondary;
       }
     }
+    .read-more{
+      border: none;
+      background: $background;
+      color: $tertiary;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 12px;
+      padding: 0;
+     
+      &:hover {
+        cursor: pointer;
+        border-bottom: 1px solid $tertiary;
+      }
+    }
+  }
+
+  [data-expandable] [data-expand-text] {
+    --line-height: 1.5;
+    --lines-to-show: 3;
+    position: relative;
+    box-sizing: border-box;
+    line-height: var(--line-height);
+    overflow: hidden;
+    height: calc(var(--line-height) * var(--lines-to-show) * 1em);
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to bottom, transparent, #fff);
+    }
+  }
+
+  [data-overflow="false"] [data-expand-text] {
+    height: initial;
+    &::before {
+      background: initial;
+    }
+  }
+
+  [data-expandable].expanded [data-expand-text] {
+    height: initial;
+    &::before {
+      background: initial;
+    }
+  }
+
+  [data-overflow="false"] [data-expand-button] {
+    display: none;
   }
 `;
 
