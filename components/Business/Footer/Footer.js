@@ -1,6 +1,7 @@
+import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { APP_NAME } from "../../../utils/constants";
+import { APP_NAME, LOGO_IMAGE_PATH } from "../../../utils/constants";
 import { style } from "./Footer.style";
 
 const Footer = () => {
@@ -9,7 +10,9 @@ const Footer = () => {
       <div className="footer-content">
         <div className="link-wrapper">
           <div className="footer-links app">
-            <div className="title">{APP_NAME}</div>
+            <div className="title">
+            <Image src={LOGO_IMAGE_PATH} width={100} height={65} alt={APP_NAME} />{APP_NAME}
+            </div>
             <p>
              The ultimate destination for movie enthusiasts.
              This app is using data from TMDB api.

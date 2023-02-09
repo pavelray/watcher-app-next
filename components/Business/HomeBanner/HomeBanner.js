@@ -8,7 +8,7 @@ import {
 } from "../../../utils/helperMethods";
 import { MEDIA_TYPE } from "../../../utils/constants";
 
-const HomeBanner = ({ trendingToday }) => {
+const HomeBanner = ({ trendingToday, isMobile }) => {
   const trending = trendingToday;
   const certificatesValue =
     trending.media_type === MEDIA_TYPE.MOVIE
@@ -38,6 +38,7 @@ const HomeBanner = ({ trendingToday }) => {
         certificate={{ certificate, meaning }}
         runtime={totalRuntime}
         votes={votes}
+        isMobile={isMobile}
       />
       <style jsx>{style}</style>
     </div>

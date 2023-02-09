@@ -23,6 +23,7 @@ const style = css`
       transform: scale(1.1);
       filter: drop-shadow(0.05rem 0.1rem 0.2rem black);
     }
+
   }
 
   .icon {

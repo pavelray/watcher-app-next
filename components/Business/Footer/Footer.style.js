@@ -20,6 +20,8 @@ const style = css`
           flex: 1;
           .title {
             font-size: 22px;
+            display: flex;
+            align-items: center;
           }
           p {
             width: 60vmin;

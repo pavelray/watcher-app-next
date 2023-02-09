@@ -1,10 +1,11 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
-import { APP_NAME } from "../../../utils/constants";
+import { APP_NAME, LOGO_IMAGE_PATH } from "../../../utils/constants";
 
 import { style } from "./Navbar.style.js";
 import navStyle from "./Navbar.module.scss";
+import Image from "next/image";
 
 const NavBar = () => {
   const router = useRouter();
@@ -52,10 +53,10 @@ const NavBar = () => {
     <Fragment>
       <div className="navbar">
         <div className="brand-logo">
-          <span className="material-symbols-outlined">movie</span>
+          {/* <span className="material-symbols-outlined">movie</span> */}
         </div>
         <div className="brand" onClick={navigateToHome}>
-          <span>{APP_NAME}</span>
+          <Image src={LOGO_IMAGE_PATH} width={100} height={65} alt={APP_NAME} />
         </div>
         <div className="search-wrapper">
           <input

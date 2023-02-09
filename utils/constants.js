@@ -242,6 +242,7 @@ export const INSTAGRAM_IMAGE_PATH = `/images/instagram_logo_icon.png`;
 export const INSTAGRAM_PERSON_LOCATION_URL = "https://www.instagram.com";
 export const TWITTER_IMAGE_PATH = `/images/twitter_logo_icon.png`;
 export const TWITTER_PERSON_LOCATION_URL = "https://twitter.com";
+export const LOGO_IMAGE_PATH = '/images/tfm_logo.png';
 
 export const pageLayoutStyle = {};
 

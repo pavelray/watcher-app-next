@@ -43,7 +43,7 @@ const Home = ({
       </Head>
       <div>
         <div className={styles.homeContainer}>
-          <HomeBanner trendingToday={trendingToday} title="Trending Today" />
+          <HomeBanner trendingToday={trendingToday} title="Trending Today" isMobile={isMobile} />
           <div className={styles.trending}>
             <CardSlider
               data={trendingMovie.results}

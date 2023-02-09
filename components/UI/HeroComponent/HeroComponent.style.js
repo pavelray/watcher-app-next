@@ -15,6 +15,10 @@ const style = css`
       height: 35vh;
     }
 
+    @include mobile {
+      height: 25vh;
+    }
+
     .hero-content {
       height: 100%;
       width: 70vmin;
@@ -30,6 +34,11 @@ const style = css`
         width: 55vmin;
       }
 
+      @include mobile {
+        width: 95vmin;
+        padding: 0px 10px;
+      }
+
       .title {
         font-size: 2.5rem;
         word-spacing: 2px;
@@ -38,6 +47,11 @@ const style = css`
         animation: fadeIn 1s ease-out forwards;
         animation-delay: 0.1s;
         font-family: "Crete Round", serif;
+
+        @include mobile {
+          font-size: 1.5rem;
+          word-spacing: 1px;
+        }
       }
 
       .meta {
@@ -53,6 +67,12 @@ const style = css`
           color: $secondary;
           letter-spacing: 0.1rem;
           font-weight: 600;
+
+          @include mobile {
+            font-size: 0.5rem;
+            word-spacing: 1px;
+            color: $primary;
+          }
         }
       }
 
@@ -77,6 +97,11 @@ const style = css`
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         white-space: normal;
+
+        @include mobile {
+          font-size: 0.8rem;
+          word-spacing: 1px;
+        }
       }
 
       @keyframes slideUp {
