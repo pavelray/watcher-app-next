@@ -56,7 +56,7 @@ const NavBar = () => {
           {/* <span className="material-symbols-outlined">movie</span> */}
         </div>
         <div className="brand" onClick={navigateToHome}>
-          <Image src={LOGO_IMAGE_PATH} width={100} height={65} alt={APP_NAME} />
+          <Image src={LOGO_IMAGE_PATH} width={100} height={65} alt={`${APP_NAME} logo`} title={APP_NAME} />
         </div>
         <div className="search-wrapper">
           <input

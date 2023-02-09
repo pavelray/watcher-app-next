@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import Image from "next/image";
 import { style } from "./Avatar.style";
 import avatarStyle from "./Avatar.module.scss";
 import ImageFallback from "../../Business/ImageFallback";

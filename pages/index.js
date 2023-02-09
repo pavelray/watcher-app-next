@@ -11,8 +11,6 @@ import {
   APP_NAME,
   COLLECTION_TYPE,
   MEDIA_TYPE,
-  pageLayoutStyle,
-  pageMobileLayoutStyle,
   TIME_TYPE,
 } from "../utils/constants";
 import httpService from "../utils/httpService";

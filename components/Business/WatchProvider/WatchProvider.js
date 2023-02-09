@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Fragment } from "react";
 import { API_IMAGE_URL, NO_IMG_PLACEHOLDER_USER } from "../../../utils/constants";

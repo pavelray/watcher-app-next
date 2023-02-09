@@ -291,6 +291,7 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
                     }}
                     alt="Episode Image"
                     fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
+                    title={episode.episode_number}
                   />
                 </div>
                 <div className="media-title">

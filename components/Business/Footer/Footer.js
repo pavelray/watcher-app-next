@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="link-wrapper">
           <div className="footer-links app">
             <div className="title">
-            <Image src={LOGO_IMAGE_PATH} width={100} height={65} alt={APP_NAME} />{APP_NAME}
+            <Image src={LOGO_IMAGE_PATH} width={100} height={65} alt={APP_NAME} title={APP_NAME} />{APP_NAME}
             </div>
             <p>
              The ultimate destination for movie enthusiasts.
@@ -20,7 +20,7 @@ const Footer = () => {
             </p>
           </div>
           <div className="footer-links">
-            <div className="title">Usefull Links</div>
+            <div className="title">Useful Links</div>
             <ul>
               <li>
                 <Link href="/">Home</Link>

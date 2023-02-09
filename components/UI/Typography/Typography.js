@@ -3,18 +3,18 @@ import { style } from "./Typography.styles";
 
 const Heading = ({ text }) => {
   return (
-    <div className="heading">
+    <h1 className="heading">
       {text} <style jsx>{style}</style>
-    </div>
+    </h1>
   );
 };
 
 const SubHeading = ({ text }) => {
   return (
-    <div className="heading">
+    <h1 className="heading">
       {text}
       <style jsx>{style}</style>
-    </div>
+    </h1>
   );
 };
 

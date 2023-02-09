@@ -54,7 +54,7 @@ const HeroComponent = ({
       <div className="hero" style={getStyle()}>
         <div className="hero-content">
           <Link href={`/${type}/${id}/${slugify(title)}`}>
-            <div className="title">{title}</div>
+            <h1 className="title">{title}</h1>
           </Link>
           <div className="meta">
             <Rating ratingValue={40} />
