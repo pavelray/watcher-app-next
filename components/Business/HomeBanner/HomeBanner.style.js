@@ -21,6 +21,15 @@ const style = css`
         word-spacing: 2px;
       }
     }
+
+    .video-frame {
+      width: 100%;
+      height: 640px;
+      border: none;
+      @include mobile {
+        height: 250px;
+      }
+    }
   }
 `;
 

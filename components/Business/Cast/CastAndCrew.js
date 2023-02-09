@@ -26,7 +26,7 @@ const CastAndCrew = ({
             {title}
             {showViewAll && (
               <span className="view-all">
-                <Link href={`/cast/all?id=${id}&type=${mediaType}`}>
+                <Link href={`/cast/all?id=${id}&type=${mediaType}`} rel="canonical">
                   View All
                 </Link>{" "}
               </span>
@@ -44,6 +44,7 @@ const CastAndCrew = ({
                 <Link
                   key={credit.id}
                   href={`/person/${credit.id}/${slugify(credit.name)}`}
+                  rel="canonical"
                 >
                   <Avatar
                     imageSrc={avatarImg}

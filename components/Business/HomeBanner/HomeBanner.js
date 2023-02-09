@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import HeroComponent from "../../UI/HeroComponent/HeroComponent";
 import { style } from "./HomeBanner.style";
 import {
@@ -7,6 +7,7 @@ import {
   getRuntime,
 } from "../../../utils/helperMethods";
 import { MEDIA_TYPE } from "../../../utils/constants";
+import Modal from "../../UI/Modal/Modal";
 
 const HomeBanner = ({ trendingToday, isMobile }) => {
   const trending = trendingToday;
@@ -22,6 +23,12 @@ const HomeBanner = ({ trendingToday, isMobile }) => {
   );
   const certificate = certificates?.map((x) => x.certification).join(", ");
   const meaning = certificates?.map((x) => `${x.certification}: ${x.meaning}`);
+  const video = { ...trending.videos.results.slice(0, 1)[0] };
+  const [viewModal, setViewModal] = useState(false);
+
+  const onModalClose = () => {
+    setViewModal(false);
+  };
 
   const votes = formatNumber(trending.vote_count);
   const totalRuntime = trending.media_type === MEDIA_TYPE.MOVIE ? getRuntime(trending.runtime): `Season ${trending.number_of_seasons}`;
@@ -39,7 +46,17 @@ const HomeBanner = ({ trendingToday, isMobile }) => {
         runtime={totalRuntime}
         votes={votes}
         isMobile={isMobile}
+        setViewModal={setViewModal}
       />
+      <Modal open={viewModal} onModalClose={onModalClose}>
+        <iframe
+          className="video-frame"
+          key={video.key}
+          title={video.type}
+          allow="autoplay"
+          src={`https://www.youtube.com/embed/${video.key}?autoplay=1`}
+        ></iframe>
+      </Modal>
       <style jsx>{style}</style>
     </div>
   );

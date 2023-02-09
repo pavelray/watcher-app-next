@@ -23,16 +23,16 @@ const Footer = () => {
             <div className="title">Useful Links</div>
             <ul>
               <li>
-                <Link href="/">Home</Link>
+                <Link href="/" rel="canonical">Home</Link>
               </li>
               <li>
-                <Link href="/movie">Movies</Link>
+                <Link href="/movie" rel="canonical">Movies</Link>
               </li>
               <li>
-                <Link href="/tv">Tv Series</Link>
+                <Link href="/tv" rel="canonical">Tv Series</Link>
               </li>
               <li>
-                <Link href="/about">About</Link>
+                <Link href="/about" rel="canonical">About</Link>
               </li>
             </ul>
           </div>
