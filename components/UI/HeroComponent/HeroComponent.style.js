@@ -37,6 +37,8 @@ const style = css`
       @include mobile {
         width: 95vmin;
         padding: 0px 10px;
+        height: 40vh;
+        justify-content: flex-end;
       }
 
       .title {
@@ -69,7 +71,7 @@ const style = css`
           font-weight: 600;
 
           @include mobile {
-            font-size: 0.5rem;
+            font-size: 0.7rem;
             word-spacing: 1px;
             color: $primary;
           }
@@ -99,9 +101,16 @@ const style = css`
         white-space: normal;
 
         @include mobile {
-          font-size: 0.8rem;
+          font-size: 0.9rem;
           word-spacing: 1px;
+          margin: 6px 0px;
         }
+      }
+
+      .btn-container {
+        display: flex;
+        justify-content: flex-start;
+        gap: 2rem;
       }
 
       @keyframes slideUp {

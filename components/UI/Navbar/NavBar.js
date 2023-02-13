@@ -7,7 +7,7 @@ import { style } from "./Navbar.style.js";
 import navStyle from "./Navbar.module.scss";
 import Image from "next/image";
 
-const NavBar = () => {
+const NavBar = ({ isMobile }) => {
   const router = useRouter();
   const currentRoute = router.pathname;
 
@@ -52,11 +52,15 @@ const NavBar = () => {
   return (
     <Fragment>
       <div className="navbar">
-        <div className="brand-logo">
-          {/* <span className="material-symbols-outlined">movie</span> */}
-        </div>
+        <div className="brand-logo"></div>
         <div className="brand" onClick={navigateToHome}>
-          <Image src={LOGO_IMAGE_PATH} width={100} height={65} alt={`${APP_NAME} logo`} title={APP_NAME} />
+          <Image
+            src={LOGO_IMAGE_PATH}
+            alt={`${APP_NAME} logo`}
+            title={APP_NAME}
+            width={isMobile ? 60 : 100}
+            height={isMobile ? 40 : 65}
+          />
         </div>
         <div className="search-wrapper">
           <input

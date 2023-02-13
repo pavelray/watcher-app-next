@@ -79,10 +79,11 @@ export async function getServerSideProps(ctx) {
       trendingPersonReq,
       trendingTodayReq,
     ]);
-  const randomMedia =
-    trendingTodayResp.value.results[
-      Math.floor(Math.random() * trendingTodayResp.value.results.length)
-    ];
+  const randomMedia = trendingTodayResp?.value?.results
+    ? trendingTodayResp.value.results[
+        Math.floor(Math.random() * trendingTodayResp.value.results.length)
+      ]
+    : {};
   url = `${getMovieDetailsDataAPIUrl(
     randomMedia.media_type,
     randomMedia.id

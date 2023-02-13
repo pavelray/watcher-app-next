@@ -1,4 +1,6 @@
-@import '../../../styles/colors';
+@import "../../../styles/colors";
+@import "../../../styles/mixins";
+
 .menuLink {
   display: block;
   position: relative;
@@ -8,4 +10,14 @@
   line-height: 2.8;
   width: 100%;
   -webkit-tap-highlight-color: transparent;
+}
+
+.brand {
+  @include mobile {
+    width: 25%;
+    img {
+      width: 74px;
+      height: 45px;
+    }
+  }
 }

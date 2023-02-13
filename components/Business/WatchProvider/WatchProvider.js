@@ -5,6 +5,7 @@ import ImageFallback from "../ImageFallback";
 import { style } from "./WatchProvider.style";
 
 const WatchProvider = ({ providers, homepage }) => {
+  const providerAppLink = ''
 
   return (
     <Fragment>

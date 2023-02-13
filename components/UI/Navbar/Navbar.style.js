@@ -100,6 +100,10 @@ const style = css`
       cursor: pointer;
       @include mobile {
         width: 25%;
+        img {
+          width: 74px;
+          height: 45px;
+        }
       }
       @include tablet {
         width: 25%;

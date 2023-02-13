@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Router } from "next/router";
 import React, { Fragment, useState } from "react";
 import {
   API_IMAGE_URL,
@@ -53,7 +54,9 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
   const onModalClose = () => {
     setViewModal(false);
   };
-
+  const navigateToWatch = (ep, season) => {
+    Router.push(`/watch?id=${id}&type=${type}&ep=${ep}&season=${season}`);
+  };
   const playVideo = (video) => {
     setSelectedVideo(video);
     setViewModal(true);
@@ -293,6 +296,12 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
                     fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
                     title={episode.episode_number}
                   />
+                  <span
+                    className="material-symbols-outlined icon-play"
+                    onClick={() => navigateToWatch(episode.episode_number, selectSeasonNumber)}
+                  >
+                    play_circle
+                  </span>
                 </div>
                 <div className="media-title">
                   Episode: {episode.episode_number}

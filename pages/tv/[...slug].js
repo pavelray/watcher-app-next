@@ -29,7 +29,7 @@ const TvSeriesDetailsPage = ({ slugTitle, tvSeries, type, id }) => {
     <Fragment>
       <Head>
         <title>
-          {name} | ${releaseYear}{" "}
+          {name} | {releaseYear}{" "}
         </title>
         <meta
           name="description"
@@ -109,7 +109,7 @@ export async function getServerSideProps(context) {
       type,
       slugTitle,
       tvSeries: {
-        details: tvSeriesDetails.value,
+        details: tvSeriesDetails?.value || {},
         cast: tvSeriesCast,
         crew: { creator },
         trailerVideo,

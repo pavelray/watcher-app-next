@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { Fragment } from "react";
-import { API_IMAGE_URL } from "../../../utils/constants";
+import Router from "next/router";
+import { API_IMAGE_URL, MEDIA_TYPE } from "../../../utils/constants";
 import { getImageUrl, slugify } from "../../../utils/helperMethods";
 import ViewTrailer from "../../Business/ViewTrailer/ViewTrailer";
+import { ButtonPrimary } from "../Buttons/Buttons";
 import Rating from "../Rating/Rating";
 import { style } from "./HeroComponent.style";
 
@@ -22,6 +24,10 @@ const HeroComponent = ({
   const populateImageUrl = (path) => {
     const fullPath = `${API_IMAGE_URL}/original/`;
     return getImageUrl(path, fullPath);
+  };
+
+  const navigateToWatch = () => {
+    Router.push(`/watch?id=${id}&type=${type}`);
   };
 
   const getStyle = () => {
@@ -48,6 +54,7 @@ const HeroComponent = ({
 
     return isMobile ? mobileStyle : deskTopStyle;
   };
+  console.log(type);
 
   return (
     <Fragment>
@@ -60,7 +67,11 @@ const HeroComponent = ({
             <Rating ratingValue={40} />
             <span className="meta-values">Votes {votes}</span>
             <span className="meta-values">{runtime}</span>
-            <span className="meta-values cert">{certificate?.certificate}</span>
+            {certificate?.certificate && (
+              <span className="meta-values cert">
+                {certificate?.certificate}
+              </span>
+            )}
             <span className="tooltip">
               {certificate?.meaning?.map((x, index) => (
                 <Fragment key={index}>
@@ -71,10 +82,15 @@ const HeroComponent = ({
             </span>
           </div>
           <p className="story">{description}</p>
-          <ViewTrailer
-            trailerVideo={trailerVideo}
-            setViewModal={setViewModal}
-          />
+          <div className="btn-container">
+            <ViewTrailer
+              trailerVideo={trailerVideo}
+              setViewModal={setViewModal}
+            />
+            {type === MEDIA_TYPE.MOVIE && (
+              <ButtonPrimary handleOnClick={navigateToWatch} text="Watch Now" />
+            )}
+          </div>
         </div>
 
         <style jsx>{style}</style>

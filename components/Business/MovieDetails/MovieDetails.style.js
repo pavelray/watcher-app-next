@@ -12,6 +12,7 @@ const style = css`
 
     @include mobile {
       padding: 10px;
+      padding-top: 8rem;
     }
     @include tablet {
       min-height: auto;
@@ -86,6 +87,9 @@ const style = css`
               letter-spacing: 0.1rem;
               word-spacing: 0.3rem;
               margin: 1rem 0;
+              @include mobile {
+                font-size: 1rem;
+              }
             }
 
             .no-trailer {

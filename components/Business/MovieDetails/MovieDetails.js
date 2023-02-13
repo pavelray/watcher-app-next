@@ -21,6 +21,7 @@ import ImageFallback from "../ImageFallback";
 import MediaDetailsInfo from "../MediaDetailsInfo/MediaDetailsInfo";
 import ReviewsComponent from "../ReviewsComponent/ReviewsComponent";
 import SocialIcons from "../SocialIcons/SocialIcons";
+import WatchProvider from "../WatchProvider/WatchProvider";
 
 import { style } from "./MovieDetails.style";
 
@@ -87,7 +88,7 @@ const MovieDetails = ({ movie, id, type }) => {
         title={details.title || details.name}
         description={details.overview}
         imageUrl={details.backdrop_path}
-        type={details.media_type}
+        type={details.media_type || type}
         id={details.id}
         trailerVideo={trailerVideo}
         setViewModal={setViewModal}
@@ -116,10 +117,10 @@ const MovieDetails = ({ movie, id, type }) => {
                   {details.overview}
                 </div>
                 <MediaDetailsInfo details={details} type={type} crew={crew} />
-                {/* <WatchProvider
+                <WatchProvider
                   providers={providers}
                   homepage={details.homepage}
-                /> */}
+                />
                 <SocialIcons
                   externalIds={external_ids}
                   type={MEDIA_TYPE.MOVIE}
@@ -139,7 +140,6 @@ const MovieDetails = ({ movie, id, type }) => {
         </div>
       </div>
       <div className="nav">
-
         {!!trailerVideo.length && (
           <button
             className={`nav-buttons ${showVideo ? "active" : ""}`}

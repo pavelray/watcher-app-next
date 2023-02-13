@@ -24,6 +24,10 @@ const style = css`
       filter: drop-shadow(0.05rem 0.1rem 0.2rem black);
     }
 
+    @include mobile {
+      width: 26%;
+    }
+
   }
 
   .icon {

@@ -287,3 +287,9 @@ export const SEO_TAGS = {
     TITLE: `All | Cast| Actors| Actress | ${APP_NAME}`,
   }
 };
+
+export const PROVIDER = {
+  Hotstar: 'https://www.hotstar.com/',
+  Netflix: 'https://www.netflix.com/',
+  PrimeVideos: ''
+}

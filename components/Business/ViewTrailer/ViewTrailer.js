@@ -10,7 +10,7 @@ const ViewTrailer = ({ trailerVideo, setViewModal }) => {
 
   return (
     <Fragment>
-      {!!trailerVideo.length && <ButtonPrimary handleOnClick={showModal} />}
+      {!!trailerVideo.length && <ButtonPrimary handleOnClick={showModal} text="View Trailer" />}
       {!!!trailerVideo.length && (
         <div className="no-trailer">
           Sorry!! No Trailer available currently.{" "}

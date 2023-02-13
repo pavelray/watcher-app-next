@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 import styles from "./Layout.module.scss";
 import { LayoutProvider } from "./LayoutContext";
 
-const Layout = ({ children }) => {
+const Layout = ({ isMobile, children}) => {
   const { isPageLoading } = usePageLoading();
   const { isLoading, location, error } = useUserLocation();
 
@@ -36,7 +36,7 @@ const Layout = ({ children }) => {
         {/* <link rel="manifest" href="/site.webmanifest"></link> */}
       </Head>
       <LayoutProvider location={location}>
-        <NavBar />
+        <NavBar isMobile={isMobile} />
         {(isPageLoading || isLoading) && <Loader />}
         {!isPageLoading && !isLoading && (
           <div className={styles.container}>{children}</div>

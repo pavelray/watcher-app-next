@@ -32,7 +32,7 @@ const MovieDetailsPage = ({ slugTitle, movie, id, type }) => {
     <Fragment>
       <Head>
         <title>
-          {title} | ${releaseYear}{" "}
+          {title} | {releaseYear}{" "}
         </title>
         <meta
           name="description"
