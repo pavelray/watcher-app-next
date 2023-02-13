@@ -10,10 +10,10 @@ const style = css`
     justify-content: center;
     align-items: center;
 
-    @include mobile{
+    @include mobile {
       margin-bottom: 20px;
     }
-    @include mobile-landscape{
+    @include mobile-landscape {
       margin-bottom: 20px;
     }
     &-title {
@@ -21,10 +21,10 @@ const style = css`
       font-size: 65px;
       font-family: "Cardo", serif;
 
-      @include mobile{
+      @include mobile {
         font-size: 45px;
       }
-      @include mobile-landscape{
+      @include mobile-landscape {
         font-size: 45px;
       }
     }
@@ -34,16 +34,18 @@ const style = css`
       font-family: "Crete Round", serif;
     }
     &-body {
-      text-align: center;
       letter-spacing: 0.1rem;
       word-spacing: 0.2rem;
 
       p {
         white-space: pre-line;
-        font-family: 'Maitree', serif;
+        font-family: "Maitree", serif;
       }
     }
-
+    .link {
+      color: $secondary;
+      text-decoration: underline;
+    }
     .comming-soon {
       font-family: "Crete Round", serif;
       color: $secondary;

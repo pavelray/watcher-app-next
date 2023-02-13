@@ -40,7 +40,11 @@ const style = css`
         .app {
           flex: 2;
         }
-
+        .link{
+          color: $secondary;
+          text-decoration: underline;
+        }
+        
         @include mobile {
           display: flex;
           flex-direction: column;
