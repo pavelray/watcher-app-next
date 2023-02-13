@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps, isMobile }) {
         <meta name="robots" content="index, follow" />
         <meta name="author" content={APP_NAME} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta property="og:site_name" content={window.location.host} />
+        <meta property="og:site_name" content={APP_NAME} />
         <meta property="og:locale" content="en_US" />
         <meta property="og:image" content="https://www.thefilmmastery.com/images/tfm_logo.png" />
       </Head>
