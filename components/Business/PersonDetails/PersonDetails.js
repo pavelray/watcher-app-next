@@ -13,7 +13,6 @@ import SocialIcons from "../SocialIcons/SocialIcons";
 import { style } from "./PersonDetails.style";
 
 const PersonDetails = ({ person, id }) => {
-  console.log(person);
   const { details } = person;
   const { combined_credits, external_ids, images } = details;
 

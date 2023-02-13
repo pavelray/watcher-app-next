@@ -9,6 +9,9 @@ const style = css`
     @include mobile {
       padding: 0px 5px;
     }
+    @include mobile-landscape {
+      padding: 0px 5px;
+    }
   }
 
   .details-container {
@@ -16,6 +19,9 @@ const style = css`
     gap: 30px;
 
     @include mobile {
+      flex-direction: column;
+    }
+    @include mobile-landscape {
       flex-direction: column;
     }
     .person {
@@ -57,6 +63,9 @@ const style = css`
         @include mobile {
           font-size: 16px;
         }
+        @include mobile-landscape {
+          font-size: 16px;
+        }
       }
     }
   }
@@ -87,6 +96,9 @@ const style = css`
       @include mobile {
         width: auto;
       }
+      @include mobile-landscape {
+        width: auto;
+      }
 
       &:hover {
         color: $tertiary;
@@ -101,6 +113,9 @@ const style = css`
   .wrapper {
     padding: 20px;
     @include mobile {
+      padding: 0px;
+    }
+    @include mobile-landscape {
       padding: 0px;
     }
   }

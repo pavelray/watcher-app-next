@@ -26,6 +26,9 @@ const style = css`
     @include mobile{
       width: 90%;
     }
+    @include tablet{
+      width: 90%;
+    }
   }
   /* The Close Button */
   .close {

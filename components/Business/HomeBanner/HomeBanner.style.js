@@ -20,6 +20,11 @@ const style = css`
         letter-spacing: 1px;
         word-spacing: 2px;
       }
+      @include mobile-landscape {
+        font-size: 18px;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+      }
     }
 
     .video-frame {
@@ -28,6 +33,9 @@ const style = css`
       border: none;
       @include mobile {
         height: 250px;
+      }
+      @include mobile-landscape {
+        height: 450px;
       }
     }
   }

@@ -12,6 +12,11 @@ const style = css`
 
     @include mobile {
       padding: 10px;
+      margin-top: 8rem;
+    }
+    @include mobile-landscape {
+      padding: 10px;
+      padding-top: 1rem;
     }
 
     &::before {
@@ -30,6 +35,11 @@ const style = css`
         padding: 0 0.2rem;
         width: 100%;
       }
+      @include mobile-landscape {
+        margin-top: 1rem;
+        padding: 0 0.2rem;
+        width: 100%;
+      }
 
       &-content {
         display: flex;
@@ -37,6 +47,11 @@ const style = css`
         flex-wrap: wrap;
 
         @include mobile {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+        }
+        @include mobile-landscape {
           display: flex;
           flex-direction: column;
           flex-wrap: nowrap;
@@ -58,12 +73,20 @@ const style = css`
           @include mobile {
             display: none;
           }
+          @include mobile-landscape {
+            display: none;
+          }
         }
 
         .movie-details-content {
           flex: 3;
           &__row {
             @include mobile {
+              display: flex;
+              flex-direction: column;
+            }
+
+            @include mobile-landscape {
               display: flex;
               flex-direction: column;
             }
@@ -102,6 +125,10 @@ const style = css`
       justify-content: space-evenly;
     }
 
+    @include mobile-landscape {
+      justify-content: space-evenly;
+    }
+
     &-buttons {
       height: 8vmin;
       width: 20vmin;
@@ -116,6 +143,9 @@ const style = css`
       letter-spacing: 2px;
 
       @include mobile {
+        width: auto;
+      }
+      @include mobile-landscape {
         width: auto;
       }
 
@@ -133,6 +163,9 @@ const style = css`
     padding: 20px;
 
     @include mobile {
+      padding: 0px 10px;
+    }
+    @include mobile-landscape {
       padding: 0px 10px;
     }
   }
@@ -250,12 +283,19 @@ const style = css`
     @include mobile {
       padding: 0px;
     }
+    @include mobile-landscape {
+      padding: 0px;
+    }
   }
 
   .recomended-container {
     padding: 20px;
 
     @include mobile {
+      margin: 0px 10px;
+      padding: 0px;
+    }
+    @include mobile-landscape {
       margin: 0px 10px;
       padding: 0px;
     }
@@ -268,11 +308,17 @@ const style = css`
     @include mobile {
       height: 250px;
     }
+    @include mobile-landscape {
+      height: 250px;
+    }
   }
   .similar-movies {
     margin: 0px 50px;
 
     @include mobile {
+      margin: 0px 10px;
+    }
+    @include mobile-landscape {
       margin: 0px 10px;
     }
   }

@@ -25,7 +25,7 @@ import WatchProvider from "../WatchProvider/WatchProvider";
 
 import { style } from "./MovieDetails.style";
 
-const MovieDetails = ({ movie, id, type }) => {
+const MovieDetails = ({ movie, id, type, isMobile }) => {
   const [viewModal, setViewModal] = useState(false);
   const {
     details,
@@ -95,6 +95,7 @@ const MovieDetails = ({ movie, id, type }) => {
         certificate={{ certificate, meaning }}
         runtime={runtime}
         votes={votes}
+        isMobile={isMobile}
       />
       <div className="movie-details-container">
         <div className="movie-details-container__main">

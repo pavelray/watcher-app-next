@@ -45,6 +45,10 @@ const style = css`
           display: flex;
           flex-direction: column;
         }
+        @include mobile-landscape {
+          display: flex;
+          flex-direction: column;
+        }
       }
     }
   }

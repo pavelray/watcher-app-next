@@ -19,3 +19,8 @@
   }
 }
 
+.trending{
+  @include mobile {
+    margin-top: 8rem;
+  }
+}

@@ -13,12 +13,18 @@ const style = css`
     @include mobile{
       margin-bottom: 20px;
     }
+    @include mobile-landscape{
+      margin-bottom: 20px;
+    }
     &-title {
       margin-top: 40px;
       font-size: 65px;
       font-family: "Cardo", serif;
 
       @include mobile{
+        font-size: 45px;
+      }
+      @include mobile-landscape{
         font-size: 45px;
       }
     }

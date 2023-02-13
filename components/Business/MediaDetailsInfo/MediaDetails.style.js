@@ -19,6 +19,10 @@ const style = css`
         font-size: 1rem;
         margin: 0.5rem 0;
       }
+      @include mobile-landscape {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+      }
 
       label {
         font-weight: 600;

@@ -10,6 +10,9 @@ const style = css`
     @include mobile {
       margin-top: 15px;
     }
+    @include mobile-landscape {
+      margin-top: 15px;
+    }
 
     &-title {
       font-size: 20px;

@@ -24,6 +24,20 @@ const style = css`
       }
     }
 
+    @include mobile-landscape {
+      overflow: hidden;
+      overflow-x: scroll;
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+      &::-webkit-scrollbar * {
+        background: transparent;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: $background !important;
+      }
+    }
+
     .tabs {
       padding: 10px;
       font-size: 18px;

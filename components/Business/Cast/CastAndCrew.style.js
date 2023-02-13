@@ -15,6 +15,10 @@ const style = css`
         display: grid;
         grid-template-columns: repeat(1, 1fr);
       }
+      @include mobile-landscape {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
       @include tablet {
         display: grid;
         grid-template-columns: repeat(2, 1fr);

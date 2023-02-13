@@ -16,6 +16,10 @@ const style = css`
       flex: 1 1 140px;
       width: 140px;
     }
+    @include mobile-landscape {
+      flex: 1 1 140px;
+      width: 140px;
+    }
   }
 
   .card-body {

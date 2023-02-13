@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Router } from "next/router";
+import Router from "next/router";
 import React, { Fragment, useState } from "react";
 import {
   API_IMAGE_URL,
@@ -26,7 +26,7 @@ import SocialIcons from "../SocialIcons/SocialIcons";
 
 import { style } from "./TvSeriesDetails.style";
 
-const TvSeriesDetails = ({ tvSeries, type, id }) => {
+const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
   const [viewModal, setViewModal] = useState(false);
   const {
     details,
@@ -127,6 +127,7 @@ const TvSeriesDetails = ({ tvSeries, type, id }) => {
         certificate={{ certificate, meaning }}
         runtime={totalSeasons}
         votes={votes}
+        isMobile={isMobile}
       />
       <div className="movie-details-container">
         <div className="movie-details-container__main">

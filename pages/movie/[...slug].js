@@ -21,7 +21,7 @@ import {
 } from "../../utils/helperMethods";
 import httpService from "../../utils/httpService";
 
-const MovieDetailsPage = ({ slugTitle, movie, id, type }) => {
+const MovieDetailsPage = ({ slugTitle, movie, id, type, isMobile }) => {
   const { details, crew } = movie;
   const { title, release_date, genres } = details;
   const { director } = crew;
@@ -54,7 +54,7 @@ const MovieDetailsPage = ({ slugTitle, movie, id, type }) => {
         <meta property="og:site_name" content={window.location.host} />
         <meta property="og:locale" content="en_US" />
       </Head>
-      <MovieDetails movie={movie} id={id} type={type} />
+      <MovieDetails movie={movie} id={id} type={type} isMobile={isMobile} />
     </Fragment>
   );
 };

@@ -18,6 +18,9 @@ const style = css`
     @include mobile {
       height: 25vh;
     }
+    @include mobile-landscape {
+      height: 90vh;
+    }
 
     .hero-content {
       height: 100%;
@@ -40,6 +43,12 @@ const style = css`
         height: 40vh;
         justify-content: flex-end;
       }
+      @include mobile-landscape {
+        width: 100vmin;
+        padding: 0px 10px;
+        height: 90vh;
+        justify-content: flex-end;
+      }
 
       .title {
         font-size: 2.5rem;
@@ -51,6 +60,10 @@ const style = css`
         font-family: "Crete Round", serif;
 
         @include mobile {
+          font-size: 1.5rem;
+          word-spacing: 1px;
+        }
+        @include mobile-landscape {
           font-size: 1.5rem;
           word-spacing: 1px;
         }
@@ -71,6 +84,14 @@ const style = css`
           font-weight: 600;
 
           @include mobile {
+            margin: 5px 0px 2px 10px;
+            font-size: 0.7rem;
+            word-spacing: 1px;
+            color: $primary;
+          }
+
+          @include mobile-landscape {
+            margin: 5px 0px 2px 10px;
             font-size: 0.7rem;
             word-spacing: 1px;
             color: $primary;
@@ -101,6 +122,12 @@ const style = css`
         white-space: normal;
 
         @include mobile {
+          font-size: 0.9rem;
+          word-spacing: 1px;
+          margin: 6px 0px;
+        }
+
+        @include mobile-landscape {
           font-size: 0.9rem;
           word-spacing: 1px;
           margin: 6px 0px;

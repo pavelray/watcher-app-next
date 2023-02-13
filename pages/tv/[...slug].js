@@ -18,7 +18,7 @@ import {
 import { getGenreText, getLocationCookie } from "../../utils/helperMethods";
 import httpService from "../../utils/httpService";
 
-const TvSeriesDetailsPage = ({ slugTitle, tvSeries, type, id }) => {
+const TvSeriesDetailsPage = ({ slugTitle, tvSeries, type, id , isMobile}) => {
   const { details } = tvSeries;
   const { name, first_air_date, genres, created_by } = details;
   const directorName = created_by.map(n=> n.name).join(' ,');
@@ -51,7 +51,7 @@ const TvSeriesDetailsPage = ({ slugTitle, tvSeries, type, id }) => {
         <meta property="og:site_name" content={window.location.host} />
         <meta property="og:locale" content="en_US" />
       </Head>
-      <TvSeriesDetails tvSeries={tvSeries} type={type} id={id} />
+      <TvSeriesDetails tvSeries={tvSeries} type={type} id={id} isMobile={isMobile} />
     </Fragment>
   );
 };

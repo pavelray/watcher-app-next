@@ -10,6 +10,12 @@ $large-desktop-width: 1300px;
   }
 }
 
+@mixin mobile-landscape {
+  @media only screen and (max-height: 575.98px) and (orientation: landscape) {
+    @content;
+  }
+}
+
 @mixin tablet {
   @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
     @content;
@@ -17,13 +23,13 @@ $large-desktop-width: 1300px;
 }
 
 @mixin desktop {
-  @media (min-width: #{$desktop-width}) and (max-width: #{$large-desktop-width - 1px}){
+  @media (min-width: #{$desktop-width}) and (max-width: #{$large-desktop-width - 1px}) {
     @content;
   }
 }
 
 @mixin largeDesktop {
-  @media (min-width: #{$large-desktop-width}){
+  @media (min-width: #{$large-desktop-width}) {
     @content;
   }
 }

@@ -19,6 +19,11 @@ const style = css`
       letter-spacing: 1px;
       word-spacing: 2px;
     }
+    @include mobile-landscape {
+      font-size: 18px;
+      letter-spacing: 1px;
+      word-spacing: 2px;
+    }
 
     @include tablet {
       font-size: 20px;

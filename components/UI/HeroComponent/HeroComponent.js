@@ -43,18 +43,17 @@ const HeroComponent = ({
     };
     const mobileStyle = {
       backgroundImage: `linear-gradient(
-                        to right,
-                        rgba(17, 37, 46, 1) 30%,
-                        rgba(17, 37, 46, .9) 40%,
-                        rgba(17, 37, 46, 0.7) 75%,
-                        rgba(17, 37, 46, 0.5) 85%,
+                        to top,
+                        rgba(17, 37, 46, 1) 20%,
+                        rgba(17, 37, 46, .8) 30%,
+                        rgba(17, 37, 46, 0.6) 55%,
+                        rgba(17, 37, 46, 0.2) 75%,
                         rgba(17, 37, 46, 0) 95%
                         ), url(${populateImageUrl(imageUrl)})`,
     };
 
     return isMobile ? mobileStyle : deskTopStyle;
   };
-  console.log(type);
 
   return (
     <Fragment>

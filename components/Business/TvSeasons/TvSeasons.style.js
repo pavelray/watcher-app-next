@@ -24,6 +24,11 @@ const style = css`
         letter-spacing: 1px;
         word-spacing: 2px;
       }
+      @include mobile-landscape {
+        font-size: 18px;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+      }
     }
 
     .seasons-card-wrapper {
@@ -32,6 +37,10 @@ const style = css`
       gap: 10px;
       row-gap: 20px;
       @include mobile {
+        display: flex;
+        flex-direction: column;
+      }
+      @include mobile-landscape {
         display: flex;
         flex-direction: column;
       }

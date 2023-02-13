@@ -26,6 +26,14 @@ const style = css`
           font-size: 35px;
         }
       }
+      @include mobile-landscape {
+        display: flex;
+        margin-left: 5px;
+        color: $primary;
+        span {
+          font-size: 35px;
+        }
+      }
       @include tablet {
         display: flex;
         margin-left: 5px;
@@ -69,6 +77,9 @@ const style = css`
       @include mobile {
         display: none;
       }
+      @include mobile-landscape{
+        display: none;
+      }
       @include tablet {
         display: none;
       }
@@ -85,6 +96,9 @@ const style = css`
         margin-left: 5px;
 
         @include mobile {
+          font-size: 40px;
+        }
+        @include mobile-landscape {
           font-size: 40px;
         }
         @include tablet {
@@ -105,6 +119,9 @@ const style = css`
           height: 45px;
         }
       }
+      @include mobile-landscape {
+        width: 25%;
+      }
       @include tablet {
         width: 25%;
       }
@@ -119,6 +136,9 @@ const style = css`
         @include mobile {
           font-size: 14px;
         }
+        @include mobile-landscape {
+          font-size: 14px;
+        }
         @include tablet {
           font-size: 14px;
         }
@@ -130,6 +150,9 @@ const style = css`
       width: 40%;
       justify-content: center;
       @include mobile {
+        width: 85%;
+      }
+      @include mobile-landscape {
         width: 85%;
       }
       @include tablet {
@@ -155,6 +178,11 @@ const style = css`
           width: 75%;
           padding-right: 42px;
         }
+        @include mobile-landscape {
+          font-size: 10px;
+          width: 75%;
+          padding-right: 42px;
+        }
         @include tablet {
           font-size: 10px;
           width: 75%;
@@ -168,6 +196,9 @@ const style = css`
         margin-left: -50px;
 
         @include mobile {
+          margin-left: -38px;
+        }
+        @include mobile-landscape {
           margin-left: -38px;
         }
         @include tablet {
