@@ -3,7 +3,10 @@ import Script from "next/script";
 
 export default function Document() {
   return (
-    <Html lang="en">
+    <Html
+      lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+    >
       <Head>
         <link
           rel="stylesheet"
