@@ -34,7 +34,7 @@ function MyApp({ Component, pageProps, isMobile }) {
         <meta property="og:locale" content="en_US" />
         <meta
           property="og:image"
-          content="https://www.thefilmmastery.com/images/tfm_logo.png"
+          content="/images/tfm_logo.png"
         />
         <meta name="robots" content="index, follow" />
         <meta name="author" content={APP_NAME} />
