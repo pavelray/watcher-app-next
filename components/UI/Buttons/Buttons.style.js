@@ -4,16 +4,23 @@ const style = css`
   @import "../../../styles/colors";
   @import "../../../styles/mixins";
 
-  .btn-primary {
+  .btn {
     width: 25%;
     font-size: 0.8rem;
     padding: 8px 8px;
     border: none;
     box-shadow: none;
-    background-color: $tertiary;
-    color: $primary;
     border-radius: 2px;
     transition: all 0.2s ease-in-out;
+    &-primary {
+      color: $primary;
+      background-color: $tertiary;
+    }
+    &-secondary {
+      color: $primary;
+      border: 1px solid $tertiary;
+      background: none;
+    }
     &:hover:active {
       transform: scale(0.98);
       cursor: pointer;
@@ -27,7 +34,6 @@ const style = css`
     @include mobile {
       width: 26%;
     }
-
   }
 
   .icon {
@@ -39,7 +45,7 @@ const style = css`
     height: 18vmin;
     cursor: pointer;
 
-    &:hover{
+    &:hover {
       background: $tertiary;
     }
 
@@ -49,8 +55,6 @@ const style = css`
       align-content: center;
     }
   }
-
-
 `;
 
 export { style };

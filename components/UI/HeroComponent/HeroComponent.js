@@ -4,7 +4,11 @@ import Router from "next/router";
 import { API_IMAGE_URL, MEDIA_TYPE } from "../../../utils/constants";
 import { getImageUrl, slugify } from "../../../utils/helperMethods";
 import ViewTrailer from "../../Business/ViewTrailer/ViewTrailer";
-import { ButtonPrimary } from "../Buttons/Buttons";
+import {
+  ButtonPrimary,
+  ButtonSecondary,
+  ButtonSecondaryLink,
+} from "../Buttons/Buttons";
 import Rating from "../Rating/Rating";
 import { style } from "./HeroComponent.style";
 
@@ -29,6 +33,13 @@ const HeroComponent = ({
   const navigateToWatch = () => {
     Router.push(`/watch?id=${id}&type=${type}`);
   };
+
+  const scrollToWatch = () => {
+    const elmntToView = document.getElementById("episodes");
+    elmntToView.scrollIntoView();
+  };
+
+  console.log(type);
 
   const getStyle = () => {
     const deskTopStyle = {
@@ -87,7 +98,13 @@ const HeroComponent = ({
               setViewModal={setViewModal}
             />
             {type === MEDIA_TYPE.MOVIE && (
-              <ButtonPrimary handleOnClick={navigateToWatch} text="Watch Now" />
+              <ButtonSecondary
+                handleOnClick={navigateToWatch}
+                text="Watch Now"
+              />
+            )}
+            {type === MEDIA_TYPE.TV_SERIES && (
+              <ButtonSecondary handleOnClick={scrollToWatch} text="Watch Now" />
             )}
           </div>
         </div>

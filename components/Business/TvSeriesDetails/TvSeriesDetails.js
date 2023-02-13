@@ -120,7 +120,7 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
         title={details.title || details.name}
         description={details.overview}
         imageUrl={details.backdrop_path}
-        type={details.media_type}
+        type={details.media_type || type}
         id={details.id}
         trailerVideo={trailerVideo}
         setViewModal={setViewModal}
@@ -261,7 +261,7 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
         </div>
       )}
       {showEpisodes && (
-        <div className="wrapper">
+        <div className="wrapper" id="episodes">
           <div className="title">
             <select
               className="season-select"

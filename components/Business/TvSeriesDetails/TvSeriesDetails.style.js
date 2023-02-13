@@ -9,6 +9,7 @@ const style = css`
     min-height: 100vh;
     display: flex;
     padding: 20px;
+    scroll-behavior: smooth;
 
     @include mobile {
       padding: 10px;

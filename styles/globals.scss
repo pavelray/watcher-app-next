@@ -11,6 +11,7 @@ body {
   background-color: $background;
   color: $primary;
   -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 a {
