@@ -16,6 +16,7 @@ import {
 } from "../../utils/constants";
 import {
   getGenreText,
+  getImageUrl,
   getLocationCookie,
   getRuntime,
 } from "../../utils/helperMethods";
@@ -28,6 +29,7 @@ const MovieDetailsPage = ({ slugTitle, movie, id, type, isMobile }) => {
   const directorName = director[0].name;
   const releaseYear = new Date(release_date).getFullYear();
   const genreText = getGenreText(genres);
+  const ogImage = getImageUrl(movie?.images?.logos[0]?.file_path);
   return (
     <Fragment>
       <Head>
@@ -53,6 +55,7 @@ const MovieDetailsPage = ({ slugTitle, movie, id, type, isMobile }) => {
         />
         <meta property="og:site_name" content={window.location.host} />
         <meta property="og:locale" content="en_US" />
+        <meta property="og:image" content={ogImage} />
       </Head>
       <MovieDetails movie={movie} id={id} type={type} isMobile={isMobile} />
     </Fragment>
