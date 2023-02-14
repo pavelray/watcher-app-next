@@ -101,8 +101,6 @@ const style = css`
               .title {
                 font-size: 1.25rem;
                 color: $secondary;
-                margin: 8px 0px;
-                font-family: "Crete Round", serif;
               }
               font-size: 1.2rem;
               letter-spacing: 0.1rem;
@@ -150,7 +148,6 @@ const style = css`
       color: $primary;
       cursor: pointer;
       text-transform: uppercase;
-      font-family: "Crete Round", serif;
       letter-spacing: 2px;
 
       @include mobile {

@@ -19,8 +19,6 @@ const style = css`
     &-title {
       margin-top: 40px;
       font-size: 65px;
-      font-family: "Cardo", serif;
-
       @include mobile {
         font-size: 45px;
       }
@@ -31,7 +29,6 @@ const style = css`
     &-sub-heading {
       text-transform: capitalize;
       letter-spacing: 0.2rem;
-      font-family: "Crete Round", serif;
     }
     &-body {
       letter-spacing: 0.1rem;
@@ -39,7 +36,6 @@ const style = css`
 
       p {
         white-space: pre-line;
-        font-family: "Maitree", serif;
       }
     }
     .link {
@@ -47,7 +43,6 @@ const style = css`
       text-decoration: underline;
     }
     .comming-soon {
-      font-family: "Crete Round", serif;
       color: $secondary;
     }
     .coffee {

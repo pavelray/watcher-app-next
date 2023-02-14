@@ -57,7 +57,6 @@ const style = css`
         opacity: 0;
         animation: fadeIn 1s ease-out forwards;
         animation-delay: 0.1s;
-        font-family: "Crete Round", serif;
 
         @include mobile {
           font-size: 1.5rem;

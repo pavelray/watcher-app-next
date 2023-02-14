@@ -44,11 +44,12 @@ const Watch = ({
             2embed
           </a>{" "}
           <div>
-            <span >
-              ** Please user <span className={styles.note}>ad blocker or Brave browser</span> to block the ads showin
-              by - 2embed
+            <span>
+              ** Please user{" "}
+              <span className={styles.note}>ad blocker or Brave browser</span>{" "}
+              to block the ads showin by - 2embed
             </span>
-            <br/>
+            <br />
             <span>** We do not store any media.</span>
           </div>
         </h4>
@@ -58,7 +59,12 @@ const Watch = ({
         className={styles.videoPlayer}
         src={`https://www.2embed.to/embed/tmdb/${getStreamingUrl()}`}
         allow="autoplay"
-        title={""}
+        title={title || name}
+        allowfullscreen=""
+        webkitallowfullscreen="true"
+        mozallowfullscreen="true"
+        oallowfullscreen="true"
+        msallowfullscreen="true"
       ></iframe>
       <div>
         <h4>

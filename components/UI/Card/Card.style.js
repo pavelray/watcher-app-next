@@ -24,15 +24,13 @@ const style = css`
 
   .card-body {
     padding: 5px 10px;
-    font-size: 14px;
+    font-size: 16px;
     &__title {
-      font-weight: 700;
+      font-weight: 500;
       margin-bottom: 5px;
-      letter-spacing: 1px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      font-family: "Crete Round", serif;
     }
     &__info {
       font-weight: 600;

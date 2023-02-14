@@ -64,7 +64,6 @@ const style = css`
         align-items: center;
         align-content: center;
         text-align: center;
-        font-family: "Crete Round", serif;
       }
       li:hover {
         cursor: pointer;
@@ -133,7 +132,6 @@ const style = css`
 
       span {
         font-size: 35px;
-        font-family: "Cardo", serif;
         &:hover {
           color: $tertiary;
         }

@@ -26,7 +26,6 @@ const style = css`
       word-spacing: 5px;
       margin: 5px 0px;
       font-weight: bold;
-      font-family: "Crete Round", serif;
       color: $secondary;
     }
     &-stats {
@@ -34,7 +33,6 @@ const style = css`
       font-weight: bold;
       display: flex;
       flex-direction: column;
-      font-family: "Crete Round", serif;
       color: $secondary;
 
       .date {
@@ -42,7 +40,6 @@ const style = css`
         font-weight: normal;
         letter-spacing: 1px;
         margin: 5px 0px;
-        font-family: "Crete Round", serif;
         color: $secondary;
       }
     }
