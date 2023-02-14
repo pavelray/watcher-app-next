@@ -5,9 +5,7 @@ import { API_IMAGE_URL, MEDIA_TYPE } from "../../../utils/constants";
 import { getImageUrl, slugify } from "../../../utils/helperMethods";
 import ViewTrailer from "../../Business/ViewTrailer/ViewTrailer";
 import {
-  ButtonPrimary,
   ButtonSecondary,
-  ButtonSecondaryLink,
 } from "../Buttons/Buttons";
 import Rating from "../Rating/Rating";
 import { style } from "./HeroComponent.style";
@@ -24,6 +22,8 @@ const HeroComponent = ({
   runtime,
   votes,
   isMobile,
+  isHome,
+  showEpisodes
 }) => {
   const populateImageUrl = (path) => {
     const fullPath = `${API_IMAGE_URL}/original/`;
@@ -35,11 +35,14 @@ const HeroComponent = ({
   };
 
   const scrollToWatch = () => {
+    showEpisodes(true);
     const elmntToView = document.getElementById("episodes");
     elmntToView.scrollIntoView();
   };
 
-  console.log(type);
+  const goToDetailsPage = () => {
+    Router.push(`/${type}/${id}/${slugify(title)}`);
+  }
 
   const getStyle = () => {
     const deskTopStyle = {
@@ -103,8 +106,11 @@ const HeroComponent = ({
                 text="Watch Now"
               />
             )}
-            {type === MEDIA_TYPE.TV_SERIES && (
+            {type === MEDIA_TYPE.TV_SERIES && !isHome &&(
               <ButtonSecondary handleOnClick={scrollToWatch} text="Watch Now" />
+            )}
+            {type === MEDIA_TYPE.TV_SERIES && isHome && (
+              <ButtonSecondary handleOnClick={goToDetailsPage} text="Watch Now" />
             )}
           </div>
         </div>

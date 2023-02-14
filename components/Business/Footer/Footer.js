@@ -23,11 +23,23 @@ const Footer = () => {
             <p>
               The ultimate destination for movie enthusiasts. This app is using
               data from{" "}
-              <a href="https://www.themoviedb.org/" alt="TMDB" className="link">
+              <a
+                href="https://www.themoviedb.org/"
+                alt="TMDB"
+                className="link"
+                target="_blank"
+                rel="noreferrer"
+              >
                 TMDB
               </a>{" "}
               api and{" "}
-              <a href="https://2embed.biz/" alt="2embed" className="link">
+              <a
+                href="https://2embed.biz/"
+                alt="2embed"
+                className="link"
+                target="_blank"
+                rel="noreferrer"
+              >
                 2embed
               </a>{" "}
               for streaming.

@@ -264,7 +264,6 @@ export const appendToReqPerson =
 // Youtube - https://www.googleapis.com/youtube/v3/videos?key=YOUR_API_KEY&part=snippet&id=VIDEO_ID - to get image thumbnail
 //
 
-
 export const SEO_TAGS = {
   DEFAULT: {
     TITLE: "Trending Movies | Tv Series | Person",
@@ -274,22 +273,25 @@ export const SEO_TAGS = {
       "movies, upcoming , theater, showtimes, trailers, reviews, popular movies, popular tv showes, on air tv showes, upcoming tv series.",
   },
   TV: {
-    TITLE: "Top Rated Tv Series| Popular Tv Series | Upcoming Tv Series | On Air Shows",
+    TITLE:
+      "Top Rated Tv Series| Popular Tv Series | Upcoming Tv Series | On Air Shows",
     DESCRIPTION:
       "Stay updated with the trending Tv Series, latest releases and upcoming Tv Series at our website. Find details, trailers, and reviews for new and popular Tv Series.",
     KEYWORDS:
       "tv series releases, upcoming tv series, on air, showtimes, trailers, reviews, popular tv series",
   },
-  ABOUT:{
+  ABOUT: {
     TITLE: `About | ${APP_NAME}`,
   },
-  ALL:{
+  ALL: {
     TITLE: `All | Cast| Actors| Actress | ${APP_NAME}`,
-  }
+  },
 };
 
-export const PROVIDER = {
-  Hotstar: 'https://www.hotstar.com/',
-  Netflix: 'https://www.netflix.com/',
-  PrimeVideos: ''
-}
+export const MENUS = [
+  { link: "/", text: "Home" },
+  { link: "/movie", text: "Movies" },
+  { link: "/tv", text: "Tv Series" },
+  { link: "/genre", text: "Genre" },
+  { link: "/about", text: "About" },
+];

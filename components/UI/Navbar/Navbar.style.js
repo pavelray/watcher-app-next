@@ -7,6 +7,11 @@ const style = css`
   .navbar {
     padding: 10px;
     display: flex;
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    background: $background;
+    border-bottom: 2px solid $tertiary;
 
     @include mobile {
       padding: 10px 5px;

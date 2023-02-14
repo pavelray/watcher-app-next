@@ -1,8 +1,17 @@
 import React from "react";
 import { MEDIA_TYPE } from "../../utils/constants";
 import styles from "../../styles/Watch.module.scss";
+import { getMovieDetailsDataAPIUrl } from "../../utils/apiUtills";
+import httpService from "../../utils/httpService";
 
-const Watch = ({ id = "1061163", type = MEDIA_TYPE.MOVIE, ep, season }) => {
+const Watch = ({
+  id = "1061163",
+  type = MEDIA_TYPE.MOVIE,
+  ep,
+  season,
+  title,
+  name,
+}) => {
   const getStreamingUrl = () => {
     if (type === MEDIA_TYPE.MOVIE) {
       return `${type}?id=${id}`;
@@ -12,13 +21,53 @@ const Watch = ({ id = "1061163", type = MEDIA_TYPE.MOVIE, ep, season }) => {
 
   return (
     <div className={styles.watchContainer}>
+    <div className={styles.mobileRotate}>
+      <div className={styles.phone}></div>
+      <div className={styles.message}>Please rotate your device!</div>
+      </div>
+      <h2>
+        Now watching :{" "}
+        {type === MEDIA_TYPE.MOVIE
+          ? title
+          : `${name} - Season: ${season} - Episode: ${ep}`}
+      </h2>
+      <div>
+        <h4>
+          Sreaming Provier -{" "}
+          <a
+            href="https://2embed.biz/"
+            alt="2embed"
+            className={styles.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            2embed
+          </a>{" "}
+          <span className={styles.note}>** We do not store any media.</span>
+        </h4>
+      </div>
       <iframe
-        id="iframe"
+        id="iframe-watch"
+        className={styles.videoPlayer}
         src={`https://www.2embed.to/embed/tmdb/${getStreamingUrl()}`}
-        width="100%"
-        height="100%"
-        frameBorder="0"
+        allow="autoplay"
+        title={""}
       ></iframe>
+      <div>
+        <h4>
+          Sreaming Provier -{" "}
+          <a
+            href="https://2embed.biz/"
+            alt="2embed"
+            className={styles.link}
+            target="_blank"
+            rel="noreferrer"
+          >
+            2embed
+          </a>{" "}
+          <span className={styles.note}>** We do not store any media.</span>
+        </h4>
+      </div>
     </div>
   );
 };
@@ -26,13 +75,17 @@ const Watch = ({ id = "1061163", type = MEDIA_TYPE.MOVIE, ep, season }) => {
 export async function getServerSideProps(context) {
   const { query } = context;
   const { id, type, ep = "", season = "" } = query;
-
+  let url = getMovieDetailsDataAPIUrl(type, id);
+  const response = await httpService.get(url);
+  const { title = "", name = "" } = response;
   return {
     props: {
       id,
       type,
       ep,
       season,
+      title,
+      name,
     },
   };
 }

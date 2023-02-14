@@ -1,8 +1,8 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
-import { APP_NAME, LOGO_IMAGE_PATH } from "../../../utils/constants";
-
+import { APP_NAME, LOGO_IMAGE_PATH, MENUS } from "../../../utils/constants";
+import { getUid} from '../../../utils/helperMethods';
 import { style } from "./Navbar.style.js";
 import navStyle from "./Navbar.module.scss";
 import Image from "next/image";
@@ -49,6 +49,12 @@ const NavBar = ({ isMobile }) => {
     mobileMenu[0].classList.toggle("menu-open");
   };
 
+  const getActiveMenuClassName = (menu) => {
+    if(menu.text === 'Home')
+      return currentRoute === menu.link ? "menu-item active" : "menu-item";
+    return currentRoute.includes(menu.link) ? "menu-item active" : "menu-item"
+  }
+
   return (
     <Fragment>
       <div className="navbar">
@@ -75,7 +81,16 @@ const NavBar = ({ isMobile }) => {
           </button>
         </div>
         <ul>
-          <li
+        {
+          MENUS.map(menu=> (
+            <li key={getUid()}
+            className={getActiveMenuClassName(menu)}
+          >
+            <Link href={menu.link}>{menu.text}</Link>
+          </li>
+          ))
+        }
+          {/* <li
             className={currentRoute === "/" ? "menu-item active" : "menu-item"}
           >
             <Link href="/">Home</Link>
@@ -107,7 +122,7 @@ const NavBar = ({ isMobile }) => {
             }
           >
             <Link href="/about">About</Link>
-          </li>
+          </li> */}
         </ul>
         <button className="hamburger-icon" onClick={handleMobileMenu}>
           <span className="material-symbols-outlined">menu</span>

@@ -128,6 +128,8 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
         runtime={totalSeasons}
         votes={votes}
         isMobile={isMobile}
+        showEpisodes={setShowEpisodes}
+        isHome={false}
       />
       <div className="movie-details-container">
         <div className="movie-details-container__main">
