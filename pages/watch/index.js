@@ -21,9 +21,9 @@ const Watch = ({
 
   return (
     <div className={styles.watchContainer}>
-    <div className={styles.mobileRotate}>
-      <div className={styles.phone}></div>
-      <div className={styles.message}>Please rotate your device!</div>
+      <div className={styles.mobileRotate}>
+        <div className={styles.phone}></div>
+        <div className={styles.message}>Please rotate your device!</div>
       </div>
       <h2>
         Now watching :{" "}
@@ -43,9 +43,15 @@ const Watch = ({
           >
             2embed
           </a>{" "}
-          <span className={styles.note}>** We do not store any media.</span>
+          <div>
+            <span >
+              ** Please user <span className={styles.note}>ad blocker or Brave browser</span> to block the ads showin
+              by - 2embed
+            </span>
+            <br/>
+            <span>** We do not store any media.</span>
+          </div>
         </h4>
-        <p>** Please user ad blocker to block the ads showin by - 2embed</p>
       </div>
       <iframe
         id="iframe-watch"

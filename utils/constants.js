@@ -211,6 +211,16 @@ export const COLLECTION_TYPE = {
   RECOMENDED: "recomended",
 };
 
+export const COLLECTION_TYPE_NAME = {
+  top_rated: "Top Rated",
+  popular: "Popular",
+  upcoming: "Upcoming",
+  now_playing: "Now Playing",
+  similar: "Similar",
+  trending: "Trending",
+  recomended: "Recomended",
+};
+
 export const VIDEO_TYPE = {
   TRAILER: "Trailer",
 };

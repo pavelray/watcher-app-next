@@ -115,26 +115,6 @@ const NavBar = ({ isMobile }) => {
                 <Link href={menu.link}>{menu.text}</Link>
               </li>
             ))}
-            {/* <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/" className={navStyle.menuLink}>
-                Home
-              </Link>
-            </li>
-            <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/movie" className={navStyle.menuLink}>
-                Movie
-              </Link>
-            </li>
-            <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/tv" className={navStyle.menuLink}>
-                TV Series
-              </Link>
-            </li>
-            <li className="menu-item" onClick={mobileMenuClick}>
-              <Link href="/about" className={navStyle.menuLink}>
-                About
-              </Link>
-            </li> */}
           </ul>
         </div>
       </div>

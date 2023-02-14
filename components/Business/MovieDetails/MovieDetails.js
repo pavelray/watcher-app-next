@@ -106,8 +106,8 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
                 <ImageFallback
                   src={`${API_IMAGE_URL}/w400/${details.poster_path}`}
                   alt={details.id}
-                  height={400}
-                  width={300}
+                  height={576}
+                  width={384}
                   fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
                 />
               </div>

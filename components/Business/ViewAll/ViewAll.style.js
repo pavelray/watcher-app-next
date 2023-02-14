@@ -16,6 +16,12 @@ const style = css`
       grid-template-columns: repeat(3, 1fr);
     }
   }
+  .view-all-heading {
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 20px;
+  }
 `;
 
 export { style };

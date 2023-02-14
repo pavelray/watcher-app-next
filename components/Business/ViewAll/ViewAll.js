@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 
 import { style } from "./ViewAll.style";
 import Router from "next/router";
+import { COLLECTION_TYPE_NAME } from "../../../utils/constants";
 
 const ViewAll = (props) => {
   const {
@@ -17,7 +18,10 @@ const ViewAll = (props) => {
     term,
     pageType,
     dataType,
+    genreName = "",
   } = props;
+
+  console.log(page);
 
   const handlePageClick = (page) => {
     if (type && genre) Router.push(`/genre/${type}/${genre}/${page}`);
@@ -29,7 +33,10 @@ const ViewAll = (props) => {
   return (
     <Fragment>
       <div className="view-all-container">
-        <h5>Total Found: {total_results}</h5>
+        <div className="view-all-heading">
+          <h1>{genreName || COLLECTION_TYPE_NAME[dataType]}</h1>
+          <h5>Total Found: {total_results}</h5>
+        </div>
         <PaginationComponent
           totalPages={total_pages}
           selectedPage={page}

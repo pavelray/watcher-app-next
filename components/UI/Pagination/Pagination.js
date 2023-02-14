@@ -9,6 +9,7 @@ const Pagination = ({
   pagesToShow = 4,
   onPageClick,
 }) => {
+  console.log('selectedPage', selectedPage);
   const [pageData, setPageData] = useState([]);
   const pages = Array(totalPages)
     .fill(0)
@@ -65,6 +66,7 @@ const Pagination = ({
     setPageData(result);
   }, [totalPages, selectedPage]);
 
+  console.log(pageData);
   return (
     <Fragment>
       <div className="pagination">

@@ -14,10 +14,10 @@ import {
 } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
-const PersonDetailsPage = ({ id, person }) => {
+const PersonDetailsPage = ({ id, person, isMobile }) => {
   return (
     <div>
-      <PersonDetails person={person} id={id} />
+      <PersonDetails person={person} id={id} isMobile={isMobile} />
     </div>
   );
 };

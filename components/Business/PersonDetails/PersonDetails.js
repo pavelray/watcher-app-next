@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   API_IMAGE_URL,
   MEDIA_TYPE,
-  NO_IMG_PLACEHOLDER_MEDIA,
   NO_IMG_PLACEHOLDER_USER,
 } from "../../../utils/constants";
 import { getAge, getUid } from "../../../utils/helperMethods";
@@ -12,7 +11,7 @@ import MediaCard from "../MediaCard";
 import SocialIcons from "../SocialIcons/SocialIcons";
 import { style } from "./PersonDetails.style";
 
-const PersonDetails = ({ person, id }) => {
+const PersonDetails = ({ person, id, isMobile }) => {
   const { details } = person;
   const { combined_credits, external_ids, images } = details;
 
@@ -28,6 +27,7 @@ const PersonDetails = ({ person, id }) => {
     setShowPhoto(false);
     setShowCredits(!showCredits);
   };
+  const imageSize = isMobile ? `w200` : `w400`;
 
   return (
     <div className="page-container">
@@ -36,10 +36,10 @@ const PersonDetails = ({ person, id }) => {
         <div className="person-image-wrapper">
           <div className="image">
             <ImageFallback
-              src={`${API_IMAGE_URL}/w400${details.profile_path}`}
+              src={`${API_IMAGE_URL}/${imageSize}${details.profile_path}`}
               alt={details.name}
-              height={400}
-              width={300}
+              height={isMobile ? 300 : 576}
+              width={isMobile ? 200 : 384}
               fallbackSrc={NO_IMG_PLACEHOLDER_USER}
             />
           </div>
@@ -105,7 +105,7 @@ const PersonDetails = ({ person, id }) => {
       )}
       {showCredits && (
         <div className="wrapper">
-        <SubHeading text="Known for" />
+          <SubHeading text="Known for" />
           <div className="image-container">
             {combined_credits.cast?.map((tr) => {
               return (

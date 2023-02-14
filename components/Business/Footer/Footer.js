@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { APP_NAME, LOGO_IMAGE_PATH } from "../../../utils/constants";
+import { APP_NAME, LOGO_IMAGE_PATH, MENUS } from "../../../utils/constants";
+import { getUid } from "../../../utils/helperMethods";
 import { style } from "./Footer.style";
 
 const Footer = () => {
@@ -50,26 +51,11 @@ const Footer = () => {
           <div className="footer-links">
             <div className="title">Useful Links</div>
             <ul>
-              <li>
-                <Link href="/" rel="canonical">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/movie" rel="canonical">
-                  Movies
-                </Link>
-              </li>
-              <li>
-                <Link href="/tv" rel="canonical">
-                  Tv Series
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" rel="canonical">
-                  About
-                </Link>
-              </li>
+              {MENUS.map((menu) => (
+                <li key={getUid()} rel="canonical">
+                  <Link href={menu.link}>{menu.text}</Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="footer-links">

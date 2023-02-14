@@ -1,14 +1,10 @@
 import React, { Fragment } from "react";
 import {
-  getDiscoverMovieUrl,
-  getDiscoverTvSeriesUrl,
   getViewAllUrl,
 } from "../../utils/apiUtills";
-import { APP_NAME, MEDIA_TYPE } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
 import ViewAll from "../../components/Business/ViewAll/ViewAll";
-import Head from "next/head";
 
 const All = (props) => {
   return (
@@ -26,7 +22,7 @@ export async function getServerSideProps(context) {
 
   const dataType = slug[0];
   const type = slug[1];
-  const page = slug[2];
+  const page = +slug[2];
   const pageType = "all";
 
   const apiUrl = getViewAllUrl(dataType, type, page);
