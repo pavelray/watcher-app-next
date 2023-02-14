@@ -92,39 +92,6 @@ const NavBar = ({ isMobile }) => {
               <Link href={menu.link}>{menu.text}</Link>
             </li>
           ))}
-          {/* <li
-            className={currentRoute === "/" ? "menu-item active" : "menu-item"}
-          >
-            <Link href="/">Home</Link>
-          </li>
-          <li
-            className={
-              currentRoute.includes("/movie") ? "menu-item active" : "menu-item"
-            }
-          >
-            <Link href="/movie">Movie</Link>
-          </li>
-          <li
-            className={
-              currentRoute.includes("/tv") ? "menu-item active" : "menu-item"
-            }
-          >
-            <Link href="/tv">Tv Series</Link>
-          </li>
-          <li
-            className={
-              currentRoute.includes("/genre") ? "menu-item active" : "menu-item"
-            }
-          >
-            <Link href="/genre">Genre</Link>
-          </li>
-          <li
-            className={
-              currentRoute === "/about" ? "menu-item active" : "menu-item"
-            }
-          >
-            <Link href="/about">About</Link>
-          </li> */}
         </ul>
         <button className="hamburger-icon" onClick={handleMobileMenu}>
           <Image
@@ -139,7 +106,16 @@ const NavBar = ({ isMobile }) => {
       <div className="mobile">
         <div className="mobile-menu">
           <ul className="menu">
-            <li className="menu-item" onClick={mobileMenuClick}>
+            {MENUS.map((menu) => (
+              <li
+                key={getUid()}
+                className="menu-item"
+                onClick={mobileMenuClick}
+              >
+                <Link href={menu.link}>{menu.text}</Link>
+              </li>
+            ))}
+            {/* <li className="menu-item" onClick={mobileMenuClick}>
               <Link href="/" className={navStyle.menuLink}>
                 Home
               </Link>
@@ -158,7 +134,7 @@ const NavBar = ({ isMobile }) => {
               <Link href="/about" className={navStyle.menuLink}>
                 About
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>
