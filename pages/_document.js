@@ -3,10 +3,7 @@ import Script from "next/script";
 
 export default function Document() {
   return (
-    <Html
-      lang="en"
-      xmlns="http://www.w3.org/1999/xhtml"
-    >
+    <Html lang="en" xmlns="http://www.w3.org/1999/xhtml">
       <Head>
         <link
           rel="apple-touch-icon"
@@ -81,6 +78,20 @@ export default function Document() {
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
         <meta name="theme-color" content="#ffffff"></meta>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-4JG944BM1B"
+        ></Script>
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `(function(){window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4JG944BM1B');})()`,
+          }}
+        ></Script>
       </Head>
       <body>
         <Main />
@@ -98,6 +109,10 @@ export default function Document() {
         <Script
           src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"
           async
+        />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-8MN2V9GRB6"
         />
       </body>
     </Html>
