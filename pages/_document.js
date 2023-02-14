@@ -9,10 +9,6 @@ export default function Document() {
     >
       <Head>
         <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0&display=optional"
-        />
-        <link
           rel="apple-touch-icon"
           sizes="57x57"
           href="/apple-icon-57x57.png"
