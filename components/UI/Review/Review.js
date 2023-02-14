@@ -17,7 +17,7 @@ const Review = ({ review }) => {
       const expandableText =
         expandableElement.querySelector("[data-expand-text]");
       const overflowing =
-        expandableText.scrollHeight > expandableText.clientHeight+1;
+        expandableText.scrollHeight > expandableText.clientHeight + 1;
       expandableElement.dataset.overflow = overflowing;
     });
   };
@@ -43,7 +43,10 @@ const Review = ({ review }) => {
       <div className="review-header">
         <p className="review-author"> {author}</p>
         <p className="review-stats">
-          <label className="rating"> {rating}/10</label>
+          <label className="rating"> Rating: {rating}/10</label>
+        </p>
+        <p className="review-stats">
+          <label className="date">Date: {createdDate}</label>
         </p>
       </div>
       <div data-expandable>
@@ -52,13 +55,11 @@ const Review = ({ review }) => {
           className="review-description"
           dangerouslySetInnerHTML={{ __html: content }}
         />
-        <button data-expand-button onClick={toggleText} className='read-more'>
+        <button data-expand-button onClick={toggleText} className="read-more">
           Read More
         </button>
       </div>
-      <p className="review-stats">
-        <label className="date">{createdDate}</label>
-      </p>
+
       <style jsx>{style}</style>
     </div>
   );

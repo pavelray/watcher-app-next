@@ -9,7 +9,8 @@ const style = css`
 
     &-header {
       display: flex;
-      justify-content: space-between;
+      align-items: baseline;
+      gap: 2rem;
     }
     &-description {
       font-size: 14px;
@@ -22,28 +23,27 @@ const style = css`
     }
     &-author {
       font-size: 18px;
-      letter-spacing: 2px;
-      word-spacing: 5px;
+      word-spacing: 2px;
       margin: 5px 0px;
-      font-weight: bold;
+      font-weight: 500;
       color: $secondary;
     }
     &-stats {
       margin: 5px 0px;
-      font-weight: bold;
+      font-weight: 500;
       display: flex;
       flex-direction: column;
       color: $secondary;
 
       .date {
         font-size: 15px;
-        font-weight: normal;
+        font-weight: 500;
         letter-spacing: 1px;
         margin: 5px 0px;
         color: $secondary;
       }
     }
-    .read-more{
+    .read-more {
       border: none;
       background: $background;
       color: $tertiary;
@@ -51,7 +51,7 @@ const style = css`
       letter-spacing: 1px;
       font-size: 12px;
       padding: 0;
-     
+
       &:hover {
         cursor: pointer;
         border-bottom: 1px solid $tertiary;
