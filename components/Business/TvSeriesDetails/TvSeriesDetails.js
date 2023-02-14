@@ -1,4 +1,5 @@
 import axios from "axios";
+import Image from "next/image";
 import Router from "next/router";
 import React, { Fragment, useState } from "react";
 import {
@@ -244,11 +245,14 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
                     alt="Video"
                     fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
                   />
-                  <span
-                    className="material-symbols-outlined icon-play"
-                    onClick={() => playVideo(video)}
-                  >
-                    play_circle
+                  <span className="icon-play" onClick={() => playVideo(video)}>
+                    <Image
+                      src="/icons/common/play.png"
+                      alt=""
+                      width={55}
+                      height={55}
+                      title="Play Video"
+                    />
                   </span>
                 </div>
                 <div className="media-title">{video.name}</div>
@@ -300,10 +304,21 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
                     title={episode.episode_number}
                   />
                   <span
-                    className="material-symbols-outlined icon-play"
-                    onClick={() => navigateToWatch(episode.episode_number, selectSeasonNumber)}
+                    className="icon-play"
+                    onClick={() =>
+                      navigateToWatch(
+                        episode.episode_number,
+                        selectSeasonNumber
+                      )
+                    }
                   >
-                    play_circle
+                    <Image
+                      src="/icons/common/play.png"
+                      alt=""
+                      width={55}
+                      height={55}
+                      title="Play Video"
+                    />
                   </span>
                 </div>
                 <div className="media-title">

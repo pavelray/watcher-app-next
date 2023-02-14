@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { Fragment, useState } from "react";
 import {
   API_IMAGE_URL,
@@ -205,11 +206,14 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
                     alt="Video"
                     fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
                   />
-                  <span
-                    className="material-symbols-outlined icon-play"
-                    onClick={() => playVideo(video)}
-                  >
-                    play_circle
+                  <span className=" icon-play" onClick={() => playVideo(video)}>
+                    <Image
+                      src="/icons/common/play.png"
+                      alt=""
+                      width={55}
+                      height={55}
+                      title="Play Video"
+                    />
                   </span>
                 </div>
                 <div className="media-title">{video.name}</div>

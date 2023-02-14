@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 import { APP_NAME } from "../../../utils/constants";
 import { style } from "./AboutComponent.style";
@@ -116,7 +117,13 @@ const AboutComponent = () => {
           >
             Buy me a Coffee
           </a>
-          <span className="material-symbols-outlined">coffee</span>
+          <span><Image
+            src="/icons/common/coffee-cup.png"
+            alt=""
+            width={25}
+            height={25}
+            title="Show Menu"
+          /></span>
         </div>
       </div>
 

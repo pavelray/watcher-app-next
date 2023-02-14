@@ -2,7 +2,7 @@ import { Fragment, useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Router, { useRouter } from "next/router";
 import { APP_NAME, LOGO_IMAGE_PATH, MENUS } from "../../../utils/constants";
-import { getUid} from '../../../utils/helperMethods';
+import { getUid } from "../../../utils/helperMethods";
 import { style } from "./Navbar.style.js";
 import navStyle from "./Navbar.module.scss";
 import Image from "next/image";
@@ -50,10 +50,10 @@ const NavBar = ({ isMobile }) => {
   };
 
   const getActiveMenuClassName = (menu) => {
-    if(menu.text === 'Home')
+    if (menu.text === "Home")
       return currentRoute === menu.link ? "menu-item active" : "menu-item";
-    return currentRoute.includes(menu.link) ? "menu-item active" : "menu-item"
-  }
+    return currentRoute.includes(menu.link) ? "menu-item active" : "menu-item";
+  };
 
   return (
     <Fragment>
@@ -77,19 +77,21 @@ const NavBar = ({ isMobile }) => {
             placeholder="Search any movie, tv-series or people"
           />
           <button className="search-wrapper__button" onClick={navigateToSearch}>
-            <span className="material-symbols-outlined">search</span>
+            <Image
+              src="/icons/common/search.png"
+              alt=""
+              width={30}
+              height={30}
+              title="Search"
+            />
           </button>
         </div>
         <ul>
-        {
-          MENUS.map(menu=> (
-            <li key={getUid()}
-            className={getActiveMenuClassName(menu)}
-          >
-            <Link href={menu.link}>{menu.text}</Link>
-          </li>
-          ))
-        }
+          {MENUS.map((menu) => (
+            <li key={getUid()} className={getActiveMenuClassName(menu)}>
+              <Link href={menu.link}>{menu.text}</Link>
+            </li>
+          ))}
           {/* <li
             className={currentRoute === "/" ? "menu-item active" : "menu-item"}
           >
@@ -125,7 +127,13 @@ const NavBar = ({ isMobile }) => {
           </li> */}
         </ul>
         <button className="hamburger-icon" onClick={handleMobileMenu}>
-          <span className="material-symbols-outlined">menu</span>
+          <Image
+            src="/icons/common/menu.png"
+            alt=""
+            width={35}
+            height={35}
+            title="Show Menu"
+          />
         </button>
       </div>
       <div className="mobile">

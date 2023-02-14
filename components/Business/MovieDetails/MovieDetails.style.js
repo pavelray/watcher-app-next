@@ -236,7 +236,7 @@ const style = css`
           position: absolute;
           top: 50%;
           left: 50%;
-          z-index: 2;
+          z-index: 12;
           transform: translate(-50%, -50%);
           font-size: 4rem;
 

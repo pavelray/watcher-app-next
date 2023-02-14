@@ -258,7 +258,7 @@ const style = css`
   .mobile ul.menu {
     position: relative;
     display: block;
-    padding: 0px 40px 0;
+    padding: 4rem 40px 0;
     list-style: none;
   }
 
