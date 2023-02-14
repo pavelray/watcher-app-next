@@ -31,28 +31,26 @@ const Watch = ({
           ? title
           : `${name} - Season: ${season} - Episode: ${ep}`}
       </h2>
-      <div>
-        <h4>
-          Sreaming Provier -{" "}
-          <a
-            href="https://2embed.biz/"
-            alt="2embed"
-            className={styles.link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            2embed
-          </a>{" "}
-          <div>
-            <span>
-              ** Please user{" "}
-              <span className={styles.note}>ad blocker or Brave browser</span>{" "}
-              to block the ads showin by - 2embed
-            </span>
-            <br />
-            <span>** We do not store any media.</span>
-          </div>
-        </h4>
+      <div className={styles.header}>
+        Sreaming Provier -{" "}
+        <a
+          href="https://2embed.biz/"
+          alt="2embed"
+          className={styles.link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          2embed
+        </a>{" "}
+        <div>
+          <span>
+            ** Please user{" "}
+            <span className={styles.note}>ad blocker or Brave browser</span> to
+            block the ads showin by - 2embed
+          </span>
+          <br />
+          <span>** We do not store any media.</span>
+        </div>
       </div>
       <iframe
         id="iframe-watch"
@@ -60,7 +58,7 @@ const Watch = ({
         src={`https://www.2embed.to/embed/tmdb/${getStreamingUrl()}`}
         allow="autoplay"
         title={title || name}
-        allowfullscreen=""
+        allowFullScreen=""
         webkitallowfullscreen="true"
         mozallowfullscreen="true"
         oallowfullscreen="true"

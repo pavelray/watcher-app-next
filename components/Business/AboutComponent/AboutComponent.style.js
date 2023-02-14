@@ -31,8 +31,7 @@ const style = css`
       letter-spacing: 0.2rem;
     }
     &-body {
-      letter-spacing: 0.1rem;
-      word-spacing: 0.2rem;
+      word-spacing: 0.1rem;
 
       p {
         white-space: pre-line;
