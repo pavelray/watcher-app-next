@@ -45,6 +45,7 @@ const Watch = ({
           </a>{" "}
           <span className={styles.note}>** We do not store any media.</span>
         </h4>
+        <p>** Please user ad blocker to block the ads showin by - 2embed</p>
       </div>
       <iframe
         id="iframe-watch"
