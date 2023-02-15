@@ -4,12 +4,12 @@ import { v4 as uuidv4 } from "uuid";
 import { style } from "./Pagination.style";
 
 const Pagination = ({
-  totalPages = 10,
+  totalPages = 500,
   selectedPage = 1,
   pagesToShow = 4,
   onPageClick,
 }) => {
-  console.log('selectedPage', selectedPage);
+  
   const [pageData, setPageData] = useState([]);
   const pages = Array(totalPages)
     .fill(0)

@@ -56,6 +56,12 @@ const style = css`
       }
     }
   }
+  .credit-bar{
+    display:flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+  }
 `;
 
 export { style };

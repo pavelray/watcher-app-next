@@ -21,7 +21,7 @@ const ViewAll = (props) => {
     genreName = "",
   } = props;
 
-  console.log(page);
+  const totalPages = 500; // Making this const as TMDB return maximum of 500 pages.
 
   const handlePageClick = (page) => {
     if (type && genre) Router.push(`/genre/${type}/${genre}/${page}`);
@@ -38,7 +38,7 @@ const ViewAll = (props) => {
           <h5>Total Found: {total_results}</h5>
         </div>
         <PaginationComponent
-          totalPages={total_pages}
+          totalPages={totalPages}
           selectedPage={page}
           onPageClick={handlePageClick}
         >
