@@ -34,7 +34,8 @@ const Footer = () => {
                 >
                   TMDB API
                 </a>{" "}
-                but is not endorsed or certified by TMDB and using{" "}
+                but is not endorsed or certified by TMDB and for streaming this
+                product uses{" "}
                 <a
                   href="https://2embed.biz/"
                   alt="2embed"
@@ -43,8 +44,8 @@ const Footer = () => {
                   rel="noreferrer"
                 >
                   2embed.org
-                </a>{" "}
-                for streaming.
+                </a>
+                .
                 <br />
                 Copywright @ thefilmmastery 2023.
               </p>
@@ -57,6 +58,12 @@ const Footer = () => {
                     <Link href={menu.link}>{menu.text}</Link>
                   </li>
                 ))}
+                <li key={getUid()} rel="canonical">
+                  <Link href="/policy/privacy">Privacy Policy</Link>
+                </li>
+                <li key={getUid()} rel="canonical">
+                  <Link href="/policy/cookie-policy">Cookie Policy</Link>
+                </li>
               </ul>
             </div>
             <div className="footer-links">

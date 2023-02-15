@@ -1,0 +1,26 @@
+@import "./colors";
+@import "./mixins";
+
+.policyContainer {
+  padding: 0 20rem;
+  font-size: 1.2rem;
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1.6rem;
+  }
+
+  .heading {
+    color: $secondary;
+    font-weight: 500;
+  }
+
+  @include mobile {
+    padding: 0 2rem;
+  }
+  @include mobile-landscape {
+    padding: 0 2rem;
+  }
+}

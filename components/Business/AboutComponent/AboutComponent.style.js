@@ -9,18 +9,28 @@ const style = css`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 20rem;
 
     @include mobile {
       margin-bottom: 20px;
+      padding: 0 2rem;
     }
     @include mobile-landscape {
       margin-bottom: 20px;
+      padding: 0 2rem;
     }
+    @include tablet {
+      padding: 0 2rem;
+    }
+    @include desktop {
+      padding: 0 2rem;
+    }
+
     &-title {
       margin-top: 40px;
       font-size: 65px;
       @include mobile {
-        font-size: 45px;
+        font-size: 40px;
       }
       @include mobile-landscape {
         font-size: 45px;
