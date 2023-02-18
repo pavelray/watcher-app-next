@@ -16,6 +16,7 @@ import {
 } from "../utils/constants";
 import httpService from "../utils/httpService";
 import styles from "../styles/Home.module.scss";
+import { GoogleAd } from "../components/UI/GoogleAds";
 
 const Home = ({
   trendingMovie,
@@ -40,6 +41,7 @@ const Home = ({
               title="Trending Movies"
               dataType={COLLECTION_TYPE.TRENDING}
             />
+            <GoogleAd />
             <CardSlider
               data={trendingTvSeries.results}
               type={MEDIA_TYPE.TV_SERIES}
