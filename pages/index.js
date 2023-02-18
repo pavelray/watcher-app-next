@@ -41,13 +41,14 @@ const Home = ({
               title="Trending Movies"
               dataType={COLLECTION_TYPE.TRENDING}
             />
-            <GoogleAd />
+
             <CardSlider
               data={trendingTvSeries.results}
               type={MEDIA_TYPE.TV_SERIES}
               title="Trending Tv Series"
               dataType={COLLECTION_TYPE.TRENDING}
             />
+            <GoogleAd />
             <CardSlider
               data={trendingPersons.results}
               type={MEDIA_TYPE.PERSON}
