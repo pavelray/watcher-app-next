@@ -3,6 +3,8 @@ import { MEDIA_TYPE } from "../../utils/constants";
 import styles from "../../styles/Watch.module.scss";
 import { getMovieDetailsDataAPIUrl } from "../../utils/apiUtills";
 import httpService from "../../utils/httpService";
+import Link from "next/link";
+import { slugify } from "../../utils/helperMethods";
 
 const Watch = ({
   id = "1061163",
@@ -27,9 +29,13 @@ const Watch = ({
       </div>
       <h2>
         Now watching :{" "}
-        {type === MEDIA_TYPE.MOVIE
-          ? title
-          : `${name} - Season: ${season} - Episode: ${ep}`}
+        {type === MEDIA_TYPE.MOVIE ? (
+          <Link href={`/${type}/${id}/${slugify(title)}`}><span className={styles.link}>{title}</span></Link>
+        ) : (
+          <Link href={`/${type}/${id}/${slugify(name)}`}>
+            `${name} - Season: ${season} - Episode: ${ep}`
+          </Link>
+        )}
       </h2>
       <div className={styles.header}>
         Sreaming Provier -{" "}
