@@ -27,7 +27,7 @@ const CardSlider = ({ title, data, type, dataType }) => {
         <SubHeading text={title} />
         <div className="slide-container__sub">{renderViewAllLink()}</div>
       </div>
-      <AliceCarousel
+      {/* <AliceCarousel
         autoWidth
         mouseTracking
         responsive={{
@@ -52,8 +52,8 @@ const CardSlider = ({ title, data, type, dataType }) => {
             />
           );
         })}
-      </AliceCarousel>
-      {/* <div className="slide-container__scroll-wrapper">
+      </AliceCarousel> */}
+      <div className="slide-container__scroll-wrapper">
         <div className="slide-container__content">
           {data?.map((tr) => {
             return (
@@ -69,7 +69,7 @@ const CardSlider = ({ title, data, type, dataType }) => {
             );
           })}
         </div>
-      </div> */}
+      </div>
       <style jsx>{style}</style>
     </div>
   );

@@ -5,6 +5,7 @@ const style = css`
   @import "../../../styles/mixins";
 
   .slide-container {
+    padding: 50px 0px;
     &__title--wrapper {
       display: flex;
       justify-content: space-between;

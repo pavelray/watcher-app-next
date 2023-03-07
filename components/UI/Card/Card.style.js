@@ -10,15 +10,14 @@ const style = css`
     border-radius: 8px;
     text-align: left;
     width: 200px;
-    flex: 1 1 200px;
 
     @include mobile {
-      flex: 1 1 140px;
-      width: 140px;
+      flex: 1 1 150px;
+      width: 150px;
     }
     @include mobile-landscape {
-      flex: 1 1 140px;
-      width: 140px;
+      flex: 1 1 150px;
+      width: 150px;
     }
   }
 

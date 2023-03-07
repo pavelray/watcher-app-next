@@ -6,8 +6,9 @@ const style = css`
 
   .footer {
     min-height: 20vh;
-    background: #393e46;
+    background: $background2;
     padding: 20px;
+    margin-top: 100px;
     .footer-content {
       display: flex;
       flex-direction: column-reverse;

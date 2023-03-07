@@ -280,7 +280,7 @@ export const SEO_TAGS = {
     DESCRIPTION:
       "Stay updated with the trending movies, tv series in our website. Find details, trailers, and reviews for new and popular movies and tv series.",
     KEYWORDS:
-      "movies, upcoming , theater, showtimes, trailers, reviews, popular movies, popular tv showes, on air tv showes, upcoming tv series.",
+      "movies, trending movies, upcoming , theater, showtimes, trailers, reviews, popular movies, popular tv showes, on air tv showes, upcoming tv series.",
   },
   TV: {
     TITLE:
@@ -288,7 +288,7 @@ export const SEO_TAGS = {
     DESCRIPTION:
       "Stay updated with the trending Tv Series, latest releases and upcoming Tv Series at our website. Find details, trailers, and reviews for new and popular Tv Series.",
     KEYWORDS:
-      "tv series releases, upcoming tv series, on air, showtimes, trailers, reviews, popular tv series",
+      "trending tv series releases, upcoming tv series, on air, showtimes, trailers, reviews, popular tv series",
   },
   ABOUT: {
     TITLE: `About | ${APP_NAME}`,

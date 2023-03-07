@@ -110,7 +110,6 @@ const PersonDetails = ({ person, id, isMobile }) => {
             {combined_credits.cast?.map((tr) => {
               return (
                 <MediaCard
-                  className="image"
                   key={getUid()}
                   id={tr.id}
                   title={tr.title || tr.name}

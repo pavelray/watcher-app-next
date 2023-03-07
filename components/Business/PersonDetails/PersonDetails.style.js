@@ -95,9 +95,11 @@ const style = css`
 
       @include mobile {
         width: auto;
+        gap: 15px;
       }
       @include mobile-landscape {
         width: auto;
+        gap: 10px;
       }
 
       &:hover {
@@ -140,10 +142,10 @@ const style = css`
       height: 35vmin;
       object-fit: cover;
       object-position: 100% center;
-
+ 
       &:hover {
         animation: zoomIn 1s ease-out forwards;
-        animation-delay: 0.1s;
+        animation-delay: 1s;
       }
 
       @keyframes zoomIn {

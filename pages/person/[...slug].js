@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import PersonDetails from "../../components/Business/PersonDetails";
 import {
   getAllCredits,
@@ -16,9 +16,9 @@ import httpService from "../../utils/httpService";
 
 const PersonDetailsPage = ({ id, person, isMobile }) => {
   return (
-    <div>
+    <Fragment>
       <PersonDetails person={person} id={id} isMobile={isMobile} />
-    </div>
+    </Fragment>
   );
 };
 

@@ -110,7 +110,7 @@ export const getReviewUrl = (id, type) => {
   return `${API_BASE_URL}/${type}/${id}/reviews?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
 };
 
-export const getRecommendationsUrl = (id, type, pageNo=1) => {
+export const getRecommendationsUrl = (id, type, pageNo = 1) => {
   return `${API_BASE_URL}/${type}/${id}/recommendations?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&page=${pageNo}`;
 };
 
@@ -123,10 +123,12 @@ export const getShowsOnAirUrl = (type) => {
 };
 
 export const getDiscoverMovieUrl = (type, page, genre) => {
-  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_genres=${genre}&with_watch_monetization_types=flatrate`;
+  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=popularity.desc&include_video=false&page=${page}&with_genres=${genre}&with_watch_monetization_types=flatrate`;
 };
 
-
+export const getMediaByYearUrl = (type, pageNo = 1, year = 1995) => {
+  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&primary_release_year=${year}&page=${pageNo}&sort_by=popularity.desc`;
+};
 
 export const getDiscoverTvSeriesUrl = (type, page, genre) => {
   return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=popularity.desc&page=${page}&timezone=America%2FNew_York&with_genres=${genre}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate`;
@@ -138,8 +140,12 @@ export const getReleaseDetailsUrl = (type, id) => {
 
 export const getContentRatingUrl = (type, id) => {
   return `${API_BASE_URL}/${type}/${id}/content_ratings?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`;
-}
+};
 
 export const getExternalIdUrl = (type, id) => {
   return `${API_BASE_URL}/${type}/${id}/external_ids?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`;
-}
+};
+
+export const getPopularPeople = (pageNo = 1) => {
+  return `${API_BASE_URL}/person/popular?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&page=${pageNo}`;
+};

@@ -32,12 +32,20 @@ const style = css`
         display: flex;
         flex-direction: row;
         align-items: center;
+        @include mobile {
+          align-items: normal;
+          flex-direction: initial;
+        }
       }
       .genre {
         display: flex;
         margin: 0;
         padding: 0;
         margin-left: 5px;
+        @include mobile {
+          display: initial;
+        }
+
         li {
           color: $tertiary;
           cursor: pointer;

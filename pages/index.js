@@ -4,6 +4,7 @@ import HomeBanner from "../components/Business/HomeBanner/HomeBanner";
 import CardSlider from "../components/UI/CardCarousel/CardSlider";
 import {
   getMovieDetailsDataAPIUrl,
+  getPopularPeople,
   getTrendingDataAPIUrl,
 } from "../utils/apiUtills";
 import {
@@ -41,7 +42,6 @@ const Home = ({
               title="Trending Movies"
               dataType={COLLECTION_TYPE.TRENDING}
             />
-
             <CardSlider
               data={trendingTvSeries.results}
               type={MEDIA_TYPE.TV_SERIES}
@@ -52,8 +52,8 @@ const Home = ({
             <CardSlider
               data={trendingPersons.results}
               type={MEDIA_TYPE.PERSON}
-              title="Person"
-              dataType={COLLECTION_TYPE.TRENDING}
+              title="Popular People"
+              dataType={COLLECTION_TYPE.POPULAR}
             />
           </div>
         </div>
@@ -69,7 +69,7 @@ export async function getServerSideProps(ctx) {
   url = getTrendingDataAPIUrl(MEDIA_TYPE.TV_SERIES, TIME_TYPE.WEEK);
   const trendingTvSeriesReq = httpService.get(url);
 
-  url = getTrendingDataAPIUrl(MEDIA_TYPE.PERSON, TIME_TYPE.WEEK);
+  url = getPopularPeople();
   const trendingPersonReq = httpService.get(url);
 
   url = getTrendingDataAPIUrl(MEDIA_TYPE.ALL, TIME_TYPE.DAY);
