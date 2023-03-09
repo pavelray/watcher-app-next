@@ -25,4 +25,39 @@
 <lastmod>2023-02-09T11:33:47+00:00</lastmod>
 <priority>0.80</priority>
 </url>
+<url>
+	<loc>https://thefilmmastery.com/</loc>
+	<lastmod>2023-03-09T12:59:27+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://thefilmmastery.com/movie</loc>
+	<lastmod>2023-03-09T12:59:27+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://thefilmmastery.com/tv</loc>
+	<lastmod>2023-03-09T12:59:27+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://thefilmmastery.com/genre</loc>
+	<lastmod>2023-03-09T12:59:27+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://thefilmmastery.com/about</loc>
+	<lastmod>2023-03-09T12:59:27+01:00</lastmod>
+	<priority>1.0</priority>
+</url>
+<url>
+	<loc>https://thefilmmastery.com/policy/privacy</loc>
+	<lastmod>2023-03-09T12:59:27+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
+<url>
+	<loc>https://thefilmmastery.com/policy/cookie-policy</loc>
+	<lastmod>2023-03-09T12:59:27+01:00</lastmod>
+	<priority>0.8</priority>
+</url>
 </urlset>
