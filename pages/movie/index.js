@@ -1,23 +1,19 @@
 import React, { Fragment } from "react";
-import Head from "next/head";
 import CardSlider from "../../components/UI/CardCarousel/CardSlider";
 import {
+  getMediaByYearUrl,
   getNowPlayingMoviesUrl,
   getPopularMoviesUrl,
   getTopRatedMoviesUrl,
   getUpcomingMoviesUrl,
 } from "../../utils/apiUtills";
 import {
-  APP_NAME,
   COLLECTION_TYPE,
   DEFAULT_COUNTRY_CODE,
   MEDIA_TYPE,
-  pageLayoutStyle,
-  pageMobileLayoutStyle,
 } from "../../utils/constants";
 import { getLocationCookie } from "../../utils/helperMethods";
 import httpService from "../../utils/httpService";
-import MediaGenre from "../../components/Business/MediaGenre/MediaGenre";
 
 const Movie = (props) => {
   const {
@@ -25,11 +21,31 @@ const Movie = (props) => {
     upComingMovie,
     topRatedMovie,
     popularMovie,
+    currentYearMovies,
+    currentYear,
   } = props;
 
   return (
     <Fragment>
       <div>
+        <CardSlider
+          data={currentYearMovies.results}
+          type={MEDIA_TYPE.MOVIE}
+          title={`Movies Released in ${currentYear}`}
+          dataType={COLLECTION_TYPE.SIMILAR}
+        />
+        <CardSlider
+          data={popularMovie.results}
+          type={MEDIA_TYPE.MOVIE}
+          title="Popular Movies"
+          dataType={COLLECTION_TYPE.POPULAR}
+        />
+        <CardSlider
+          data={topRatedMovie.results}
+          type={MEDIA_TYPE.MOVIE}
+          title="Top Rated Movies"
+          dataType={COLLECTION_TYPE.TOP_RATED}
+        />
         <CardSlider
           data={nowPlayingMovie.results}
           type={MEDIA_TYPE.MOVIE}
@@ -41,18 +57,6 @@ const Movie = (props) => {
           type={MEDIA_TYPE.MOVIE}
           title="Upcoming Movies in your cinemas"
           dataType={COLLECTION_TYPE.UP_COMING}
-        />
-        <CardSlider
-          data={topRatedMovie.results}
-          type={MEDIA_TYPE.MOVIE}
-          title="Top Rated"
-          dataType={COLLECTION_TYPE.TOP_RATED}
-        />
-        <CardSlider
-          data={popularMovie.results}
-          type={MEDIA_TYPE.MOVIE}
-          title="Popular"
-          dataType={COLLECTION_TYPE.POPULAR}
         />
       </div>
     </Fragment>
@@ -75,13 +79,23 @@ export async function getServerSideProps(context) {
   url = getPopularMoviesUrl(MEDIA_TYPE.MOVIE, 1);
   const popularMovieReq = httpService.get(url);
 
-  const [nowPlayingMovie, upComingMovie, topRatedMovie, popularMovie] =
-    await Promise.allSettled([
-      nowPlayingMovieReq,
-      upComingMovieReq,
-      topRatedMovieReq,
-      popularMovieReq,
-    ]);
+  const currentYear = new Date().getFullYear();
+  url = getMediaByYearUrl(MEDIA_TYPE.MOVIE, 1, currentYear);
+  const currentYearMovieReq = httpService.get(url);
+
+  const [
+    nowPlayingMovie,
+    upComingMovie,
+    topRatedMovie,
+    popularMovie,
+    currentYearMovies,
+  ] = await Promise.allSettled([
+    nowPlayingMovieReq,
+    upComingMovieReq,
+    topRatedMovieReq,
+    popularMovieReq,
+    currentYearMovieReq,
+  ]);
 
   return {
     props: {
@@ -89,6 +103,8 @@ export async function getServerSideProps(context) {
       upComingMovie: upComingMovie.value,
       topRatedMovie: topRatedMovie.value,
       popularMovie: popularMovie.value,
+      currentYearMovies: currentYearMovies.value,
+      currentYear,
     },
   };
 }

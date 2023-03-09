@@ -64,9 +64,10 @@ const NavBar = ({ isMobile }) => {
             src={LOGO_IMAGE_PATH}
             alt={`${APP_NAME} logo`}
             title={APP_NAME}
-            width={isMobile ? 60 : 100}
-            height={isMobile ? 40 : 65}
+            width={isMobile ? 40 : 60}
+            height={isMobile ? 35 : 50}
           />
+          <span className="title">{isMobile ? "TFM" : "The Film Mastery"}</span>
         </div>
         <div className="search-wrapper">
           <input

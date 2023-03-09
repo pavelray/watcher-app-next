@@ -81,7 +81,7 @@ const style = css`
       @include mobile {
         display: none;
       }
-      @include mobile-landscape{
+      @include mobile-landscape {
         display: none;
       }
       @include tablet {
@@ -116,6 +116,9 @@ const style = css`
       width: 30%;
       align-items: center;
       cursor: pointer;
+      gap: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
       @include mobile {
         width: 25%;
         img {
@@ -131,7 +134,7 @@ const style = css`
       }
 
       span {
-        font-size: 35px;
+        font-size: 25px;
         &:hover {
           color: $tertiary;
         }

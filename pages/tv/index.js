@@ -20,16 +20,16 @@ const TvSeries = (props) => {
     <Fragment>
       <div>
         <CardSlider
-          data={topRatedMovie.results}
-          type={MEDIA_TYPE.TV_SERIES}
-          title="Top Rated"
-          dataType={COLLECTION_TYPE.TOP_RATED}
-        />
-        <CardSlider
           data={popularMovie.results}
           type={MEDIA_TYPE.TV_SERIES}
-          title="Popular"
+          title="Popular TV Series"
           dataType={COLLECTION_TYPE.POPULAR}
+        />
+        <CardSlider
+          data={topRatedMovie.results}
+          type={MEDIA_TYPE.TV_SERIES}
+          title="Top Rated TV Series"
+          dataType={COLLECTION_TYPE.TOP_RATED}
         />
         <CardSlider
           data={nowPlayingMovie.results}

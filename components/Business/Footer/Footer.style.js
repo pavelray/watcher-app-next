@@ -23,6 +23,7 @@ const style = css`
             font-size: 22px;
             display: flex;
             align-items: center;
+            gap: 12px;
           }
           p {
             width: 60vmin;
