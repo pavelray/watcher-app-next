@@ -296,6 +296,14 @@ export const SEO_TAGS = {
   ALL: {
     TITLE: `All | Cast| Actors| Actress | ${APP_NAME}`,
   },
+  GENRE: {
+    TITLE:
+      "Discover Your Favorite Genre: Explore Our Wide Collection of Genres",
+    DESCRIPTION:
+      "Explore our collection of diverse genres and find your new favorite movie, or tv series genre. From romance to horror, we've got it all. Start browsing now!",
+    KEYWORDS:
+      "action movies, romace, thriller movies , horror movies, suspense tv shows, comedy tv shows, comedy movies, the film mastery",
+  },
 };
 
 export const MENUS = [

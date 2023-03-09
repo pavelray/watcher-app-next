@@ -13,7 +13,6 @@ const ViewAll = (props) => {
     page,
     genre,
     results,
-    total_pages,
     total_results,
     term,
     pageType,
@@ -35,7 +34,6 @@ const ViewAll = (props) => {
       <div className="view-all-container">
         <div className="view-all-heading">
           <h1>{genreName || COLLECTION_TYPE_NAME[dataType]}</h1>
-          <h5>Total Found: {total_results}</h5>
         </div>
         <PaginationComponent
           totalPages={totalPages}

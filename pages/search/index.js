@@ -1,15 +1,15 @@
-import React from "react";
+import React, { Fragment } from "react";
 import ViewAll from "../../components/Business/ViewAll";
 import { getSearchUrl } from "../../utils/apiUtills";
 import { pageLayoutStyle, pageMobileLayoutStyle } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
 const Search = (props) => {
-    return (
-        <div>
-          <ViewAll {...props} />
-        </div>
-      );
+  return (
+    <Fragment>
+      <ViewAll {...props} />
+    </Fragment>
+  );
 };
 
 export async function getServerSideProps(context) {

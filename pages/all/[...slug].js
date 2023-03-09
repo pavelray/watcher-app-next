@@ -1,7 +1,5 @@
 import React, { Fragment } from "react";
-import {
-  getViewAllUrl,
-} from "../../utils/apiUtills";
+import { getViewAllUrl } from "../../utils/apiUtills";
 import httpService from "../../utils/httpService";
 
 import ViewAll from "../../components/Business/ViewAll/ViewAll";
@@ -9,9 +7,7 @@ import ViewAll from "../../components/Business/ViewAll/ViewAll";
 const All = (props) => {
   return (
     <Fragment>
-      <div>
-        <ViewAll {...props} />
-      </div>
+      <ViewAll {...props} />
     </Fragment>
   );
 };

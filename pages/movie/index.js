@@ -27,38 +27,36 @@ const Movie = (props) => {
 
   return (
     <Fragment>
-      <div>
-        <CardSlider
-          data={currentYearMovies.results}
-          type={MEDIA_TYPE.MOVIE}
-          title={`Movies Released in ${currentYear}`}
-          dataType={COLLECTION_TYPE.SIMILAR}
-        />
-        <CardSlider
-          data={popularMovie.results}
-          type={MEDIA_TYPE.MOVIE}
-          title="Popular Movies"
-          dataType={COLLECTION_TYPE.POPULAR}
-        />
-        <CardSlider
-          data={topRatedMovie.results}
-          type={MEDIA_TYPE.MOVIE}
-          title="Top Rated Movies"
-          dataType={COLLECTION_TYPE.TOP_RATED}
-        />
-        <CardSlider
-          data={nowPlayingMovie.results}
-          type={MEDIA_TYPE.MOVIE}
-          title="Now Playing in your cinemas"
-          dataType={COLLECTION_TYPE.NOW_PLAYING}
-        />
-        <CardSlider
-          data={upComingMovie.results}
-          type={MEDIA_TYPE.MOVIE}
-          title="Upcoming Movies in your cinemas"
-          dataType={COLLECTION_TYPE.UP_COMING}
-        />
-      </div>
+      <CardSlider
+        data={currentYearMovies.results}
+        type={MEDIA_TYPE.MOVIE}
+        title={`Movies Released in ${currentYear}`}
+        dataType={COLLECTION_TYPE.SIMILAR}
+      />
+      <CardSlider
+        data={popularMovie.results}
+        type={MEDIA_TYPE.MOVIE}
+        title="Popular Movies"
+        dataType={COLLECTION_TYPE.POPULAR}
+      />
+      <CardSlider
+        data={topRatedMovie.results}
+        type={MEDIA_TYPE.MOVIE}
+        title="Top Rated Movies"
+        dataType={COLLECTION_TYPE.TOP_RATED}
+      />
+      <CardSlider
+        data={nowPlayingMovie.results}
+        type={MEDIA_TYPE.MOVIE}
+        title="Now Playing in your cinemas"
+        dataType={COLLECTION_TYPE.NOW_PLAYING}
+      />
+      <CardSlider
+        data={upComingMovie.results}
+        type={MEDIA_TYPE.MOVIE}
+        title="Upcoming Movies in your cinemas"
+        dataType={COLLECTION_TYPE.UP_COMING}
+      />
     </Fragment>
   );
 };

@@ -28,34 +28,32 @@ const Home = ({
 }) => {
   return (
     <Fragment>
-      <div>
-        <div className={styles.homeContainer}>
-          <HomeBanner
-            trendingToday={trendingToday}
-            title="Trending Today"
-            isMobile={isMobile}
+      <div className={styles.homeContainer}>
+        <HomeBanner
+          trendingToday={trendingToday}
+          title="Trending Today"
+          isMobile={isMobile}
+        />
+        <div className={styles.trending}>
+          <CardSlider
+            data={trendingMovie.results}
+            type={MEDIA_TYPE.MOVIE}
+            title="Trending Movies"
+            dataType={COLLECTION_TYPE.TRENDING}
           />
-          <div className={styles.trending}>
-            <CardSlider
-              data={trendingMovie.results}
-              type={MEDIA_TYPE.MOVIE}
-              title="Trending Movies"
-              dataType={COLLECTION_TYPE.TRENDING}
-            />
-            <CardSlider
-              data={trendingTvSeries.results}
-              type={MEDIA_TYPE.TV_SERIES}
-              title="Trending Tv Series"
-              dataType={COLLECTION_TYPE.TRENDING}
-            />
-            <GoogleAd />
-            <CardSlider
-              data={trendingPersons.results}
-              type={MEDIA_TYPE.PERSON}
-              title="Popular People"
-              dataType={COLLECTION_TYPE.POPULAR}
-            />
-          </div>
+          <CardSlider
+            data={trendingTvSeries.results}
+            type={MEDIA_TYPE.TV_SERIES}
+            title="Trending Tv Series"
+            dataType={COLLECTION_TYPE.TRENDING}
+          />
+          <GoogleAd />
+          <CardSlider
+            data={trendingPersons.results}
+            type={MEDIA_TYPE.PERSON}
+            title="Popular People"
+            dataType={COLLECTION_TYPE.POPULAR}
+          />
         </div>
       </div>
     </Fragment>

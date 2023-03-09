@@ -18,7 +18,7 @@ const TvSeries = (props) => {
 
   return (
     <Fragment>
-      <div>
+
         <CardSlider
           data={popularMovie.results}
           type={MEDIA_TYPE.TV_SERIES}
@@ -43,7 +43,6 @@ const TvSeries = (props) => {
           title="Upcoming Tv Series"
           dataType={COLLECTION_TYPE.UP_COMING}
         />
-      </div>
     </Fragment>
   );
 };

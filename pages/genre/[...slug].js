@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   getDiscoverMovieUrl,
   getDiscoverTvSeriesUrl,
@@ -16,9 +16,9 @@ const Discover = (props) => {
       : TV_GENRE.find((x) => x.id === genre)?.name;
     console.log(genreName);
   return (
-    <div>
+    <Fragment>
       <ViewAll {...props} genreName={genreName} />
-    </div>
+    </Fragment>
   );
 };
 

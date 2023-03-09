@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { v4 as uuidv4 } from "uuid";
 import CastAndCrew from "../../components/Business/Cast";
 import MediaCard from "../../components/Business/MediaCard";
@@ -23,7 +23,7 @@ const AllCastAndCrew = ({ cast, crew }) => {
   };
 
   return (
-    <div >
+    <Fragment>
       <Heading text="Cast" />
       <div className={styles.castContainer}>
         {cast?.map((c) => {
@@ -40,7 +40,7 @@ const AllCastAndCrew = ({ cast, crew }) => {
           );
         })}
       </div>
-    </div>
+    </Fragment>
   );
 };
 
