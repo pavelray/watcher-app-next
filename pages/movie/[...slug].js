@@ -25,8 +25,8 @@ import httpService from "../../utils/httpService";
 const MovieDetailsPage = ({ slugTitle, movie, id, type, isMobile }) => {
   const { details, crew } = movie;
   const { title, release_date, genres } = details;
-  const { director } = crew;
-  const directorName = director[0].name;
+  const { director = [] } = crew;
+  const directorName = director[0] ? director[0].name : '';
   const releaseYear = new Date(release_date).getFullYear();
   const genreText = getGenreText(genres);
   const ogImage = getImageUrl(movie?.images?.logos[0]?.file_path);

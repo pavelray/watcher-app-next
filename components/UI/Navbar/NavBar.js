@@ -18,7 +18,10 @@ const NavBar = ({ isMobile }) => {
   };
 
   const navigateToSearch = useCallback(() => {
-    if (searchTerm) Router.push(`/search?term=${searchTerm}&page=1`);
+    if (searchTerm) {
+      Router.push(`/search?term=${searchTerm}&page=1`);
+      setSearchTerm("");
+    }
   }, [searchTerm]);
 
   const navigateToHome = () => {

@@ -41,6 +41,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
     external_ids,
     images,
   } = movie;
+  const { adult } = details;
   const video = { ...trailerVideo.slice(0, 1)[0] };
   const [selectedVideo, setSelectedVideo] = useState(video);
 
@@ -115,7 +116,9 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
             <div className="movie-details-content">
               <div className="movie-details-content__row">
                 <div className="description">
-                  <p className="title">Storyline</p>
+                  <p className="title">
+                    Storyline {adult && <span className="warning">Adult</span>}
+                  </p>
                   {details.overview}
                 </div>
                 <MediaDetailsInfo details={details} type={type} crew={crew} />

@@ -64,6 +64,15 @@ const style = css`
     letter-spacing: 2px;
   }
 
+  .warning {
+    background: $warning;
+    position: absolute;
+    display: flex;
+    flex: 1;
+    padding: 5px;
+    z-index: 2;
+  }
+
   .card-btn-cta:hover {
     cursor: pointer;
     background: $secondary;

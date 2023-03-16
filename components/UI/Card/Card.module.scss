@@ -2,6 +2,7 @@
 
 .cardImage img {
   border-radius: 3px;
+  position: relative;
   &:hover {
     cursor: pointer;
     animation: zoomIn 1s ease-out forwards;

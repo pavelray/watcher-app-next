@@ -66,7 +66,6 @@ const Pagination = ({
     setPageData(result);
   }, [totalPages, selectedPage]);
 
-  console.log(pageData);
   return (
     <Fragment>
       <div className="pagination">

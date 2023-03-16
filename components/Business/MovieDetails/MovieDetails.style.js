@@ -102,6 +102,12 @@ const style = css`
                 font-size: 1.25rem;
                 color: $secondary;
               }
+              .warning{
+                background: $warning;
+                padding: 2px 5px;
+                color: $primary;
+                font-size: 1rem;
+              }
               font-size: 1.2rem;
               letter-spacing: 0.1rem;
               word-spacing: 0.3rem;

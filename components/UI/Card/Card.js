@@ -5,11 +5,12 @@ import Rating from "../Rating/Rating.js";
 import ImageFallback from "../../Business/ImageFallback/index.js";
 import { NO_IMG_PLACEHOLDER_MEDIA } from "../../../utils/constants.js";
 
-const Card = ({ title, poster, ratings, redirectToDetails }) => {
+const Card = ({ title, poster, ratings, redirectToDetails, adult }) => {
   return (
     <Fragment>
       <div className="card">
         <div className={cardModuleStyle.cardImage}>
+          {adult && <div className="card-body__info warning">Adult</div>}
           <ImageFallback
             src={poster}
             alt="Poster"

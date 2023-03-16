@@ -33,7 +33,7 @@ const ViewAll = (props) => {
     <Fragment>
       <div className="view-all-container">
         <div className="view-all-heading">
-          <h1>{genreName || COLLECTION_TYPE_NAME[dataType]}</h1>
+          <h1>Showing Results for : {genreName || COLLECTION_TYPE_NAME[dataType] || term}</h1>
         </div>
         <PaginationComponent
           totalPages={totalPages}
