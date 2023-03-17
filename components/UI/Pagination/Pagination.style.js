@@ -5,11 +5,18 @@ const style = css`
   @import "../../../styles/mixins";
 
   .pagination {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -0%);
+
     ul {
       list-style-type: none;
       display: flex;
       flex-direction: row;
       align-items: center;
+      justify-content: center;
+      background:$background1;
+      padding: 5px 10px;
 
       li {
         padding: 8px 5px;

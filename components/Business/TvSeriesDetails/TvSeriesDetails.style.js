@@ -6,10 +6,10 @@ const style = css`
 
   .movie-details-container {
     position: relative;
-    min-height: 100vh;
     display: flex;
     padding: 20px;
     scroll-behavior: smooth;
+    margin-bottom: 5rem;
 
     @include mobile {
       padding: 10px;

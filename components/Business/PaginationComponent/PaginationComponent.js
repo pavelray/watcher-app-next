@@ -5,7 +5,7 @@ import { style } from "./PaginationComponent.style";
 const PaginationComponent = ({ children, ...pageProps }) => {
   return (
     <div className="pagination-wrapper">
-      <Pagination {...pageProps} />
+      {/* <Pagination {...pageProps} /> */}
       {children}
       <Pagination {...pageProps} />
       <style jsx>{style}</style>

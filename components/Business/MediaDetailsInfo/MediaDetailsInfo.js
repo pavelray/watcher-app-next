@@ -3,6 +3,7 @@ import React, { Fragment } from "react";
 import { MEDIA_TYPE } from "../../../utils/constants";
 import {
   formatCurrency,
+  getLastAirDate,
   getReleaseDate,
   slugify,
 } from "../../../utils/helperMethods";
@@ -21,6 +22,8 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
   const { director = [], writer = [], creator = [] } = crew || {};
 
   const releaseDate = getReleaseDate(details, type);
+  const lastAirDate = getLastAirDate(details);
+  console.log(lastAirDate)
 
   const getGenres = () => {
     if (!!genres.length) {
@@ -131,6 +134,9 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
       <div className="movie-details-stats">
         <label>Release Date: {releaseDate}</label>
       </div>
+      <div className="movie-details-stats">
+        <label>Last Air Date: {lastAirDate}</label>
+      </div>
 
       {getCountryOrigin()}
       {getLanguage()}
@@ -141,7 +147,8 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
             <ul className="genre">{getDirector()}</ul>
           </div>
         </div>
-      )}{!!creator.length && (
+      )}
+      {!!creator.length && (
         <div className="movie-details-stats">
           <div className="genre-container">
             <label>Creators: </label>

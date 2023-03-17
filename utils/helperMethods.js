@@ -191,6 +191,12 @@ export const getReleaseDate = (details, type) => {
   return new Date(releaseDate).toLocaleDateString();
 };
 
+export const getLastAirDate = (details) => {
+  const lastAirDate = details.last_air_date || null;
+
+  return lastAirDate === null ? 'N/A' : new Date(lastAirDate).toLocaleDateString();
+}
+
 export const formatCurrency = (number) => {
   return new Intl.NumberFormat("en-US", {
     style: "currency",

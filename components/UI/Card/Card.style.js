@@ -68,7 +68,6 @@ const style = css`
     background: $warning;
     position: absolute;
     display: flex;
-    flex: 1;
     padding: 5px;
     z-index: 2;
   }

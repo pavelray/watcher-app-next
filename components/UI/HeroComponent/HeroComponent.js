@@ -85,14 +85,13 @@ const HeroComponent = ({
                 {certificate?.certificate}
               </span>
             )}
-            <span className="tooltip">
+            <div className="tooltip">
               {certificate?.meaning?.map((x, index) => (
                 <Fragment key={index}>
-                  <div>{x}</div>
-                  <br />
+                  <div className="rating-description">{x}</div>
                 </Fragment>
               ))}
-            </span>
+            </div>
           </div>
           <p className="story">{description}</p>
           <div className="btn-container">

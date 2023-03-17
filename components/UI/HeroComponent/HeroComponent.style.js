@@ -72,6 +72,7 @@ const style = css`
         display: flex;
         flex-direction: row;
         align-items: center;
+        position: relative;
 
         &-values {
           margin: 5px 0px 2px 20px;
@@ -156,7 +157,7 @@ const style = css`
       /* styling for tooltip element before show up */
       .tooltip {
         position: absolute;
-        z-index: 1;
+        z-index: 2;
         top: 50px;
         text-transform: capitalize;
         background-color: $tertiary;
@@ -164,6 +165,7 @@ const style = css`
         padding: 0.5em;
         visibility: hidden;
         font-size: 0.9rem;
+
       }
 
       /* styling pseudo element "::before" to create bottom arrow */

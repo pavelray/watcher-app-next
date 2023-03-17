@@ -19,6 +19,7 @@ const Card = ({ title, poster, ratings, redirectToDetails, adult }) => {
             height="300"
             style={{
               objectFit: "cover",
+              filter: adult ? "blur(5px)" : "blur(0)"
             }}
             onClick={redirectToDetails}
             fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
