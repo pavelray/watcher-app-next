@@ -184,6 +184,7 @@ export const MEDIA_TYPE = {
   MOVIE: "movie",
   TV_SERIES: "tv",
   PERSON: "person",
+  COLLECTION: 'collection'
 };
 
 export const CREDIT_TYPE = {

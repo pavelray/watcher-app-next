@@ -3,7 +3,7 @@ import { Fragment } from "react";
 import HomeBanner from "../components/Business/HomeBanner/HomeBanner";
 import CardSlider from "../components/UI/CardCarousel/CardSlider";
 import {
-  getMovieDetailsDataAPIUrl,
+  getMediaDetailsDataAPIUrl,
   getPopularPeople,
   getTrendingDataAPIUrl,
 } from "../utils/apiUtills";
@@ -85,7 +85,7 @@ export async function getServerSideProps(ctx) {
         Math.floor(Math.random() * trendingTodayResp.value.results.length)
       ]
     : {};
-  url = `${getMovieDetailsDataAPIUrl(
+  url = `${getMediaDetailsDataAPIUrl(
     randomMedia.media_type,
     randomMedia.id
   )}${appendToReq}`;

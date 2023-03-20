@@ -4,7 +4,7 @@ import {
   getAllCredits,
   getExternalIdUrl,
   getMovieCredit,
-  getMovieDetailsDataAPIUrl,
+  getMediaDetailsDataAPIUrl,
 } from "../../utils/apiUtills";
 import {
   appendToReqPerson,
@@ -30,7 +30,7 @@ export async function getServerSideProps(context) {
 
   const id = slug[0];
 
-  let url = `${getMovieDetailsDataAPIUrl(type, id)}${appendToReqPerson}`;
+  let url = `${getMediaDetailsDataAPIUrl(type, id)}${appendToReqPerson}`;
   const personDetails = await httpService.get(url);
 
   return {

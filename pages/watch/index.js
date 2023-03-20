@@ -1,7 +1,7 @@
 import React from "react";
 import { MEDIA_TYPE } from "../../utils/constants";
 import styles from "../../styles/Watch.module.scss";
-import { getMovieDetailsDataAPIUrl } from "../../utils/apiUtills";
+import { getMediaDetailsDataAPIUrl } from "../../utils/apiUtills";
 import httpService from "../../utils/httpService";
 import Link from "next/link";
 import { slugify } from "../../utils/helperMethods";
@@ -92,7 +92,7 @@ const Watch = ({
 export async function getServerSideProps(context) {
   const { query } = context;
   const { id, type, ep = "", season = "" } = query;
-  let url = getMovieDetailsDataAPIUrl(type, id);
+  let url = getMediaDetailsDataAPIUrl(type, id);
   const response = await httpService.get(url);
   const { title = "", name = "" } = response;
   return {

@@ -13,6 +13,7 @@ import {
   getUid,
   getYoutubeThumbnailSrc,
 } from "../../../utils/helperMethods";
+import MediaCard from "../../Business/MediaCard";
 import CardSlider from "../../UI/CardCarousel/CardSlider";
 import HeroComponent from "../../UI/HeroComponent/HeroComponent";
 import Modal from "../../UI/Modal/Modal";
@@ -41,7 +42,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
     external_ids,
     images,
   } = movie;
-  const { adult } = details;
+  const { adult, belongs_to_collection } = details;
   const video = { ...trailerVideo.slice(0, 1)[0] };
   const [selectedVideo, setSelectedVideo] = useState(video);
 
@@ -140,6 +141,19 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
                   mediaType={type}
                 />
               </div>
+              {belongs_to_collection && (
+                <div>
+                  <h1> Collection: </h1>
+                  <MediaCard
+                    key={`${getUid()}`}
+                    id={belongs_to_collection.id}
+                    title={belongs_to_collection.name}
+                    poster={belongs_to_collection.poster_path}
+                    type={MEDIA_TYPE.COLLECTION}
+                    showRatings={false}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>

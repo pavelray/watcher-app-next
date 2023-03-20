@@ -5,7 +5,14 @@ import Rating from "../Rating/Rating.js";
 import ImageFallback from "../../Business/ImageFallback/index.js";
 import { NO_IMG_PLACEHOLDER_MEDIA } from "../../../utils/constants.js";
 
-const Card = ({ title, poster, ratings, redirectToDetails, adult }) => {
+const Card = ({
+  title,
+  poster,
+  ratings,
+  redirectToDetails,
+  adult,
+  showRatings = true,
+}) => {
   return (
     <Fragment>
       <div className="card">
@@ -19,7 +26,7 @@ const Card = ({ title, poster, ratings, redirectToDetails, adult }) => {
             height="300"
             style={{
               objectFit: "cover",
-              filter: adult ? "blur(5px)" : "blur(0)"
+              filter: adult ? "blur(5px)" : "blur(0)",
             }}
             onClick={redirectToDetails}
             fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
@@ -33,7 +40,7 @@ const Card = ({ title, poster, ratings, redirectToDetails, adult }) => {
               height="0.9rem"
               width="5.5rem"
             />
-            <div>{ratings}</div>
+            {showRatings && <div>{ratings}</div>}
           </div>
         </div>
       </div>

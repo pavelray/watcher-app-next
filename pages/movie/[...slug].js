@@ -2,7 +2,7 @@ import Head from "next/head";
 import { Fragment } from "react";
 import MovieDetails from "../../components/Business/MovieDetails";
 import {
-  getMovieDetailsDataAPIUrl,
+  getMediaDetailsDataAPIUrl,
   getProvidersAPIUrl,
   getRecommendationsUrl,
   getReviewUrl,
@@ -71,7 +71,7 @@ export async function getServerSideProps(context) {
   const id = slug[0];
   const slugTitle = slug[1];
 
-  let url = `${getMovieDetailsDataAPIUrl(type, id)}${appendToReq}`;
+  let url = `${getMediaDetailsDataAPIUrl(type, id)}${appendToReq}`;
   const movieDetailsReq = httpService.get(url);
   url = getProvidersAPIUrl(type, id);
   const watchProviderReq = httpService.get(url);
