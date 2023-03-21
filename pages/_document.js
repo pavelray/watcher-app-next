@@ -89,12 +89,6 @@ export default function Document() {
             })(window,document,'script','dataLayer','GTM-NCCW446')`,
           }}
         ></Script>
-        <Script
-          id="google-ads"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4497828949688741"
-          crossOrigin="anonymous"
-        />
       </Head>
       <body>
         <noscript

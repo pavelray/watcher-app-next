@@ -32,13 +32,16 @@ function MyApp({ Component, pageProps, isMobile }) {
         />
         <meta property="og:site_name" content={APP_NAME} />
         <meta property="og:locale" content="en_US" />
-        <meta
-          property="og:image"
-          content="/images/tfm_logo.png"
-        />
+        <meta property="og:image" content="/images/tfm_logo.png" />
         <meta name="robots" content="index, follow" />
         <meta name="author" content={APP_NAME} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+          id="google-ads"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4497828949688741"
+          crossOrigin="anonymous"
+        />
       </Head>
       <Layout isMobile={isMobile}>
         <Component {...pageProps} isMobile={isMobile} />
