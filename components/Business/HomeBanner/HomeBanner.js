@@ -30,7 +30,7 @@ const HomeBanner = ({ trendingToday, isMobile }) => {
     setViewModal(false);
   };
 
-  const votes = formatNumber(trending.vote_count);
+  const voteCount = formatNumber(trending.vote_count);
   const totalRuntime = trending.media_type === MEDIA_TYPE.MOVIE ? getRuntime(trending.runtime): `Season ${trending.number_of_seasons}`;
   return (
     <div className="home-banner">
@@ -42,9 +42,11 @@ const HomeBanner = ({ trendingToday, isMobile }) => {
         type={trending.media_type}
         id={trending.id}
         trailerVideo={trending.videos.results}
+        year={trending.release_date || trending.first_air_date}
         certificate={{ certificate, meaning }}
         runtime={totalRuntime}
-        votes={votes}
+        voteCount={voteCount}
+        rating={trending.vote_average}
         isMobile={isMobile}
         setViewModal={setViewModal}
         isHome={true}

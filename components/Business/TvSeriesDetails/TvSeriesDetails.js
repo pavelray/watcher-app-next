@@ -43,7 +43,7 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
     latestSeasonDetails,
   } = tvSeries;
 
-  const { number_of_seasons, seasons } = details;
+  const { number_of_seasons, seasons, vote_average, first_air_date } = details;
   const totalSeasons = `Season ${number_of_seasons}`;
 
   const video = { ...trailerVideo.slice(0, 1)[0] };
@@ -70,7 +70,7 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
   );
   const certificate = certificates.map((x) => x.certification).join(", ");
   const meaning = certificates.map((x) => `${x.certification}: ${x.meaning}`);
-  const votes = formatNumber(details.vote_count);
+  const voteCount = formatNumber(details.vote_count);
   const [showPhoto, setShowPhoto] = useState(false);
   const [showVideo, setShowVideo] = useState(false);
   const [showEpisodes, setShowEpisodes] = useState(true);
@@ -127,10 +127,12 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
         setViewModal={setViewModal}
         certificate={{ certificate, meaning }}
         runtime={totalSeasons}
-        votes={votes}
         isMobile={isMobile}
         showEpisodes={setShowEpisodes}
         isHome={false}
+        voteCount={voteCount}
+        rating={vote_average}
+        year={first_air_date}
       />
       <div className="movie-details-container">
         <div className="movie-details-container__main">

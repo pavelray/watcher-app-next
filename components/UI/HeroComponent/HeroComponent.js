@@ -20,10 +20,12 @@ const HeroComponent = ({
   setViewModal,
   certificate,
   runtime,
-  votes,
+  voteCount,
   isMobile,
   isHome,
-  showEpisodes
+  showEpisodes,
+  rating,
+  year
 }) => {
   const populateImageUrl = (path) => {
     const fullPath = `${API_IMAGE_URL}/original/`;
@@ -69,6 +71,8 @@ const HeroComponent = ({
     return isMobile ? mobileStyle : deskTopStyle;
   };
 
+  const ratingPercentage = (rating * 100) / 10
+
   return (
     <Fragment>
       <div className="hero" style={getStyle()}>
@@ -77,8 +81,10 @@ const HeroComponent = ({
             <h1 className="title">{title}</h1>
           </Link>
           <div className="meta">
-            <Rating ratingValue={40} />
-            <span className="meta-values">Votes {votes}</span>
+            <Rating ratingValue={ratingPercentage} />
+            <span className="meta-values">Rating {rating.toFixed(2)}</span>
+            <span className="meta-values">Votes {voteCount}</span>
+            <span className="meta-values">{new Date(year).getFullYear()}</span>
             <span className="meta-values">{runtime}</span>
             {certificate?.certificate && (
               <span className="meta-values cert">

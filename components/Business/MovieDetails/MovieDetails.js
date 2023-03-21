@@ -42,7 +42,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
     external_ids,
     images,
   } = movie;
-  const { adult, belongs_to_collection } = details;
+  const { adult, belongs_to_collection, vote_average } = details;
   const video = { ...trailerVideo.slice(0, 1)[0] };
   const [selectedVideo, setSelectedVideo] = useState(video);
 
@@ -62,7 +62,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
   );
   const certificate = certificates.map((x) => x.certification).join(", ");
   const meaning = certificates.map((x) => `${x.certification}: ${x.meaning}`);
-  const votes = formatNumber(details.vote_count);
+  const voteCount = formatNumber(details.vote_count);
   const [showPhoto, setShowPhoto] = useState(false);
   const [showVideo, setShowVideo] = useState(true);
   const [showReview, setShowReview] = useState(false);
@@ -88,7 +88,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
   return (
     <Fragment>
       <HeroComponent
-        title={details.title || details.name}
+        title={details.title}
         description={details.overview}
         imageUrl={details.backdrop_path}
         type={details.media_type || type}
@@ -97,8 +97,10 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
         setViewModal={setViewModal}
         certificate={{ certificate, meaning }}
         runtime={runtime}
-        votes={votes}
         isMobile={isMobile}
+        voteCount={voteCount}
+        rating={vote_average}
+        year={details.release_date}
       />
       <div className="movie-details-container">
         <div className="movie-details-container__main">
