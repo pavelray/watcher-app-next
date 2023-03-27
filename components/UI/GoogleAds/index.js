@@ -12,7 +12,12 @@ export function GoogleAd() {
   return (
     <div
       aria-hidden={true}
-      style={{ overflow: "hidden", minWidth: "300px", minHeight: "250px" }}
+      style={{
+        overflow: "hidden",
+        minWidth: "300px",
+        minHeight: "250px",
+        textAlign: "center",
+      }}
     >
       <ins
         className="adsbygoogle"

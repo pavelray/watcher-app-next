@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import PersonDetails from "../../components/Business/PersonDetails";
+import { GoogleAd } from "../../components/UI/GoogleAds";
 import {
   getAllCredits,
   getExternalIdUrl,
@@ -18,6 +19,7 @@ const PersonDetailsPage = ({ id, person, isMobile }) => {
   return (
     <Fragment>
       <PersonDetails person={person} id={id} isMobile={isMobile} />
+      <GoogleAd />
     </Fragment>
   );
 };

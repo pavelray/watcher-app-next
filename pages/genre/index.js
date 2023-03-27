@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React, { Fragment } from "react";
 import MediaGenre from "../../components/Business/MediaGenre/MediaGenre";
+import { GoogleAd } from "../../components/UI/GoogleAds";
 import { MEDIA_TYPE, SEO_TAGS } from "../../utils/constants";
 
 const Discover = () => {
@@ -8,6 +9,7 @@ const Discover = () => {
     <Fragment>
       <h1>Browse Our Collection of Genres</h1>
       <MediaGenre type={MEDIA_TYPE.MOVIE} title="Movies" />
+      <GoogleAd />
       <MediaGenre type={MEDIA_TYPE.TV_SERIES} title="Tv Series" />
     </Fragment>
   );
