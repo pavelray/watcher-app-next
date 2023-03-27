@@ -16,6 +16,7 @@ import {
   getYoutubeThumbnailSrc,
 } from "../../../utils/helperMethods";
 import CardSlider from "../../UI/CardCarousel/CardSlider";
+import Dropdown from "../../UI/Dropdown/Dropdown";
 import HeroComponent from "../../UI/HeroComponent/HeroComponent";
 import Modal from "../../UI/Modal/Modal";
 import { SubHeading } from "../../UI/Typography/Typography";
@@ -271,10 +272,9 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
       {showEpisodes && (
         <div className="wrapper" id="episodes">
           <div className="title">
-            <select
-              className="season-select"
-              onChange={getSeasionDetails}
-              value={selectSeasonNumber}
+            <Dropdown
+              handleOnChange={getSeasionDetails}
+              defaultValue={selectSeasonNumber}
             >
               {seasons
                 .filter((s) => s.season_number > 0)
@@ -283,7 +283,7 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
                     Season {s.season_number}
                   </option>
                 ))}
-            </select>
+            </Dropdown>
             <span className="episode-number">
               {selectedSeasion.episodes.length > 0
                 ? `${selectedSeasion.episodes.length - 1} Episodes`

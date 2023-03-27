@@ -4,40 +4,37 @@ import PaginationComponent from "../PaginationComponent/PaginationComponent";
 import { v4 as uuidv4 } from "uuid";
 
 import { style } from "./ViewAll.style";
-import Router from "next/router";
+
 import { COLLECTION_TYPE_NAME } from "../../../utils/constants";
 
 const ViewAll = (props) => {
   const {
     type,
     page,
-    genre,
     results,
-    total_results,
     term,
-    pageType,
     dataType,
     genreName = "",
+    handlePageClick,
+    total_pages,
   } = props;
 
-  const totalPages = 500; // Making this const as TMDB return maximum of 500 pages.
-
-  const handlePageClick = (page) => {
-    if (type && genre) Router.push(`/genre/${type}/${genre}/${page}`);
-    else if (pageType && dataType)
-      Router.push(`/all/${dataType}/${type}/${page}`);
-    else Router.push(`/search?term=${term}&page=${page}`);
-  };
+  const totalPages = total_pages; // Making this const as TMDB return maximum of 500 pages.
 
   return (
     <Fragment>
       <div className="view-all-container">
-        <div className="view-all-heading">
-          <h1>Showing Results for : {genreName || COLLECTION_TYPE_NAME[dataType] || term}</h1>
-        </div>
+        {(genreName || COLLECTION_TYPE_NAME[dataType] || term) && (
+          <div className="view-all-heading">
+            <h1>
+              Showing Results for :
+              {genreName || COLLECTION_TYPE_NAME[dataType] || term}
+            </h1>
+          </div>
+        )}
         <PaginationComponent
           totalPages={totalPages}
-          selectedPage={page}
+          selectedPage={parseInt(page)}
           onPageClick={handlePageClick}
         >
           <div className="view-all-wrapper">

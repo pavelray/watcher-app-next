@@ -51,7 +51,7 @@ export const removeCookie = (name, value, domain, ctx) => {
 };
 
 export const getGenreText = (genres) => {
-  return genres.map(n=> n.name).join(' ,');
+  return genres.map((n) => n.name).join(" ,");
 };
 
 export const getGenre = (genreIds, type) => {
@@ -194,8 +194,10 @@ export const getReleaseDate = (details, type) => {
 export const getLastAirDate = (details) => {
   const lastAirDate = details.last_air_date || null;
 
-  return lastAirDate === null ? 'N/A' : new Date(lastAirDate).toLocaleDateString();
-}
+  return lastAirDate === null
+    ? "N/A"
+    : new Date(lastAirDate).toLocaleDateString();
+};
 
 export const formatCurrency = (number) => {
   return new Intl.NumberFormat("en-US", {
@@ -236,4 +238,26 @@ export const getAge = (birthDate) => {
   }
 
   return years;
+};
+
+export const formatDiscoverFilterData = (filtersStr) => {
+  const filterArr = filtersStr.split("&");
+  let genre = "";
+  let sortBy = "";
+  let sortOrder = "";
+  filterArr.forEach((x) => {
+    const keyVlaue = x.split("=");
+    if (keyVlaue[0] === "with_genres") genre = keyVlaue[1];
+    if (keyVlaue[0] === "sort_by") {
+      const temp = keyVlaue[1].split(".");
+      sortBy = temp[0];
+      sortOrder = temp[1];
+    }
+  });
+
+  return {
+    genre,
+    sortBy,
+    sortOrder,
+  };
 };

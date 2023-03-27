@@ -1,7 +1,6 @@
 @import "./colors";
 @import "./mixins";
 
-
 .heading {
   font-size: 35px;
   text-align: left;
@@ -19,7 +18,23 @@
   }
 }
 
-.trending{
+.discover {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+
+  h1 {
+    text-decoration: underline;
+  }
+  h1,
+  h2 {
+    line-height: 20px;
+  }
+}
+
+.trending {
   @include mobile {
     margin-top: 8rem;
   }

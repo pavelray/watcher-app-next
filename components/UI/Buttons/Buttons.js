@@ -27,12 +27,12 @@ const ButtonSecondary = ({ handleOnClick, text }) => {
 const ButtonSecondaryLink = ({ text, link }) => {
   return (
     <Fragment>
-      <Link className="btn btn-secondary" href={link}>
-        {text}
-      </Link>
+      <button className="btn btn-secondary">
+        <Link href={link}>{text} </Link>
+      </button>
       <style jsx>{style}</style>
     </Fragment>
   );
 };
 
-export { ButtonPrimary , ButtonSecondary, ButtonSecondaryLink};
+export { ButtonPrimary, ButtonSecondary, ButtonSecondaryLink };

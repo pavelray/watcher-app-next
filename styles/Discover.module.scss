@@ -1,0 +1,33 @@
+@import "./colors";
+@import "./mixins";
+
+.discoverContainer {
+  padding: 10px;
+  .filterWrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin-bottom: 20px;
+
+    @include mobile {
+      display: grid;
+      gap: 10px;
+    }
+    .dropDownContainer {
+      display: flex;
+      flex-direction: column;
+    }
+    .filterBtnWrapper {
+      display: flex;
+      justify-content: flex-start;
+      gap: 20px;
+      width: 30%;
+      align-items: flex-end;
+
+      @include mobile {
+        width: 100%;
+        align-items: initial;
+      }
+    }
+  }
+}

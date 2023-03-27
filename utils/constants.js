@@ -184,7 +184,7 @@ export const MEDIA_TYPE = {
   MOVIE: "movie",
   TV_SERIES: "tv",
   PERSON: "person",
-  COLLECTION: 'collection'
+  COLLECTION: "collection",
 };
 
 export const CREDIT_TYPE = {
@@ -277,17 +277,17 @@ export const appendToReqPerson =
 
 export const SEO_TAGS = {
   DEFAULT: {
-    TITLE: "Trending Movies | Tv Series | Person",
+    TITLE: "Watch Trending Movies | Tv Series ",
     DESCRIPTION:
-      "Stay updated with the trending movies, tv series in our website. Find details, trailers, and reviews for new and popular movies and tv series.",
+      "Watch trending movies, tv series in our website and stay updated with it . Find details, trailers, and reviews for new and popular movies and tv series.",
     KEYWORDS:
-      "movies, trending movies, upcoming , theater, showtimes, trailers, reviews, popular movies, popular tv showes, on air tv showes, upcoming tv series.",
+      "watch online movies, watch trending movies, watch movies, movies, trending movies, upcoming , theater, showtimes, trailers, reviews, popular movies, popular tv showes, on air tv showes, upcoming tv series.",
   },
   TV: {
     TITLE:
-      "Top Rated Tv Series| Popular Tv Series | Upcoming Tv Series | On Air Shows",
+      "Watch Top Rated Tv Series| Popular Tv Series | Upcoming Tv Series | On Air Shows",
     DESCRIPTION:
-      "Stay updated with the trending Tv Series, latest releases and upcoming Tv Series at our website. Find details, trailers, and reviews for new and popular Tv Series.",
+      "Watch trending Tv Series and stay updated with the trending Tv Series, latest releases and upcoming Tv Series at our website. Find details, trailers, and reviews for new and popular Tv Series.",
     KEYWORDS:
       "trending tv series releases, upcoming tv series, on air, showtimes, trailers, reviews, popular tv series",
   },
@@ -309,8 +309,26 @@ export const SEO_TAGS = {
 
 export const MENUS = [
   { link: "/", text: "Home" },
+  { link: "/discover", text: "Discover" },
   { link: "/movie", text: "Movies" },
   { link: "/tv", text: "Tv Series" },
   { link: "/genre", text: "Genre" },
   { link: "/about", text: "About" },
 ];
+
+export const FILTER_OPTIONS = {
+  MEDIA_TYPE: [
+    { value: "movie", text: "Movies" },
+    { value: "tv", text: "Tv Series" },
+  ],
+  SORT_BY: [
+    { value: "popularity", text: "Popularity" },
+    { value: "release_date", text: "Release Date" },
+    { value: "vote_average", text: "Vote Average" },
+    { value: "vote_count", text: "Vote Count" },
+  ],
+  SORT_ORDER: [
+    { value: "asc", text: "Ascending" },
+    { value: "desc", text: "Desending" },
+  ],
+};

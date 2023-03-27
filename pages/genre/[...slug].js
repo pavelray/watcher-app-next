@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import Router from "next/router";
 import {
   getDiscoverMovieUrl,
   getDiscoverTvSeriesUrl,
@@ -14,10 +15,18 @@ const Discover = (props) => {
     type === MEDIA_TYPE.MOVIE
       ? MOVIE_GENRE.find((x) => x.id === genre)?.name
       : TV_GENRE.find((x) => x.id === genre)?.name;
-    console.log(genreName);
+
+  const handlePageClick = (page) => {
+    Router.push(`/genre/${type}/${genre}/${page}`);
+  };
+
   return (
     <Fragment>
-      <ViewAll {...props} genreName={genreName} />
+      <ViewAll
+        {...props}
+        genreName={genreName}
+        handlePageClick={handlePageClick}
+      />
     </Fragment>
   );
 };

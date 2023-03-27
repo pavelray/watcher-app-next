@@ -1,13 +1,18 @@
 import React, { Fragment } from "react";
+import Router from "next/router";
 import { getViewAllUrl } from "../../utils/apiUtills";
 import httpService from "../../utils/httpService";
 
 import ViewAll from "../../components/Business/ViewAll/ViewAll";
 
 const All = (props) => {
+  const { dataType, type } = props;
+  const handlePageClick = (page) => {
+    Router.push(`/all/${dataType}/${type}/${page}`);
+  };
   return (
     <Fragment>
-      <ViewAll {...props} />
+      <ViewAll {...props} handlePageClick={handlePageClick} />
     </Fragment>
   );
 };

@@ -1,5 +1,5 @@
-import Head from "next/head";
 import { Fragment } from "react";
+import Router from "next/router";
 import HomeBanner from "../components/Business/HomeBanner/HomeBanner";
 import CardSlider from "../components/UI/CardCarousel/CardSlider";
 import {
@@ -9,7 +9,6 @@ import {
 } from "../utils/apiUtills";
 import {
   appendToReq,
-  APP_NAME,
   COLLECTION_TYPE,
   MEDIA_TYPE,
   SEO_TAGS,
@@ -18,6 +17,7 @@ import {
 import httpService from "../utils/httpService";
 import styles from "../styles/Home.module.scss";
 import { GoogleAd } from "../components/UI/GoogleAds";
+import { ButtonPrimary } from "../components/UI/Buttons/Buttons";
 
 const Home = ({
   trendingMovie,
@@ -26,6 +26,9 @@ const Home = ({
   trendingToday,
   isMobile,
 }) => {
+  const navigateToDiscoverPage = () => {
+    Router.push(`/discover`);
+  };
   return (
     <Fragment>
       <div className={styles.homeContainer}>
@@ -34,6 +37,22 @@ const Home = ({
           title="Trending Today"
           isMobile={isMobile}
         />
+        <div className={styles.discover}>
+          <h1>Discover Your Next Favorite Movie</h1>
+          <h2>
+            Explore Movies/Tv Series with TFM&apos;s (The Film Mastery) Advanced
+            Filters
+          </h2>
+          <p>
+            Not sure what you&apos;re in the mood for? Use TFM&apos;s (The Film
+            Mastery) advanced filters to refine your search based on genre,
+            rating, release date, cast, and more.
+          </p>
+          <ButtonPrimary
+            handleOnClick={navigateToDiscoverPage}
+            text="Discover"
+          />
+        </div>
         <div className={styles.trending}>
           <CardSlider
             data={trendingMovie.results}

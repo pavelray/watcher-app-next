@@ -3,6 +3,7 @@ import Pagination from "../../UI/Pagination/Pagination";
 import { style } from "./PaginationComponent.style";
 
 const PaginationComponent = ({ children, ...pageProps }) => {
+  console.log(pageProps);
   return (
     <div className="pagination-wrapper">
       {/* <Pagination {...pageProps} /> */}
