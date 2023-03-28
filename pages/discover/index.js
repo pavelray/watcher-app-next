@@ -2,8 +2,17 @@ import React, { Fragment, useState } from "react";
 import Router from "next/router";
 import Dropdown from "../../components/UI/Dropdown/Dropdown";
 import styles from "../../styles/Discover.module.scss";
-import { FILTER_OPTIONS, MOVIE_GENRE, TV_GENRE } from "../../utils/constants";
-import { formatDiscoverFilterData, getUid } from "../../utils/helperMethods";
+import {
+  DEFAULT_COUNTRY_CODE,
+  FILTER_OPTIONS,
+  MOVIE_GENRE,
+  TV_GENRE,
+} from "../../utils/constants";
+import {
+  formatDiscoverFilterData,
+  getLocationCookie,
+  getUid,
+} from "../../utils/helperMethods";
 import { MEDIA_TYPE as MediaType } from "../../utils/constants";
 import {
   ButtonPrimary,
@@ -12,6 +21,7 @@ import {
 import { getDiscoverMediaUrl } from "../../utils/apiUtills";
 import httpService from "../../utils/httpService";
 import ViewAll from "../../components/Business/ViewAll";
+import COUNTRIES from "../../data/countries_data.json";
 
 const Discover = (props) => {
   const [defaultGenre, setGenre] = useState(MOVIE_GENRE);
@@ -21,11 +31,12 @@ const Discover = (props) => {
   const filterData = formatDiscoverFilterData(props.filterDataStr);
 
   const { MEDIA_TYPE, SORT_BY, SORT_ORDER } = FILTER_OPTIONS;
-
+  const { countryCode = DEFAULT_COUNTRY_CODE } = getLocationCookie({});
   const initialFilterValues = {
     genre: filterData.genre || MOVIE_GENRE[0].id,
     sortBy: filterData.sortBy || SORT_BY[0].value,
     sortOrder: filterData.sortOrder || SORT_ORDER[0].value,
+    region: filterData.region || countryCode,
   };
 
   const onMediaTypeChange = (event) => {
@@ -43,8 +54,9 @@ const Discover = (props) => {
 
   const discoverData = () => {
     const filterQuery = `mediaType=${selectedMediaType}&filterDataStr=${encodeURIComponent(
-      `&sort_by=${filterValues.sortBy}.${filterValues.sortOrder}&vote_count.gte=10&include_video=false&with_genres=${filterValues.genre}&include_adult=true`
+      `&region=${filterValues.region}&sort_by=${filterValues.sortBy}.${filterValues.sortOrder}&vote_count.gte=10&include_video=false&with_genres=${filterValues.genre}&include_adult=true`
     )}`;
+    console.log(filterQuery);
     Router.push(`/discover?${filterQuery}&page=1`);
   };
 
@@ -55,7 +67,7 @@ const Discover = (props) => {
 
   const handlePageClick = (page) => {
     const filterQuery = `mediaType=${selectedMediaType}&filterDataStr=${encodeURIComponent(
-      `&sort_by=${filterValues.sortBy}.${filterValues.sortOrder}&vote_count.gte=10&include_video=false&with_genres=${filterValues.genre}&include_adult=true`
+      `&region=${filterValues.region}&sort_by=${filterValues.sortBy}.${filterValues.sortOrder}&vote_count.gte=10&include_video=false&with_genres=${filterValues.genre}&include_adult=true`
     )}`;
     Router.push(`/discover?${filterQuery}&page=${page}`);
   };
@@ -119,6 +131,21 @@ const Discover = (props) => {
               ))}
             </Dropdown>
           </div>
+          <div className={styles.dropDownContainer}>
+            <Dropdown
+              handleOnChange={onHandleChange}
+              defaultValue={filterValues.region}
+              name="region"
+              title="Released Counrty"
+            >
+              {COUNTRIES.map((data) => (
+                <option key={getUid()} value={data.Code}>
+                  {data.Name}
+                </option>
+              ))}
+            </Dropdown>
+          </div>
+
           <div className={styles.filterBtnWrapper}>
             <ButtonPrimary handleOnClick={discoverData} text="Discover" />
             <ButtonSecondary handleOnClick={clearFilter} text="Clear Filter" />

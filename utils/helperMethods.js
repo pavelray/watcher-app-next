@@ -245,6 +245,7 @@ export const formatDiscoverFilterData = (filtersStr) => {
   let genre = "";
   let sortBy = "";
   let sortOrder = "";
+  let region = "";
   filterArr.forEach((x) => {
     const keyVlaue = x.split("=");
     if (keyVlaue[0] === "with_genres") genre = keyVlaue[1];
@@ -253,11 +254,13 @@ export const formatDiscoverFilterData = (filtersStr) => {
       sortBy = temp[0];
       sortOrder = temp[1];
     }
+    if (keyVlaue[0] === "region") region = keyVlaue[1];
   });
 
   return {
     genre,
     sortBy,
     sortOrder,
+    region,
   };
 };

@@ -32,10 +32,20 @@
   h2 {
     line-height: 20px;
   }
+
+  @include mobile {
+    margin-top: 20vh;
+
+    h1,
+    h2 {
+      line-height: 30px;
+      margin: 10px;
+    }
+  }
 }
 
 .trending {
   @include mobile {
-    margin-top: 8rem;
+    margin-top: 2rem;
   }
 }
