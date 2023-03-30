@@ -15,8 +15,8 @@ const Footer = () => {
               <div className="title">
                 <Image
                   src={LOGO_IMAGE_PATH}
-                  width={70}
-                  height={60}
+                  width={50}
+                  height={50}
                   alt={APP_NAME}
                   title={APP_NAME}
                 />

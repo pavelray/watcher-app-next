@@ -8,7 +8,6 @@ const style = css`
     height: 70vh;
     position: relative;
     background-repeat: no-repeat;
-    background-position: center; 
     background-size: cover;
 
     @include tablet {

@@ -57,13 +57,14 @@ const style = css`
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 2px;
-      width: 30%;
+      width: 60%;
 
       li {
         display: flex;
         align-items: center;
         align-content: center;
         text-align: center;
+        flex-direction: column;
       }
       li:hover {
         cursor: pointer;

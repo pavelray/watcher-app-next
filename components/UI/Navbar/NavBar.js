@@ -67,8 +67,8 @@ const NavBar = ({ isMobile }) => {
             src={LOGO_IMAGE_PATH}
             alt={`${APP_NAME} logo`}
             title={APP_NAME}
-            width={isMobile ? 40 : 60}
-            height={isMobile ? 35 : 50}
+            width={isMobile ? 40 : 50}
+            height={isMobile ? 40 : 50}
           />
           <span className="title">{isMobile ? "TFM" : "The Film Mastery"}</span>
         </div>
@@ -93,7 +93,16 @@ const NavBar = ({ isMobile }) => {
         <ul>
           {MENUS.map((menu) => (
             <li key={getUid()} className={getActiveMenuClassName(menu)}>
-              <Link href={menu.link}>{menu.text}</Link>
+              <Link href={menu.link}>
+                <Image
+                  src={menu.imageSrc}
+                  alt={menu.text}
+                  title={menu.text}
+                  width={20}
+                  height={20}
+                />
+                <div style={{fontSize: '10px'}}>{menu.text}</div>
+              </Link>
             </li>
           ))}
         </ul>
