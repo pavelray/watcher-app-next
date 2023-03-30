@@ -114,7 +114,7 @@ const style = css`
 
     .brand {
       display: flex;
-      width: 30%;
+      width: 35%;
       align-items: center;
       cursor: pointer;
       gap: 12px;
@@ -154,7 +154,7 @@ const style = css`
 
     .search-wrapper {
       display: flex;
-      width: 40%;
+      width: 55%;
       justify-content: center;
       @include mobile {
         width: 85%;

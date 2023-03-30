@@ -5,7 +5,7 @@ const style = css`
   @import "../../../styles/mixins";
 
   .btn {
-    width: 25%;
+    min-width: 100px;
     font-size: 0.8rem;
     padding: 8px 8px;
     border: none;

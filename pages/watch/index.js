@@ -33,7 +33,7 @@ const Watch = ({
           <Link href={`/${type}/${id}/${slugify(title)}`}><span className={styles.link}>{title}</span></Link>
         ) : (
           <Link href={`/${type}/${id}/${slugify(name)}`}>
-            `${name} - Season: ${season} - Episode: ${ep}`
+            {name} - Season: {season} - Episode: {ep}
           </Link>
         )}
       </h2>
