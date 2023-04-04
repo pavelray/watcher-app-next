@@ -16,15 +16,24 @@ const PersonDetails = ({ person, id, isMobile }) => {
   const { combined_credits, external_ids, images } = details;
 
   const [showPhoto, setShowPhoto] = useState(false);
-  const [showCredits, setShowCredits] = useState(true);
+  const [showKnownFor, setShowKnownFor] = useState(true);
+  const [showCredits, setShowCredits] = useState(false);
 
   const showPhotoTab = () => {
+    setShowKnownFor(false);
     setShowCredits(false);
     setShowPhoto(!showPhoto);
   };
 
+  const showKnownForTab = () => {
+    setShowPhoto(false);
+    setShowCredits(false);
+    setShowKnownFor(!showKnownFor);
+  };
+
   const showCreditsTab = () => {
     setShowPhoto(false);
+    setShowKnownFor(false);
     setShowCredits(!showCredits);
   };
   const imageSize = isMobile ? `w200` : `w400`;
@@ -70,10 +79,16 @@ const PersonDetails = ({ person, id, isMobile }) => {
       </div>
       <div className="nav">
         <button
+          className={`nav-buttons ${showKnownFor ? "active" : ""}`}
+          onClick={showKnownForTab}
+        >
+          Known For
+        </button>
+        <button
           className={`nav-buttons ${showCredits ? "active" : ""}`}
           onClick={showCreditsTab}
         >
-          Known For
+          Credits
         </button>
         <button
           className={`nav-buttons ${showPhoto ? "active" : ""}`}
@@ -103,7 +118,7 @@ const PersonDetails = ({ person, id, isMobile }) => {
           </div>
         </div>
       )}
-      {showCredits && (
+      {showKnownFor && (
         <div className="wrapper">
           <SubHeading text="Known for" />
           <div className="image-container">
@@ -119,6 +134,27 @@ const PersonDetails = ({ person, id, isMobile }) => {
                 />
               );
             })}
+          </div>
+        </div>
+      )}
+      {showCredits && (
+        <div className="wrapper">
+          <SubHeading text="Known for" />
+          <div className="image-container">
+            <ul>
+              {combined_credits.cast?.map((credit) => {
+                return (
+                  <li key={getUid()}>
+                    <span>
+                      {credit.release_date
+                        ? new Date(credit.release_date).getFullYear()
+                        : ""}
+                    </span>
+                    &nbsp; {credit.media_type === MEDIA_TYPE.MOVIE ? credit.title : credit.name} as {credit.character}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       )}

@@ -34,13 +34,26 @@ export async function getServerSideProps(context) {
 
   let url = `${getMediaDetailsDataAPIUrl(type, id)}${appendToReqPerson}`;
   const personDetails = await httpService.get(url);
+  const {combined_credits={}} = personDetails || {};
+  const {cast = [], crew=[]} = combined_credits || {}
+
+  const castSorted = cast.sort((a,b)=> a.vote_count - b.vote_count).reverse();
+  const crewSorted = crew.sort((a,b)=> a.vote_count - b.vote_count).reverse();
+
+  const updatedDetails = {
+    ...personDetails,
+    combined_credits:{
+      cast: castSorted,
+      crew: crewSorted
+    }
+  }
 
   return {
     props: {
       id,
       type: MEDIA_TYPE.PERSON,
       person: {
-        details: personDetails,
+        details: updatedDetails,
       },
     },
   };

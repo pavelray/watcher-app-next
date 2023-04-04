@@ -50,6 +50,7 @@ const HomeBanner = ({ trendingToday, isMobile }) => {
         isMobile={isMobile}
         setViewModal={setViewModal}
         isHome={true}
+        status={trending.status}
       />
       <Modal open={viewModal} onModalClose={onModalClose}>
         <iframe

@@ -86,19 +86,18 @@ const CollectionDetails = ({ collection, id, isMobile }) => {
         </div>
       )}
       {showParts && (
-        <div className="wrapper">
+        <div className="wrapper ">
           <SubHeading text="Parts" />
           <div className="image-container">
             {parts.map((part) => (
-              <div key={getUid()} className="image">
-                <MediaCard
-                  id={part.id}
-                  title={part.title}
-                  poster={part.poster_path}
-                  type={MEDIA_TYPE.MOVIE}
-                  {...part}
-                />
-              </div>
+              <MediaCard
+                id={part.id}
+                title={part.title}
+                poster={part.poster_path}
+                type={MEDIA_TYPE.MOVIE}
+                key={getUid()}
+                {...part}
+              />
             ))}
           </div>
         </div>

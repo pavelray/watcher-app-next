@@ -25,8 +25,12 @@ const HeroComponent = ({
   isHome,
   showEpisodes,
   rating,
-  year
+  year,
+  status
 }) => {
+  const isReleased = type === MEDIA_TYPE.MOVIE && status === 'Released';
+  const isAvailable = type === MEDIA_TYPE.TV_SERIES && (status === 'Returning Series' || status === 'Ended');
+
   const populateImageUrl = (path) => {
     const fullPath = `${API_IMAGE_URL}/original/`;
     return getImageUrl(path, fullPath);
@@ -105,16 +109,16 @@ const HeroComponent = ({
               trailerVideo={trailerVideo}
               setViewModal={setViewModal}
             />
-            {type === MEDIA_TYPE.MOVIE && (
+            {type === MEDIA_TYPE.MOVIE && isReleased && (
               <ButtonSecondary
                 handleOnClick={navigateToWatch}
                 text="Watch Now"
               />
             )}
-            {type === MEDIA_TYPE.TV_SERIES && !isHome &&(
+            {type === MEDIA_TYPE.TV_SERIES && !isHome && isAvailable &&(
               <ButtonSecondary handleOnClick={scrollToWatch} text="Watch Now" />
             )}
-            {type === MEDIA_TYPE.TV_SERIES && isHome && (
+            {type === MEDIA_TYPE.TV_SERIES && isHome && isAvailable && (
               <ButtonSecondary handleOnClick={goToDetailsPage} text="Watch Now" />
             )}
           </div>

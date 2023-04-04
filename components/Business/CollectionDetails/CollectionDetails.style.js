@@ -142,7 +142,7 @@ const style = css`
       height: 35vmin;
       object-fit: cover;
       object-position: 100% center;
- 
+
       &:hover {
         animation: zoomIn 1s ease-out forwards;
         animation-delay: 1s;
@@ -153,6 +153,26 @@ const style = css`
           transform: scale(1.05);
         }
       }
+    }
+    @include mobile {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      row-gap: 10px;
+      place-items: center;
+      justify-content: center;
+      align-content: stretch;
+      align-items: center;
+      justify-items: center;
+    }
+    @include mobile-landscape {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      place-items: center;
+      justify-content: center;
+      align-content: stretch;
+      align-items: center;
+      justify-items: center;
     }
   }
 

@@ -101,6 +101,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
         voteCount={voteCount}
         rating={vote_average}
         year={details.release_date}
+        status={details.status}
       />
       <div className="movie-details-container">
         <div className="movie-details-container__main">

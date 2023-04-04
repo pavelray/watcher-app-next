@@ -134,6 +134,7 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
         voteCount={voteCount}
         rating={vote_average}
         year={first_air_date}
+        status={details.status}
       />
       <div className="movie-details-container">
         <div className="movie-details-container__main">
