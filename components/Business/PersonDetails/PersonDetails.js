@@ -1,10 +1,11 @@
+import Link from "next/link";
 import React, { useState } from "react";
 import {
   API_IMAGE_URL,
   MEDIA_TYPE,
   NO_IMG_PLACEHOLDER_USER,
 } from "../../../utils/constants";
-import { getAge, getUid } from "../../../utils/helperMethods";
+import { getAge, getUid, slugify } from "../../../utils/helperMethods";
 import { Heading, SubHeading } from "../../UI/Typography/Typography";
 import ImageFallback from "../ImageFallback";
 import MediaCard from "../MediaCard";
@@ -14,6 +15,21 @@ import { style } from "./PersonDetails.style";
 const PersonDetails = ({ person, id, isMobile }) => {
   const { details } = person;
   const { combined_credits, external_ids, images } = details;
+  const { cast } = combined_credits;
+  const creditsArr = cast
+    .filter((x) => x.release_date !== "" || x.first_air_date !== "")
+    .map((c) => {
+      return {
+        ...c,
+        release_year:
+          c.media_type === MEDIA_TYPE.MOVIE
+            ? new Date(c.release_date).getFullYear()
+            : new Date(c.first_air_date).getFullYear(),
+      };
+    })
+    .sort((a, b) => a.release_year - b.release_year)
+    .reverse();
+  console.log(creditsArr);
 
   const [showPhoto, setShowPhoto] = useState(false);
   const [showKnownFor, setShowKnownFor] = useState(true);
@@ -139,19 +155,32 @@ const PersonDetails = ({ person, id, isMobile }) => {
       )}
       {showCredits && (
         <div className="wrapper">
-          <SubHeading text="Known for" />
-          <div className="image-container">
-            <ul>
-              {combined_credits.cast?.map((credit) => {
+          <SubHeading text="Credits" />
+          <div className="credits-container">
+            <h3>Acting</h3>
+            <ul className="credits">
+              {creditsArr?.map((credit) => {
                 return (
-                  <li key={getUid()}>
-                    <span>
-                      {credit.release_date
-                        ? new Date(credit.release_date).getFullYear()
-                        : ""}
-                    </span>
-                    &nbsp; {credit.media_type === MEDIA_TYPE.MOVIE ? credit.title : credit.name} as {credit.character}
-                  </li>
+                  <Link
+                    key={getUid()}
+                    href={`${
+                      credit.media_type === MEDIA_TYPE.MOVIE
+                        ? `/movie/${credit.id}/${slugify(credit.title)}`
+                        : `/tv/${credit.id}//${slugify(credit.name)}`
+                    }`}
+                  >
+                    <li>
+                      <span className="year">
+                        {credit.release_year ? credit.release_year : " - "}
+                      </span>
+                      <span className="move-title">
+                        {credit.media_type === MEDIA_TYPE.MOVIE
+                          ? credit.title
+                          : credit.name}
+                      </span>
+                      <span className="charecter">as {credit.character}</span>
+                    </li>
+                  </Link>
                 );
               })}
             </ul>

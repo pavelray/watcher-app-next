@@ -142,7 +142,7 @@ const style = css`
       height: 35vmin;
       object-fit: cover;
       object-position: 100% center;
- 
+
       &:hover {
         animation: zoomIn 1s ease-out forwards;
         animation-delay: 1s;
@@ -159,6 +159,29 @@ const style = css`
   @keyframes fadeIn {
     100% {
       opacity: 1;
+    }
+  }
+  .credits-container {
+    .credits {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      li {
+        border-bottom: 1px solid black;
+        padding: 10px;
+      }
+
+      .year {
+        font-weight: 600;
+      }
+      .move-title {
+        margin-left: 20px;
+      }
+
+      .charecter {
+        margin-left: 8px;
+        color: $secondary;
+      }
     }
   }
 `;
