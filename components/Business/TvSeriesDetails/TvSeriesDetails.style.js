@@ -94,13 +94,11 @@ const style = css`
 
             .description {
               .title {
-                font-size: 1.25rem;
+                font-size: 1rem;
                 color: $secondary;
                 margin: 8px 0px;
               }
-              font-size: 1.2rem;
-              letter-spacing: 0.1rem;
-              word-spacing: 0.3rem;
+              font-size: 1rem;
               margin: 1rem 0;
             }
 

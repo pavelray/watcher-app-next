@@ -182,6 +182,10 @@ const style = css`
         margin-left: 8px;
         color: $secondary;
       }
+      .episode-count{
+        margin-left: 10px;
+        opacity: .7;
+      }
     }
   }
 `;

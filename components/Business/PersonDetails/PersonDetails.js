@@ -16,8 +16,19 @@ const PersonDetails = ({ person, id, isMobile }) => {
   const { details } = person;
   const { combined_credits, external_ids, images } = details;
   const { cast } = combined_credits;
-  const creditsArr = cast
-    .filter((x) => x.release_date !== "" || x.first_air_date !== "")
+  const creditsArrWithOutYear = cast
+    .filter((x) => x.release_date === "" || x.first_air_date === "")
+    .map((c) => {
+      return {
+        ...c,
+        release_year: "",
+      };
+    });
+  const creditsArrWithYear = cast.filter(
+    (x) => x.release_date !== "" && x.first_air_date !== ""
+  );
+  console.log(creditsArrWithYear);
+  const creditsArr = creditsArrWithYear
     .map((c) => {
       return {
         ...c,
@@ -29,7 +40,8 @@ const PersonDetails = ({ person, id, isMobile }) => {
     })
     .sort((a, b) => a.release_year - b.release_year)
     .reverse();
-  console.log(creditsArr);
+  const finalCreditsArr = [...creditsArrWithOutYear, ...creditsArr];
+  console.log(finalCreditsArr);
 
   const [showPhoto, setShowPhoto] = useState(false);
   const [showKnownFor, setShowKnownFor] = useState(true);
@@ -159,14 +171,14 @@ const PersonDetails = ({ person, id, isMobile }) => {
           <div className="credits-container">
             <h3>Acting</h3>
             <ul className="credits">
-              {creditsArr?.map((credit) => {
+              {finalCreditsArr?.map((credit) => {
                 return (
                   <Link
                     key={getUid()}
                     href={`${
                       credit.media_type === MEDIA_TYPE.MOVIE
                         ? `/movie/${credit.id}/${slugify(credit.title)}`
-                        : `/tv/${credit.id}//${slugify(credit.name)}`
+                        : `/tv/${credit.id}/${slugify(credit.name)}`
                     }`}
                   >
                     <li>
@@ -178,7 +190,18 @@ const PersonDetails = ({ person, id, isMobile }) => {
                           ? credit.title
                           : credit.name}
                       </span>
-                      <span className="charecter">as {credit.character}</span>
+                      {credit.character && (
+                        <span className="charecter">as {credit.character}</span>
+                      )}
+                      {credit.media_type === MEDIA_TYPE.TV_SERIES && (
+                        <span className="episode-count">
+                          (
+                          {credit.episode_count > 1
+                            ? `${credit.episode_count} episodes`
+                            : `${credit.episode_count} episode`}
+                          )
+                        </span>
+                      )}
                     </li>
                   </Link>
                 );

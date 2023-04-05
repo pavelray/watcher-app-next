@@ -195,7 +195,7 @@ export const getLastAirDate = (details) => {
   const lastAirDate = details.last_air_date || null;
 
   return lastAirDate === null
-    ? "N/A"
+    ? ""
     : new Date(lastAirDate).toLocaleDateString();
 };
 

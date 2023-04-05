@@ -23,7 +23,6 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
 
   const releaseDate = getReleaseDate(details, type);
   const lastAirDate = getLastAirDate(details);
-  console.log(lastAirDate)
 
   const getGenres = () => {
     if (!!genres.length) {
@@ -64,11 +63,13 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
   const getCountryOrigin = () => {
     if (!!production_countries.length) {
       return (
-        <div className="movie-details-stats">
-          <label>Country Origin: </label>
-          {production_countries.map((x) => x.name).join(", ")}
+        <li className="movie-details-stats">
+          <div className="label">Country Origin: </div>
+          <div className="value">
+            {production_countries.map((x) => x.name).join(", ")}
+          </div>
           <style jsx>{style}</style>
-        </div>
+        </li>
       );
     }
     return null;
@@ -77,11 +78,13 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
   const getLanguage = () => {
     if (!!spoken_languages.length) {
       return (
-        <div className="movie-details-stats">
-          <label>Languages: </label>
-          {spoken_languages.map((x) => x.english_name).join(", ")}
+        <li className="movie-details-stats">
+          <div className="label">Languages: </div>
+          <div className="value">
+            {spoken_languages.map((x) => x.english_name).join(", ")}
+          </div>
           <style jsx>{style}</style>
-        </div>
+        </li>
       );
     }
     return null;
@@ -89,11 +92,13 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
   const getProductionCompanies = () => {
     if (!!production_companies.length) {
       return (
-        <div className="movie-details-stats">
-          <label>Production Companies: </label>
-          {production_companies.map((x) => x.name).join(", ")}
+        <li className="movie-details-stats">
+          <div className="label">Production Companies: </div>
+          <div className="value">
+            {production_companies.map((x) => x.name).join(", ")}
+          </div>
           <style jsx>{style}</style>
-        </div>
+        </li>
       );
     }
     return null;
@@ -102,81 +107,86 @@ const MediaDetailsInfo = ({ details, type = MEDIA_TYPE.MOVIE, crew }) => {
   const getWriters = (data, labelText) => {
     if (!!data.length) {
       return (
-        <div className="movie-details-stats">
-          <label>{labelText}: </label>
-          {data.map((x) => x.name).join(", ")}
+        <li className="movie-details-stats">
+          <div className="label">{labelText}: </div>
+          <div className="value">{data.map((x) => x.name).join(", ")}</div>
           <style jsx>{style}</style>
-        </div>
+        </li>
       );
     }
     return null;
   };
 
   return (
-    <div className="movie-details">
+    <ul className="movie-details">
       {tagline && (
-        <div className="movie-details-stats">
-          <label>Tagline: </label>
-          {tagline}
-        </div>
+        <li className="movie-details-stats">
+          <div className="label">Tagline: </div>
+          <div className="value">{tagline}</div>
+        </li>
       )}
       {!!genres.length && (
-        <div className="movie-details-stats">
-          <div className="genre-container">
-            <label>Genre: </label>
+        <li className="movie-details-stats">
+          <div className="label">Genre: </div>
+          <div className="value">
             <ul className="genre">{getGenres()}</ul>
           </div>
-        </div>
+        </li>
       )}
-      <div className="movie-details-stats">
-        <label>Status: {details.status}</label>
-      </div>
-      <div className="movie-details-stats">
-        <label>Release Date: {releaseDate}</label>
-      </div>
-      <div className="movie-details-stats">
-        <label>Last Air Date: {lastAirDate}</label>
-      </div>
+      <li className="movie-details-stats">
+        <div className="label">Status:</div>
+        <div className="value"> {details.status}</div>
+      </li>
+      <li className="movie-details-stats">
+        <div className="label">Release Date:</div>
+        <div className="value"> {releaseDate}</div>
+      </li>
+      {lastAirDate && (
+        <li className="movie-details-stats">
+          <div className="label">Last Air Date:</div>
+          <div className="value">{lastAirDate}</div>
+        </li>
+      )}
 
       {getCountryOrigin()}
       {getLanguage()}
       {!!director.length && (
         <div className="movie-details-stats">
-          <div className="genre-container">
-            <label>Director: </label>
+          <div className="label">Director: </div>
+          <div className="value">
             <ul className="genre">{getDirector()}</ul>
           </div>
         </div>
       )}
       {!!creator.length && (
         <div className="movie-details-stats">
-          <div className="genre-container">
-            <label>Creators: </label>
+          <div className="label">Creators: </div>
+          <div className="value">
             <ul className="genre">{getCreators()}</ul>
           </div>
         </div>
       )}
       {getWriters(writer, "Writer")}
       {getProductionCompanies()}
-      <div className="movie-details-stats">
+      <li className="movie-details-stats">
         {!!budget && (
-          <Fragment>
-            <label>Budget: </label>
-            {formatCurrency(budget)}
-          </Fragment>
+          <>
+            <div className="label">Budget: </div>
+            <div className="value">{formatCurrency(budget)}</div>
+          </>
         )}
-      </div>
-      <div className="movie-details-stats">
+      </li>
+      <li className="movie-details-stats">
         {!!revenue && (
           <Fragment>
-            <label>Revenue: </label>
-            {formatCurrency(revenue)}
+            <div className="label">Revenue: </div>
+            <div className="value">{formatCurrency(revenue)}</div>
           </Fragment>
         )}
-      </div>
+      </li>
 
       <style jsx>{style}</style>
-    </div>
+    </ul>
   );
 };
 

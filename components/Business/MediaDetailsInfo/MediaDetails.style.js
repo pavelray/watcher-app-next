@@ -5,43 +5,36 @@ const style = css`
   @import "../../../styles/mixins";
 
   .movie-details {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     &-stats {
-      font-size: 1.1rem;
+      display: flex;
+      flex-direction: row;
       margin: 0.3rem 0;
-      letter-spacing: 0.1rem;
       font-weight: 400;
       line-height: 25px;
 
+      .label {
+        max-width: 200px;
+        flex: 1;
+        margin-right: 1.5rem;
+      }
+      .value {
+        flex: 2;
+      }
+
       @include mobile {
-        font-size: 1rem;
         margin: 0.5rem 0;
       }
       @include mobile-landscape {
-        font-size: 1rem;
         margin: 0.5rem 0;
       }
 
-      label {
-        font-weight: 600;
-        font-size: 18px;
-      }
-      .genre-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        @include mobile {
-          align-items: normal;
-          flex-direction: initial;
-        }
-      }
       .genre {
         display: flex;
         margin: 0;
         padding: 0;
-        margin-left: 5px;
         @include mobile {
           display: initial;
         }
@@ -49,13 +42,9 @@ const style = css`
         li {
           color: $tertiary;
           cursor: pointer;
-          margin: 3px 4px;
           list-style: none;
-          font-size: 16px;
           margin-right: 6px;
           font-weight: 600;
-          word-spacing: 4px;
-          letter-spacing: 2px;
 
           &:hover {
             border-bottom: 1px solid $tertiary;
