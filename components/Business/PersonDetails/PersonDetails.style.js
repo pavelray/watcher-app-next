@@ -167,7 +167,7 @@ const style = css`
       margin: 0;
       padding: 0;
       li {
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid $background2;
         padding: 10px;
       }
 

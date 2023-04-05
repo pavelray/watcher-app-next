@@ -74,7 +74,7 @@ const style = css`
         position: relative;
 
         &-values {
-          margin: 5px 0px 2px 20px;
+          margin: 0px 0px 2px 10px;
           font-size: 0.9rem;
           word-break: unset;
           word-spacing: 0.2rem;
@@ -82,15 +82,19 @@ const style = css`
           letter-spacing: 0.1rem;
           font-weight: 600;
 
+          :first-child{
+            margin-left: 0px;
+          }
+
           @include mobile {
-            margin: 5px 0px 2px 10px;
+            margin: 5px 0px 2px 8px;
             font-size: 0.7rem;
             word-spacing: 1px;
             color: $primary;
           }
 
           @include mobile-landscape {
-            margin: 5px 0px 2px 10px;
+            margin: 5px 0px 2px 8px;
             font-size: 0.7rem;
             word-spacing: 1px;
             color: $primary;
@@ -100,7 +104,7 @@ const style = css`
 
       .cert {
         border: 2px solid $secondary;
-        padding: 2px;
+        padding: 1px 8px;
         &:hover {
           cursor: pointer;
         }

@@ -4,6 +4,7 @@ import Layout from "../components/Business/Layout/Layout";
 import "../styles/globals.scss";
 import { APP_NAME, SEO_TAGS, SITE_NAME } from "../utils/constants";
 import { isMobileView } from "../utils/helperMethods";
+import ErrorBoundary from "../components/Business/ErrorBoundary/ErrorBoundary";
 
 function MyApp({ Component, pageProps, isMobile }) {
   return (
@@ -43,9 +44,11 @@ function MyApp({ Component, pageProps, isMobile }) {
           crossOrigin="anonymous"
         />
       </Head>
-      <Layout isMobile={isMobile}>
-        <Component {...pageProps} isMobile={isMobile} />
-      </Layout>
+      <ErrorBoundary>
+        <Layout isMobile={isMobile}>
+          <Component {...pageProps} isMobile={isMobile} />
+        </Layout>
+      </ErrorBoundary>
     </Fragment>
   );
 }

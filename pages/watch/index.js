@@ -30,34 +30,16 @@ const Watch = ({
       <h2>
         Now watching :{" "}
         {type === MEDIA_TYPE.MOVIE ? (
-          <Link href={`/${type}/${id}/${slugify(title)}`}><span className={styles.link}>{title}</span></Link>
+          <Link href={`/${type}/${id}/${slugify(title)}`}>
+            <span className={styles.link}>{title}</span>
+          </Link>
         ) : (
           <Link href={`/${type}/${id}/${slugify(name)}`}>
             {name} - Season: {season} - Episode: {ep}
           </Link>
         )}
       </h2>
-      <div className={styles.header}>
-        Sreaming Provier -{" "}
-        <a
-          href="https://2embed.biz/"
-          alt="2embed"
-          className={styles.link}
-          target="_blank"
-          rel="noreferrer"
-        >
-          2embed
-        </a>{" "}
-        <div>
-          <span>
-            ** Please user{" "}
-            <span className={styles.note}>ad blocker or Brave browser</span> to
-            block the ads showin by - 2embed
-          </span>
-          <br />
-          <span>** We do not store any media.</span>
-        </div>
-      </div>
+
       <iframe
         id="iframe-watch"
         className={styles.videoPlayer}
@@ -84,6 +66,15 @@ const Watch = ({
           </a>{" "}
           <span className={styles.note}>** We do not store any media.</span>
         </h4>
+        <div>
+          <span>
+            ** Please user{" "}
+            <span className={styles.note}>ad blocker or Brave browser</span> to
+            block the ads showin by - 2embed
+          </span>
+          <br />
+          <span>** We do not store any media.</span>
+        </div>
       </div>
     </div>
   );

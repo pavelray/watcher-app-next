@@ -85,9 +85,9 @@ const HeroComponent = ({
             <h1 className="title">{title}</h1>
           </Link>
           <div className="meta">
-            <Rating ratingValue={ratingPercentage} />
-            <span className="meta-values">Rating {rating.toFixed(2)}</span>
-            <span className="meta-values">Votes {voteCount}</span>
+            {/* <Rating ratingValue={ratingPercentage} /> */}
+            <span className="meta-values">Rating:{rating.toFixed(2)}</span>
+            <span className="meta-values">Votes:{voteCount}</span>
             <span className="meta-values">{new Date(year).getFullYear()}</span>
             <span className="meta-values">{runtime}</span>
             {certificate?.certificate && (

@@ -16,13 +16,13 @@
 
   .videoPlayer {
     width: 100%;
-    height: 90vh;
+    height: 50vh;
     border: none;
     @include mobile {
-      height: 250px;
+      height: 150px;
     }
     @include mobile-landscape {
-      height: 450px;
+      height: 200px;
     }
   }
 

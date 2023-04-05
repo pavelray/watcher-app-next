@@ -24,7 +24,9 @@ import ViewAll from "../../components/Business/ViewAll";
 import COUNTRIES from "../../data/countries_data.json";
 
 const Discover = (props) => {
-  const [defaultGenre, setGenre] = useState(MOVIE_GENRE);
+  const [defaultGenre, setGenre] = useState(
+    props.type === MediaType.MOVIE ? MOVIE_GENRE : TV_GENRE
+  );
   const [selectedMediaType, setSelectedMediaType] = useState(
     props.type || MediaType.MOVIE
   );
@@ -38,14 +40,17 @@ const Discover = (props) => {
     sortOrder: filterData.sortOrder || SORT_ORDER[0].value,
     region: filterData.region || countryCode,
   };
+  const [filterValues, setFilterValues] = useState(initialFilterValues);
 
   const onMediaTypeChange = (event) => {
     const { value } = event.target;
     setGenre(() => (value === MediaType.TV_SERIES ? TV_GENRE : MOVIE_GENRE));
     setSelectedMediaType(value);
+    setFilterValues({
+      ...filterValues,
+      genre: MediaType.TV_SERIES ? TV_GENRE[0].id : MOVIE_GENRE[0].id,
+    });
   };
-
-  const [filterValues, setFilterValues] = useState(initialFilterValues);
 
   const onHandleChange = (event) => {
     const { value, name } = event.target;
@@ -163,6 +168,7 @@ export async function getServerSideProps(context) {
 
   const { mediaType = "", filterDataStr = "", page = "1" } = query || {};
   const apiUrl = getDiscoverMediaUrl(mediaType, page, filterDataStr);
+  console.log(apiUrl);
   const response = await httpService.get(apiUrl);
 
   return {
