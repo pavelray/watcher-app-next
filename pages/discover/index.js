@@ -25,7 +25,7 @@ import COUNTRIES from "../../data/countries_data.json";
 
 const Discover = (props) => {
   const [defaultGenre, setGenre] = useState(
-    props.type === MediaType.MOVIE ? MOVIE_GENRE : TV_GENRE
+    props.type === MediaType.TV_SERIES ? TV_GENRE : MOVIE_GENRE
   );
   const [selectedMediaType, setSelectedMediaType] = useState(
     props.type || MediaType.MOVIE

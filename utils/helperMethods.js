@@ -170,7 +170,7 @@ export const getCertificates = (releaseInfo, productionCountries, type) => {
         ...releaseInfo.results[0],
       ];
   const certificates = getContentRating(selectCertCountry, type);
-  return certificates;
+  return [certificates[0]];
 };
 
 export const formatNumber = (number) => {
