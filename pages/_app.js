@@ -44,11 +44,11 @@ function MyApp({ Component, pageProps, isMobile }) {
           crossOrigin="anonymous"
         />
       </Head>
-      <ErrorBoundary>
-        <Layout isMobile={isMobile}>
+      <Layout isMobile={isMobile}>
+        <ErrorBoundary>
           <Component {...pageProps} isMobile={isMobile} />
-        </Layout>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </Layout>
     </Fragment>
   );
 }
