@@ -187,7 +187,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
           </button>
         )}
       </div>
-      {showPhoto && (
+      {!!images.posters.length && showPhoto && (
         <div className="wrapper">
           <SubHeading text="Posters" />
           <div className="image-container">
@@ -208,7 +208,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
           </div>
         </div>
       )}
-      {showVideo && (
+      {!!trailerVideo.length && showVideo && (
         <div className="wrapper">
           <SubHeading text="Videos" />
 
@@ -242,7 +242,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
           </div>
         </div>
       )}
-      {showReview && (
+      {!!reviews.results.length && showReview && (
         <div className="review-container">
           <ReviewsComponent reviews={reviews} />
         </div>
