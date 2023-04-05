@@ -56,7 +56,7 @@ export const getAllCountriesAPIUrl = () => {
 };
 
 export const getSearchUrl = (query, page = 1) => {
-  return `${API_BASE_URL}/search/multi?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=true&sort_by=vote_average.desc`;
+  return `${API_BASE_URL}/search/multi?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=true&&sort_by=vote_count.desc`;
 };
 
 export const getSeasonDetailsAPIUrl = (id, seasonNo) => {
@@ -123,15 +123,15 @@ export const getShowsOnAirUrl = (type) => {
 };
 
 export const getDiscoverMovieUrl = (type, page, genre) => {
-  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=popularity.desc&vote_count.gte=10&include_video=false&page=${page}&with_genres=${genre}&with_watch_monetization_types=flatrate&include_adult=true`;
+  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=vote_count.desc&include_video=false&page=${page}&with_genres=${genre}&with_watch_monetization_types=flatrate&include_adult=true`;
 };
 
 export const getMediaByYearUrl = (type, pageNo = 1, year = 1995) => {
-  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&primary_release_year=${year}&page=${pageNo}&sort_by=popularity.desc&include_adult=true`;
+  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&primary_release_year=${year}&page=${pageNo}&sort_by=vote_count.desc&include_adult=true`;
 };
 
 export const getDiscoverTvSeriesUrl = (type, page, genre) => {
-  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=vote_average.desc&vote_count.gte=10&page=${page}&timezone=America%2FNew_York&with_genres=${genre}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&include_adult=true`;
+  return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&sort_by=vote_count.desc&page=${page}&timezone=America%2FNew_York&with_genres=${genre}&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&include_adult=true`;
 };
 
 export const getReleaseDetailsUrl = (type, id) => {
