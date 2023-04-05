@@ -6,7 +6,6 @@ import { appendToReqPerson, MEDIA_TYPE } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 
 const CollectionDetailsPage = ({ id, collection, isMobile, type }) => {
-  console.log(collection);
   return (
     <Fragment>
      <CollectionDetails collection={collection} id={id} isMobile={isMobile} />

@@ -61,7 +61,6 @@ const Discover = (props) => {
     const filterQuery = `mediaType=${selectedMediaType}&filterDataStr=${encodeURIComponent(
       `&region=${filterValues.region}&sort_by=${filterValues.sortBy}.${filterValues.sortOrder}&vote_count.gte=10&include_video=false&with_genres=${filterValues.genre}&include_adult=true`
     )}`;
-    console.log(filterQuery);
     Router.push(`/discover?${filterQuery}&page=1`);
   };
 
@@ -168,7 +167,6 @@ export async function getServerSideProps(context) {
 
   const { mediaType = "", filterDataStr = "", page = "1" } = query || {};
   const apiUrl = getDiscoverMediaUrl(mediaType, page, filterDataStr);
-  console.log(apiUrl);
   const response = await httpService.get(apiUrl);
 
   return {
