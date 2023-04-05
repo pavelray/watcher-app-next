@@ -27,7 +27,6 @@ const PersonDetails = ({ person, id, isMobile }) => {
   const creditsArrWithYear = cast.filter(
     (x) => x.release_date !== "" && x.first_air_date !== ""
   );
-  console.log(creditsArrWithYear);
   const creditsArr = creditsArrWithYear
     .map((c) => {
       return {
@@ -41,7 +40,6 @@ const PersonDetails = ({ person, id, isMobile }) => {
     .sort((a, b) => a.release_year - b.release_year)
     .reverse();
   const finalCreditsArr = [...creditsArrWithOutYear, ...creditsArr];
-  console.log(finalCreditsArr);
 
   const [showPhoto, setShowPhoto] = useState(false);
   const [showKnownFor, setShowKnownFor] = useState(true);
