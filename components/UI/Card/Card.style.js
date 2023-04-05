@@ -23,13 +23,14 @@ const style = css`
 
   .card-body {
     padding: 5px 10px;
-    font-size: 16px;
+
     &__title {
       font-weight: 500;
       margin-bottom: 5px;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
+      font-size: 1rem;
     }
     &__info {
       font-weight: 600;
@@ -39,10 +40,9 @@ const style = css`
     }
 
     &__genre {
-      font-size: 12px;
-      font-weight: 200;
+      font-size: 0.75rem;
+      opacity: 0.7;
       margin: 5px 0px;
-      letter-spacing: 1px;
     }
   }
 

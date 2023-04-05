@@ -20,9 +20,7 @@ const ProfileCard = ({ id, title, poster, description, redirectToDetails }) => {
         </div>
         <div className="card-body">
           <div className="card-body__title">{title}</div>
-          <div className="card-body__genre">
-            <div>{description}</div>
-          </div>
+          <div className="card-body__genre">{description}</div>
         </div>
       </div>
       <style jsx>{style}</style>
