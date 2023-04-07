@@ -7,13 +7,13 @@ import {
   FILTER_OPTIONS,
   MOVIE_GENRE,
   TV_GENRE,
+  MEDIA_TYPE as MediaType,
 } from "../../utils/constants";
 import {
   formatDiscoverFilterData,
   getLocationCookie,
   getUid,
 } from "../../utils/helperMethods";
-import { MEDIA_TYPE as MediaType } from "../../utils/constants";
 import {
   ButtonPrimary,
   ButtonSecondary,

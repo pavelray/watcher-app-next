@@ -10,6 +10,7 @@ import { MEDIA_TYPE } from "../../../utils/constants";
 import Modal from "../../UI/Modal/Modal";
 
 const HomeBanner = ({ trendingToday, isMobile }) => {
+  console.log(HomeBanner.name);
   const trending = trendingToday;
   const certificatesValue =
     trending.media_type === MEDIA_TYPE.MOVIE
