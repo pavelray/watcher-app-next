@@ -44,13 +44,14 @@ const Watch = ({
         id="iframe-watch"
         className={styles.videoPlayer}
         src={`https://www.2embed.to/embed/tmdb/${getStreamingUrl()}`}
-        allow="autoplay"
         title={title || name}
         allowFullScreen="true"
         webkitallowfullscreen="true"
         mozallowfullscreen="true"
         oallowfullscreen="true"
         msallowfullscreen="true"
+        gesture="media"
+        allow="encrypted-media"
       ></iframe>
       <div>
         <h4>
