@@ -2,16 +2,11 @@ import React, { Fragment } from "react";
 import PersonDetails from "../../components/Business/PersonDetails";
 import { GoogleAd } from "../../components/UI/GoogleAds";
 import {
-  getAllCredits,
-  getExternalIdUrl,
-  getMovieCredit,
   getMediaDetailsDataAPIUrl,
 } from "../../utils/apiUtills";
 import {
   appendToReqPerson,
   MEDIA_TYPE,
-  pageLayoutStyle,
-  pageMobileLayoutStyle,
 } from "../../utils/constants";
 import httpService from "../../utils/httpService";
 

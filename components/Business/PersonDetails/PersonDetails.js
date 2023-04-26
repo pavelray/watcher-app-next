@@ -11,6 +11,7 @@ import ImageFallback from "../ImageFallback";
 import MediaCard from "../MediaCard";
 import SocialIcons from "../SocialIcons/SocialIcons";
 import { style } from "./PersonDetails.style";
+import ImageGallary from "../../UI/ImageGallary/ImageGallary";
 
 const PersonDetails = ({ person, id, isMobile }) => {
   const { details } = person;
@@ -126,22 +127,7 @@ const PersonDetails = ({ person, id, isMobile }) => {
       {showPhoto && (
         <div className="wrapper">
           <SubHeading text="Photos" />
-          <div className="image-container">
-            {images.profiles.map((image) => (
-              <div key={getUid()} className="image">
-                <ImageFallback
-                  src={`${API_IMAGE_URL}/w200${image.file_path}`}
-                  fill
-                  sizes="100vw"
-                  style={{
-                    objectFit: "cover",
-                  }}
-                  alt="Poster"
-                  fallbackSrc={NO_IMG_PLACEHOLDER_USER}
-                />
-              </div>
-            ))}
-          </div>
+          <ImageGallary images={images.profiles}/>
         </div>
       )}
       {showKnownFor && (
