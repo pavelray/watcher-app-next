@@ -69,7 +69,6 @@ const style = css`
     cursor: pointer;
   }
   .image-with-close {
-    
     display: inline-flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -92,9 +91,13 @@ const style = css`
   }
 
   .image-preview {
-    max-width: 80vw;
-    max-height: 80vh;
+    max-width: 90vw;
+    max-height: 90vh;
     margin: 0px 10px;
+    @include mobile {
+      max-width: 75vw;
+      margin-bottom: 20px;
+    }
   }
 `;
 
