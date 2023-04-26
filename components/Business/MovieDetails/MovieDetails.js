@@ -26,6 +26,7 @@ import SocialIcons from "../SocialIcons/SocialIcons";
 import WatchProvider from "../WatchProvider/WatchProvider";
 
 import { style } from "./MovieDetails.style";
+import ImageGallary from "../../UI/ImageGallary/ImageGallary";
 
 const MovieDetails = ({ movie, id, type, isMobile }) => {
   const [viewModal, setViewModal] = useState(false);
@@ -190,22 +191,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
       {!!images.posters.length && showPhoto && (
         <div className="wrapper">
           <SubHeading text="Posters" />
-          <div className="image-container">
-            {images.posters.map((image) => (
-              <div key={getUid()} className="image">
-                <ImageFallback
-                  src={`${API_IMAGE_URL}/w200/${image.file_path}`}
-                  fill
-                  sizes="100vw"
-                  style={{
-                    objectFit: "cover",
-                  }}
-                  alt="Poster"
-                  fallbackSrc={NO_IMG_PLACEHOLDER_MEDIA}
-                />
-              </div>
-            ))}
-          </div>
+          <ImageGallary images={images.posters}/>
         </div>
       )}
       {!!trailerVideo.length && showVideo && (
