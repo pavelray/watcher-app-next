@@ -58,13 +58,6 @@ const style = css`
     margin: 30px;
     width: 100%;
   }
-  .control-btn {
-    font-size: 1.2rem;
-    background-color: rgba(0, 0, 0, 0.6);
-    padding: 10px 15px;
-    border-radius: 50%;
-    color: #fff;
-  }
 
   .control-btn:hover {
     cursor: pointer;
