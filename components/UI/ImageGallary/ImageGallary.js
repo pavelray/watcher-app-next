@@ -1,23 +1,24 @@
 import React, { Fragment, useState } from "react";
-import ImageFallback from "../../Business/ImageFallback";
-import {
-  API_IMAGE_URL,
-  NO_IMG_PLACEHOLDER_USER,
-} from "../../../utils/constants";
 import { style } from "./ImageGallary.style";
-import { getUid } from "../../../utils/helperMethods";
+import ImagePreview from "./ImagePreview";
+import ImageCard from "./ImageCard";
 
 const ImageGallary = ({ images }) => {
   const [showImageModal, setShowImageModal] = useState(false);
   const [currentImage, setShowCurrentImage] = useState();
+  const [currentIndex, setCurrentIndex] = useState();
+  const totalImages = images.length;
+
   const goToNext = () => {
     const currentImageIndex = images.findIndex((x) => x === currentImage);
+    setCurrentIndex(currentImageIndex + 1);
     const canGoNext = images.length > currentImageIndex + 1;
     const nextImage = canGoNext && images[currentImageIndex + 1];
     if (canGoNext) setShowCurrentImage(nextImage);
   };
   const goToPrevious = () => {
     const currentImageIndex = images.findIndex((x) => x === currentImage);
+    setCurrentIndex(currentImageIndex + 1);
     const canGoPrev = 0 <= currentImageIndex - 1;
     const prevImage = canGoPrev && images[currentImageIndex - 1];
     if (canGoPrev) setShowCurrentImage(prevImage);
@@ -28,6 +29,8 @@ const ImageGallary = ({ images }) => {
   };
 
   const openCurrentImage = (image) => {
+    const currentImageIndex = images.findIndex((x) => x === image);
+    setCurrentIndex(currentImageIndex + 1);
     setShowImageModal(true);
     setShowCurrentImage(image);
   };
@@ -35,47 +38,17 @@ const ImageGallary = ({ images }) => {
   return (
     <Fragment>
       <div className="image-container">
-        {images.map((image) => (
-          <div
-            key={getUid()}
-            className="image"
-            onClick={() => openCurrentImage(image)}
-          >
-            <ImageFallback
-              src={`${API_IMAGE_URL}/w200${image.file_path}`}
-              fill
-              sizes="100vw"
-              style={{
-                objectFit: "cover",
-              }}
-              alt="Poster"
-              fallbackSrc={NO_IMG_PLACEHOLDER_USER}
-            />
-          </div>
-        ))}
+        <ImageCard images={images} openCurrentImage={openCurrentImage} />
       </div>
       {showImageModal && (
-        <div className="image-preview-main">
-          <div className="image-preview-wrapper">
-            <div className="control-btn" onClick={goToPrevious}>
-              <span>&lt;</span>
-            </div>
-            <div className="image-with-close">
-              <span className="close-wrapper" onClick={closeHandler}>
-                &#88;
-              </span>
-
-              <img
-                src={`${API_IMAGE_URL}/original${currentImage.file_path}`}
-                className="image-preview"
-                alt="selected-product"
-              />
-            </div>
-            <div className="control-btn" onClick={goToNext}>
-              <span>&gt;</span>
-            </div>
-          </div>
-        </div>
+        <ImagePreview
+          goToPrevious={goToPrevious}
+          closeHandler={closeHandler}
+          currentImage={currentImage}
+          goToNext={goToNext}
+          totalImages={totalImages}
+          currentIndex={currentIndex}
+        />
       )}
       <style jsx>{style} </style>
     </Fragment>

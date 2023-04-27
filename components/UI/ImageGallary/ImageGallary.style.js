@@ -90,6 +90,10 @@ const style = css`
     cursor: pointer;
   }
 
+  .image-index{
+    margin-right: 1rem;
+  }
+
   .image-preview {
     max-width: 90vw;
     max-height: 90vh;
