@@ -1,6 +1,7 @@
 import React from "react";
 import { style } from "./ImageGallary.style";
 import { API_IMAGE_URL } from "../../../utils/constants";
+import Image from "next/image";
 
 const ImagePreview = ({
   goToPrevious,
@@ -14,12 +15,13 @@ const ImagePreview = ({
     <div className="image-preview-main">
       <div className="image-preview-wrapper">
         <div className="control-btn" onClick={goToPrevious}>
-          <span>&lt;</span>
+          {/* <span>&lt;</span> */}
+          <Image src='/icons/common/left-arrow.png' width="30" height="30" />
         </div>
         <div className="image-with-close">
-          <span className="close-wrapper" onClick={closeHandler}>
-            &#88;
-          </span>
+          <div className="close-wrapper" onClick={closeHandler}>
+            <Image src='/icons/common/close.png' width="20" height="20" />
+          </div>
           <img
             src={`${API_IMAGE_URL}/original${currentImage.file_path}`}
             className="image-preview"
@@ -29,7 +31,7 @@ const ImagePreview = ({
           <div className="image-index">{currentIndex}/{totalImages}</div>
         </div>
         <div className="control-btn" onClick={goToNext}>
-          <span>&gt;</span>
+        <Image src='/icons/common/right-arrow.png' width="30" height="30" />
         </div>
       </div>
       <style jsx>{style} </style>

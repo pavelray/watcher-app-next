@@ -42,7 +42,7 @@ const style = css`
   .image-preview-main {
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0,1);
     z-index: 100;
     position: fixed;
     top: 0;
@@ -53,9 +53,10 @@ const style = css`
 
   .image-preview-wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 30px;
+    width: 100%;
   }
   .control-btn {
     font-size: 1.2rem;
@@ -80,10 +81,9 @@ const style = css`
     position: relative;
     top: 0%;
     right: 0%;
-    margin-top: 5px;
     background-color: rgba(0, 0, 0, 0.6);
     color: #fff;
-    padding: 10px;
+    margin-right: 1rem;
   }
 
   .close-wrapper:hover {
