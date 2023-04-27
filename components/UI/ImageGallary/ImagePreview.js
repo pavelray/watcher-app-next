@@ -15,7 +15,6 @@ const ImagePreview = ({
     <div className="image-preview-main">
       <div className="image-preview-wrapper">
         <div className="control-btn" onClick={goToPrevious}>
-          {/* <span>&lt;</span> */}
           <Image src='/icons/common/left-arrow.png' width="30" height="30" />
         </div>
         <div className="image-with-close">

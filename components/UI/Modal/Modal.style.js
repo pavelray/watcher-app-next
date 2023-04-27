@@ -1,49 +1,48 @@
-
 import css from "styled-jsx/css";
 
 const style = css`
-@import '../../../styles/colors';
-@import '../../../styles/mixins';
+  @import "../../../styles/colors";
+  @import "../../../styles/mixins";
 
-.modal {
-  display: block;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: $background; /* Fallback color */
+  .modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 1);
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
 
-  &-content {
-    background-color: $background;
-    margin: auto;
-    width: 70%;
-    padding: 0px 10px;
+    &-content {
+      background-color: rgba(0, 0, 0, 1);
+      margin: auto;
+      width: 70%;
+      padding: 0px 10px;
 
-    @include mobile{
-      width: 90%;
+      @include mobile {
+        width: 90%;
+      }
+      @include tablet {
+        width: 90%;
+      }
     }
-    @include tablet{
-      width: 90%;
+    /* The Close Button */
+    .close {
+      color: $secondary;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+
+      &:focus,
+      &:hover {
+        color: $primary;
+        text-decoration: none;
+        cursor: pointer;
+      }
     }
   }
-  /* The Close Button */
-  .close {
-    color: $secondary;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-
-    &:focus,
-    &:hover {
-      color: $primary;
-      text-decoration: none;
-      cursor: pointer;
-    }
-  }
-}`
+`;
 
 export { style };

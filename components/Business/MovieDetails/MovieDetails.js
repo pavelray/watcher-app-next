@@ -62,7 +62,9 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
     type
   );
   const certificate = certificates.map((x) => x && x.certification).join(", ");
-  const meaning = certificates.map((x) => x && `${x.certification}: ${x.meaning}`);
+  const meaning = certificates.map(
+    (x) => x && `${x.certification}: ${x.meaning}`
+  );
   const voteCount = formatNumber(details.vote_count);
   const [showPhoto, setShowPhoto] = useState(false);
   const [showVideo, setShowVideo] = useState(true);
@@ -191,7 +193,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
       {!!images.posters.length && showPhoto && (
         <div className="wrapper">
           <SubHeading text="Posters" />
-          <ImageGallary images={images.posters}/>
+          <ImageGallary images={images.posters} />
         </div>
       )}
       {!!trailerVideo.length && showVideo && (

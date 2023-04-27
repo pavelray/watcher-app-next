@@ -300,7 +300,7 @@ const style = css`
 
   .video-frame {
     width: 100%;
-    height: 640px;
+    height: 80vh;
     border: none;
     @include mobile {
       height: 250px;

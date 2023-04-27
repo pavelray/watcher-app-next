@@ -194,9 +194,7 @@ export const getReleaseDate = (details, type) => {
 export const getLastAirDate = (details) => {
   const lastAirDate = details.last_air_date || null;
 
-  return lastAirDate === null
-    ? ""
-    : new Date(lastAirDate).toLocaleDateString();
+  return lastAirDate === null ? "" : new Date(lastAirDate).toLocaleDateString();
 };
 
 export const formatCurrency = (number) => {
@@ -224,20 +222,23 @@ export const getYoutubeThumbnailSrc = (videoKey) => {
 };
 
 export const getAge = (birthDate) => {
-  const today = new Date();
-  birthDate = new Date(birthDate);
+  if (birthDate && birthDate !== null) {
+    const today = new Date();
+    birthDate = new Date(birthDate);
 
-  var years = today.getFullYear() - birthDate.getFullYear();
+    var years = today.getFullYear() - birthDate.getFullYear();
 
-  if (
-    today.getMonth() < birthDate.getMonth() ||
-    (today.getMonth() == birthDate.getMonth() &&
-      today.getDate() < birthDate.getDate())
-  ) {
-    years--;
+    if (
+      today.getMonth() < birthDate.getMonth() ||
+      (today.getMonth() == birthDate.getMonth() &&
+        today.getDate() < birthDate.getDate())
+    ) {
+      years--;
+    }
+
+    return years;
   }
-
-  return years;
+  return "";
 };
 
 export const formatDiscoverFilterData = (filtersStr) => {
