@@ -96,6 +96,9 @@ const style = css`
       margin-bottom: 20px;
     }
   }
+  .hidden{
+    opacity: 0;
+  }
 `;
 
 export { style };

@@ -11,17 +11,23 @@ const ImageGallary = ({ images }) => {
 
   const goToNext = () => {
     const currentImageIndex = images.findIndex((x) => x === currentImage);
-    setCurrentIndex(currentImageIndex + 1);
+    const imageNumber = (currentImageIndex + 1) + 1;
     const canGoNext = images.length > currentImageIndex + 1;
     const nextImage = canGoNext && images[currentImageIndex + 1];
-    if (canGoNext) setShowCurrentImage(nextImage);
+    if (canGoNext) {
+      setShowCurrentImage(nextImage);
+      setCurrentIndex(imageNumber);
+    }
   };
   const goToPrevious = () => {
     const currentImageIndex = images.findIndex((x) => x === currentImage);
-    setCurrentIndex(currentImageIndex + 1);
+    const imageNumber = (currentImageIndex + 1) - 1;
     const canGoPrev = 0 <= currentImageIndex - 1;
     const prevImage = canGoPrev && images[currentImageIndex - 1];
-    if (canGoPrev) setShowCurrentImage(prevImage);
+    if (canGoPrev) {
+      setShowCurrentImage(prevImage);
+      setCurrentIndex(imageNumber);
+    }
   };
   const closeHandler = () => {
     setShowImageModal(false);
