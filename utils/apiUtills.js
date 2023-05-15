@@ -9,8 +9,8 @@ export const fetcher = (url) => axios.get(url).then((res) => res.data);
  * @param {TIME_TYPE} timeWindow
  * @returns trending tv/movie/persion
  */
-export const getTrendingDataAPIUrl = (type, timeWindow) => {
-  return `${API_BASE_URL}/trending/${type}/${timeWindow}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}`;
+export const getTrendingDataAPIUrl = (type, timeWindow, page = 1) => {
+  return `${API_BASE_URL}/trending/${type}/${timeWindow}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&page=${page}`;
 };
 
 export const getSimilarDataAPIUrl = (type, id) => {

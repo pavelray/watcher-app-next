@@ -1,9 +1,10 @@
 import React, { Fragment } from "react";
 import Router from "next/router";
-import { getViewAllUrl } from "../../utils/apiUtills";
+import { getTrendingDataAPIUrl, getViewAllUrl } from "../../utils/apiUtills";
 import httpService from "../../utils/httpService";
 
 import ViewAll from "../../components/Business/ViewAll/ViewAll";
+import { COLLECTION_TYPE, TIME_TYPE } from "../../utils/constants";
 
 const All = (props) => {
   const { dataType, type } = props;
@@ -25,8 +26,12 @@ export async function getServerSideProps(context) {
   const type = slug[1];
   const page = +slug[2];
   const pageType = "all";
-
-  const apiUrl = getViewAllUrl(dataType, type, page);
+  let apiUrl;
+  if (dataType === COLLECTION_TYPE.TRENDING) {
+    apiUrl = getTrendingDataAPIUrl(type, TIME_TYPE.WEEK, page);
+  } else {
+    apiUrl = getViewAllUrl(dataType, type, page);
+  }
   const response = await httpService.get(apiUrl);
   return {
     props: {
