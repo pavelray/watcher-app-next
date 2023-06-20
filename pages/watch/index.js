@@ -1,5 +1,5 @@
 import React from "react";
-import { MEDIA_TYPE } from "../../utils/constants";
+import { MEDIA_TYPE, STREAMING_API_URL } from "../../utils/constants";
 import styles from "../../styles/Watch.module.scss";
 import { getMediaDetailsDataAPIUrl } from "../../utils/apiUtills";
 import httpService from "../../utils/httpService";
@@ -43,7 +43,7 @@ const Watch = ({
       <iframe
         id="iframe-watch"
         className={styles.videoPlayer}
-        src={`https://www.2embed.to/embed/tmdb/${getStreamingUrl()}`}
+        src={`${STREAMING_API_URL}/embed/tmdb/${getStreamingUrl()}`}
         title={title || name}
         allowFullScreen="true"
         webkitallowfullscreen="true"
@@ -57,7 +57,7 @@ const Watch = ({
         <h4>
           Sreaming Provier -{" "}
           <a
-            href="https://2embed.biz/"
+            href={STREAMING_API_URL}
             alt="2embed"
             className={styles.link}
             target="_blank"

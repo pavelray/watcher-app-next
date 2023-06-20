@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/Policy.module.scss";
+import { STREAMING_API_URL } from "../../utils/constants";
 
 const Privacy = () => {
   return (
@@ -32,7 +33,7 @@ const Privacy = () => {
         addresses, browser type, device type, and viewing history. This data may
         be collected to improve streaming quality. We do not collect or share
         any personal information from the 2embed. Please refer to 2embed legal{" "}
-        <a href="https://2embed.biz/legal" alt="Legal" className="link">
+        <a href={`${STREAMING_API_URL}/legal`} alt="Legal" className="link">
           link
         </a>{" "}
         for more information about their service.

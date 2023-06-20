@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { Fragment } from "react";
-import { APP_NAME, LOGO_IMAGE_PATH, MENUS } from "../../../utils/constants";
+import { APP_NAME, LOGO_IMAGE_PATH, MENUS, STREAMING_API_URL } from "../../../utils/constants";
 import { getUid } from "../../../utils/helperMethods";
 import { style } from "./Footer.style";
 
@@ -37,7 +37,7 @@ const Footer = () => {
                 but is not endorsed or certified by TMDB and for streaming this
                 product uses{" "}
                 <a
-                  href="https://2embed.biz/"
+                  href={`${STREAMING_API_URL}/`}
                   alt="2embed"
                   className="link"
                   target="_blank"
