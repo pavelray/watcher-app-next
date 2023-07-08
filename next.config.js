@@ -3,31 +3,31 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'image.tmdb.org',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "image.tmdb.org",
+        port: "",
+        pathname: "/**",
       },
       {
-        protocol: 'https',
-        hostname: 'img.youtube.com',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "img.youtube.com",
+        port: "",
+        pathname: "/**",
       },
       {
-        protocol: 'https',
-        hostname: 'www.themoviedb.org',
-        port: '',
-        pathname: '/**',
+        protocol: "https",
+        hostname: "www.themoviedb.org",
+        port: "",
+        pathname: "/**",
       },
       {
-        protocol: 'https',
-        hostname: '2embed.biz',
-        port: '',
-        pathname: '/**',
-      }
+        protocol: "https",
+        hostname: "www.2embed.cc",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

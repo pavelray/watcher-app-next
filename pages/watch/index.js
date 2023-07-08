@@ -16,9 +16,9 @@ const Watch = ({
 }) => {
   const getStreamingUrl = () => {
     if (type === MEDIA_TYPE.MOVIE) {
-      return `${id}`;
+      return `embed/${id}`;
     }
-    return `${type}?id=${id}&s=${season}&e=${ep}`;
+    return `embedtv/${id}&s=${season}&e=${ep}`;
   };
 
   return (
@@ -43,7 +43,7 @@ const Watch = ({
       <iframe
         id="iframe-watch"
         className={styles.videoPlayer}
-        src={`${STREAMING_API_URL}/embed/${getStreamingUrl()}`}
+        src={`${STREAMING_API_URL}/${getStreamingUrl()}`}
         title={title || name}
         allowFullScreen="true"
         webkitallowfullscreen="true"

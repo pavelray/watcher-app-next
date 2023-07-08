@@ -1,7 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import React, { Fragment } from "react";
-import { APP_NAME, LOGO_IMAGE_PATH, MENUS, STREAMING_API_URL } from "../../../utils/constants";
+import {
+  APP_NAME,
+  LOGO_IMAGE_PATH,
+  MENUS,
+  STREAMING_API_URL,
+} from "../../../utils/constants";
 import { getUid } from "../../../utils/helperMethods";
 import { style } from "./Footer.style";
 
@@ -101,9 +106,9 @@ const Footer = () => {
         <div className="credit-image">
           <Image
             alt="TMDB Logo"
-            width={80}
+            width={20}
             height={20}
-            src="https://2embed.biz/logo.png"
+            src="https://www.2embed.cc/images/logo.png"
           />
         </div>
       </div>
