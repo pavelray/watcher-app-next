@@ -4,7 +4,7 @@ import styles from "../../styles/Watch.module.scss";
 import { getMediaDetailsDataAPIUrl } from "../../utils/apiUtills";
 import httpService from "../../utils/httpService";
 import Link from "next/link";
-import { slugify } from "../../utils/helperMethods";
+import { setRecentWatched, slugify } from "../../utils/helperMethods";
 
 const Watch = ({
   id = "1061163",
@@ -13,8 +13,9 @@ const Watch = ({
   season,
   title,
   name,
-}) => {
+}) => { 
   const getStreamingUrl = () => {
+    setRecentWatched(id, type);
     if (type === MEDIA_TYPE.MOVIE) {
       return `embed/${id}`;
     }

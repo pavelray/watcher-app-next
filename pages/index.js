@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import HomeBanner from "../components/Business/HomeBanner/HomeBanner";
 import CardSlider from "../components/UI/CardCarousel/CardSlider";
 import {
@@ -16,6 +16,7 @@ import {
 import httpService from "../utils/httpService";
 import styles from "../styles/Home.module.scss";
 import { GoogleAd } from "../components/UI/GoogleAds";
+import axios from "axios";
 
 const Home = ({
   trendingMovie,
@@ -24,6 +25,26 @@ const Home = ({
   trendingToday,
   isMobile,
 }) => {
+  const [recentWatchedMovies, setRecentWatchedMovies] = useState();
+  const [recentWatchedTVSeries, setRecentWatchedTVSeries] = useState();
+
+  const getRecentViewedData = async () => {
+    const viewHistoryData = localStorage.getItem("recentWatched");
+    const body = {
+      data: viewHistoryData,
+    };
+    const { data } = await axios.post("/api/getMediaDetails", body);
+    const { recentViewed } = data;
+    const recentlyWatchedMovies = recentViewed.movies.map(x=> x.value);
+    const recentlyWatchedTvSeries = recentViewed.tv.map(x=> x.value);;
+    setRecentWatchedMovies(recentlyWatchedMovies);
+    setRecentWatchedTVSeries(recentlyWatchedTvSeries);
+  };
+
+  useEffect(() => {
+    getRecentViewedData();
+  }, []);
+
   return (
     <Fragment>
       <div className={styles.homeContainer}>
@@ -39,12 +60,26 @@ const Home = ({
             title="Trending Movies"
             dataType={COLLECTION_TYPE.TRENDING}
           />
+          {!!recentWatchedMovies.length && (
+            <CardSlider
+              data={recentWatchedMovies}
+              type={MEDIA_TYPE.MOVIE}
+              title="Continue Watch Movies"
+            />
+          )}
           <CardSlider
             data={trendingTvSeries.results}
             type={MEDIA_TYPE.TV_SERIES}
             title="Trending Tv Series"
             dataType={COLLECTION_TYPE.TRENDING}
           />
+           {!!recentWatchedTVSeries.length && (
+            <CardSlider
+              data={recentWatchedTVSeries}
+              type={MEDIA_TYPE.TV_SERIES}
+              title="Continue Watch Tv Series"
+            />
+          )}
           <GoogleAd />
           <CardSlider
             data={trendingPersons.results}

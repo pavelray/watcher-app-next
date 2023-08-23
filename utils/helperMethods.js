@@ -265,3 +265,23 @@ export const formatDiscoverFilterData = (filtersStr) => {
     region,
   };
 };
+
+export const setRecentWatched = (id, type) => {
+  const recentWatched = JSON.parse(localStorage.getItem("recentWatched"));
+  if (recentWatched) {
+    const storedMediaCount = recentWatched.media.length - 1;
+    const mediaIndex = recentWatched.media.findIndex((x) => x.id === id);
+    if (storedMediaCount === 10 && mediaIndex === -1) {
+      recentWatched.media = recentWatched.media.shift();
+    }
+    if (mediaIndex === -1) {
+      recentWatched.media.push({ id, type });
+      localStorage.setItem(
+        "recentWatched",
+        JSON.stringify({ media: recentWatched.media })
+      );
+    }
+  } else {
+    localStorage.setItem("recentWatched", JSON.stringify({ media: [] }));
+  }
+};

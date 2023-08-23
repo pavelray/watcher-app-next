@@ -28,7 +28,7 @@ export const getSimilarDataAPIUrl = (type, id) => {
 };
 
 export const getMediaDetailsDataAPIUrl = (type, id) => {
-  return `${API_BASE_URL}/${type}/${id}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US`;
+  return `${API_BASE_URL}/${type}/${id}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}&language=en-US&append_to_response=media_type`;
 };
 
 export const getAllCredits = (id) => {
