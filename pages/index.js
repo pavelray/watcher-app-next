@@ -37,8 +37,8 @@ const Home = ({
     const { recentViewed } = data;
     const recentlyWatchedMovies = recentViewed.movies.map(x=> x.value);
     const recentlyWatchedTvSeries = recentViewed.tv.map(x=> x.value);;
-    setRecentWatchedMovies(recentlyWatchedMovies);
-    setRecentWatchedTVSeries(recentlyWatchedTvSeries);
+    setRecentWatchedMovies(recentlyWatchedMovies.reverse());
+    setRecentWatchedTVSeries(recentlyWatchedTvSeries.reverse());
   };
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const Home = ({
             title="Trending Movies"
             dataType={COLLECTION_TYPE.TRENDING}
           />
-          {!!recentWatchedMovies.length && (
+          {!!recentWatchedMovies?.length && (
             <CardSlider
               data={recentWatchedMovies}
               type={MEDIA_TYPE.MOVIE}
@@ -73,7 +73,7 @@ const Home = ({
             title="Trending Tv Series"
             dataType={COLLECTION_TYPE.TRENDING}
           />
-           {!!recentWatchedTVSeries.length && (
+           {!!recentWatchedTVSeries?.length && (
             <CardSlider
               data={recentWatchedTVSeries}
               type={MEDIA_TYPE.TV_SERIES}
