@@ -90,6 +90,7 @@ export default function Document() {
           }}
         ></Script>
         <Script
+          id="hotjar-tag"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `(function(h,o,t,j,a,r){
