@@ -153,3 +153,7 @@ export const getPopularPeople = (pageNo = 1) => {
 export const getDiscoverMediaUrl = (type, page = 1, filterDataStr) => {
   return `${API_BASE_URL}/discover/${type}?api_key=${process.env.NEXT_PUBLIC_TMD_API_KEY}${filterDataStr}&page=${page}&language=en-US`;
 };
+
+export const getAnimeUrl = (page = 1) => {
+  return `https://anime-api.xyz/page-${page}`;
+};

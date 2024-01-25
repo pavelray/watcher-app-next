@@ -310,10 +310,11 @@ export const SEO_TAGS = {
 
 export const MENUS = [
   { link: "/", text: "Home", imageSrc:"/icons/common/home.png" },
-  { link: "/discover", text: "Discover", imageSrc:"/icons/common/filter.png" },
   { link: "/movie", text: "Movies", imageSrc:"/icons/common/movies.png" },
   { link: "/tv", text: "Tv Series", imageSrc:"/icons/common/tv.png" },
-  { link: "/genre", text: "Genre", imageSrc:"/icons/common/category.png" },
+  { link: "/anime", text: "Anime", imageSrc:"/icons/common/tv.png" },
+  { link: "/genre", text: "Genres", imageSrc:"/icons/common/category.png" },
+  { link: "/discover", text: "Discover", imageSrc:"/icons/common/filter.png" },
   { link: "/about", text: "About", imageSrc:"/icons/common/about.png" },
 ];
 
