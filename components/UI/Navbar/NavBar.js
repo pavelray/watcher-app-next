@@ -84,8 +84,8 @@ const NavBar = ({ isMobile }) => {
             <Image
               src="/icons/common/search.png"
               alt=""
-              width={30}
-              height={30}
+              width={isMobile ? 10 : 30}
+              height={isMobile ? 10 : 30}
               title="Search"
             />
           </button>
@@ -101,7 +101,7 @@ const NavBar = ({ isMobile }) => {
                   width={20}
                   height={20}
                 />
-                <div style={{fontSize: '10px'}}>{menu.text}</div>
+                <div style={{ fontSize: "10px" }}>{menu.text}</div>
               </Link>
             </li>
           ))}

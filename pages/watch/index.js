@@ -13,7 +13,7 @@ const Watch = ({
   season,
   title,
   name,
-}) => { 
+}) => {
   const getStreamingUrl = () => {
     setRecentWatched(id, type);
     if (type === MEDIA_TYPE.MOVIE) {
@@ -40,21 +40,23 @@ const Watch = ({
           </Link>
         )}
       </h2>
+      <div className={styles.videoPlayer}>
+        <iframe
+          id="iframe-watch"
+          className={styles.videoPlayerIframe}
+          src={`${STREAMING_API_URL}/${getStreamingUrl()}`}
+          title={title || name}
+          allowFullScreen="true"
+          webkitallowfullscreen="true"
+          mozallowfullscreen="true"
+          oallowfullscreen="true"
+          msallowfullscreen="true"
+          gesture="media"
+          allow="encrypted-media"
+        ></iframe>
+      </div>
 
-      <iframe
-        id="iframe-watch"
-        className={styles.videoPlayer}
-        src={`${STREAMING_API_URL}/${getStreamingUrl()}`}
-        title={title || name}
-        allowFullScreen="true"
-        webkitallowfullscreen="true"
-        mozallowfullscreen="true"
-        oallowfullscreen="true"
-        msallowfullscreen="true"
-        gesture="media"
-        allow="encrypted-media"
-      ></iframe>
-      <div>
+      <div className={styles.watchWarningMessage}>
         <h4>
           Sreaming Provier -{" "}
           <a

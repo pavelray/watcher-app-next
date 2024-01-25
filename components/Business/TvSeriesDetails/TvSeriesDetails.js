@@ -222,7 +222,7 @@ const TvSeriesDetails = ({ tvSeries, type, id, isMobile }) => {
       {!!trailerVideo.length && showVideo && (
         <div className="wrapper">
           <SubHeading text="Videos" />
-          <div className="media-container">
+          <div className="media-video-container">
             {trailerVideo.map((video) => (
               <div key={getUid()} className="media">
                 <div className="media-image">

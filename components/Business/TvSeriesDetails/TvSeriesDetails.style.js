@@ -245,6 +245,16 @@ const style = css`
         height: 25vmin;
         object-fit: cover;
         object-position: 100% center;
+        @include mobile {
+          width: auto;
+          height: auto;
+          aspect-ratio: 16/9;
+        }
+        @include mobile-landscape {
+          width: 100%;
+          height: 100%;
+          aspect-ratio: 16/9;
+        }
 
         .icon-play {
           position: absolute;
@@ -267,6 +277,73 @@ const style = css`
 
       &-description {
         width: 40vmin;
+        @include mobile {
+          width: 100%;
+        }
+        @include mobile-landscape {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .media-video-container {
+    display: flex;
+    gap: 1.5rem;
+
+    @include mobile {
+      display: block;
+      gap: 0;
+    }
+    @include mobile-landscape {
+      display: block;
+      gap: 0;
+    }
+    .media {
+      &-image {
+        position: relative;
+        width: 45vmin;
+        height: 25vmin;
+        object-fit: cover;
+        object-position: 100% center;
+        @include mobile {
+          width: auto;
+          height: auto;
+          aspect-ratio: 16/9;
+        }
+        @include mobile-landscape {
+          width: 100%;
+          height: 100%;
+          aspect-ratio: 16/9;
+        }
+
+        .icon-play {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          z-index: 2;
+          transform: translate(-50%, -50%);
+          font-size: 4rem;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+
+      &-title {
+        margin: 5px 0px;
+        font-size: 1rem;
+      }
+
+      &-description {
+        width: 40vmin;
+        @include mobile {
+          width: 100%;
+        }
+        @include mobile-landscape {
+          width: 100%;
+        }
       }
     }
   }

@@ -5,25 +5,29 @@
   min-height: 90vh;
   padding: 3rem;
 
+  h2 {
+    @include mobile {
+      font-size: 1rem;
+    }
+  }
+
   @include mobile {
     height: 100%;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
   }
   @include mobile-landscape {
     height: 100%;
-    padding: 0 1rem;
+    padding: 1rem 1rem;
   }
 
   .videoPlayer {
+    aspect-ratio: 16/9;
+  }
+
+  .videoPlayerIframe {
     width: 100%;
-    height: 80vh;
+    height: 100%;
     border: none;
-    @include mobile {
-      height: 150px;
-    }
-    @include mobile-landscape {
-      height: 200px;
-    }
   }
 
   .note {
@@ -31,7 +35,7 @@
     font-weight: 500;
   }
 
-  .header{
+  .header {
     margin-bottom: 1rem;
   }
 
@@ -62,6 +66,10 @@
     display: none;
   }
 
+  .watchWarningMessage {
+    font-size: 0.8rem;
+  }
+
   @keyframes rotate {
     0% {
       transform: rotate(0deg);
@@ -75,13 +83,22 @@
   }
 
   @include mobile {
-    .phone,
+    .phone {
+      height: 15px;
+      width: 30px;
+      display: block;
+    }
     .message {
       display: block;
+      font-size: 0.8rem;
     }
   }
   @include mobile-landscape {
-    .phone,
+    .phone {
+      height: 15px;
+      width: 30px;
+      display: block;
+    }
     .message {
       display: none;
     }

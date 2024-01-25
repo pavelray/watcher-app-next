@@ -27,8 +27,8 @@ const ViewAll = (props) => {
         {(genreName || COLLECTION_TYPE_NAME[dataType] || term) && (
           <div className="view-all-heading">
             <h1>
-              Showing Results for :
-              {genreName || COLLECTION_TYPE_NAME[dataType] || term}
+              Showing Results for:
+              &nbsp;{genreName || COLLECTION_TYPE_NAME[dataType] || term}
             </h1>
           </div>
         )}

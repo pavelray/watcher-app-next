@@ -21,6 +21,12 @@ const style = css`
     justify-content: flex-start;
     align-items: baseline;
     gap: 20px;
+
+    @media (max-width: 480px) {
+      h1{
+        font-size: 1rem;
+      }
+    }
   }
 `;
 
