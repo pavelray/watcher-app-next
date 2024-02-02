@@ -235,12 +235,11 @@ export const APP_NAME = "The Film Mastery";
 export const SITE_NAME = "https://thefilmmastery.com";
 
 export const DEFAULT_COUNTRY_CODE = "US";
-export const DEFAULT_COUNTRY_NAME = "United States";
 
 export const API_VERSION = 3;
 export const API_BASE_URL = `https://api.themoviedb.org/${API_VERSION}`;
 export const API_IMAGE_URL = "https://image.tmdb.org/t/p";
-export const API_LOCATION_URL = `https://geolocation-db.com/json/`;
+export const API_LOCATION_URL = `https://geolocation.onetrust.com/cookieconsentpub/v1/geo/location`;
 export const NO_IMG_PLACEHOLDER_USER = `/images/profile-placeholder.jpeg`;
 export const NO_IMG_PLACEHOLDER_MEDIA = `/images/media-placeholder.png`;
 export const IMDB_IMAGE_PATH = `/images/imdb-icon.png`;

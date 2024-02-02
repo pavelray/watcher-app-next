@@ -10,37 +10,48 @@ const style = css`
     &-header {
       display: flex;
       align-items: baseline;
-      gap: 2rem;
+      flex-direction: column;
     }
     &-description {
-      font-size: 14px;
+      font-size: 0.8rem;
       letter-spacing: 1px;
       word-spacing: 1px;
       margin: 2px 0px;
-      font-style: italic;
       white-space: pre-line;
       word-break: break-all;
     }
     &-author {
-      font-size: 18px;
+      align-items: center;
+      display: flex;
+      gap: 1rem;
+      font-size: 1.1rem;
       word-spacing: 2px;
-      margin: 5px 0px;
+      margin: 2px 0px;
       font-weight: 500;
       color: $secondary;
+
+      span {
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        font-size: 1.8rem;
+        text-align: center;
+      }
+
+      .avater {
+        padding: 0px 5px;
+      }
     }
     &-stats {
+      font-size: 0.9rem;
       margin: 5px 0px;
       font-weight: 500;
       display: flex;
-      flex-direction: column;
       color: $secondary;
+      gap: 1rem;
 
       .date {
-        font-size: 15px;
-        font-weight: 500;
         letter-spacing: 1px;
-        margin: 5px 0px;
-        color: $secondary;
       }
     }
     .read-more {

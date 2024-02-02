@@ -77,41 +77,41 @@ export const slugify = (str) =>
     .replace(/^-+|-+$/g, "");
 
 export const setLocationInfo = (location) => {
-  localStorage.setItem("COUNTRY_CODE", location.country_code);
-  localStorage.setItem("COUNTRY_NAME", location.country_name);
+  localStorage.setItem("COUNTRY", location.country);
+  localStorage.setItem("STATE", location.state);
 };
 
 export const getLocationInfo = () => {
-  const countryCode = localStorage?.getItem("COUNTRY_CODE");
-  const countryName = localStorage?.getItem("COUNTRY_NAME");
+  const countryCode = localStorage?.getItem("COUNTRY");
+  const sateCode = localStorage?.getItem("STATE");
 
   return {
     countryCode,
-    countryName,
+    sateCode,
   };
 };
 
 export const setLocationCookie = (location) => {
-  setCookie("COUNTRY_CODE", location.country_code, window.location.hostname);
-  setCookie("COUNTRY_NAME", location.country_name, window.location.hostname);
+  setCookie("COUNTRY", location.country, window.location.hostname);
+  setCookie("STATE", location.state, window.location.hostname);
 };
 
 export const getLocationCookie = (request) => {
   if (isBrowser()) {
-    const countryCode = getCookie("COUNTRY_CODE");
-    const countryName = getCookie("COUNTRY_NAME");
+    const countryCode = getCookie("COUNTRY");
+    const stateCode = getCookie("STATE");
 
     return {
       countryCode,
-      countryName,
+      stateCode,
     };
   }
   const allCookies = getAllCookies(request);
-  const countryCode = getCookie("COUNTRY_CODE", allCookies);
-  const countryName = getCookie("COUNTRY_NAME", allCookies);
+  const countryCode = getCookie("COUNTRY", allCookies);
+  const stateCode = getCookie("STATE", allCookies);
   return {
     countryCode,
-    countryName,
+    stateCode,
   };
 };
 

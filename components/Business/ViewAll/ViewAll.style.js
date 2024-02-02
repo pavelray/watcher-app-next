@@ -6,9 +6,10 @@ const style = css`
 
   .view-all-wrapper {
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 10px;
-    place-items: center;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 1.5rem;
+    justify-content: center;
+    flex: 0 0 100%;
     @media (max-width: 480px) {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -23,7 +24,7 @@ const style = css`
     gap: 20px;
 
     @media (max-width: 480px) {
-      h1{
+      h1 {
         font-size: 1rem;
       }
     }

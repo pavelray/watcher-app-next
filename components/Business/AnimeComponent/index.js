@@ -17,10 +17,14 @@ const AnimeComponent = ({ data }) => {
                   className="anime-image"
                 />
               </div>
-              <div>{anime.genres}</div>
-              <div>{anime.year}</div>
-              <div>{anime.type}</div>
-              <div>{anime.episode}</div>
+              <div className="stats-container">
+                <div>Year: {anime.year}</div>
+                <div>Type: {anime.type}</div>
+                <div>Year: {anime.episode}</div>
+                <div className="genre">
+                  Genres: <span className="genres">{anime.genres}</span>
+                </div>
+              </div>
             </div>
           );
         })}
