@@ -161,6 +161,7 @@ export const getContentRating = (result, type) => {
 };
 
 export const getCertificates = (releaseInfo, productionCountries, type) => {
+  if(!releaseInfo) return;
   const result = releaseInfo?.results?.filter((o1) =>
     productionCountries?.some((o2) => o1.iso_3166_1 === o2.iso_3166_1)
   );

@@ -24,7 +24,7 @@ const HomeBanner = ({ trendingToday, isMobile }) => {
   );
   const certificate = certificates?.map((x) => x.certification).join(", ");
   const meaning = certificates?.map((x) => `${x.certification}: ${x.meaning}`);
-  const video = { ...trending.videos.results.slice(0, 1)[0] };
+  const video = { ...trending?.videos?.results.slice(0, 1)[0] };
   const [viewModal, setViewModal] = useState(false);
 
   const onModalClose = () => {
@@ -42,7 +42,7 @@ const HomeBanner = ({ trendingToday, isMobile }) => {
         imageUrl={trending.backdrop_path}
         type={trending.media_type}
         id={trending.id}
-        trailerVideo={trending.videos.results}
+        trailerVideo={trending?.videos?.results}
         year={trending.release_date || trending.first_air_date}
         certificate={{ certificate, meaning }}
         runtime={totalRuntime}

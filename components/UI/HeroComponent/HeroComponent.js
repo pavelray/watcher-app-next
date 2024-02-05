@@ -4,9 +4,7 @@ import Router from "next/router";
 import { API_IMAGE_URL, MEDIA_TYPE } from "../../../utils/constants";
 import { getImageUrl, slugify } from "../../../utils/helperMethods";
 import ViewTrailer from "../../Business/ViewTrailer/ViewTrailer";
-import {
-  ButtonSecondary,
-} from "../Buttons/Buttons";
+import { ButtonSecondary } from "../Buttons/Buttons";
 import Rating from "../Rating/Rating";
 import { style } from "./HeroComponent.style";
 
@@ -26,10 +24,12 @@ const HeroComponent = ({
   showEpisodes,
   rating,
   year,
-  status
+  status,
 }) => {
-  const isReleased = type === MEDIA_TYPE.MOVIE && status === 'Released';
-  const isAvailable = type === MEDIA_TYPE.TV_SERIES && (status === 'Returning Series' || status === 'Ended');
+  const isReleased = type === MEDIA_TYPE.MOVIE && status === "Released";
+  const isAvailable =
+    type === MEDIA_TYPE.TV_SERIES &&
+    (status === "Returning Series" || status === "Ended");
 
   const populateImageUrl = (path) => {
     const fullPath = `${API_IMAGE_URL}/original/`;
@@ -48,7 +48,7 @@ const HeroComponent = ({
 
   const goToDetailsPage = () => {
     Router.push(`/${type}/${id}/${slugify(title)}`);
-  }
+  };
 
   const getStyle = () => {
     const deskTopStyle = {
@@ -75,7 +75,7 @@ const HeroComponent = ({
     return isMobile ? mobileStyle : deskTopStyle;
   };
 
-  const ratingPercentage = (rating * 100) / 10
+  const ratingPercentage = (rating * 100) / 10;
 
   return (
     <Fragment>
@@ -97,22 +97,29 @@ const HeroComponent = ({
             )}
           </div>
           <p className="story">{description}</p>
+
           <div className="btn-container">
-            <ViewTrailer
-              trailerVideo={trailerVideo}
-              setViewModal={setViewModal}
-            />
+            {trailerVideo && (
+              <ViewTrailer
+                trailerVideo={trailerVideo}
+                setViewModal={setViewModal}
+              />
+            )}
+
             {type === MEDIA_TYPE.MOVIE && isReleased && (
               <ButtonSecondary
                 handleOnClick={navigateToWatch}
                 text="Watch Now"
               />
             )}
-            {type === MEDIA_TYPE.TV_SERIES && !isHome && isAvailable &&(
+            {type === MEDIA_TYPE.TV_SERIES && !isHome && isAvailable && (
               <ButtonSecondary handleOnClick={scrollToWatch} text="Watch Now" />
             )}
             {type === MEDIA_TYPE.TV_SERIES && isHome && isAvailable && (
-              <ButtonSecondary handleOnClick={goToDetailsPage} text="Watch Now" />
+              <ButtonSecondary
+                handleOnClick={goToDetailsPage}
+                text="Watch Now"
+              />
             )}
           </div>
         </div>
