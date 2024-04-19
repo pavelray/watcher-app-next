@@ -33,7 +33,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Deploy to Google Cloud Run
-        uses: GoogleCloudPlatform/github-actions/cloud-run@main
+        uses: GoogleCloudPlatform/github-actions/cloud-run@f56d9531a0e0b07913433f6c2c400f08e1f2266b
         with:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
           image: ${{ secrets.DOCKERHUB_USERNAME }}/filmmastery-ui:latest
