@@ -48,4 +48,4 @@ jobs:
             --image=${{ secrets.DOCKERHUB_USERNAME }}/filmmastery-ui:latest \
             --platform managed \
             --region us-central1 \
-            --set-env-vars NEXT_PUBLIC_TMD_API_KEY=${{ secrets.DOCKERHUB_USERNAME }}
+            --set-env-vars NEXT_PUBLIC_TMD_API_KEY=${{ secrets.NEXT_PUBLIC_TMD_API_KEY }}
