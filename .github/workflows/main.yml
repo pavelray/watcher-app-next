@@ -32,11 +32,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Deploy to Google Cloud Run
-        uses: GoogleCloudPlatform/github-actions/cloud-run@f56d9531a0e0b07913433f6c2c400f08e1f2266b
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v0
         with:
           service_account_key: ${{ secrets.GCP_SA_KEY }}
-          image: ${{ secrets.DOCKERHUB_USERNAME }}/filmmastery-ui:latest
-          service: watcher-app-cloud-run-service
           project_id: watcher-app-ui
-          region: us-central1
+          export_default_credentials: true
+
+      - name: Deploy to Google Cloud Run
+        run: gcloud run deploy watcher-app-cloud-run-service --image=${{ secrets.DOCKERHUB_USERNAME }}/filmmastery-ui:latest --platform managed --region us-central1
+
