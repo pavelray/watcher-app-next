@@ -6,13 +6,21 @@ import { getImage, slugify } from "../../../utils/helperMethods";
 import ProfileCard from "../../UI/Card/ProfileCard";
 
 export const MediaCard = (props) => {
-  const { poster, id, title, type, genre_ids, vote_average, ...otherProps } =
-    props;
+  const {
+    poster,
+    id,
+    title,
+    type,
+    genre_ids,
+    vote_average,
+    imageWidth=400,
+    ...otherProps
+  } = props;
   const { name, popularity, known_for_department, profile_path, gender } =
     props;
   const imagePath = poster || profile_path;
 
-  const posterImg = getImage(imagePath);
+  const posterImg = getImage(imagePath, imageWidth);
 
   const redirectToDetails = () => {
     if (type !== MEDIA_TYPE.PERSON && type !== MEDIA_TYPE.COLLECTION)

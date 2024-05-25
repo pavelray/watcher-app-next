@@ -6,10 +6,15 @@ const style = css`
 
   .view-all-wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-columns: repeat(auto-fit, 200px);
     gap: 1.5rem;
     justify-content: center;
     flex: 0 0 100%;
+
+    .card-container {
+      aspect-ratio: 9/16;
+    }
+    
     @media (max-width: 480px) {
       grid-template-columns: repeat(2, 1fr);
     }

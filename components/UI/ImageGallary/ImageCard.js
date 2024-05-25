@@ -25,7 +25,7 @@ const ImageCard = ({ images, openCurrentImage }) => {
           onClick={() => openCurrentImage(image)}
         >
           <ImageFallback
-            src={`${API_IMAGE_URL}/w200${image.file_path}`}
+            src={`${API_IMAGE_URL}/w400${image.file_path}`}
             fill
             sizes="100vw"
             style={{

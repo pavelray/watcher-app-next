@@ -127,7 +127,7 @@ const PersonDetails = ({ person, id, isMobile }) => {
       {showPhoto && (
         <div className="wrapper">
           <SubHeading text="Photos" />
-          <ImageGallary images={images.profiles}/>
+          <ImageGallary images={images.profiles} />
         </div>
       )}
       {showKnownFor && (
@@ -168,6 +168,18 @@ const PersonDetails = ({ person, id, isMobile }) => {
                     <li>
                       <span className="year">
                         {credit.release_year ? credit.release_year : " - "}
+                      </span>
+                      <span className="image">
+                        <ImageFallback
+                          src={`${API_IMAGE_URL}/${imageSize}/${credit.poster_path}`}
+                          width={40}
+                          height={60}
+                          style={{
+                            objectFit: "cover",
+                          }}
+                          alt="Poster"
+                          fallbackSrc={NO_IMG_PLACEHOLDER_USER}
+                        />
                       </span>
                       <span className="move-title">
                         {credit.media_type === MEDIA_TYPE.MOVIE

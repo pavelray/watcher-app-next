@@ -17,9 +17,10 @@ const ViewAll = (props) => {
     genreName = "",
     handlePageClick,
     total_pages,
+    total_results
   } = props;
 
-  const totalPages = total_pages; // Making this const as TMDB return maximum of 500 pages.
+  const totalPages = total_pages > 500 ? 500 : total_pages; // Making this const as TMDB return maximum of 500 pages.
 
   return (
     <Fragment>
@@ -34,6 +35,7 @@ const ViewAll = (props) => {
         )}
         <PaginationComponent
           totalPages={totalPages}
+          totalResults={total_results}
           selectedPage={parseInt(page)}
           onPageClick={handlePageClick}
         >
@@ -47,6 +49,7 @@ const ViewAll = (props) => {
                     poster={tr.poster_path || tr.profile_path}
                     releaseDate={tr.release_date || tr.first_air_date}
                     type={type || tr.media_type}
+                    imageWidth={400}
                     {...tr}
                   />
                 </div>

@@ -10,7 +10,6 @@ const Review = ({ review }) => {
     content,
     created_at,
   } = review;
-  console.log(review);
   const createdDate = new Date(created_at)
     .toDateString()
     .split(" ")

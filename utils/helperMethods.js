@@ -207,9 +207,9 @@ export const formatCurrency = (number) => {
   }).format(number);
 };
 
-export const getImage = (imagePath) => {
+export const getImage = (imagePath, width=200) => {
   const imageName = imagePath
-    ? `${API_IMAGE_URL}/w200${imagePath}`
+    ? `${API_IMAGE_URL}/w${width}${imagePath}`
     : NO_IMG_PLACEHOLDER_MEDIA;
   return imageName;
 };

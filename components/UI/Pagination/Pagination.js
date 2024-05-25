@@ -5,6 +5,7 @@ import { style } from "./Pagination.style";
 
 const Pagination = ({
   totalPages = 500,
+  totalResults,
   selectedPage = 1,
   pagesToShow = 4,
   onPageClick,

@@ -169,8 +169,12 @@ const style = css`
       li {
         border-bottom: 1px solid $background2;
         padding: 10px;
+        display: flex;
+        align-items: center;
       }
-
+      .image{
+        margin-left: 20px;
+      }
       .year {
         font-weight: 600;
       }
