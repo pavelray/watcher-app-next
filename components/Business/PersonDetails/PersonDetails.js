@@ -15,9 +15,12 @@ import ImageGallary from "../../UI/ImageGallary/ImageGallary";
 
 const PersonDetails = ({ person, id, isMobile }) => {
   const { details } = person;
-  const { combined_credits, external_ids, images } = details;
-  const { cast } = combined_credits;
-  const creditsArrWithOutYear = cast
+  const { combined_credits, external_ids, images, known_for_department } =
+    details;
+  const { cast, crew } = combined_credits;
+  const isActor = known_for_department === "Acting";
+  const credits = isActor ? cast : crew;
+  const creditsArrWithOutYear = credits
     .filter((x) => x.release_date === "" || x.first_air_date === "")
     .map((c) => {
       return {
@@ -25,7 +28,7 @@ const PersonDetails = ({ person, id, isMobile }) => {
         release_year: "",
       };
     });
-  const creditsArrWithYear = cast.filter(
+  const creditsArrWithYear = credits.filter(
     (x) => x.release_date !== "" && x.first_air_date !== ""
   );
   const creditsArr = creditsArrWithYear
@@ -40,7 +43,12 @@ const PersonDetails = ({ person, id, isMobile }) => {
     })
     .sort((a, b) => a.release_year - b.release_year)
     .reverse();
-  const finalCreditsArr = [...creditsArrWithOutYear, ...creditsArr];
+
+  const finalCreditsArr = !isActor
+    ? [...creditsArrWithOutYear, ...creditsArr].filter(
+        (data) => data.department === known_for_department
+      )
+    : [...creditsArrWithOutYear, ...creditsArr];
 
   const [showPhoto, setShowPhoto] = useState(false);
   const [showKnownFor, setShowKnownFor] = useState(true);
@@ -83,8 +91,7 @@ const PersonDetails = ({ person, id, isMobile }) => {
             <span className="label">Age:</span> {getAge(details.birthday)}
           </div>
           <div className="person-info">
-            <span className="label">Known For:</span>{" "}
-            {details.known_for_department}
+            <span className="label">Known For:</span> {known_for_department}
           </div>
           <div className="person-info">
             <span className="label">From:</span> {details.place_of_birth}
@@ -153,7 +160,7 @@ const PersonDetails = ({ person, id, isMobile }) => {
         <div className="wrapper">
           <SubHeading text="Credits" />
           <div className="credits-container">
-            <h3>Acting</h3>
+            <h3>{known_for_department}</h3>
             <ul className="credits">
               {finalCreditsArr?.map((credit) => {
                 return (
@@ -188,6 +195,9 @@ const PersonDetails = ({ person, id, isMobile }) => {
                       </span>
                       {credit.character && (
                         <span className="charecter">as {credit.character}</span>
+                      )}
+                      {credit.job && (
+                        <span className="charecter">as {credit.job}</span>
                       )}
                       {credit.media_type === MEDIA_TYPE.TV_SERIES && (
                         <span className="episode-count">

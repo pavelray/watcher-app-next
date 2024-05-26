@@ -20,7 +20,7 @@ export const MediaCard = (props) => {
     props;
   const imagePath = poster || profile_path;
 
-  const posterImg = getImage(imagePath, imageWidth);
+  const posterImg = getImage(imagePath, imageWidth, type);
 
   const redirectToDetails = () => {
     if (type !== MEDIA_TYPE.PERSON && type !== MEDIA_TYPE.COLLECTION)

@@ -5,6 +5,7 @@ import {
   MEDIA_TYPE,
   MOVIE_GENRE,
   NO_IMG_PLACEHOLDER_MEDIA,
+  NO_IMG_PLACEHOLDER_USER,
   TV_GENRE,
 } from "./constants";
 import { v4 as uuid4 } from "uuid";
@@ -161,7 +162,7 @@ export const getContentRating = (result, type) => {
 };
 
 export const getCertificates = (releaseInfo, productionCountries, type) => {
-  if(!releaseInfo) return;
+  if (!releaseInfo) return;
   const result = releaseInfo?.results?.filter((o1) =>
     productionCountries?.some((o2) => o1.iso_3166_1 === o2.iso_3166_1)
   );
@@ -207,10 +208,14 @@ export const formatCurrency = (number) => {
   }).format(number);
 };
 
-export const getImage = (imagePath, width=200) => {
+export const getImage = (imagePath, width = 400, type) => {
   const imageName = imagePath
     ? `${API_IMAGE_URL}/w${width}${imagePath}`
+    : type === MEDIA_TYPE.PERSON
+    ? NO_IMG_PLACEHOLDER_USER
     : NO_IMG_PLACEHOLDER_MEDIA;
+
+  console.log(type,imageName);
   return imageName;
 };
 

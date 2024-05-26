@@ -5,6 +5,7 @@ import ImageFallback from "../../Business/ImageFallback/index.js";
 import { NO_IMG_PLACEHOLDER_USER } from "../../../utils/constants.js";
 
 const ProfileCard = ({ id, title, poster, description, redirectToDetails }) => {
+  console.log(poster)
   return (
     <Fragment>
       <div className="card">

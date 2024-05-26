@@ -12,12 +12,12 @@ const style = css`
     width: 200px;
 
     @include mobile {
-      flex: 1 1 150px;
-      width: 150px;
+      flex: 1 1 160px;
+      width: 160px;
     }
     @include mobile-landscape {
-      flex: 1 1 150px;
-      width: 150px;
+      flex: 1 1 160px;
+      width: 160px;
     }
   }
 
