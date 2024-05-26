@@ -244,7 +244,7 @@ export const getUid = () => {
 };
 
 export const getYoutubeThumbnailSrc = (videoKey) => {
-  return `https://img.youtube.com/vi/${videoKey}/maxresdefault.jpg`;
+  return `https://img.youtube.com/vi/${videoKey}/hqdefault.jpg`;
 };
 
 export const getAge = (birthDate) => {
