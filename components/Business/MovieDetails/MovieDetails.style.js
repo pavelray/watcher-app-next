@@ -108,6 +108,12 @@ const style = css`
                 color: $primary;
                 font-size: 1rem;
               }
+              .info{
+                background: $info;
+                padding: 2px 5px;
+                color: $primary;
+                font-size: 1rem;
+              }
               font-size: 1rem;
               margin: 1rem 0;
               @include mobile {

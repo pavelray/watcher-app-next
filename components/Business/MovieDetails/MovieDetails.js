@@ -12,6 +12,7 @@ import {
   getCertificates,
   getUid,
   getYoutubeThumbnailSrc,
+  movieStatus,
 } from "../../../utils/helperMethods";
 import MediaCard from "../../Business/MediaCard";
 import CardSlider from "../../UI/CardCarousel/CardSlider";
@@ -43,7 +44,8 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
     external_ids,
     images,
   } = movie;
-  const { adult, belongs_to_collection, vote_average } = details;
+  const { adult, belongs_to_collection, vote_average, budget, revenue } =
+    details;
   const video = { ...trailerVideo.slice(0, 1)[0] };
   const [selectedVideo, setSelectedVideo] = useState(video);
 
@@ -66,6 +68,7 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
     (x) => x && `${x.certification}: ${x.meaning}`
   );
   const voteCount = formatNumber(details.vote_count);
+  const showMovieStatus = budget && revenue ? movieStatus(budget, revenue) : "";
   const [showPhoto, setShowPhoto] = useState(false);
   const [showVideo, setShowVideo] = useState(true);
   const [showReview, setShowReview] = useState(false);
@@ -123,6 +126,11 @@ const MovieDetails = ({ movie, id, type, isMobile }) => {
             <div className="movie-details-content">
               <div className="movie-details-content__row">
                 <div className="description">
+                  <p>
+                    {showMovieStatus && (
+                      <span className="info">{showMovieStatus}</span>
+                    )}
+                  </p>
                   <p className="title">
                     Storyline {adult && <span className="warning">Adult</span>}
                   </p>

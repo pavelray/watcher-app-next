@@ -179,6 +179,26 @@ export const formatNumber = (number) => {
   return new Intl.NumberFormat().format(number);
 };
 
+export const movieStatus = (budget, revenue) => {
+  // Calculate the revenue percentage relative to the budget
+  const revenuePercentage = (revenue / budget) * 100;
+
+  // Determine the movie status based on the revenue percentage
+  if (revenuePercentage < 100) {
+    return "Flop";
+  } else if (revenuePercentage >= 100 && revenuePercentage < 125) {
+    return "Average";
+  } else if (revenuePercentage >= 125 && revenuePercentage < 175) {
+    return "Hit";
+  } else if (revenuePercentage >= 175 && revenuePercentage < 200) {
+    return "Superhit";
+  } else if (revenuePercentage >= 200) {
+    return "Blockbuster";
+  } else {
+    return "Unknown status"; // Fallback case, though it should not occur with the given conditions
+  }
+};
+
 export const getRuntime = (runtime) => {
   const hours = Math.floor(runtime / 60);
   const minutes = runtime % 60;
@@ -215,7 +235,7 @@ export const getImage = (imagePath, width = 400, type) => {
     ? NO_IMG_PLACEHOLDER_USER
     : NO_IMG_PLACEHOLDER_MEDIA;
 
-  console.log(type,imageName);
+  console.log(type, imageName);
   return imageName;
 };
 
